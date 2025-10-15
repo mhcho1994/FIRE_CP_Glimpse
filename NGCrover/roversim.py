@@ -30,7 +30,7 @@ class MFRoverClosedSIM:
     - be careful for
     - retrieve the final value of all state variables
     """
-    def __init__(self, fidelity = 1, t0 = 0, fmu_type = "me", attack_scenario = 0, parameter_file = "rover_specs2.json"):
+    def __init__(self, fidelity = 1, t0 = 0, fmu_type = "me", attack_scenario = 0, parameter_file = "rover_parameters.json"):
         """
         inputs:
             fidelity (int): fidelity level
@@ -45,7 +45,7 @@ class MFRoverClosedSIM:
         # manual switch for generating fmu, will be deprecated after patching the following issue
         # important note: currently, the fidelity parameter is automatically set as a "final" parameter, which cannot be modified using Python API
         #                 please change it manually in the RoverExample.Components.Rover script (be careful that the fidelity parameter is also in RoverExample.ExampleScenario)
-        fmu_gen = False
+        fmu_gen = True
 
         # t0 should be 0
         self.t0 = t0
@@ -61,9 +61,9 @@ class MFRoverClosedSIM:
         # convert the modelica file into a fmu and set the ininital conditions and parameters 
         if fmu_gen:
             if fidelity == 1:
-                modelica.generate_fmu("RoverExample.Components.Rover", f"{os.getcwd()}/model/MFRover_FMUgen.mo", fmu_type, {'fidelity': 1}) 
+                modelica.generate_fmu("RoverExample.Components.Rover", f"{os.getcwd()}/model/MFRover.mo", fmu_type, {'fidelity': 1}) 
             elif fidelity == 2:
-                modelica.generate_fmu("RoverExample.Components.Rover", f"{os.getcwd()}/model/MFRover_FMUgen.mo", fmu_type, {'fidelity': 2})
+                modelica.generate_fmu("RoverExample.Components.Rover", f"{os.getcwd()}/model/MFRover.mo", fmu_type, {'fidelity': 2})
 
         fmuDyn = "RoverExample.Components.Rover/RoverExample.Components.Rover.fmu"
         self.fmudyn = fmu.FMU(fmuDyn, fmu_type, self.t0, tol=1e-6)
@@ -90,7 +90,7 @@ class MFRoverClosedSIM:
                                    'rover_8d.omega': 0.0}) # shaft rotational speeds
 
         if fmu_gen:
-            modelica.generate_fmu("RoverExample.Components.Controller", f"{os.getcwd()}/model/MFRover_FMUgen.mo", fmu_type)
+            modelica.generate_fmu("RoverExample.Components.Controller", f"{os.getcwd()}/model/MFRover.mo", fmu_type)
         fmuController = "RoverExample.Components.Controller/RoverExample.Components.Controller.fmu" 
         self.fctrl = fmu.FMU(fmuController, fmu_type, self.t0, tol=1e-6)
         self.fctrl.reset()
@@ -108,7 +108,7 @@ class MFRoverClosedSIM:
             self.fctrl.set_param({'delta_turn': np.atan(self.parameters_info['l_total']/self.parameters_info['turn_radius'])})
 
         if fmu_gen:
-            modelica.generate_fmu("RoverExample.Components.Webserver", f"{os.getcwd()}/model/MFRover_FMUgen.mo", fmu_type)
+            modelica.generate_fmu("RoverExample.Components.Webserver", f"{os.getcwd()}/model/MFRover.mo", fmu_type)
         fmuWebserver = "RoverExample.Components.Webserver/RoverExample.Components.Webserver.fmu"
         self.fweb = fmu.FMU(fmuWebserver, fmu_type, self.t0, tol=1e-6)
         self.fweb.reset() 

@@ -7,92 +7,92 @@
 /* dynamic equations */
 
 /*
-equation index: 181
+equation index: 174
 type: SIMPLE_ASSIGN
 $DER.rover_8d.omega.$pDERLSJac1.dummyVarLSJac1 = (-4.0) * rover_8d.thr.SeedLSJac1 / rover_8d.J
 */
-void RoverExample_Components_Rover_eqFunction_181(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_174(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
   const int subClockIndex = 0;
-  const int equationIndexes[2] = {1,181};
+  const int equationIndexes[2] = {1,174};
   jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ = (-4.0) * (DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac1 SEED_VAR */,(data->simulationInfo->realParameter[67] /* rover_8d.J PARAM */),"rover_8d.J"));
   TRACE_POP
 }
 
 /*
-equation index: 182
+equation index: 175
 type: SIMPLE_ASSIGN
 $DER.rover_8d.omega_fl.$pDERLSJac1.dummyVarLSJac1 = rover_8d.thr.SeedLSJac1 / rover_8d.I_wheel
 */
-void RoverExample_Components_Rover_eqFunction_182(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_175(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
   const int subClockIndex = 1;
-  const int equationIndexes[2] = {1,182};
+  const int equationIndexes[2] = {1,175};
   jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac1 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
-equation index: 183
+equation index: 176
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1 = rover_8d.thr.SeedLSJac1 / rover_8d.I_wheel
+$DER.rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1 = rover_8d.thr.SeedLSJac1 / rover_8d.I_wheel
 */
-void RoverExample_Components_Rover_eqFunction_183(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_176(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
   const int subClockIndex = 2;
-  const int equationIndexes[2] = {1,183};
-  jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac1 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  const int equationIndexes[2] = {1,176};
+  jacobian->tmpVars[2] /* der(rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac1 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
-equation index: 184
+equation index: 177
 type: SIMPLE_ASSIGN
 $DER.rover_8d.omega_fr.$pDERLSJac1.dummyVarLSJac1 = rover_8d.thr.SeedLSJac1 / rover_8d.I_wheel
 */
-void RoverExample_Components_Rover_eqFunction_184(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_177(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
   const int subClockIndex = 3;
-  const int equationIndexes[2] = {1,184};
+  const int equationIndexes[2] = {1,177};
   jacobian->tmpVars[3] /* der(rover_8d.omega_fr.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac1 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
-equation index: 185
+equation index: 178
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1 = 4.0 * $DER.rover_8d.omega.$pDERLSJac1.dummyVarLSJac1 / rover_8d.gratio - $DER.rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1 - $DER.rover_8d.omega_fl.$pDERLSJac1.dummyVarLSJac1 - $DER.rover_8d.omega_fr.$pDERLSJac1.dummyVarLSJac1
+$DER.rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1 = 4.0 * $DER.rover_8d.omega.$pDERLSJac1.dummyVarLSJac1 / rover_8d.gratio - $DER.rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1 - $DER.rover_8d.omega_fl.$pDERLSJac1.dummyVarLSJac1 - $DER.rover_8d.omega_fr.$pDERLSJac1.dummyVarLSJac1
 */
-void RoverExample_Components_Rover_eqFunction_185(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_178(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
   const int subClockIndex = 4;
-  const int equationIndexes[2] = {1,185};
-  jacobian->tmpVars[4] /* der(rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_fr.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */;
+  const int equationIndexes[2] = {1,178};
+  jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_fr.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
 /*
-equation index: 186
+equation index: 179
 type: SIMPLE_ASSIGN
-$res_LSJac1_1.$pDERLSJac1.dummyVarLSJac1 = rover_8d.thr.SeedLSJac1 - $DER.rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1 * rover_8d.I_wheel
+$res_LSJac1_1.$pDERLSJac1.dummyVarLSJac1 = rover_8d.thr.SeedLSJac1 - $DER.rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1 * rover_8d.I_wheel
 */
-void RoverExample_Components_Rover_eqFunction_186(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_179(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
   const int subClockIndex = 5;
-  const int equationIndexes[2] = {1,186};
-  jacobian->resultVars[0] /* $res_LSJac1_1.$pDERLSJac1.dummyVarLSJac1 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac1 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_rl.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
+  const int equationIndexes[2] = {1,179};
+  jacobian->resultVars[0] /* $res_LSJac1_1.$pDERLSJac1.dummyVarLSJac1 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac1 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERLSJac1.dummyVarLSJac1) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
   TRACE_POP
 }
 
@@ -112,12 +112,12 @@ int RoverExample_Components_Rover_functionJacLSJac1_column(DATA* data, threadDat
   TRACE_PUSH
 
   int index = RoverExample_Components_Rover_INDEX_JAC_LSJac1;
-  RoverExample_Components_Rover_eqFunction_181(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_182(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_183(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_184(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_185(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_186(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_174(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_175(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_176(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_177(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_178(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_179(data, threadData, jacobian, parentJacobian);
   TRACE_POP
   return 0;
 }
@@ -125,92 +125,92 @@ int RoverExample_Components_Rover_functionJacLSJac1_column(DATA* data, threadDat
 /* dynamic equations */
 
 /*
-equation index: 359
-type: SIMPLE_ASSIGN
-$DER.rover_8d.omega.$pDERLSJac3.dummyVarLSJac3 = (-4.0) * rover_8d.thr.SeedLSJac3 / rover_8d.J
-*/
-void RoverExample_Components_Rover_eqFunction_359(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 0;
-  const int equationIndexes[2] = {1,359};
-  jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = (-4.0) * (DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[67] /* rover_8d.J PARAM */),"rover_8d.J"));
-  TRACE_POP
-}
-
-/*
-equation index: 360
-type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 / rover_8d.I_wheel
-*/
-void RoverExample_Components_Rover_eqFunction_360(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 1;
-  const int equationIndexes[2] = {1,360};
-  jacobian->tmpVars[1] /* der(rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
-  TRACE_POP
-}
-
-/*
 equation index: 361
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 / rover_8d.I_wheel
+$DER.rover_8d.omega.$pDERLSJac3.dummyVarLSJac3 = (-4.0) * rover_8d.thr.SeedLSJac3 / rover_8d.J
 */
 void RoverExample_Components_Rover_eqFunction_361(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 2;
+  const int subClockIndex = 0;
   const int equationIndexes[2] = {1,361};
-  jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = (-4.0) * (DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[67] /* rover_8d.J PARAM */),"rover_8d.J"));
   TRACE_POP
 }
 
 /*
 equation index: 362
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 / rover_8d.I_wheel
+$DER.rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_362(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 3;
+  const int subClockIndex = 1;
   const int equationIndexes[2] = {1,362};
-  jacobian->tmpVars[3] /* der(rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 363
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3 = 4.0 * $DER.rover_8d.omega.$pDERLSJac3.dummyVarLSJac3 / rover_8d.gratio - $DER.rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3 - $DER.rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3 - $DER.rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3
+$DER.rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_363(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 4;
+  const int subClockIndex = 2;
   const int equationIndexes[2] = {1,363};
-  jacobian->tmpVars[4] /* der(rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */;
+  jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 364
 type: SIMPLE_ASSIGN
-$res_LSJac3_1.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 - $DER.rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3 * rover_8d.I_wheel
+$DER.rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_364(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 5;
+  const int subClockIndex = 3;
   const int equationIndexes[2] = {1,364};
-  jacobian->resultVars[0] /* $res_LSJac3_1.$pDERLSJac3.dummyVarLSJac3 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
+  jacobian->tmpVars[3] /* der(rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  TRACE_POP
+}
+
+/*
+equation index: 365
+type: SIMPLE_ASSIGN
+$DER.rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3 = 4.0 * $DER.rover_8d.omega.$pDERLSJac3.dummyVarLSJac3 / rover_8d.gratio - $DER.rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3 - $DER.rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3 - $DER.rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3
+*/
+void RoverExample_Components_Rover_eqFunction_365(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 4;
+  const int equationIndexes[2] = {1,365};
+  jacobian->tmpVars[4] /* der(rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_fr.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */;
+  TRACE_POP
+}
+
+/*
+equation index: 366
+type: SIMPLE_ASSIGN
+$res_LSJac3_1.$pDERLSJac3.dummyVarLSJac3 = rover_8d.thr.SeedLSJac3 - $DER.rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3 * rover_8d.I_wheel
+*/
+void RoverExample_Components_Rover_eqFunction_366(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 5;
+  const int equationIndexes[2] = {1,366};
+  jacobian->resultVars[0] /* $res_LSJac3_1.$pDERLSJac3.dummyVarLSJac3 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.SeedLSJac3 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_rl.$pDERLSJac3.dummyVarLSJac3) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
   TRACE_POP
 }
 
@@ -230,12 +230,12 @@ int RoverExample_Components_Rover_functionJacLSJac3_column(DATA* data, threadDat
   TRACE_PUSH
 
   int index = RoverExample_Components_Rover_INDEX_JAC_LSJac3;
-  RoverExample_Components_Rover_eqFunction_359(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_360(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_361(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_362(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_363(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_364(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_365(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_366(data, threadData, jacobian, parentJacobian);
   TRACE_POP
   return 0;
 }
@@ -692,7 +692,7 @@ void RoverExample_Components_Rover_eqFunction_953(DATA *data, threadData_t *thre
 /*
 equation index: 954
 type: SIMPLE_ASSIGN
-mx_meas.$pDERD.dummyVarD = 0.0
+my_meas.$pDERD.dummyVarD = 0.0
 */
 void RoverExample_Components_Rover_eqFunction_954(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -700,14 +700,14 @@ void RoverExample_Components_Rover_eqFunction_954(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 29;
   const int equationIndexes[2] = {1,954};
-  jacobian->resultVars[3] /* mx_meas.$pDERD.dummyVarD JACOBIAN_VAR */ = 0.0;
+  jacobian->resultVars[4] /* my_meas.$pDERD.dummyVarD JACOBIAN_VAR */ = 0.0;
   TRACE_POP
 }
 
 /*
 equation index: 955
 type: SIMPLE_ASSIGN
-my_meas.$pDERD.dummyVarD = 0.0
+mx_meas.$pDERD.dummyVarD = 0.0
 */
 void RoverExample_Components_Rover_eqFunction_955(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -715,7 +715,7 @@ void RoverExample_Components_Rover_eqFunction_955(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 30;
   const int equationIndexes[2] = {1,955};
-  jacobian->resultVars[4] /* my_meas.$pDERD.dummyVarD JACOBIAN_VAR */ = 0.0;
+  jacobian->resultVars[3] /* mx_meas.$pDERD.dummyVarD JACOBIAN_VAR */ = 0.0;
   TRACE_POP
 }
 
@@ -749,7 +749,7 @@ void RoverExample_Components_Rover_eqFunction_957(DATA *data, threadData_t *thre
   modelica_boolean tmp1;
   modelica_boolean tmp2;
   modelica_real tmp3;
-  tmp0 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),0.001);
+  tmp0 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),0.001);
   tmp2 = (modelica_boolean)tmp0;
   if(tmp2)
   {
@@ -757,10 +757,10 @@ void RoverExample_Components_Rover_eqFunction_957(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp1 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),1.0);
-    tmp3 = (tmp1?0.0:jacobian->tmpVars[42] /* $cse14.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+    tmp1 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),1.0);
+    tmp3 = (tmp1?0.0:jacobian->tmpVars[44] /* $cse14.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[41] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp3;
+  jacobian->tmpVars[43] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp3;
   TRACE_POP
 }
 
@@ -775,7 +775,7 @@ void RoverExample_Components_Rover_eqFunction_958(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 33;
   const int equationIndexes[2] = {1,958};
-  jacobian->resultVars[10] /* r_meas.$pDERD.dummyVarD JACOBIAN_VAR */ = (0.5) * (((data->simulationInfo->realParameter[33] /* gyroatk.l_g PARAM */)) * (((data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (((data->simulationInfo->realParameter[21] /* gyroatk.X_ac PARAM */)) * (DIVISION(jacobian->tmpVars[67] /* $cse38.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[27] /* gyroatk.dis_d PARAM */),"gyroatk.dis_d")))));
+  jacobian->resultVars[10] /* r_meas.$pDERD.dummyVarD JACOBIAN_VAR */ = (0.5) * (((data->simulationInfo->realParameter[33] /* gyroatk.l_g PARAM */)) * (((data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (((data->simulationInfo->realParameter[21] /* gyroatk.X_ac PARAM */)) * (DIVISION(jacobian->tmpVars[69] /* $cse38.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[27] /* gyroatk.dis_d PARAM */),"gyroatk.dis_d")))));
   TRACE_POP
 }
 
@@ -790,7 +790,7 @@ void RoverExample_Components_Rover_eqFunction_959(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 34;
   const int equationIndexes[2] = {1,959};
-  jacobian->tmpVars[37] /* der(rover_8d.y.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[62] /* $cse33.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[61] /* $cse32.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+  jacobian->tmpVars[37] /* der(rover_8d.y.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[64] /* $cse33.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[63] /* $cse32.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -805,7 +805,7 @@ void RoverExample_Components_Rover_eqFunction_960(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 35;
   const int equationIndexes[2] = {1,960};
-  jacobian->tmpVars[36] /* der(rover_8d.x.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[61] /* $cse32.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[62] /* $cse33.$pDERD.dummyVarD JACOBIAN_TMP_VAR */));
+  jacobian->tmpVars[36] /* der(rover_8d.x.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[63] /* $cse32.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[64] /* $cse33.$pDERD.dummyVarD JACOBIAN_TMP_VAR */));
   TRACE_POP
 }
 
@@ -823,8 +823,8 @@ void RoverExample_Components_Rover_eqFunction_961(DATA *data, threadData_t *thre
   modelica_real tmp4;
   modelica_real tmp5;
   modelica_real tmp6;
-  tmp4 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */);
-  tmp5 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */);
+  tmp4 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */);
+  tmp5 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */);
   tmp6 = (tmp4 * tmp4) + (tmp5 * tmp5);
   if(!(tmp6 >= 0.0))
   {
@@ -838,7 +838,7 @@ void RoverExample_Components_Rover_eqFunction_961(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0) was %g should be >= 0", tmp6);
     }
   }
-  jacobian->tmpVars[168] /* rover_8d.vs_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (DIVISION(jacobian->tmpVars[49] /* $cse21.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp6),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)")));
+  jacobian->tmpVars[168] /* rover_8d.vs_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (DIVISION(jacobian->tmpVars[51] /* $cse21.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp6),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -886,8 +886,8 @@ void RoverExample_Components_Rover_eqFunction_963(DATA *data, threadData_t *thre
   modelica_real tmp11;
   modelica_real tmp12;
   modelica_real tmp13;
-  tmp11 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */);
-  tmp12 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */);
+  tmp11 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */);
+  tmp12 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */);
   tmp13 = (tmp11 * tmp11) + (tmp12 * tmp12);
   if(!(tmp13 >= 0.0))
   {
@@ -901,7 +901,7 @@ void RoverExample_Components_Rover_eqFunction_963(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0) was %g should be >= 0", tmp13);
     }
   }
-  jacobian->tmpVars[170] /* rover_8d.vs_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (DIVISION(jacobian->tmpVars[57] /* $cse29.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp13),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)")));
+  jacobian->tmpVars[170] /* rover_8d.vs_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (DIVISION(jacobian->tmpVars[59] /* $cse29.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp13),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -950,7 +950,7 @@ void RoverExample_Components_Rover_eqFunction_965(DATA *data, threadData_t *thre
   modelica_boolean tmp19;
   modelica_boolean tmp20;
   modelica_real tmp21;
-  tmp18 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),0.001);
+  tmp18 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),0.001);
   tmp20 = (modelica_boolean)tmp18;
   if(tmp20)
   {
@@ -958,10 +958,10 @@ void RoverExample_Components_Rover_eqFunction_965(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp19 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),1.0);
-    tmp21 = (tmp19?0.0:jacobian->tmpVars[60] /* $cse31.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+    tmp19 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),1.0);
+    tmp21 = (tmp19?0.0:jacobian->tmpVars[62] /* $cse31.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[59] /* $cse30.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp21;
+  jacobian->tmpVars[61] /* $cse30.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp21;
   TRACE_POP
 }
 
@@ -977,8 +977,8 @@ void RoverExample_Components_Rover_eqFunction_966(DATA *data, threadData_t *thre
   const int subClockIndex = 41;
   const int equationIndexes[2] = {1,966};
   modelica_real tmp22;
-  tmp22 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */));
-  jacobian->tmpVars[16] /* der(rover_8d.alpha_rr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[56] /* $cse28.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[57] /* $cse29.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (jacobian->tmpVars[59] /* $cse30.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(tmp22 * tmp22),"(rover_8d.Lrely * $cse30) ^ 2.0"))));
+  tmp22 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */));
+  jacobian->tmpVars[16] /* der(rover_8d.alpha_rr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[58] /* $cse28.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[59] /* $cse29.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (jacobian->tmpVars[61] /* $cse30.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(tmp22 * tmp22),"(rover_8d.Lrely * $cse30) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -996,8 +996,8 @@ void RoverExample_Components_Rover_eqFunction_967(DATA *data, threadData_t *thre
   modelica_real tmp23;
   modelica_real tmp24;
   modelica_real tmp25;
-  tmp23 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */);
-  tmp24 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */);
+  tmp23 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */);
+  tmp24 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */);
   tmp25 = (tmp23 * tmp23) + (tmp24 * tmp24);
   if(!(tmp25 >= 0.0))
   {
@@ -1011,7 +1011,7 @@ void RoverExample_Components_Rover_eqFunction_967(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0) was %g should be >= 0", tmp25);
     }
   }
-  jacobian->tmpVars[167] /* rover_8d.vs_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (DIVISION(jacobian->tmpVars[45] /* $cse17.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp25),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)")));
+  jacobian->tmpVars[167] /* rover_8d.vs_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (DIVISION(jacobian->tmpVars[47] /* $cse17.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp25),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -1059,8 +1059,8 @@ void RoverExample_Components_Rover_eqFunction_969(DATA *data, threadData_t *thre
   modelica_real tmp30;
   modelica_real tmp31;
   modelica_real tmp32;
-  tmp30 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */);
-  tmp31 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */);
+  tmp30 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */);
+  tmp31 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */);
   tmp32 = (tmp30 * tmp30) + (tmp31 * tmp31);
   if(!(tmp32 >= 0.0))
   {
@@ -1074,7 +1074,7 @@ void RoverExample_Components_Rover_eqFunction_969(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0) was %g should be >= 0", tmp32);
     }
   }
-  jacobian->tmpVars[169] /* rover_8d.vs_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (DIVISION(jacobian->tmpVars[53] /* $cse25.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp32),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)")));
+  jacobian->tmpVars[169] /* rover_8d.vs_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (DIVISION(jacobian->tmpVars[55] /* $cse25.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,sqrt(tmp32),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -1112,8 +1112,8 @@ void RoverExample_Components_Rover_eqFunction_970(DATA *data, threadData_t *thre
 equation index: 1015
 type: LINEAR
 
-<var>rover_8d.fz_fl.$pDERD.dummyVarD</var>
 <var>rover_8d.fz_rl.$pDERD.dummyVarD</var>
+<var>rover_8d.fz_fl.$pDERD.dummyVarD</var>
 <var>rover_8d.fz_fr.$pDERD.dummyVarD</var>
 <var>rover_8d.fz_rr.$pDERD.dummyVarD</var>
 <row>
@@ -1131,7 +1131,7 @@ void RoverExample_Components_Rover_eqFunction_1015(DATA *data, threadData_t *thr
   const int equationIndexes[2] = {1,1015};
   /* Linear equation system */
   int retValue;
-  double aux_x[4] = { jacobian->tmpVars[151] /* rover_8d.fz_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,jacobian->tmpVars[153] /* rover_8d.fz_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,jacobian->tmpVars[152] /* rover_8d.fz_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,jacobian->tmpVars[154] /* rover_8d.fz_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ };
+  double aux_x[4] = { jacobian->tmpVars[141] /* rover_8d.fz_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,jacobian->tmpVars[139] /* rover_8d.fz_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,jacobian->tmpVars[140] /* rover_8d.fz_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,jacobian->tmpVars[142] /* rover_8d.fz_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ };
   if(OMC_ACTIVE_STREAM(OMC_LOG_DT))
   {
     infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 1015 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
@@ -1147,10 +1147,10 @@ void RoverExample_Components_Rover_eqFunction_1015(DATA *data, threadData_t *thr
     throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 1015 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
   }
   /* write solution */
-  jacobian->tmpVars[151] /* rover_8d.fz_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[0];
-  jacobian->tmpVars[153] /* rover_8d.fz_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[1];
-  jacobian->tmpVars[152] /* rover_8d.fz_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[2];
-  jacobian->tmpVars[154] /* rover_8d.fz_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[3];
+  jacobian->tmpVars[141] /* rover_8d.fz_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[0];
+  jacobian->tmpVars[139] /* rover_8d.fz_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[1];
+  jacobian->tmpVars[140] /* rover_8d.fz_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[2];
+  jacobian->tmpVars[142] /* rover_8d.fz_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = aux_x[3];
 
   TRACE_POP
 }
@@ -1181,7 +1181,7 @@ void RoverExample_Components_Rover_eqFunction_1017(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 48;
   const int equationIndexes[2] = {1,1017};
-  jacobian->tmpVars[27] /* der(rover_8d.p.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[65] /* $cse36.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[66] /* $cse37.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->resultVars[1] /* ay_meas.$pDERD.dummyVarD JACOBIAN_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse37 variable */)))) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx")));
+  jacobian->tmpVars[27] /* der(rover_8d.p.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[67] /* $cse36.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[68] /* $cse37.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->resultVars[1] /* ay_meas.$pDERD.dummyVarD JACOBIAN_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse37 variable */)))) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx")));
   TRACE_POP
 }
 
@@ -1211,7 +1211,7 @@ void RoverExample_Components_Rover_eqFunction_1019(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 50;
   const int equationIndexes[2] = {1,1019};
-  jacobian->tmpVars[31] /* der(rover_8d.r.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[63] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[112] /* rover_8d.Fx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[64] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[116] /* rover_8d.Fy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[114] /* rover_8d.Fx_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[63] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[113] /* rover_8d.Fx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */))) - ((jacobian->tmpVars[117] /* rover_8d.Fy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[64] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[115] /* rover_8d.Fx_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[63] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[116] /* rover_8d.Fy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[64] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[112] /* rover_8d.Fx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[63] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[117] /* rover_8d.Fy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[64] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[113] /* rover_8d.Fx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[118] /* rover_8d.Fy_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ + jacobian->tmpVars[119] /* rover_8d.Fy_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
+  jacobian->tmpVars[31] /* der(rover_8d.r.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[65] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[112] /* rover_8d.Fx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[66] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[116] /* rover_8d.Fy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[114] /* rover_8d.Fx_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[65] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[113] /* rover_8d.Fx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */))) - ((jacobian->tmpVars[117] /* rover_8d.Fy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[66] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[115] /* rover_8d.Fx_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[65] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[116] /* rover_8d.Fy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[66] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[112] /* rover_8d.Fx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[65] /* $cse34.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[117] /* rover_8d.Fy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[66] /* $cse35.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[113] /* rover_8d.Fx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[118] /* rover_8d.Fy_rl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ + jacobian->tmpVars[119] /* rover_8d.Fy_rr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
   TRACE_POP
 }
 
@@ -1226,7 +1226,7 @@ void RoverExample_Components_Rover_eqFunction_1020(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 51;
   const int equationIndexes[2] = {1,1020};
-  jacobian->tmpVars[34] /* der(rover_8d.vy.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = jacobian->resultVars[1] /* ay_meas.$pDERD.dummyVarD JACOBIAN_VAR */ + (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->tmpVars[31] /* der(rover_8d.r.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total"));
+  jacobian->tmpVars[34] /* der(rover_8d.vy.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = jacobian->resultVars[1] /* ay_meas.$pDERD.dummyVarD JACOBIAN_VAR */ + (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->tmpVars[31] /* der(rover_8d.r.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total"));
   TRACE_POP
 }
 
@@ -1245,7 +1245,7 @@ void RoverExample_Components_Rover_eqFunction_1021(DATA *data, threadData_t *thr
   modelica_boolean tmp38;
   modelica_boolean tmp39;
   modelica_real tmp40;
-  tmp37 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),0.001);
+  tmp37 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),0.001);
   tmp39 = (modelica_boolean)tmp37;
   if(tmp39)
   {
@@ -1253,10 +1253,10 @@ void RoverExample_Components_Rover_eqFunction_1021(DATA *data, threadData_t *thr
   }
   else
   {
-    tmp38 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),1.0);
-    tmp40 = (tmp38?0.0:jacobian->tmpVars[55] /* $cse27.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+    tmp38 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),1.0);
+    tmp40 = (tmp38?0.0:jacobian->tmpVars[57] /* $cse27.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[54] /* $cse26.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp40;
+  jacobian->tmpVars[56] /* $cse26.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp40;
   TRACE_POP
 }
 
@@ -1272,8 +1272,8 @@ void RoverExample_Components_Rover_eqFunction_1022(DATA *data, threadData_t *thr
   const int subClockIndex = 53;
   const int equationIndexes[2] = {1,1022};
   modelica_real tmp41;
-  tmp41 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
-  jacobian->tmpVars[15] /* der(rover_8d.alpha_rl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = (fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * ((jacobian->tmpVars[54] /* $cse26.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[53] /* $cse25.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)))),(tmp41 * tmp41),"($cse26 * rover_8d.Lrely) ^ 2.0")) - ((jacobian->tmpVars[56] /* $cse28.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")));
+  tmp41 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
+  jacobian->tmpVars[15] /* der(rover_8d.alpha_rl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = (fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * ((jacobian->tmpVars[56] /* $cse26.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[55] /* $cse25.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)))),(tmp41 * tmp41),"($cse26 * rover_8d.Lrely) ^ 2.0")) - ((jacobian->tmpVars[58] /* $cse28.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")));
   TRACE_POP
 }
 
@@ -1288,7 +1288,7 @@ void RoverExample_Components_Rover_eqFunction_1023(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 54;
   const int equationIndexes[2] = {1,1023};
-  jacobian->tmpVars[176] /* rover_8d.vy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[43] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[44] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
+  jacobian->tmpVars[176] /* rover_8d.vy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[45] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[46] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
   TRACE_POP
 }
 
@@ -1305,7 +1305,7 @@ void RoverExample_Components_Rover_eqFunction_1024(DATA *data, threadData_t *thr
   const int equationIndexes[2] = {1,1024};
   modelica_real tmp42;
   tmp42 = jacobian->tmpVars[0] /* $cse93 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[52] /* $cse24.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[176] /* rover_8d.vy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp42 * tmp42),"$cse93 ^ 2.0"));
+  jacobian->tmpVars[54] /* $cse24.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[176] /* rover_8d.vy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp42 * tmp42),"$cse93 ^ 2.0"));
   TRACE_POP
 }
 
@@ -1320,7 +1320,7 @@ void RoverExample_Components_Rover_eqFunction_1025(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 56;
   const int equationIndexes[2] = {1,1025};
-  jacobian->tmpVars[172] /* rover_8d.vx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[43] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + (jacobian->tmpVars[44] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[172] /* rover_8d.vx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[45] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + (jacobian->tmpVars[46] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -1337,7 +1337,7 @@ void RoverExample_Components_Rover_eqFunction_1026(DATA *data, threadData_t *thr
   const int equationIndexes[2] = {1,1026};
   modelica_real tmp43;
   tmp43 = jacobian->tmpVars[1] /* $cse92 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[51] /* $cse23.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp43 * tmp43),"$cse92 ^ 2.0"));
+  jacobian->tmpVars[53] /* $cse23.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp43 * tmp43),"$cse92 ^ 2.0"));
   TRACE_POP
 }
 
@@ -1356,7 +1356,7 @@ void RoverExample_Components_Rover_eqFunction_1027(DATA *data, threadData_t *thr
   modelica_boolean tmp45;
   modelica_boolean tmp46;
   modelica_real tmp47;
-  tmp44 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),0.001);
+  tmp44 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),0.001);
   tmp46 = (modelica_boolean)tmp44;
   if(tmp46)
   {
@@ -1364,10 +1364,10 @@ void RoverExample_Components_Rover_eqFunction_1027(DATA *data, threadData_t *thr
   }
   else
   {
-    tmp45 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),1.0);
-    tmp47 = (tmp45?0.0:jacobian->tmpVars[51] /* $cse23.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+    tmp45 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),1.0);
+    tmp47 = (tmp45?0.0:jacobian->tmpVars[53] /* $cse23.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[50] /* $cse22.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp47;
+  jacobian->tmpVars[52] /* $cse22.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp47;
   TRACE_POP
 }
 
@@ -1383,8 +1383,8 @@ void RoverExample_Components_Rover_eqFunction_1028(DATA *data, threadData_t *thr
   const int subClockIndex = 59;
   const int equationIndexes[2] = {1,1028};
   modelica_real tmp48;
-  tmp48 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */));
-  jacobian->tmpVars[14] /* der(rover_8d.alpha_fr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[176] /* rover_8d.vy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[52] /* $cse24.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[49] /* $cse21.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (jacobian->tmpVars[50] /* $cse22.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(tmp48 * tmp48),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[172] /* rover_8d.vx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
+  tmp48 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */));
+  jacobian->tmpVars[14] /* der(rover_8d.alpha_fr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[176] /* rover_8d.vy_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[54] /* $cse24.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[51] /* $cse21.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (jacobian->tmpVars[52] /* $cse22.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(tmp48 * tmp48),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[172] /* rover_8d.vx_fr.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -1399,7 +1399,7 @@ void RoverExample_Components_Rover_eqFunction_1029(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 60;
   const int equationIndexes[2] = {1,1029};
-  jacobian->tmpVars[175] /* rover_8d.vy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[43] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[44] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
+  jacobian->tmpVars[175] /* rover_8d.vy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[45] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[46] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
   TRACE_POP
 }
 
@@ -1416,7 +1416,7 @@ void RoverExample_Components_Rover_eqFunction_1030(DATA *data, threadData_t *thr
   const int equationIndexes[2] = {1,1030};
   modelica_real tmp49;
   tmp49 = jacobian->tmpVars[2] /* $cse91 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[48] /* $cse20.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[175] /* rover_8d.vy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp49 * tmp49),"$cse91 ^ 2.0"));
+  jacobian->tmpVars[50] /* $cse20.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[175] /* rover_8d.vy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp49 * tmp49),"$cse91 ^ 2.0"));
   TRACE_POP
 }
 
@@ -1431,7 +1431,7 @@ void RoverExample_Components_Rover_eqFunction_1031(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 62;
   const int equationIndexes[2] = {1,1031};
-  jacobian->tmpVars[171] /* rover_8d.vx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[43] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + (jacobian->tmpVars[44] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[171] /* rover_8d.vx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[45] /* $cse15.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + (jacobian->tmpVars[46] /* $cse16.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -1448,7 +1448,7 @@ void RoverExample_Components_Rover_eqFunction_1032(DATA *data, threadData_t *thr
   const int equationIndexes[2] = {1,1032};
   modelica_real tmp50;
   tmp50 = jacobian->tmpVars[3] /* $cse90 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[47] /* $cse19.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[171] /* rover_8d.vx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp50 * tmp50),"$cse90 ^ 2.0"));
+  jacobian->tmpVars[49] /* $cse19.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[171] /* rover_8d.vx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp50 * tmp50),"$cse90 ^ 2.0"));
   TRACE_POP
 }
 
@@ -1467,7 +1467,7 @@ void RoverExample_Components_Rover_eqFunction_1033(DATA *data, threadData_t *thr
   modelica_boolean tmp52;
   modelica_boolean tmp53;
   modelica_real tmp54;
-  tmp51 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),0.001);
+  tmp51 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),0.001);
   tmp53 = (modelica_boolean)tmp51;
   if(tmp53)
   {
@@ -1475,10 +1475,10 @@ void RoverExample_Components_Rover_eqFunction_1033(DATA *data, threadData_t *thr
   }
   else
   {
-    tmp52 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),1.0);
-    tmp54 = (tmp52?0.0:jacobian->tmpVars[47] /* $cse19.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+    tmp52 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),1.0);
+    tmp54 = (tmp52?0.0:jacobian->tmpVars[49] /* $cse19.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[46] /* $cse18.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp54;
+  jacobian->tmpVars[48] /* $cse18.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = tmp54;
   TRACE_POP
 }
 
@@ -1494,8 +1494,8 @@ void RoverExample_Components_Rover_eqFunction_1034(DATA *data, threadData_t *thr
   const int subClockIndex = 65;
   const int equationIndexes[2] = {1,1034};
   modelica_real tmp55;
-  tmp55 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */));
-  jacobian->tmpVars[13] /* der(rover_8d.alpha_fl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[175] /* rover_8d.vy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[48] /* $cse20.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[45] /* $cse17.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (jacobian->tmpVars[46] /* $cse18.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(tmp55 * tmp55),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[171] /* rover_8d.vx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
+  tmp55 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */));
+  jacobian->tmpVars[13] /* der(rover_8d.alpha_fl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[175] /* rover_8d.vy_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[50] /* $cse20.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[47] /* $cse17.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (jacobian->tmpVars[48] /* $cse18.$pDERD.dummyVarD JACOBIAN_TMP_VAR */)),(tmp55 * tmp55),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[171] /* rover_8d.vx_fl.$pDERD.dummyVarD JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -1511,8 +1511,8 @@ void RoverExample_Components_Rover_eqFunction_1035(DATA *data, threadData_t *thr
   const int subClockIndex = 66;
   const int equationIndexes[2] = {1,1035};
   modelica_real tmp56;
-  tmp56 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[21] /* der(rover_8d.kappa_rr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[41] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp56 * tmp56),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp56 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[21] /* der(rover_8d.kappa_rr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[43] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp56 * tmp56),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -1528,8 +1528,8 @@ void RoverExample_Components_Rover_eqFunction_1036(DATA *data, threadData_t *thr
   const int subClockIndex = 67;
   const int equationIndexes[2] = {1,1036};
   modelica_real tmp57;
-  tmp57 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[20] /* der(rover_8d.kappa_rl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[41] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp57 * tmp57),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp57 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[20] /* der(rover_8d.kappa_rl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[43] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp57 * tmp57),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -1545,8 +1545,8 @@ void RoverExample_Components_Rover_eqFunction_1037(DATA *data, threadData_t *thr
   const int subClockIndex = 68;
   const int equationIndexes[2] = {1,1037};
   modelica_real tmp58;
-  tmp58 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[19] /* der(rover_8d.kappa_fr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[41] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp58 * tmp58),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp58 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[19] /* der(rover_8d.kappa_fr.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[43] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp58 * tmp58),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -1562,8 +1562,8 @@ void RoverExample_Components_Rover_eqFunction_1038(DATA *data, threadData_t *thr
   const int subClockIndex = 69;
   const int equationIndexes[2] = {1,1038};
   modelica_real tmp59;
-  tmp59 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[18] /* der(rover_8d.kappa_fl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[41] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp59 * tmp59),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp59 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[18] /* der(rover_8d.kappa_fl.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[43] /* $cse13.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(tmp59 * tmp59),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -1619,7 +1619,7 @@ void RoverExample_Components_Rover_eqFunction_1052(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 71;
   const int equationIndexes[2] = {1,1052};
-  jacobian->tmpVars[126] /* rover_8d.Vq.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[40] /* $cse12.$pDERD.dummyVarD JACOBIAN_TMP_VAR */));
+  jacobian->tmpVars[126] /* rover_8d.Vq.$pDERD.dummyVarD JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[42] /* $cse12.$pDERD.dummyVarD JACOBIAN_TMP_VAR */));
   TRACE_POP
 }
 
@@ -1649,7 +1649,7 @@ void RoverExample_Components_Rover_eqFunction_1054(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 73;
   const int equationIndexes[2] = {1,1054};
-  jacobian->tmpVars[9] /* der(rover_3d.x.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[58] /* $cse3.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+  jacobian->tmpVars[9] /* der(rover_3d.x.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[60] /* $cse3.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -1664,7 +1664,7 @@ void RoverExample_Components_Rover_eqFunction_1055(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 74;
   const int equationIndexes[2] = {1,1055};
-  jacobian->tmpVars[10] /* der(rover_3d.y.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[68] /* $cse4.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
+  jacobian->tmpVars[10] /* der(rover_3d.y.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[70] /* $cse4.$pDERD.dummyVarD JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -1679,7 +1679,7 @@ void RoverExample_Components_Rover_eqFunction_1056(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 75;
   const int equationIndexes[2] = {1,1056};
-  jacobian->tmpVars[5] /* der(rover_3d.psi.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[70] /* $cse6.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[57] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
+  jacobian->tmpVars[5] /* der(rover_3d.psi.$pDERD.dummyVarD) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[72] /* $cse6.$pDERD.dummyVarD JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[55] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
   TRACE_POP
 }
 
@@ -2452,7 +2452,7 @@ void RoverExample_Components_Rover_eqFunction_779(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 44;
   const int equationIndexes[2] = {1,779};
-  jacobian->tmpVars[23] /* der(rover_3d.psi.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[88] /* $cse6.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[57] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
+  jacobian->tmpVars[23] /* der(rover_3d.psi.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[90] /* $cse6.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[55] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
   TRACE_POP
 }
 
@@ -2460,7 +2460,7 @@ void RoverExample_Components_Rover_eqFunction_779(DATA *data, threadData_t *thre
 equation index: 780
 type: ARRAY_CALL_ASSIGN
 
-rover_8d.emi.b_wire.$pDERC.dummyVarC = RoverExample.Utils.cross3(rover_8d.emi.wire_dir, rover_8d.emi.x_wire) * 1.9999999999999996e-7 * rover_8d.Iq.SeedC * rover_8d.emi.dist_wire ^ 2.0 / rover_8d.emi.dist_wire ^ 4.0
+rover_8d.mag.C_n2b.$pDERC.dummyVarC = transpose($DER$RoverExample$PUtils$Peul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}, {1.0, 0.0, 0.0}) * rover_8d.phi.SeedC + $DER$RoverExample$PUtils$Peul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}, {0.0, 1.0, 0.0}) * rover_8d.theta.SeedC + $DER$RoverExample$PUtils$Peul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}, {0.0, 0.0, 1.0}) * rover_8d.psi.SeedC)
 */
 void RoverExample_Components_Rover_eqFunction_780(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2470,23 +2470,30 @@ void RoverExample_Components_Rover_eqFunction_780(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,780};
   real_array tmp60;
   real_array tmp61;
-  modelica_real tmp62;
-  modelica_real tmp63;
+  real_array tmp62;
+  real_array tmp63;
   real_array tmp64;
-  real_array_create(&tmp60, ((modelica_real*)&((data->simulationInfo->realParameter[95] /* rover_8d.emi.wire_dir[1] PARAM */))), 1, (_index_t)3);
-  real_array_create(&tmp61, ((modelica_real*)&((data->simulationInfo->realParameter[101] /* rover_8d.emi.x_wire[1] PARAM */))), 1, (_index_t)3);
-  tmp62 = (data->simulationInfo->realParameter[91] /* rover_8d.emi.dist_wire PARAM */);
-  tmp63 = (data->simulationInfo->realParameter[91] /* rover_8d.emi.dist_wire PARAM */);
-  tmp63 *= tmp63;real_array_create(&tmp64, ((modelica_real*)&((&jacobian->tmpVars[166] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
-  real_array_copy_data(mul_alloc_real_array_scalar(omc_RoverExample_Utils_cross3(threadData, tmp60, tmp61), DIVISION(((1.9999999999999996e-7) * (jacobian->seedVars[8] /* rover_8d.Iq.SeedC SEED_VAR */)) * ((tmp62 * tmp62)),(tmp63 * tmp63),"rover_8d.emi.dist_wire ^ 4.0")), tmp64);
+  real_array tmp65;
+  real_array tmp66;
+  real_array tmp67;
+  real_array tmp68;
+  array_alloc_scalar_real_array(&tmp60, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
+  array_alloc_scalar_real_array(&tmp61, 3, (modelica_real)1.0, (modelica_real)0.0, (modelica_real)0.0);
+  array_alloc_scalar_real_array(&tmp62, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
+  array_alloc_scalar_real_array(&tmp63, 3, (modelica_real)0.0, (modelica_real)1.0, (modelica_real)0.0);
+  array_alloc_scalar_real_array(&tmp64, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
+  array_alloc_scalar_real_array(&tmp65, 3, (modelica_real)0.0, (modelica_real)0.0, (modelica_real)1.0);
+  tmp66 = add_alloc_real_array(add_alloc_real_array(mul_alloc_real_array_scalar(omc__omcQ_24DER_24RoverExample_24PUtils_24Peul2rot(threadData, tmp60, tmp61), jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */), mul_alloc_real_array_scalar(omc__omcQ_24DER_24RoverExample_24PUtils_24Peul2rot(threadData, tmp62, tmp63), jacobian->seedVars[28] /* rover_8d.theta.SeedC SEED_VAR */)), mul_alloc_real_array_scalar(omc__omcQ_24DER_24RoverExample_24PUtils_24Peul2rot(threadData, tmp64, tmp65), jacobian->seedVars[25] /* rover_8d.psi.SeedC SEED_VAR */));
+  transpose_alloc_real_array(&tmp66, &tmp67);
+  real_array_create(&tmp68, ((modelica_real*)&((&jacobian->tmpVars[165] /* rover_8d.mag.C_n2b.$pDERC.dummyVarC[1,1] JACOBIAN_TMP_VAR */)[(((modelica_integer) 1) - 1) * 3 + (((modelica_integer) 1)-1)])), 2, (_index_t)3, (_index_t)3);
+  real_array_copy_data(tmp67, tmp68);
   TRACE_POP
 }
 
 /*
 equation index: 781
-type: ARRAY_CALL_ASSIGN
-
-rover_8d.emi.C_n2b.$pDERC.dummyVarC = transpose($DER$RoverExample$PUtils$Peul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}, {1.0, 0.0, 0.0}) * rover_8d.phi.SeedC + $DER$RoverExample$PUtils$Peul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}, {0.0, 1.0, 0.0}) * rover_8d.theta.SeedC + $DER$RoverExample$PUtils$Peul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}, {0.0, 0.0, 1.0}) * rover_8d.psi.SeedC)
+type: SIMPLE_ASSIGN
+rover_8d.mag.b_earth.$pDERC.dummyVarC[2] = rover_8d.mag.C_n2b.$pDERC.dummyVarC[2,1] * rover_8d.mag.b_earth0 * $cse7 + (-2.0) * rover_8d.mag.C_n2b.$pDERC.dummyVarC[2,3] * rover_8d.mag.b_earth0 * $cse8
 */
 void RoverExample_Components_Rover_eqFunction_781(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2494,32 +2501,14 @@ void RoverExample_Components_Rover_eqFunction_781(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 46;
   const int equationIndexes[2] = {1,781};
-  real_array tmp65;
-  real_array tmp66;
-  real_array tmp67;
-  real_array tmp68;
-  real_array tmp69;
-  real_array tmp70;
-  real_array tmp71;
-  real_array tmp72;
-  real_array tmp73;
-  array_alloc_scalar_real_array(&tmp65, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
-  array_alloc_scalar_real_array(&tmp66, 3, (modelica_real)1.0, (modelica_real)0.0, (modelica_real)0.0);
-  array_alloc_scalar_real_array(&tmp67, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
-  array_alloc_scalar_real_array(&tmp68, 3, (modelica_real)0.0, (modelica_real)1.0, (modelica_real)0.0);
-  array_alloc_scalar_real_array(&tmp69, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
-  array_alloc_scalar_real_array(&tmp70, 3, (modelica_real)0.0, (modelica_real)0.0, (modelica_real)1.0);
-  tmp71 = add_alloc_real_array(add_alloc_real_array(mul_alloc_real_array_scalar(omc__omcQ_24DER_24RoverExample_24PUtils_24Peul2rot(threadData, tmp65, tmp66), jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */), mul_alloc_real_array_scalar(omc__omcQ_24DER_24RoverExample_24PUtils_24Peul2rot(threadData, tmp67, tmp68), jacobian->seedVars[28] /* rover_8d.theta.SeedC SEED_VAR */)), mul_alloc_real_array_scalar(omc__omcQ_24DER_24RoverExample_24PUtils_24Peul2rot(threadData, tmp69, tmp70), jacobian->seedVars[25] /* rover_8d.psi.SeedC SEED_VAR */));
-  transpose_alloc_real_array(&tmp71, &tmp72);
-  real_array_create(&tmp73, ((modelica_real*)&((&jacobian->tmpVars[151] /* rover_8d.emi.C_n2b.$pDERC.dummyVarC[1,1] JACOBIAN_TMP_VAR */)[(((modelica_integer) 1) - 1) * 3 + (((modelica_integer) 1)-1)])), 2, (_index_t)3, (_index_t)3);
-  real_array_copy_data(tmp72, tmp73);
+  jacobian->tmpVars[175] /* rover_8d.mag.b_earth.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[168] /* rover_8d.mag.C_n2b.$pDERC.dummyVarC[2,1] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[5] /* $cse7 PARAM */))) + (-2.0) * ((jacobian->tmpVars[170] /* rover_8d.mag.C_n2b.$pDERC.dummyVarC[2,3] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[6] /* $cse8 PARAM */))));
   TRACE_POP
 }
 
 /*
 equation index: 782
 type: SIMPLE_ASSIGN
-rover_8d.emi.b_earth.$pDERC.dummyVarC[3] = rover_8d.emi.C_n2b.$pDERC.dummyVarC[3,1] * rover_8d.emi.b_earth0 * $cse10 + (-2.0) * rover_8d.emi.C_n2b.$pDERC.dummyVarC[3,3] * rover_8d.emi.b_earth0 * $cse11
+rover_8d.mag.b_earth.$pDERC.dummyVarC[3] = rover_8d.mag.C_n2b.$pDERC.dummyVarC[3,1] * rover_8d.mag.b_earth0 * $cse7 + (-2.0) * rover_8d.mag.C_n2b.$pDERC.dummyVarC[3,3] * rover_8d.mag.b_earth0 * $cse8
 */
 void RoverExample_Components_Rover_eqFunction_782(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2527,14 +2516,14 @@ void RoverExample_Components_Rover_eqFunction_782(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 47;
   const int equationIndexes[2] = {1,782};
-  jacobian->tmpVars[162] /* rover_8d.emi.b_earth.$pDERC.dummyVarC[3] JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[157] /* rover_8d.emi.C_n2b.$pDERC.dummyVarC[3,1] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse10 PARAM */))) + (-2.0) * ((jacobian->tmpVars[159] /* rover_8d.emi.C_n2b.$pDERC.dummyVarC[3,3] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[2] /* $cse11 PARAM */))));
+  jacobian->tmpVars[176] /* rover_8d.mag.b_earth.$pDERC.dummyVarC[3] JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[171] /* rover_8d.mag.C_n2b.$pDERC.dummyVarC[3,1] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[5] /* $cse7 PARAM */))) + (-2.0) * ((jacobian->tmpVars[173] /* rover_8d.mag.C_n2b.$pDERC.dummyVarC[3,3] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[6] /* $cse8 PARAM */))));
   TRACE_POP
 }
 
 /*
 equation index: 783
 type: SIMPLE_ASSIGN
-mz_meas.$pDERC.dummyVarC = rover_8d.emi.b_earth.$pDERC.dummyVarC[3] + rover_8d.emi.b_wire.$pDERC.dummyVarC[3]
+rover_8d.mag.b_earth.$pDERC.dummyVarC[1] = rover_8d.mag.C_n2b.$pDERC.dummyVarC[1,1] * rover_8d.mag.b_earth0 * $cse7 + (-2.0) * rover_8d.mag.C_n2b.$pDERC.dummyVarC[1,3] * rover_8d.mag.b_earth0 * $cse8
 */
 void RoverExample_Components_Rover_eqFunction_783(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2542,14 +2531,15 @@ void RoverExample_Components_Rover_eqFunction_783(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 48;
   const int equationIndexes[2] = {1,783};
-  jacobian->resultVars[5] /* mz_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[162] /* rover_8d.emi.b_earth.$pDERC.dummyVarC[3] JACOBIAN_TMP_VAR */ + jacobian->tmpVars[168] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[3] JACOBIAN_TMP_VAR */;
+  jacobian->tmpVars[174] /* rover_8d.mag.b_earth.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[165] /* rover_8d.mag.C_n2b.$pDERC.dummyVarC[1,1] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[5] /* $cse7 PARAM */))) + (-2.0) * ((jacobian->tmpVars[167] /* rover_8d.mag.C_n2b.$pDERC.dummyVarC[1,3] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[6] /* $cse8 PARAM */))));
   TRACE_POP
 }
 
 /*
 equation index: 784
-type: SIMPLE_ASSIGN
-rover_8d.emi.b_earth.$pDERC.dummyVarC[1] = rover_8d.emi.C_n2b.$pDERC.dummyVarC[1,1] * rover_8d.emi.b_earth0 * $cse10 + (-2.0) * rover_8d.emi.C_n2b.$pDERC.dummyVarC[1,3] * rover_8d.emi.b_earth0 * $cse11
+type: ARRAY_CALL_ASSIGN
+
+rover_8d.emi.b_wire.$pDERC.dummyVarC = RoverExample.Utils.cross3(rover_8d.emi.wire_dir, rover_8d.emi.x_wire) * 1.9999999999999996e-7 * rover_8d.Iq.SeedC * rover_8d.emi.dist_wire ^ 2.0 / rover_8d.emi.dist_wire ^ 4.0
 */
 void RoverExample_Components_Rover_eqFunction_784(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2557,14 +2547,24 @@ void RoverExample_Components_Rover_eqFunction_784(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 49;
   const int equationIndexes[2] = {1,784};
-  jacobian->tmpVars[160] /* rover_8d.emi.b_earth.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[151] /* rover_8d.emi.C_n2b.$pDERC.dummyVarC[1,1] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse10 PARAM */))) + (-2.0) * ((jacobian->tmpVars[153] /* rover_8d.emi.C_n2b.$pDERC.dummyVarC[1,3] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[2] /* $cse11 PARAM */))));
+  real_array tmp69;
+  real_array tmp70;
+  modelica_real tmp71;
+  modelica_real tmp72;
+  real_array tmp73;
+  real_array_create(&tmp69, ((modelica_real*)&((data->simulationInfo->realParameter[93] /* rover_8d.emi.wire_dir[1] PARAM */))), 1, (_index_t)3);
+  real_array_create(&tmp70, ((modelica_real*)&((data->simulationInfo->realParameter[99] /* rover_8d.emi.x_wire[1] PARAM */))), 1, (_index_t)3);
+  tmp71 = (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_wire PARAM */);
+  tmp72 = (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_wire PARAM */);
+  tmp72 *= tmp72;real_array_create(&tmp73, ((modelica_real*)&((&jacobian->tmpVars[154] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
+  real_array_copy_data(mul_alloc_real_array_scalar(omc_RoverExample_Utils_cross3(threadData, tmp69, tmp70), DIVISION(((1.9999999999999996e-7) * (jacobian->seedVars[8] /* rover_8d.Iq.SeedC SEED_VAR */)) * ((tmp71 * tmp71)),(tmp72 * tmp72),"rover_8d.emi.dist_wire ^ 4.0")), tmp73);
   TRACE_POP
 }
 
 /*
 equation index: 785
 type: SIMPLE_ASSIGN
-mx_meas.$pDERC.dummyVarC = rover_8d.emi.b_earth.$pDERC.dummyVarC[1] + rover_8d.emi.b_wire.$pDERC.dummyVarC[1]
+my_meas.$pDERC.dummyVarC = rover_8d.mag.b_earth.$pDERC.dummyVarC[2] + rover_8d.emi.b_wire.$pDERC.dummyVarC[2]
 */
 void RoverExample_Components_Rover_eqFunction_785(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2572,14 +2572,14 @@ void RoverExample_Components_Rover_eqFunction_785(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 50;
   const int equationIndexes[2] = {1,785};
-  jacobian->resultVars[3] /* mx_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[160] /* rover_8d.emi.b_earth.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */ + jacobian->tmpVars[166] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */;
+  jacobian->resultVars[4] /* my_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[175] /* rover_8d.mag.b_earth.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */ + jacobian->tmpVars[155] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 786
 type: SIMPLE_ASSIGN
-rover_8d.emi.b_earth.$pDERC.dummyVarC[2] = rover_8d.emi.C_n2b.$pDERC.dummyVarC[2,1] * rover_8d.emi.b_earth0 * $cse10 + (-2.0) * rover_8d.emi.C_n2b.$pDERC.dummyVarC[2,3] * rover_8d.emi.b_earth0 * $cse11
+mx_meas.$pDERC.dummyVarC = rover_8d.mag.b_earth.$pDERC.dummyVarC[1] + rover_8d.emi.b_wire.$pDERC.dummyVarC[1]
 */
 void RoverExample_Components_Rover_eqFunction_786(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2587,14 +2587,14 @@ void RoverExample_Components_Rover_eqFunction_786(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 51;
   const int equationIndexes[2] = {1,786};
-  jacobian->tmpVars[161] /* rover_8d.emi.b_earth.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[154] /* rover_8d.emi.C_n2b.$pDERC.dummyVarC[2,1] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse10 PARAM */))) + (-2.0) * ((jacobian->tmpVars[156] /* rover_8d.emi.C_n2b.$pDERC.dummyVarC[2,3] JACOBIAN_TMP_VAR */) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[2] /* $cse11 PARAM */))));
+  jacobian->resultVars[3] /* mx_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[174] /* rover_8d.mag.b_earth.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */ + jacobian->tmpVars[154] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 787
 type: SIMPLE_ASSIGN
-my_meas.$pDERC.dummyVarC = rover_8d.emi.b_earth.$pDERC.dummyVarC[2] + rover_8d.emi.b_wire.$pDERC.dummyVarC[2]
+mz_meas.$pDERC.dummyVarC = rover_8d.mag.b_earth.$pDERC.dummyVarC[3] + rover_8d.emi.b_wire.$pDERC.dummyVarC[3]
 */
 void RoverExample_Components_Rover_eqFunction_787(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2602,7 +2602,7 @@ void RoverExample_Components_Rover_eqFunction_787(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 52;
   const int equationIndexes[2] = {1,787};
-  jacobian->resultVars[4] /* my_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[161] /* rover_8d.emi.b_earth.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */ + jacobian->tmpVars[167] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */;
+  jacobian->resultVars[5] /* mz_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[176] /* rover_8d.mag.b_earth.$pDERC.dummyVarC[3] JACOBIAN_TMP_VAR */ + jacobian->tmpVars[156] /* rover_8d.emi.b_wire.$pDERC.dummyVarC[3] JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
@@ -2617,7 +2617,7 @@ void RoverExample_Components_Rover_eqFunction_788(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 53;
   const int equationIndexes[2] = {1,788};
-  jacobian->tmpVars[144] /* rover_8d.Vq.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[58] /* $cse12.$pDERC.dummyVarC JACOBIAN_TMP_VAR */));
+  jacobian->tmpVars[144] /* rover_8d.Vq.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[60] /* $cse12.$pDERC.dummyVarC JACOBIAN_TMP_VAR */));
   TRACE_POP
 }
 
@@ -2679,7 +2679,7 @@ void RoverExample_Components_Rover_eqFunction_792(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,792};
   modelica_real tmp74;
   tmp74 = jacobian->tmpVars[4] /* $cse85 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[73] /* $cse27.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp74 * tmp74),"$cse85 ^ 2.0"));
+  jacobian->tmpVars[75] /* $cse27.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp74 * tmp74),"$cse85 ^ 2.0"));
   TRACE_POP
 }
 
@@ -2698,7 +2698,7 @@ void RoverExample_Components_Rover_eqFunction_793(DATA *data, threadData_t *thre
   modelica_boolean tmp76;
   modelica_boolean tmp77;
   modelica_real tmp78;
-  tmp75 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),0.001);
+  tmp75 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),0.001);
   tmp77 = (modelica_boolean)tmp75;
   if(tmp77)
   {
@@ -2706,10 +2706,10 @@ void RoverExample_Components_Rover_eqFunction_793(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp76 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),1.0);
-    tmp78 = (tmp76?0.0:jacobian->tmpVars[73] /* $cse27.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
+    tmp76 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),1.0);
+    tmp78 = (tmp76?0.0:jacobian->tmpVars[75] /* $cse27.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[72] /* $cse26.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp78;
+  jacobian->tmpVars[74] /* $cse26.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp78;
   TRACE_POP
 }
 
@@ -2724,7 +2724,7 @@ void RoverExample_Components_Rover_eqFunction_794(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 59;
   const int equationIndexes[2] = {1,794};
-  jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */));
+  jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */));
   TRACE_POP
 }
 
@@ -2741,7 +2741,7 @@ void RoverExample_Components_Rover_eqFunction_795(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,795};
   modelica_real tmp79;
   tmp79 = jacobian->tmpVars[5] /* $cse84 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[74] /* $cse28.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */))) * (DIVISION(jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp79 * tmp79),"$cse84 ^ 2.0"));
+  jacobian->tmpVars[76] /* $cse28.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */))) * (DIVISION(jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp79 * tmp79),"$cse84 ^ 2.0"));
   TRACE_POP
 }
 
@@ -2773,7 +2773,7 @@ void RoverExample_Components_Rover_eqFunction_797(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,797};
   modelica_real tmp80;
   tmp80 = jacobian->tmpVars[6] /* $cse83 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[78] /* $cse31.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (DIVISION(jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp80 * tmp80),"$cse83 ^ 2.0"));
+  jacobian->tmpVars[80] /* $cse31.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (DIVISION(jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp80 * tmp80),"$cse83 ^ 2.0"));
   TRACE_POP
 }
 
@@ -2792,7 +2792,7 @@ void RoverExample_Components_Rover_eqFunction_798(DATA *data, threadData_t *thre
   modelica_boolean tmp82;
   modelica_boolean tmp83;
   modelica_real tmp84;
-  tmp81 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),0.001);
+  tmp81 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),0.001);
   tmp83 = (modelica_boolean)tmp81;
   if(tmp83)
   {
@@ -2800,10 +2800,10 @@ void RoverExample_Components_Rover_eqFunction_798(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp82 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),1.0);
-    tmp84 = (tmp82?0.0:jacobian->tmpVars[78] /* $cse31.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
+    tmp82 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),1.0);
+    tmp84 = (tmp82?0.0:jacobian->tmpVars[80] /* $cse31.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[77] /* $cse30.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp84;
+  jacobian->tmpVars[79] /* $cse30.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp84;
   TRACE_POP
 }
 
@@ -2853,7 +2853,7 @@ void RoverExample_Components_Rover_eqFunction_799(DATA *data, threadData_t *thre
 /*
 equation index: 800
 type: SIMPLE_ASSIGN
-rover_8d.specific_g.$pDERC.dummyVarC[1] = 9.80665 * rover_8d.C_n2b.$pDERC.dummyVarC[1,3]
+rover_8d.specific_g.$pDERC.dummyVarC[2] = 9.80665 * rover_8d.C_n2b.$pDERC.dummyVarC[2,3]
 */
 void RoverExample_Components_Rover_eqFunction_800(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2861,14 +2861,14 @@ void RoverExample_Components_Rover_eqFunction_800(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 65;
   const int equationIndexes[2] = {1,800};
-  jacobian->tmpVars[182] /* rover_8d.specific_g.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */ = (9.80665) * (jacobian->tmpVars[123] /* rover_8d.C_n2b.$pDERC.dummyVarC[1,3] JACOBIAN_TMP_VAR */);
+  jacobian->tmpVars[183] /* rover_8d.specific_g.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */ = (9.80665) * (jacobian->tmpVars[126] /* rover_8d.C_n2b.$pDERC.dummyVarC[2,3] JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
 /*
 equation index: 801
 type: SIMPLE_ASSIGN
-az_meas.$pDERC.dummyVarC = (-9.80665) * rover_8d.C_n2b.$pDERC.dummyVarC[3,3]
+rover_8d.specific_g.$pDERC.dummyVarC[1] = 9.80665 * rover_8d.C_n2b.$pDERC.dummyVarC[1,3]
 */
 void RoverExample_Components_Rover_eqFunction_801(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2876,14 +2876,14 @@ void RoverExample_Components_Rover_eqFunction_801(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 66;
   const int equationIndexes[2] = {1,801};
-  jacobian->resultVars[2] /* az_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = (-9.80665) * (jacobian->tmpVars[129] /* rover_8d.C_n2b.$pDERC.dummyVarC[3,3] JACOBIAN_TMP_VAR */);
+  jacobian->tmpVars[182] /* rover_8d.specific_g.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */ = (9.80665) * (jacobian->tmpVars[123] /* rover_8d.C_n2b.$pDERC.dummyVarC[1,3] JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
 /*
 equation index: 802
 type: SIMPLE_ASSIGN
-rover_8d.specific_g.$pDERC.dummyVarC[2] = 9.80665 * rover_8d.C_n2b.$pDERC.dummyVarC[2,3]
+az_meas.$pDERC.dummyVarC = (-9.80665) * rover_8d.C_n2b.$pDERC.dummyVarC[3,3]
 */
 void RoverExample_Components_Rover_eqFunction_802(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -2891,7 +2891,7 @@ void RoverExample_Components_Rover_eqFunction_802(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 67;
   const int equationIndexes[2] = {1,802};
-  jacobian->tmpVars[183] /* rover_8d.specific_g.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */ = (9.80665) * (jacobian->tmpVars[126] /* rover_8d.C_n2b.$pDERC.dummyVarC[2,3] JACOBIAN_TMP_VAR */);
+  jacobian->resultVars[2] /* az_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = (-9.80665) * (jacobian->tmpVars[129] /* rover_8d.C_n2b.$pDERC.dummyVarC[3,3] JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -2906,7 +2906,7 @@ void RoverExample_Components_Rover_eqFunction_803(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 68;
   const int equationIndexes[2] = {1,803};
-  jacobian->tmpVars[92] /* gyroatk.omega_yaw_false.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->simulationInfo->realParameter[33] /* gyroatk.l_g PARAM */)) * (((data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (((data->simulationInfo->realParameter[21] /* gyroatk.X_ac PARAM */)) * (DIVISION(jacobian->tmpVars[85] /* $cse38.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[27] /* gyroatk.dis_d PARAM */),"gyroatk.dis_d")))));
+  jacobian->tmpVars[92] /* gyroatk.omega_yaw_false.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->simulationInfo->realParameter[33] /* gyroatk.l_g PARAM */)) * (((data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (((data->simulationInfo->realParameter[21] /* gyroatk.X_ac PARAM */)) * (DIVISION(jacobian->tmpVars[87] /* $cse38.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[27] /* gyroatk.dis_d PARAM */),"gyroatk.dis_d")))));
   TRACE_POP
 }
 
@@ -2936,7 +2936,7 @@ void RoverExample_Components_Rover_eqFunction_805(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 70;
   const int equationIndexes[2] = {1,805};
-  jacobian->tmpVars[40] /* der(rover_8d.lambda.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = (0.25) * ((jacobian->seedVars[19] /* rover_8d.omega_fl.SeedC SEED_VAR */ + jacobian->seedVars[21] /* rover_8d.omega_rl.SeedC SEED_VAR */ + jacobian->seedVars[22] /* rover_8d.omega_rr.SeedC SEED_VAR */ + jacobian->seedVars[20] /* rover_8d.omega_fr.SeedC SEED_VAR */) * ((data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */)));
+  jacobian->tmpVars[40] /* der(rover_8d.lambda.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = (0.25) * ((jacobian->seedVars[19] /* rover_8d.omega_fl.SeedC SEED_VAR */ + jacobian->seedVars[21] /* rover_8d.omega_rl.SeedC SEED_VAR */ + jacobian->seedVars[22] /* rover_8d.omega_rr.SeedC SEED_VAR */ + jacobian->seedVars[20] /* rover_8d.omega_fr.SeedC SEED_VAR */) * ((data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */)));
   TRACE_POP
 }
 
@@ -2966,7 +2966,7 @@ void RoverExample_Components_Rover_eqFunction_807(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 72;
   const int equationIndexes[2] = {1,807};
-  jacobian->tmpVars[84] /* $cse37.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[7] /* $cse82 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */);
+  jacobian->tmpVars[86] /* $cse37.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[7] /* $cse82 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -2981,7 +2981,7 @@ void RoverExample_Components_Rover_eqFunction_808(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 73;
   const int equationIndexes[2] = {1,808};
-  jacobian->tmpVars[83] /* $cse36.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse81 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */);
+  jacobian->tmpVars[85] /* $cse36.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse81 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -2996,7 +2996,7 @@ void RoverExample_Components_Rover_eqFunction_809(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 74;
   const int equationIndexes[2] = {1,809};
-  jacobian->tmpVars[82] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[9] /* $cse80 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
+  jacobian->tmpVars[84] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[9] /* $cse80 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -3011,7 +3011,7 @@ void RoverExample_Components_Rover_eqFunction_810(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 75;
   const int equationIndexes[2] = {1,810};
-  jacobian->tmpVars[81] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse79 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
+  jacobian->tmpVars[83] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse79 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -3026,7 +3026,7 @@ void RoverExample_Components_Rover_eqFunction_811(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 76;
   const int equationIndexes[2] = {1,811};
-  jacobian->tmpVars[80] /* $cse33.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[11] /* $cse78 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[25] /* rover_8d.psi.SeedC SEED_VAR */);
+  jacobian->tmpVars[82] /* $cse33.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[11] /* $cse78 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[25] /* rover_8d.psi.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -3041,7 +3041,7 @@ void RoverExample_Components_Rover_eqFunction_812(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 77;
   const int equationIndexes[2] = {1,812};
-  jacobian->tmpVars[79] /* $cse32.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[12] /* $cse77 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[25] /* rover_8d.psi.SeedC SEED_VAR */);
+  jacobian->tmpVars[81] /* $cse32.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[12] /* $cse77 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[25] /* rover_8d.psi.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -3056,7 +3056,7 @@ void RoverExample_Components_Rover_eqFunction_813(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 78;
   const int equationIndexes[2] = {1,813};
-  jacobian->tmpVars[55] /* der(rover_8d.y.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[80] /* $cse33.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse33 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[79] /* $cse32.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse32 variable */));
+  jacobian->tmpVars[55] /* der(rover_8d.y.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[82] /* $cse33.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse33 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[81] /* $cse32.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse32 variable */));
   TRACE_POP
 }
 
@@ -3071,7 +3071,7 @@ void RoverExample_Components_Rover_eqFunction_814(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 79;
   const int equationIndexes[2] = {1,814};
-  jacobian->tmpVars[54] /* der(rover_8d.x.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[79] /* $cse32.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse32 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */))) * (jacobian->tmpVars[80] /* $cse33.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse33 variable */)));
+  jacobian->tmpVars[54] /* der(rover_8d.x.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[81] /* $cse32.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse32 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */))) * (jacobian->tmpVars[82] /* $cse33.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse33 variable */)));
   TRACE_POP
 }
 
@@ -3116,7 +3116,7 @@ void RoverExample_Components_Rover_eqFunction_816(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 81;
   const int equationIndexes[2] = {1,816};
-  jacobian->tmpVars[75] /* $cse29.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[148] /* rover_8d.alpha_rr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[13] /* $cse76 JACOBIAN_TMP_VAR */,"1.0 + $cse76"));
+  jacobian->tmpVars[77] /* $cse29.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[148] /* rover_8d.alpha_rr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[13] /* $cse76 JACOBIAN_TMP_VAR */,"1.0 + $cse76"));
   TRACE_POP
 }
 
@@ -3132,8 +3132,8 @@ void RoverExample_Components_Rover_eqFunction_817(DATA *data, threadData_t *thre
   const int subClockIndex = 82;
   const int equationIndexes[2] = {1,817};
   modelica_real tmp101;
-  tmp101 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */));
-  jacobian->tmpVars[34] /* der(rover_8d.alpha_rr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[74] /* $cse28.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[75] /* $cse29.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (jacobian->tmpVars[77] /* $cse30.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp101 * tmp101),"(rover_8d.Lrely * $cse30) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * ((jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse30 * rover_8d.Lrely"))));
+  tmp101 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */));
+  jacobian->tmpVars[34] /* der(rover_8d.alpha_rr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[76] /* $cse28.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[77] /* $cse29.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (jacobian->tmpVars[79] /* $cse30.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp101 * tmp101),"(rover_8d.Lrely * $cse30) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * ((jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse30 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -3178,7 +3178,7 @@ void RoverExample_Components_Rover_eqFunction_819(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 84;
   const int equationIndexes[2] = {1,819};
-  jacobian->tmpVars[71] /* $cse25.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[147] /* rover_8d.alpha_rl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[14] /* $cse75 JACOBIAN_TMP_VAR */,"1.0 + $cse75"));
+  jacobian->tmpVars[73] /* $cse25.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[147] /* rover_8d.alpha_rl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[14] /* $cse75 JACOBIAN_TMP_VAR */,"1.0 + $cse75"));
   TRACE_POP
 }
 
@@ -3194,8 +3194,8 @@ void RoverExample_Components_Rover_eqFunction_820(DATA *data, threadData_t *thre
   const int subClockIndex = 85;
   const int equationIndexes[2] = {1,820};
   modelica_real tmp106;
-  tmp106 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
-  jacobian->tmpVars[33] /* der(rover_8d.alpha_rl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * ((jacobian->tmpVars[72] /* $cse26.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[71] /* $cse25.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))))),(tmp106 * tmp106),"($cse26 * rover_8d.Lrely) ^ 2.0") + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[74] /* $cse28.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * ((jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)),"rover_8d.Lrely * $cse26"))));
+  tmp106 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
+  jacobian->tmpVars[33] /* der(rover_8d.alpha_rl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * ((jacobian->tmpVars[74] /* $cse26.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[73] /* $cse25.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))))),(tmp106 * tmp106),"($cse26 * rover_8d.Lrely) ^ 2.0") + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[195] /* rover_8d.vy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[76] /* $cse28.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * ((jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)),"rover_8d.Lrely * $cse26"))));
   TRACE_POP
 }
 
@@ -3240,7 +3240,7 @@ void RoverExample_Components_Rover_eqFunction_822(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 87;
   const int equationIndexes[2] = {1,822};
-  jacobian->tmpVars[67] /* $cse21.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[146] /* rover_8d.alpha_fr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[15] /* $cse74 JACOBIAN_TMP_VAR */,"1.0 + $cse74"));
+  jacobian->tmpVars[69] /* $cse21.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[146] /* rover_8d.alpha_fr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[15] /* $cse74 JACOBIAN_TMP_VAR */,"1.0 + $cse74"));
   TRACE_POP
 }
 
@@ -3285,7 +3285,7 @@ void RoverExample_Components_Rover_eqFunction_824(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 89;
   const int equationIndexes[2] = {1,824};
-  jacobian->tmpVars[63] /* $cse17.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[145] /* rover_8d.alpha_fl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[16] /* $cse73 JACOBIAN_TMP_VAR */,"1.0 + $cse73"));
+  jacobian->tmpVars[65] /* $cse17.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[145] /* rover_8d.alpha_fl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[16] /* $cse73 JACOBIAN_TMP_VAR */,"1.0 + $cse73"));
   TRACE_POP
 }
 
@@ -3300,7 +3300,7 @@ void RoverExample_Components_Rover_eqFunction_825(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 90;
   const int equationIndexes[2] = {1,825};
-  jacobian->tmpVars[62] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[17] /* $cse72 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
+  jacobian->tmpVars[64] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[17] /* $cse72 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -3315,7 +3315,7 @@ void RoverExample_Components_Rover_eqFunction_826(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 91;
   const int equationIndexes[2] = {1,826};
-  jacobian->tmpVars[61] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[18] /* $cse71 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
+  jacobian->tmpVars[63] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[18] /* $cse71 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -3330,7 +3330,7 @@ void RoverExample_Components_Rover_eqFunction_827(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 92;
   const int equationIndexes[2] = {1,827};
-  jacobian->tmpVars[194] /* rover_8d.vy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[61] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */))) * (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[62] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
+  jacobian->tmpVars[194] /* rover_8d.vy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[63] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */))) * (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[64] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
   TRACE_POP
 }
 
@@ -3347,7 +3347,7 @@ void RoverExample_Components_Rover_eqFunction_828(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,828};
   modelica_real tmp115;
   tmp115 = jacobian->tmpVars[3] /* $cse86 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[70] /* $cse24.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[194] /* rover_8d.vy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp115 * tmp115),"$cse86 ^ 2.0"));
+  jacobian->tmpVars[72] /* $cse24.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[194] /* rover_8d.vy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp115 * tmp115),"$cse86 ^ 2.0"));
   TRACE_POP
 }
 
@@ -3362,7 +3362,7 @@ void RoverExample_Components_Rover_eqFunction_829(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 94;
   const int equationIndexes[2] = {1,829};
-  jacobian->tmpVars[190] /* rover_8d.vx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[61] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[62] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[190] /* rover_8d.vx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[63] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[64] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -3379,7 +3379,7 @@ void RoverExample_Components_Rover_eqFunction_830(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,830};
   modelica_real tmp116;
   tmp116 = jacobian->tmpVars[2] /* $cse87 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[69] /* $cse23.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[190] /* rover_8d.vx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp116 * tmp116),"$cse87 ^ 2.0"));
+  jacobian->tmpVars[71] /* $cse23.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[190] /* rover_8d.vx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp116 * tmp116),"$cse87 ^ 2.0"));
   TRACE_POP
 }
 
@@ -3398,7 +3398,7 @@ void RoverExample_Components_Rover_eqFunction_831(DATA *data, threadData_t *thre
   modelica_boolean tmp118;
   modelica_boolean tmp119;
   modelica_real tmp120;
-  tmp117 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),0.001);
+  tmp117 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),0.001);
   tmp119 = (modelica_boolean)tmp117;
   if(tmp119)
   {
@@ -3406,10 +3406,10 @@ void RoverExample_Components_Rover_eqFunction_831(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp118 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),1.0);
-    tmp120 = (tmp118?0.0:jacobian->tmpVars[69] /* $cse23.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
+    tmp118 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),1.0);
+    tmp120 = (tmp118?0.0:jacobian->tmpVars[71] /* $cse23.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[68] /* $cse22.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp120;
+  jacobian->tmpVars[70] /* $cse22.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp120;
   TRACE_POP
 }
 
@@ -3425,8 +3425,8 @@ void RoverExample_Components_Rover_eqFunction_832(DATA *data, threadData_t *thre
   const int subClockIndex = 97;
   const int equationIndexes[2] = {1,832};
   modelica_real tmp121;
-  tmp121 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */));
-  jacobian->tmpVars[32] /* der(rover_8d.alpha_fr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[194] /* rover_8d.vy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[70] /* $cse24.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[67] /* $cse21.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (jacobian->tmpVars[68] /* $cse22.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp121 * tmp121),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[190] /* rover_8d.vx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
+  tmp121 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */));
+  jacobian->tmpVars[32] /* der(rover_8d.alpha_fr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[194] /* rover_8d.vy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[72] /* $cse24.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[69] /* $cse21.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (jacobian->tmpVars[70] /* $cse22.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp121 * tmp121),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[190] /* rover_8d.vx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -3441,7 +3441,7 @@ void RoverExample_Components_Rover_eqFunction_833(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 98;
   const int equationIndexes[2] = {1,833};
-  jacobian->tmpVars[193] /* rover_8d.vy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[61] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */))) * (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[62] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
+  jacobian->tmpVars[193] /* rover_8d.vy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[63] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */))) * (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[64] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
   TRACE_POP
 }
 
@@ -3458,7 +3458,7 @@ void RoverExample_Components_Rover_eqFunction_834(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,834};
   modelica_real tmp122;
   tmp122 = jacobian->tmpVars[1] /* $cse88 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[66] /* $cse20.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[193] /* rover_8d.vy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp122 * tmp122),"$cse88 ^ 2.0"));
+  jacobian->tmpVars[68] /* $cse20.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[193] /* rover_8d.vy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp122 * tmp122),"$cse88 ^ 2.0"));
   TRACE_POP
 }
 
@@ -3473,7 +3473,7 @@ void RoverExample_Components_Rover_eqFunction_835(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 100;
   const int equationIndexes[2] = {1,835};
-  jacobian->tmpVars[189] /* rover_8d.vx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[61] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[62] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[189] /* rover_8d.vx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[63] /* $cse15.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) + (jacobian->tmpVars[64] /* $cse16.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -3490,7 +3490,7 @@ void RoverExample_Components_Rover_eqFunction_836(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,836};
   modelica_real tmp123;
   tmp123 = jacobian->tmpVars[0] /* $cse89 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[65] /* $cse19.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[189] /* rover_8d.vx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp123 * tmp123),"$cse89 ^ 2.0"));
+  jacobian->tmpVars[67] /* $cse19.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[189] /* rover_8d.vx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(tmp123 * tmp123),"$cse89 ^ 2.0"));
   TRACE_POP
 }
 
@@ -3509,7 +3509,7 @@ void RoverExample_Components_Rover_eqFunction_837(DATA *data, threadData_t *thre
   modelica_boolean tmp125;
   modelica_boolean tmp126;
   modelica_real tmp127;
-  tmp124 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),0.001);
+  tmp124 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),0.001);
   tmp126 = (modelica_boolean)tmp124;
   if(tmp126)
   {
@@ -3517,10 +3517,10 @@ void RoverExample_Components_Rover_eqFunction_837(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp125 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),1.0);
-    tmp127 = (tmp125?0.0:jacobian->tmpVars[65] /* $cse19.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
+    tmp125 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),1.0);
+    tmp127 = (tmp125?0.0:jacobian->tmpVars[67] /* $cse19.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[64] /* $cse18.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp127;
+  jacobian->tmpVars[66] /* $cse18.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp127;
   TRACE_POP
 }
 
@@ -3536,8 +3536,8 @@ void RoverExample_Components_Rover_eqFunction_838(DATA *data, threadData_t *thre
   const int subClockIndex = 103;
   const int equationIndexes[2] = {1,838};
   modelica_real tmp128;
-  tmp128 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */));
-  jacobian->tmpVars[31] /* der(rover_8d.alpha_fl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[193] /* rover_8d.vy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[66] /* $cse20.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[63] /* $cse17.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (jacobian->tmpVars[64] /* $cse18.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp128 * tmp128),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[189] /* rover_8d.vx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
+  tmp128 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */));
+  jacobian->tmpVars[31] /* der(rover_8d.alpha_fl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[193] /* rover_8d.vy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[68] /* $cse20.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[65] /* $cse17.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (jacobian->tmpVars[66] /* $cse18.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp128 * tmp128),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[189] /* rover_8d.vx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -3556,7 +3556,7 @@ void RoverExample_Components_Rover_eqFunction_839(DATA *data, threadData_t *thre
   modelica_boolean tmp130;
   modelica_boolean tmp131;
   modelica_real tmp132;
-  tmp129 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp129 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp131 = (modelica_boolean)tmp129;
   if(tmp131)
   {
@@ -3564,10 +3564,10 @@ void RoverExample_Components_Rover_eqFunction_839(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp130 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp130 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp132 = (tmp130?0.0:jacobian->seedVars[17] /* rover_8d.kappa_rr.SeedC SEED_VAR */);
   }
-  jacobian->tmpVars[176] /* rover_8d.kappa_rr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp132;
+  jacobian->tmpVars[164] /* rover_8d.kappa_rr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp132;
   TRACE_POP
 }
 
@@ -3588,8 +3588,8 @@ void RoverExample_Components_Rover_eqFunction_840(DATA *data, threadData_t *thre
   modelica_real tmp136;
   modelica_real tmp137;
   modelica_real tmp138;
-  tmp133 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */);
-  tmp134 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */);
+  tmp133 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */);
+  tmp134 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */);
   tmp135 = (tmp133 * tmp133) + (tmp134 * tmp134);
   if(!(tmp135 >= 0.0))
   {
@@ -3602,8 +3602,8 @@ void RoverExample_Components_Rover_eqFunction_840(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0) was %g should be >= 0", tmp135);
     }
-  }tmp136 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */);
-  tmp137 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */);
+  }tmp136 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */);
+  tmp137 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */);
   tmp138 = (tmp136 * tmp136) + (tmp137 * tmp137);
   if(!(tmp138 >= 0.0))
   {
@@ -3617,7 +3617,7 @@ void RoverExample_Components_Rover_eqFunction_840(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0) was %g should be >= 0", tmp138);
     }
   }
-  jacobian->tmpVars[188] /* rover_8d.vs_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */)) * (jacobian->tmpVars[176] /* rover_8d.kappa_rr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (jacobian->tmpVars[75] /* $cse29.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp135),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)"))) + (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp138));
+  jacobian->tmpVars[188] /* rover_8d.vs_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */)) * (jacobian->tmpVars[164] /* rover_8d.kappa_rr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (jacobian->tmpVars[77] /* $cse29.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp135),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)"))) + (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp138));
   TRACE_POP
 }
 
@@ -3666,7 +3666,7 @@ void RoverExample_Components_Rover_eqFunction_842(DATA *data, threadData_t *thre
   modelica_boolean tmp144;
   modelica_boolean tmp145;
   modelica_real tmp146;
-  tmp143 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp143 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp145 = (modelica_boolean)tmp143;
   if(tmp145)
   {
@@ -3674,10 +3674,10 @@ void RoverExample_Components_Rover_eqFunction_842(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp144 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp144 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp146 = (tmp144?0.0:jacobian->seedVars[16] /* rover_8d.kappa_rl.SeedC SEED_VAR */);
   }
-  jacobian->tmpVars[175] /* rover_8d.kappa_rl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp146;
+  jacobian->tmpVars[163] /* rover_8d.kappa_rl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp146;
   TRACE_POP
 }
 
@@ -3698,8 +3698,8 @@ void RoverExample_Components_Rover_eqFunction_843(DATA *data, threadData_t *thre
   modelica_real tmp150;
   modelica_real tmp151;
   modelica_real tmp152;
-  tmp147 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */);
-  tmp148 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */);
+  tmp147 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */);
+  tmp148 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */);
   tmp149 = (tmp147 * tmp147) + (tmp148 * tmp148);
   if(!(tmp149 >= 0.0))
   {
@@ -3712,8 +3712,8 @@ void RoverExample_Components_Rover_eqFunction_843(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0) was %g should be >= 0", tmp149);
     }
-  }tmp150 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */);
-  tmp151 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */);
+  }tmp150 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */);
+  tmp151 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */);
   tmp152 = (tmp150 * tmp150) + (tmp151 * tmp151);
   if(!(tmp152 >= 0.0))
   {
@@ -3727,7 +3727,7 @@ void RoverExample_Components_Rover_eqFunction_843(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0) was %g should be >= 0", tmp152);
     }
   }
-  jacobian->tmpVars[187] /* rover_8d.vs_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */)) * (jacobian->tmpVars[175] /* rover_8d.kappa_rl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (jacobian->tmpVars[71] /* $cse25.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp149),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)"))) + (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp152));
+  jacobian->tmpVars[187] /* rover_8d.vs_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */)) * (jacobian->tmpVars[163] /* rover_8d.kappa_rl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (jacobian->tmpVars[73] /* $cse25.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp149),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)"))) + (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp152));
   TRACE_POP
 }
 
@@ -3776,7 +3776,7 @@ void RoverExample_Components_Rover_eqFunction_845(DATA *data, threadData_t *thre
   modelica_boolean tmp158;
   modelica_boolean tmp159;
   modelica_real tmp160;
-  tmp157 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp157 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp159 = (modelica_boolean)tmp157;
   if(tmp159)
   {
@@ -3784,10 +3784,10 @@ void RoverExample_Components_Rover_eqFunction_845(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp158 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp158 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp160 = (tmp158?0.0:jacobian->seedVars[15] /* rover_8d.kappa_fr.SeedC SEED_VAR */);
   }
-  jacobian->tmpVars[174] /* rover_8d.kappa_fr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp160;
+  jacobian->tmpVars[162] /* rover_8d.kappa_fr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp160;
   TRACE_POP
 }
 
@@ -3808,8 +3808,8 @@ void RoverExample_Components_Rover_eqFunction_846(DATA *data, threadData_t *thre
   modelica_real tmp164;
   modelica_real tmp165;
   modelica_real tmp166;
-  tmp161 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */);
-  tmp162 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */);
+  tmp161 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */);
+  tmp162 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */);
   tmp163 = (tmp161 * tmp161) + (tmp162 * tmp162);
   if(!(tmp163 >= 0.0))
   {
@@ -3822,8 +3822,8 @@ void RoverExample_Components_Rover_eqFunction_846(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0) was %g should be >= 0", tmp163);
     }
-  }tmp164 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */);
-  tmp165 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */);
+  }tmp164 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */);
+  tmp165 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */);
   tmp166 = (tmp164 * tmp164) + (tmp165 * tmp165);
   if(!(tmp166 >= 0.0))
   {
@@ -3837,7 +3837,7 @@ void RoverExample_Components_Rover_eqFunction_846(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0) was %g should be >= 0", tmp166);
     }
   }
-  jacobian->tmpVars[186] /* rover_8d.vs_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */)) * (jacobian->tmpVars[174] /* rover_8d.kappa_fr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (jacobian->tmpVars[67] /* $cse21.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp163),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)"))) + (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp166));
+  jacobian->tmpVars[186] /* rover_8d.vs_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */)) * (jacobian->tmpVars[162] /* rover_8d.kappa_fr_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (jacobian->tmpVars[69] /* $cse21.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp163),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)"))) + (jacobian->tmpVars[192] /* rover_8d.vx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp166));
   TRACE_POP
 }
 
@@ -3886,7 +3886,7 @@ void RoverExample_Components_Rover_eqFunction_848(DATA *data, threadData_t *thre
   modelica_boolean tmp172;
   modelica_boolean tmp173;
   modelica_real tmp174;
-  tmp171 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp171 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp173 = (modelica_boolean)tmp171;
   if(tmp173)
   {
@@ -3894,10 +3894,10 @@ void RoverExample_Components_Rover_eqFunction_848(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp172 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp172 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp174 = (tmp172?0.0:jacobian->seedVars[14] /* rover_8d.kappa_fl.SeedC SEED_VAR */);
   }
-  jacobian->tmpVars[173] /* rover_8d.kappa_fl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp174;
+  jacobian->tmpVars[161] /* rover_8d.kappa_fl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp174;
   TRACE_POP
 }
 
@@ -3918,8 +3918,8 @@ void RoverExample_Components_Rover_eqFunction_849(DATA *data, threadData_t *thre
   modelica_real tmp178;
   modelica_real tmp179;
   modelica_real tmp180;
-  tmp175 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */);
-  tmp176 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */);
+  tmp175 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */);
+  tmp176 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */);
   tmp177 = (tmp175 * tmp175) + (tmp176 * tmp176);
   if(!(tmp177 >= 0.0))
   {
@@ -3932,8 +3932,8 @@ void RoverExample_Components_Rover_eqFunction_849(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0) was %g should be >= 0", tmp177);
     }
-  }tmp178 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */);
-  tmp179 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */);
+  }tmp178 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */);
+  tmp179 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */);
   tmp180 = (tmp178 * tmp178) + (tmp179 * tmp179);
   if(!(tmp180 >= 0.0))
   {
@@ -3947,7 +3947,7 @@ void RoverExample_Components_Rover_eqFunction_849(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0) was %g should be >= 0", tmp180);
     }
   }
-  jacobian->tmpVars[185] /* rover_8d.vs_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */)) * (jacobian->tmpVars[173] /* rover_8d.kappa_fl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (jacobian->tmpVars[63] /* $cse17.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp177),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)"))) + (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp180));
+  jacobian->tmpVars[185] /* rover_8d.vs_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */)) * (jacobian->tmpVars[161] /* rover_8d.kappa_fl_bnd.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (jacobian->tmpVars[65] /* $cse17.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),sqrt(tmp177),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)"))) + (jacobian->tmpVars[191] /* rover_8d.vx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * (sqrt(tmp180));
   TRACE_POP
 }
 
@@ -3985,10 +3985,10 @@ void RoverExample_Components_Rover_eqFunction_850(DATA *data, threadData_t *thre
 equation index: 895
 type: LINEAR
 
-<var>rover_8d.fz_rl.$pDERC.dummyVarC</var>
-<var>rover_8d.fz_fl.$pDERC.dummyVarC</var>
 <var>rover_8d.fz_rr.$pDERC.dummyVarC</var>
 <var>rover_8d.fz_fr.$pDERC.dummyVarC</var>
+<var>rover_8d.fz_rl.$pDERC.dummyVarC</var>
+<var>rover_8d.fz_fl.$pDERC.dummyVarC</var>
 <row>
 
 </row>
@@ -4004,7 +4004,7 @@ void RoverExample_Components_Rover_eqFunction_895(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,895};
   /* Linear equation system */
   int retValue;
-  double aux_x[4] = { jacobian->tmpVars[171] /* rover_8d.fz_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,jacobian->tmpVars[169] /* rover_8d.fz_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,jacobian->tmpVars[172] /* rover_8d.fz_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,jacobian->tmpVars[170] /* rover_8d.fz_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ };
+  double aux_x[4] = { jacobian->tmpVars[160] /* rover_8d.fz_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,jacobian->tmpVars[158] /* rover_8d.fz_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,jacobian->tmpVars[159] /* rover_8d.fz_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */,jacobian->tmpVars[157] /* rover_8d.fz_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ };
   if(OMC_ACTIVE_STREAM(OMC_LOG_DT))
   {
     infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 895 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
@@ -4020,10 +4020,10 @@ void RoverExample_Components_Rover_eqFunction_895(DATA *data, threadData_t *thre
     throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 895 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
   }
   /* write solution */
-  jacobian->tmpVars[171] /* rover_8d.fz_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[0];
-  jacobian->tmpVars[169] /* rover_8d.fz_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[1];
-  jacobian->tmpVars[172] /* rover_8d.fz_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[2];
-  jacobian->tmpVars[170] /* rover_8d.fz_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[3];
+  jacobian->tmpVars[160] /* rover_8d.fz_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[0];
+  jacobian->tmpVars[158] /* rover_8d.fz_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[1];
+  jacobian->tmpVars[159] /* rover_8d.fz_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[2];
+  jacobian->tmpVars[157] /* rover_8d.fz_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[3];
 
   TRACE_POP
 }
@@ -4031,7 +4031,7 @@ void RoverExample_Components_Rover_eqFunction_895(DATA *data, threadData_t *thre
 /*
 equation index: 896
 type: SIMPLE_ASSIGN
-$DER.rover_8d.vx.$pDERC.dummyVarC = rover_8d.vy * rover_8d.r.SeedC + rover_8d.vy.SeedC * rover_8d.r + rover_8d.ax.$pDERC.dummyVarC
+$DER.rover_8d.p.$pDERC.dummyVarC = (rover_8d.mass_sprung * (9.80665 * $cse36.$pDERC.dummyVarC + (-rover_8d.ay) * $cse37.$pDERC.dummyVarC - rover_8d.ay.$pDERC.dummyVarC * $cse37) * rover_8d.hs + (-rover_8d.k_rllsp) * rover_8d.phi.SeedC - rover_8d.c_rllsp * rover_8d.p.SeedC) / rover_8d.I_xx
 */
 void RoverExample_Components_Rover_eqFunction_896(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -4039,14 +4039,14 @@ void RoverExample_Components_Rover_eqFunction_896(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 117;
   const int equationIndexes[2] = {1,896};
-  jacobian->tmpVars[51] /* der(rover_8d.vx.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */) + (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)) + jacobian->tmpVars[149] /* rover_8d.ax.$pDERC.dummyVarC JACOBIAN_TMP_VAR */;
+  jacobian->tmpVars[45] /* der(rover_8d.p.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[85] /* $cse36.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[86] /* $cse37.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[150] /* rover_8d.ay.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse37 variable */)))) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */))) + ((-(data->simulationInfo->realParameter[107] /* rover_8d.k_rllsp PARAM */))) * (jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */) - (((data->simulationInfo->realParameter[85] /* rover_8d.c_rllsp PARAM */)) * (jacobian->seedVars[23] /* rover_8d.p.SeedC SEED_VAR */)),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx");
   TRACE_POP
 }
 
 /*
 equation index: 897
 type: SIMPLE_ASSIGN
-ax_meas.$pDERC.dummyVarC = rover_8d.ax.$pDERC.dummyVarC - rover_8d.specific_g.$pDERC.dummyVarC[1]
+ay_meas.$pDERC.dummyVarC = rover_8d.ay.$pDERC.dummyVarC - rover_8d.specific_g.$pDERC.dummyVarC[2]
 */
 void RoverExample_Components_Rover_eqFunction_897(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -4054,14 +4054,14 @@ void RoverExample_Components_Rover_eqFunction_897(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 118;
   const int equationIndexes[2] = {1,897};
-  jacobian->resultVars[0] /* ax_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[149] /* rover_8d.ax.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ - jacobian->tmpVars[182] /* rover_8d.specific_g.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */;
+  jacobian->resultVars[1] /* ay_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[150] /* rover_8d.ay.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ - jacobian->tmpVars[183] /* rover_8d.specific_g.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 898
 type: SIMPLE_ASSIGN
-$DER.rover_8d.r.$pDERC.dummyVarC = (0.5 * (rover_8d.Fx_fl * $cse34.$pDERC.dummyVarC + rover_8d.Fx_fl.$pDERC.dummyVarC * $cse34 + rover_8d.Fy_fl * $cse35.$pDERC.dummyVarC + rover_8d.Fy_fl.$pDERC.dummyVarC * $cse35 + rover_8d.Fx_rl.$pDERC.dummyVarC + (-rover_8d.Fx_fr) * $cse34.$pDERC.dummyVarC - rover_8d.Fx_fr.$pDERC.dummyVarC * $cse34 - rover_8d.Fy_fr.$pDERC.dummyVarC * $cse35 - rover_8d.Fy_fr * $cse35.$pDERC.dummyVarC - rover_8d.Fx_rr.$pDERC.dummyVarC) * rover_8d.tw + rover_8d.l_front * (rover_8d.Fy_fl * $cse34.$pDERC.dummyVarC + rover_8d.Fy_fl.$pDERC.dummyVarC * $cse34 + (-rover_8d.Fx_fl) * $cse35.$pDERC.dummyVarC - rover_8d.Fx_fl.$pDERC.dummyVarC * $cse35) + rover_8d.l_front * (rover_8d.Fy_fr * $cse34.$pDERC.dummyVarC + rover_8d.Fy_fr.$pDERC.dummyVarC * $cse34 + (-rover_8d.Fx_fr) * $cse35.$pDERC.dummyVarC - rover_8d.Fx_fr.$pDERC.dummyVarC * $cse35) - rover_8d.l_rear * (rover_8d.Fy_rl.$pDERC.dummyVarC + rover_8d.Fy_rr.$pDERC.dummyVarC)) / rover_8d.I_zz
+$DER.rover_8d.vx.$pDERC.dummyVarC = rover_8d.vy * rover_8d.r.SeedC + rover_8d.vy.SeedC * rover_8d.r + rover_8d.ax.$pDERC.dummyVarC
 */
 void RoverExample_Components_Rover_eqFunction_898(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -4069,12 +4069,57 @@ void RoverExample_Components_Rover_eqFunction_898(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 119;
   const int equationIndexes[2] = {1,898};
-  jacobian->tmpVars[49] /* der(rover_8d.r.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[81] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[130] /* rover_8d.Fx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[82] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[134] /* rover_8d.Fy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[132] /* rover_8d.Fx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[81] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[131] /* rover_8d.Fx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */))) - ((jacobian->tmpVars[135] /* rover_8d.Fy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[82] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[133] /* rover_8d.Fx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[81] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[134] /* rover_8d.Fy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[82] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[130] /* rover_8d.Fx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[81] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[135] /* rover_8d.Fy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[82] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[131] /* rover_8d.Fx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[136] /* rover_8d.Fy_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ + jacobian->tmpVars[137] /* rover_8d.Fy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
+  jacobian->tmpVars[51] /* der(rover_8d.vx.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */) + (jacobian->seedVars[30] /* rover_8d.vy.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)) + jacobian->tmpVars[149] /* rover_8d.ax.$pDERC.dummyVarC JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
 /*
-equation index: 911
+equation index: 899
+type: SIMPLE_ASSIGN
+ax_meas.$pDERC.dummyVarC = rover_8d.ax.$pDERC.dummyVarC - rover_8d.specific_g.$pDERC.dummyVarC[1]
+*/
+void RoverExample_Components_Rover_eqFunction_899(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 120;
+  const int equationIndexes[2] = {1,899};
+  jacobian->resultVars[0] /* ax_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[149] /* rover_8d.ax.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ - jacobian->tmpVars[182] /* rover_8d.specific_g.$pDERC.dummyVarC[1] JACOBIAN_TMP_VAR */;
+  TRACE_POP
+}
+
+/*
+equation index: 900
+type: SIMPLE_ASSIGN
+$DER.rover_8d.r.$pDERC.dummyVarC = (0.5 * (rover_8d.Fx_fl * $cse34.$pDERC.dummyVarC + rover_8d.Fx_fl.$pDERC.dummyVarC * $cse34 + rover_8d.Fy_fl * $cse35.$pDERC.dummyVarC + rover_8d.Fy_fl.$pDERC.dummyVarC * $cse35 + rover_8d.Fx_rl.$pDERC.dummyVarC + (-rover_8d.Fx_fr) * $cse34.$pDERC.dummyVarC - rover_8d.Fx_fr.$pDERC.dummyVarC * $cse34 - rover_8d.Fy_fr.$pDERC.dummyVarC * $cse35 - rover_8d.Fy_fr * $cse35.$pDERC.dummyVarC - rover_8d.Fx_rr.$pDERC.dummyVarC) * rover_8d.tw + rover_8d.l_front * (rover_8d.Fy_fl * $cse34.$pDERC.dummyVarC + rover_8d.Fy_fl.$pDERC.dummyVarC * $cse34 + (-rover_8d.Fx_fl) * $cse35.$pDERC.dummyVarC - rover_8d.Fx_fl.$pDERC.dummyVarC * $cse35) + rover_8d.l_front * (rover_8d.Fy_fr * $cse34.$pDERC.dummyVarC + rover_8d.Fy_fr.$pDERC.dummyVarC * $cse34 + (-rover_8d.Fx_fr) * $cse35.$pDERC.dummyVarC - rover_8d.Fx_fr.$pDERC.dummyVarC * $cse35) - rover_8d.l_rear * (rover_8d.Fy_rl.$pDERC.dummyVarC + rover_8d.Fy_rr.$pDERC.dummyVarC)) / rover_8d.I_zz
+*/
+void RoverExample_Components_Rover_eqFunction_900(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 121;
+  const int equationIndexes[2] = {1,900};
+  jacobian->tmpVars[49] /* der(rover_8d.r.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[83] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[130] /* rover_8d.Fx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[84] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[134] /* rover_8d.Fy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[132] /* rover_8d.Fx_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[83] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[131] /* rover_8d.Fx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */))) - ((jacobian->tmpVars[135] /* rover_8d.Fy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[84] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[133] /* rover_8d.Fx_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[83] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[134] /* rover_8d.Fy_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[84] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[130] /* rover_8d.Fx_fl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[83] /* $cse34.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[135] /* rover_8d.Fy_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[84] /* $cse35.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[131] /* rover_8d.Fx_fr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[136] /* rover_8d.Fy_rl.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ + jacobian->tmpVars[137] /* rover_8d.Fy_rr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
+  TRACE_POP
+}
+
+/*
+equation index: 901
+type: SIMPLE_ASSIGN
+$DER.rover_8d.vy.$pDERC.dummyVarC = rover_8d.ay.$pDERC.dummyVarC + (rover_8d.l_rear * rover_8d.mass_unsprung_rear - rover_8d.l_front * rover_8d.mass_unsprung_front) * $DER.rover_8d.r.$pDERC.dummyVarC / rover_8d.mass_total + (-rover_8d.vx) * rover_8d.r.SeedC - rover_8d.vx.SeedC * rover_8d.r
+*/
+void RoverExample_Components_Rover_eqFunction_901(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 122;
+  const int equationIndexes[2] = {1,901};
+  jacobian->tmpVars[52] /* der(rover_8d.vy.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = jacobian->tmpVars[150] /* rover_8d.ay.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ + (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->tmpVars[49] /* der(rover_8d.r.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total")) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */) - ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  TRACE_POP
+}
+
+/*
+equation index: 914
 type: LINEAR
 
 <var>rover_8d.thr.$pDERC.dummyVarC</var>
@@ -4085,18 +4130,18 @@ type: LINEAR
 </matrix>
 */
 OMC_DISABLE_OPT
-void RoverExample_Components_Rover_eqFunction_911(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_914(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 120;
-  const int equationIndexes[2] = {1,911};
+  const int subClockIndex = 123;
+  const int equationIndexes[2] = {1,914};
   /* Linear equation system */
   int retValue;
   double aux_x[1] = { jacobian->tmpVars[184] /* rover_8d.thr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ };
   if(OMC_ACTIVE_STREAM(OMC_LOG_DT))
   {
-    infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 911 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
+    infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 914 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
     messageClose(OMC_LOG_DT);
   }
   data->simulationInfo->linearSystemData[5].parDynamicData[omc_get_thread_num()].parentJacobian = jacobian;
@@ -4105,57 +4150,12 @@ void RoverExample_Components_Rover_eqFunction_911(DATA *data, threadData_t *thre
   
   /* check if solution process was successful */
   if (retValue > 0){
-    const int indexes[2] = {1,911};
-    throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 911 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
+    const int indexes[2] = {1,914};
+    throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 914 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
   }
   /* write solution */
   jacobian->tmpVars[184] /* rover_8d.thr.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = aux_x[0];
 
-  TRACE_POP
-}
-
-/*
-equation index: 912
-type: SIMPLE_ASSIGN
-$DER.rover_8d.p.$pDERC.dummyVarC = (rover_8d.mass_sprung * (9.80665 * $cse36.$pDERC.dummyVarC + (-rover_8d.ay) * $cse37.$pDERC.dummyVarC - rover_8d.ay.$pDERC.dummyVarC * $cse37) * rover_8d.hs + (-rover_8d.k_rllsp) * rover_8d.phi.SeedC - rover_8d.c_rllsp * rover_8d.p.SeedC) / rover_8d.I_xx
-*/
-void RoverExample_Components_Rover_eqFunction_912(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 121;
-  const int equationIndexes[2] = {1,912};
-  jacobian->tmpVars[45] /* der(rover_8d.p.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[83] /* $cse36.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[84] /* $cse37.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[150] /* rover_8d.ay.$pDERC.dummyVarC JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse37 variable */)))) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */))) + ((-(data->simulationInfo->realParameter[109] /* rover_8d.k_rllsp PARAM */))) * (jacobian->seedVars[24] /* rover_8d.phi.SeedC SEED_VAR */) - (((data->simulationInfo->realParameter[85] /* rover_8d.c_rllsp PARAM */)) * (jacobian->seedVars[23] /* rover_8d.p.SeedC SEED_VAR */)),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx");
-  TRACE_POP
-}
-
-/*
-equation index: 913
-type: SIMPLE_ASSIGN
-ay_meas.$pDERC.dummyVarC = rover_8d.ay.$pDERC.dummyVarC - rover_8d.specific_g.$pDERC.dummyVarC[2]
-*/
-void RoverExample_Components_Rover_eqFunction_913(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 122;
-  const int equationIndexes[2] = {1,913};
-  jacobian->resultVars[1] /* ay_meas.$pDERC.dummyVarC JACOBIAN_VAR */ = jacobian->tmpVars[150] /* rover_8d.ay.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ - jacobian->tmpVars[183] /* rover_8d.specific_g.$pDERC.dummyVarC[2] JACOBIAN_TMP_VAR */;
-  TRACE_POP
-}
-
-/*
-equation index: 914
-type: SIMPLE_ASSIGN
-$DER.rover_8d.vy.$pDERC.dummyVarC = rover_8d.ay.$pDERC.dummyVarC + (rover_8d.l_rear * rover_8d.mass_unsprung_rear - rover_8d.l_front * rover_8d.mass_unsprung_front) * $DER.rover_8d.r.$pDERC.dummyVarC / rover_8d.mass_total + (-rover_8d.vx) * rover_8d.r.SeedC - rover_8d.vx.SeedC * rover_8d.r
-*/
-void RoverExample_Components_Rover_eqFunction_914(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 123;
-  const int equationIndexes[2] = {1,914};
-  jacobian->tmpVars[52] /* der(rover_8d.vy.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = jacobian->tmpVars[150] /* rover_8d.ay.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ + (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->tmpVars[49] /* der(rover_8d.r.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total")) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */) - ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -4172,7 +4172,7 @@ void RoverExample_Components_Rover_eqFunction_915(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,915};
   modelica_real tmp185;
   tmp185 = jacobian->tmpVars[19] /* $cse70 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[60] /* $cse14.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (DIVISION(jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(tmp185 * tmp185),"$cse70 ^ 2.0"));
+  jacobian->tmpVars[62] /* $cse14.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (DIVISION(jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(tmp185 * tmp185),"$cse70 ^ 2.0"));
   TRACE_POP
 }
 
@@ -4191,7 +4191,7 @@ void RoverExample_Components_Rover_eqFunction_916(DATA *data, threadData_t *thre
   modelica_boolean tmp187;
   modelica_boolean tmp188;
   modelica_real tmp189;
-  tmp186 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),0.001);
+  tmp186 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),0.001);
   tmp188 = (modelica_boolean)tmp186;
   if(tmp188)
   {
@@ -4199,10 +4199,10 @@ void RoverExample_Components_Rover_eqFunction_916(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp187 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),1.0);
-    tmp189 = (tmp187?0.0:jacobian->tmpVars[60] /* $cse14.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
+    tmp187 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),1.0);
+    tmp189 = (tmp187?0.0:jacobian->tmpVars[62] /* $cse14.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[59] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp189;
+  jacobian->tmpVars[61] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = tmp189;
   TRACE_POP
 }
 
@@ -4218,8 +4218,8 @@ void RoverExample_Components_Rover_eqFunction_917(DATA *data, threadData_t *thre
   const int subClockIndex = 126;
   const int equationIndexes[2] = {1,917};
   modelica_real tmp190;
-  tmp190 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[39] /* der(rover_8d.kappa_rr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[22] /* rover_8d.omega_rr.SeedC SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[17] /* rover_8d.kappa_rr.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */)) * (jacobian->tmpVars[59] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp190 * tmp190),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp190 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[39] /* der(rover_8d.kappa_rr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[22] /* rover_8d.omega_rr.SeedC SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[17] /* rover_8d.kappa_rr.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */)) * (jacobian->tmpVars[61] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp190 * tmp190),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -4235,8 +4235,8 @@ void RoverExample_Components_Rover_eqFunction_918(DATA *data, threadData_t *thre
   const int subClockIndex = 127;
   const int equationIndexes[2] = {1,918};
   modelica_real tmp191;
-  tmp191 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[38] /* der(rover_8d.kappa_rl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[21] /* rover_8d.omega_rl.SeedC SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[16] /* rover_8d.kappa_rl.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */)) * (jacobian->tmpVars[59] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp191 * tmp191),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp191 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[38] /* der(rover_8d.kappa_rl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[21] /* rover_8d.omega_rl.SeedC SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[16] /* rover_8d.kappa_rl.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */)) * (jacobian->tmpVars[61] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp191 * tmp191),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -4252,8 +4252,8 @@ void RoverExample_Components_Rover_eqFunction_919(DATA *data, threadData_t *thre
   const int subClockIndex = 128;
   const int equationIndexes[2] = {1,919};
   modelica_real tmp192;
-  tmp192 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[37] /* der(rover_8d.kappa_fr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[20] /* rover_8d.omega_fr.SeedC SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[15] /* rover_8d.kappa_fr.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */)) * (jacobian->tmpVars[59] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp192 * tmp192),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp192 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[37] /* der(rover_8d.kappa_fr.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[20] /* rover_8d.omega_fr.SeedC SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[15] /* rover_8d.kappa_fr.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */)) * (jacobian->tmpVars[61] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp192 * tmp192),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -4269,8 +4269,8 @@ void RoverExample_Components_Rover_eqFunction_920(DATA *data, threadData_t *thre
   const int subClockIndex = 129;
   const int equationIndexes[2] = {1,920};
   modelica_real tmp193;
-  tmp193 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->tmpVars[36] /* der(rover_8d.kappa_fl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[19] /* rover_8d.omega_fl.SeedC SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[14] /* rover_8d.kappa_fl.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */)) * (jacobian->tmpVars[59] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp193 * tmp193),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp193 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->tmpVars[36] /* der(rover_8d.kappa_fl.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[19] /* rover_8d.omega_fl.SeedC SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[14] /* rover_8d.kappa_fl.SeedC SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */)) * (jacobian->tmpVars[61] /* $cse13.$pDERC.dummyVarC JACOBIAN_TMP_VAR */)),(tmp193 * tmp193),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedC SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedC SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -4285,7 +4285,7 @@ void RoverExample_Components_Rover_eqFunction_921(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 130;
   const int equationIndexes[2] = {1,921};
-  jacobian->tmpVars[86] /* $cse4.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[20] /* $cse69 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[1] /* rover_3d.psi.SeedC SEED_VAR */);
+  jacobian->tmpVars[88] /* $cse4.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[20] /* $cse69 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[1] /* rover_3d.psi.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -4300,7 +4300,7 @@ void RoverExample_Components_Rover_eqFunction_922(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 131;
   const int equationIndexes[2] = {1,922};
-  jacobian->tmpVars[28] /* der(rover_3d.y.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[86] /* $cse4.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
+  jacobian->tmpVars[28] /* der(rover_3d.y.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[88] /* $cse4.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -4315,7 +4315,7 @@ void RoverExample_Components_Rover_eqFunction_923(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 132;
   const int equationIndexes[2] = {1,923};
-  jacobian->tmpVars[76] /* $cse3.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[21] /* $cse68 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[1] /* rover_3d.psi.SeedC SEED_VAR */);
+  jacobian->tmpVars[78] /* $cse3.$pDERC.dummyVarC JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[21] /* $cse68 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[1] /* rover_3d.psi.SeedC SEED_VAR */);
   TRACE_POP
 }
 
@@ -4330,7 +4330,7 @@ void RoverExample_Components_Rover_eqFunction_924(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 133;
   const int equationIndexes[2] = {1,924};
-  jacobian->tmpVars[27] /* der(rover_3d.x.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[76] /* $cse3.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
+  jacobian->tmpVars[27] /* der(rover_3d.x.$pDERC.dummyVarC) JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[78] /* $cse3.$pDERC.dummyVarC JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -4470,9 +4470,9 @@ int RoverExample_Components_Rover_functionJacC_column(DATA* data, threadData_t *
   RoverExample_Components_Rover_eqFunction_896(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_897(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_898(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_911(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_912(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_913(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_899(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_900(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_901(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_914(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_915(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_916(data, threadData, jacobian, parentJacobian);
@@ -4756,7 +4756,7 @@ void RoverExample_Components_Rover_eqFunction_638(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 17;
   const int equationIndexes[2] = {1,638};
-  jacobian->resultVars[1] /* der(rover_3d.psi.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[35] /* $cse6.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[57] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
+  jacobian->resultVars[1] /* der(rover_3d.psi.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[37] /* $cse6.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[55] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
   TRACE_POP
 }
 
@@ -4771,7 +4771,7 @@ void RoverExample_Components_Rover_eqFunction_639(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 18;
   const int equationIndexes[2] = {1,639};
-  jacobian->resultVars[6] /* der(rover_3d.y.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[33] /* $cse4.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+  jacobian->resultVars[6] /* der(rover_3d.y.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[35] /* $cse4.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -4786,7 +4786,7 @@ void RoverExample_Components_Rover_eqFunction_640(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 19;
   const int equationIndexes[2] = {1,640};
-  jacobian->resultVars[5] /* der(rover_3d.x.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[23] /* $cse3.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+  jacobian->resultVars[5] /* der(rover_3d.x.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[25] /* $cse3.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -4801,7 +4801,7 @@ void RoverExample_Components_Rover_eqFunction_641(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 20;
   const int equationIndexes[2] = {1,641};
-  jacobian->tmpVars[103] /* rover_8d.Vq.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[5] /* $cse12.$pDERB.dummyVarB JACOBIAN_TMP_VAR */));
+  jacobian->tmpVars[103] /* rover_8d.Vq.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[7] /* $cse12.$pDERB.dummyVarB JACOBIAN_TMP_VAR */));
   TRACE_POP
 }
 
@@ -4831,7 +4831,7 @@ void RoverExample_Components_Rover_eqFunction_643(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 22;
   const int equationIndexes[2] = {1,643};
-  jacobian->tmpVars[148] /* rover_8d.vx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + (jacobian->tmpVars[9] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[148] /* rover_8d.vx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + (jacobian->tmpVars[11] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -4848,7 +4848,7 @@ void RoverExample_Components_Rover_eqFunction_644(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,644};
   modelica_real tmp194;
   tmp194 = jacobian->tmpVars[0] /* $cse67 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[12] /* $cse19.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[148] /* rover_8d.vx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp194 * tmp194),"$cse67 ^ 2.0"));
+  jacobian->tmpVars[14] /* $cse19.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[148] /* rover_8d.vx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp194 * tmp194),"$cse67 ^ 2.0"));
   TRACE_POP
 }
 
@@ -4867,7 +4867,7 @@ void RoverExample_Components_Rover_eqFunction_645(DATA *data, threadData_t *thre
   modelica_boolean tmp196;
   modelica_boolean tmp197;
   modelica_real tmp198;
-  tmp195 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),0.001);
+  tmp195 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),0.001);
   tmp197 = (modelica_boolean)tmp195;
   if(tmp197)
   {
@@ -4875,10 +4875,10 @@ void RoverExample_Components_Rover_eqFunction_645(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp196 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),1.0);
-    tmp198 = (tmp196?0.0:jacobian->tmpVars[12] /* $cse19.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+    tmp196 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),1.0);
+    tmp198 = (tmp196?0.0:jacobian->tmpVars[14] /* $cse19.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[11] /* $cse18.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp198;
+  jacobian->tmpVars[13] /* $cse18.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp198;
   TRACE_POP
 }
 
@@ -4893,7 +4893,7 @@ void RoverExample_Components_Rover_eqFunction_646(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 25;
   const int equationIndexes[2] = {1,646};
-  jacobian->tmpVars[152] /* rover_8d.vy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[9] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
+  jacobian->tmpVars[152] /* rover_8d.vy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[11] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
   TRACE_POP
 }
 
@@ -4910,7 +4910,7 @@ void RoverExample_Components_Rover_eqFunction_647(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,647};
   modelica_real tmp199;
   tmp199 = jacobian->tmpVars[1] /* $cse66 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[13] /* $cse20.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[152] /* rover_8d.vy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp199 * tmp199),"$cse66 ^ 2.0"));
+  jacobian->tmpVars[15] /* $cse20.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[152] /* rover_8d.vy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp199 * tmp199),"$cse66 ^ 2.0"));
   TRACE_POP
 }
 
@@ -4926,8 +4926,8 @@ void RoverExample_Components_Rover_eqFunction_648(DATA *data, threadData_t *thre
   const int subClockIndex = 27;
   const int equationIndexes[2] = {1,648};
   modelica_real tmp200;
-  tmp200 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */));
-  jacobian->resultVars[9] /* der(rover_8d.alpha_fl.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[152] /* rover_8d.vy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[13] /* $cse20.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[10] /* $cse17.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (jacobian->tmpVars[11] /* $cse18.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(tmp200 * tmp200),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[148] /* rover_8d.vx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
+  tmp200 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */));
+  jacobian->resultVars[9] /* der(rover_8d.alpha_fl.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[152] /* rover_8d.vy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[15] /* $cse20.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[12] /* $cse17.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (jacobian->tmpVars[13] /* $cse18.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(tmp200 * tmp200),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[148] /* rover_8d.vx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -4942,7 +4942,7 @@ void RoverExample_Components_Rover_eqFunction_649(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 28;
   const int equationIndexes[2] = {1,649};
-  jacobian->tmpVars[149] /* rover_8d.vx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + (jacobian->tmpVars[9] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[149] /* rover_8d.vx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + (jacobian->tmpVars[11] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -4959,7 +4959,7 @@ void RoverExample_Components_Rover_eqFunction_650(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,650};
   modelica_real tmp201;
   tmp201 = jacobian->tmpVars[2] /* $cse65 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[16] /* $cse23.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[149] /* rover_8d.vx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp201 * tmp201),"$cse65 ^ 2.0"));
+  jacobian->tmpVars[18] /* $cse23.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[149] /* rover_8d.vx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp201 * tmp201),"$cse65 ^ 2.0"));
   TRACE_POP
 }
 
@@ -4978,7 +4978,7 @@ void RoverExample_Components_Rover_eqFunction_651(DATA *data, threadData_t *thre
   modelica_boolean tmp203;
   modelica_boolean tmp204;
   modelica_real tmp205;
-  tmp202 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),0.001);
+  tmp202 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),0.001);
   tmp204 = (modelica_boolean)tmp202;
   if(tmp204)
   {
@@ -4986,10 +4986,10 @@ void RoverExample_Components_Rover_eqFunction_651(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp203 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),1.0);
-    tmp205 = (tmp203?0.0:jacobian->tmpVars[16] /* $cse23.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+    tmp203 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),1.0);
+    tmp205 = (tmp203?0.0:jacobian->tmpVars[18] /* $cse23.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[15] /* $cse22.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp205;
+  jacobian->tmpVars[17] /* $cse22.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp205;
   TRACE_POP
 }
 
@@ -5004,7 +5004,7 @@ void RoverExample_Components_Rover_eqFunction_652(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 31;
   const int equationIndexes[2] = {1,652};
-  jacobian->tmpVars[153] /* rover_8d.vy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[9] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
+  jacobian->tmpVars[153] /* rover_8d.vy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse15.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - ((jacobian->tmpVars[11] /* $cse16.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
   TRACE_POP
 }
 
@@ -5021,7 +5021,7 @@ void RoverExample_Components_Rover_eqFunction_653(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,653};
   modelica_real tmp206;
   tmp206 = jacobian->tmpVars[3] /* $cse64 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[17] /* $cse24.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[153] /* rover_8d.vy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp206 * tmp206),"$cse64 ^ 2.0"));
+  jacobian->tmpVars[19] /* $cse24.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[153] /* rover_8d.vy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp206 * tmp206),"$cse64 ^ 2.0"));
   TRACE_POP
 }
 
@@ -5037,8 +5037,8 @@ void RoverExample_Components_Rover_eqFunction_654(DATA *data, threadData_t *thre
   const int subClockIndex = 33;
   const int equationIndexes[2] = {1,654};
   modelica_real tmp207;
-  tmp207 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */));
-  jacobian->resultVars[10] /* der(rover_8d.alpha_fr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[153] /* rover_8d.vy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[17] /* $cse24.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[14] /* $cse21.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (jacobian->tmpVars[15] /* $cse22.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(tmp207 * tmp207),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[149] /* rover_8d.vx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
+  tmp207 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */));
+  jacobian->resultVars[10] /* der(rover_8d.alpha_fr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[153] /* rover_8d.vy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[19] /* $cse24.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[16] /* $cse21.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (jacobian->tmpVars[17] /* $cse22.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(tmp207 * tmp207),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[149] /* rover_8d.vx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -5057,7 +5057,7 @@ void RoverExample_Components_Rover_eqFunction_655(DATA *data, threadData_t *thre
   modelica_boolean tmp209;
   modelica_boolean tmp210;
   modelica_real tmp211;
-  tmp208 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),0.001);
+  tmp208 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),0.001);
   tmp210 = (modelica_boolean)tmp208;
   if(tmp210)
   {
@@ -5065,10 +5065,10 @@ void RoverExample_Components_Rover_eqFunction_655(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp209 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),1.0);
-    tmp211 = (tmp209?0.0:jacobian->tmpVars[20] /* $cse27.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+    tmp209 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),1.0);
+    tmp211 = (tmp209?0.0:jacobian->tmpVars[22] /* $cse27.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[19] /* $cse26.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp211;
+  jacobian->tmpVars[21] /* $cse26.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp211;
   TRACE_POP
 }
 
@@ -5084,8 +5084,8 @@ void RoverExample_Components_Rover_eqFunction_656(DATA *data, threadData_t *thre
   const int subClockIndex = 35;
   const int equationIndexes[2] = {1,656};
   modelica_real tmp212;
-  tmp212 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
-  jacobian->resultVars[11] /* der(rover_8d.alpha_rl.$pDERB.dummyVarB) JACOBIAN_VAR */ = (fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * ((jacobian->tmpVars[19] /* $cse26.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[18] /* $cse25.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)))),(tmp212 * tmp212),"($cse26 * rover_8d.Lrely) ^ 2.0")) - ((jacobian->tmpVars[21] /* $cse28.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")));
+  tmp212 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
+  jacobian->resultVars[11] /* der(rover_8d.alpha_rl.$pDERB.dummyVarB) JACOBIAN_VAR */ = (fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * ((jacobian->tmpVars[21] /* $cse26.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[20] /* $cse25.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)))),(tmp212 * tmp212),"($cse26 * rover_8d.Lrely) ^ 2.0")) - ((jacobian->tmpVars[23] /* $cse28.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")));
   TRACE_POP
 }
 
@@ -5103,8 +5103,8 @@ void RoverExample_Components_Rover_eqFunction_657(DATA *data, threadData_t *thre
   modelica_real tmp213;
   modelica_real tmp214;
   modelica_real tmp215;
-  tmp213 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */);
-  tmp214 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */);
+  tmp213 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */);
+  tmp214 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */);
   tmp215 = (tmp213 * tmp213) + (tmp214 * tmp214);
   if(!(tmp215 >= 0.0))
   {
@@ -5118,7 +5118,7 @@ void RoverExample_Components_Rover_eqFunction_657(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0) was %g should be >= 0", tmp215);
     }
   }
-  jacobian->tmpVars[146] /* rover_8d.vs_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (DIVISION(jacobian->tmpVars[18] /* $cse25.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp215),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)")));
+  jacobian->tmpVars[146] /* rover_8d.vs_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (DIVISION(jacobian->tmpVars[20] /* $cse25.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp215),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -5166,8 +5166,8 @@ void RoverExample_Components_Rover_eqFunction_659(DATA *data, threadData_t *thre
   modelica_real tmp220;
   modelica_real tmp221;
   modelica_real tmp222;
-  tmp220 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */);
-  tmp221 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */);
+  tmp220 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */);
+  tmp221 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */);
   tmp222 = (tmp220 * tmp220) + (tmp221 * tmp221);
   if(!(tmp222 >= 0.0))
   {
@@ -5181,7 +5181,7 @@ void RoverExample_Components_Rover_eqFunction_659(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0) was %g should be >= 0", tmp222);
     }
   }
-  jacobian->tmpVars[144] /* rover_8d.vs_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (DIVISION(jacobian->tmpVars[10] /* $cse17.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp222),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)")));
+  jacobian->tmpVars[144] /* rover_8d.vs_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (DIVISION(jacobian->tmpVars[12] /* $cse17.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp222),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -5230,7 +5230,7 @@ void RoverExample_Components_Rover_eqFunction_661(DATA *data, threadData_t *thre
   modelica_boolean tmp228;
   modelica_boolean tmp229;
   modelica_real tmp230;
-  tmp227 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),0.001);
+  tmp227 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),0.001);
   tmp229 = (modelica_boolean)tmp227;
   if(tmp229)
   {
@@ -5238,10 +5238,10 @@ void RoverExample_Components_Rover_eqFunction_661(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp228 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),1.0);
-    tmp230 = (tmp228?0.0:jacobian->tmpVars[25] /* $cse31.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+    tmp228 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),1.0);
+    tmp230 = (tmp228?0.0:jacobian->tmpVars[27] /* $cse31.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[24] /* $cse30.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp230;
+  jacobian->tmpVars[26] /* $cse30.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp230;
   TRACE_POP
 }
 
@@ -5257,8 +5257,8 @@ void RoverExample_Components_Rover_eqFunction_662(DATA *data, threadData_t *thre
   const int subClockIndex = 41;
   const int equationIndexes[2] = {1,662};
   modelica_real tmp231;
-  tmp231 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */));
-  jacobian->resultVars[12] /* der(rover_8d.alpha_rr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-jacobian->tmpVars[21] /* $cse28.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[22] /* $cse29.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (jacobian->tmpVars[24] /* $cse30.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(tmp231 * tmp231),"(rover_8d.Lrely * $cse30) ^ 2.0"))));
+  tmp231 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */));
+  jacobian->resultVars[12] /* der(rover_8d.alpha_rr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-jacobian->tmpVars[23] /* $cse28.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[24] /* $cse29.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (jacobian->tmpVars[26] /* $cse30.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(tmp231 * tmp231),"(rover_8d.Lrely * $cse30) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -5276,8 +5276,8 @@ void RoverExample_Components_Rover_eqFunction_663(DATA *data, threadData_t *thre
   modelica_real tmp232;
   modelica_real tmp233;
   modelica_real tmp234;
-  tmp232 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */);
-  tmp233 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */);
+  tmp232 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */);
+  tmp233 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */);
   tmp234 = (tmp232 * tmp232) + (tmp233 * tmp233);
   if(!(tmp234 >= 0.0))
   {
@@ -5291,7 +5291,7 @@ void RoverExample_Components_Rover_eqFunction_663(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0) was %g should be >= 0", tmp234);
     }
   }
-  jacobian->tmpVars[147] /* rover_8d.vs_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (DIVISION(jacobian->tmpVars[22] /* $cse29.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp234),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)")));
+  jacobian->tmpVars[147] /* rover_8d.vs_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (DIVISION(jacobian->tmpVars[24] /* $cse29.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp234),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -5339,8 +5339,8 @@ void RoverExample_Components_Rover_eqFunction_665(DATA *data, threadData_t *thre
   modelica_real tmp239;
   modelica_real tmp240;
   modelica_real tmp241;
-  tmp239 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */);
-  tmp240 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */);
+  tmp239 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */);
+  tmp240 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */);
   tmp241 = (tmp239 * tmp239) + (tmp240 * tmp240);
   if(!(tmp241 >= 0.0))
   {
@@ -5354,7 +5354,7 @@ void RoverExample_Components_Rover_eqFunction_665(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0) was %g should be >= 0", tmp241);
     }
   }
-  jacobian->tmpVars[145] /* rover_8d.vs_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (DIVISION(jacobian->tmpVars[14] /* $cse21.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp241),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)")));
+  jacobian->tmpVars[145] /* rover_8d.vs_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (DIVISION(jacobian->tmpVars[16] /* $cse21.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,sqrt(tmp241),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)")));
   TRACE_POP
 }
 
@@ -5392,8 +5392,8 @@ void RoverExample_Components_Rover_eqFunction_666(DATA *data, threadData_t *thre
 equation index: 711
 type: LINEAR
 
-<var>rover_8d.fz_fl.$pDERB.dummyVarB</var>
 <var>rover_8d.fz_rl.$pDERB.dummyVarB</var>
+<var>rover_8d.fz_fl.$pDERB.dummyVarB</var>
 <var>rover_8d.fz_rr.$pDERB.dummyVarB</var>
 <var>rover_8d.fz_fr.$pDERB.dummyVarB</var>
 <row>
@@ -5411,7 +5411,7 @@ void RoverExample_Components_Rover_eqFunction_711(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,711};
   /* Linear equation system */
   int retValue;
-  double aux_x[4] = { jacobian->tmpVars[128] /* rover_8d.fz_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,jacobian->tmpVars[130] /* rover_8d.fz_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,jacobian->tmpVars[131] /* rover_8d.fz_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,jacobian->tmpVars[129] /* rover_8d.fz_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ };
+  double aux_x[4] = { jacobian->tmpVars[118] /* rover_8d.fz_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,jacobian->tmpVars[116] /* rover_8d.fz_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,jacobian->tmpVars[119] /* rover_8d.fz_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,jacobian->tmpVars[117] /* rover_8d.fz_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ };
   if(OMC_ACTIVE_STREAM(OMC_LOG_DT))
   {
     infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 711 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
@@ -5427,10 +5427,10 @@ void RoverExample_Components_Rover_eqFunction_711(DATA *data, threadData_t *thre
     throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 711 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
   }
   /* write solution */
-  jacobian->tmpVars[128] /* rover_8d.fz_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[0];
-  jacobian->tmpVars[130] /* rover_8d.fz_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[1];
-  jacobian->tmpVars[131] /* rover_8d.fz_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[2];
-  jacobian->tmpVars[129] /* rover_8d.fz_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[3];
+  jacobian->tmpVars[118] /* rover_8d.fz_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[0];
+  jacobian->tmpVars[116] /* rover_8d.fz_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[1];
+  jacobian->tmpVars[119] /* rover_8d.fz_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[2];
+  jacobian->tmpVars[117] /* rover_8d.fz_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = aux_x[3];
 
   TRACE_POP
 }
@@ -5446,7 +5446,7 @@ void RoverExample_Components_Rover_eqFunction_712(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 47;
   const int equationIndexes[2] = {1,712};
-  jacobian->resultVars[23] /* der(rover_8d.p.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[30] /* $cse36.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[31] /* $cse37.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[109] /* rover_8d.ay.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse37 variable */)))) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx")));
+  jacobian->resultVars[23] /* der(rover_8d.p.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[32] /* $cse36.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[33] /* $cse37.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[109] /* rover_8d.ay.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse37 variable */)))) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx")));
   TRACE_POP
 }
 
@@ -5461,7 +5461,7 @@ void RoverExample_Components_Rover_eqFunction_713(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 48;
   const int equationIndexes[2] = {1,713};
-  jacobian->resultVars[27] /* der(rover_8d.r.$pDERB.dummyVarB) JACOBIAN_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[28] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[89] /* rover_8d.Fx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[29] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[93] /* rover_8d.Fy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[91] /* rover_8d.Fx_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[28] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[90] /* rover_8d.Fx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */))) - ((jacobian->tmpVars[94] /* rover_8d.Fy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[29] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[92] /* rover_8d.Fx_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[28] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[93] /* rover_8d.Fy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[29] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[89] /* rover_8d.Fx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[28] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[94] /* rover_8d.Fy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[29] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[90] /* rover_8d.Fx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[95] /* rover_8d.Fy_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ + jacobian->tmpVars[96] /* rover_8d.Fy_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
+  jacobian->resultVars[27] /* der(rover_8d.r.$pDERB.dummyVarB) JACOBIAN_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[30] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[89] /* rover_8d.Fx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[31] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[93] /* rover_8d.Fy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[91] /* rover_8d.Fx_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[30] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[90] /* rover_8d.Fx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */))) - ((jacobian->tmpVars[94] /* rover_8d.Fy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[31] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[92] /* rover_8d.Fx_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[30] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[93] /* rover_8d.Fy_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[31] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[89] /* rover_8d.Fx_fl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[30] /* $cse34.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[94] /* rover_8d.Fy_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[31] /* $cse35.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[90] /* rover_8d.Fx_fr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[95] /* rover_8d.Fy_rl.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ + jacobian->tmpVars[96] /* rover_8d.Fy_rr.$pDERB.dummyVarB JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
   TRACE_POP
 }
 
@@ -5476,7 +5476,7 @@ void RoverExample_Components_Rover_eqFunction_714(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 49;
   const int equationIndexes[2] = {1,714};
-  jacobian->resultVars[30] /* der(rover_8d.vy.$pDERB.dummyVarB) JACOBIAN_VAR */ = jacobian->tmpVars[109] /* rover_8d.ay.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ + (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->resultVars[27] /* der(rover_8d.r.$pDERB.dummyVarB) JACOBIAN_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total"));
+  jacobian->resultVars[30] /* der(rover_8d.vy.$pDERB.dummyVarB) JACOBIAN_VAR */ = jacobian->tmpVars[109] /* rover_8d.ay.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ + (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->resultVars[27] /* der(rover_8d.r.$pDERB.dummyVarB) JACOBIAN_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total"));
   TRACE_POP
 }
 
@@ -5532,7 +5532,7 @@ void RoverExample_Components_Rover_eqFunction_728(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 51;
   const int equationIndexes[2] = {1,728};
-  jacobian->resultVars[32] /* der(rover_8d.x.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[26] /* $cse32.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[27] /* $cse33.$pDERB.dummyVarB JACOBIAN_TMP_VAR */));
+  jacobian->resultVars[32] /* der(rover_8d.x.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[28] /* $cse32.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[29] /* $cse33.$pDERB.dummyVarB JACOBIAN_TMP_VAR */));
   TRACE_POP
 }
 
@@ -5547,7 +5547,7 @@ void RoverExample_Components_Rover_eqFunction_729(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 52;
   const int equationIndexes[2] = {1,729};
-  jacobian->resultVars[33] /* der(rover_8d.y.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[27] /* $cse33.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[26] /* $cse32.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+  jacobian->resultVars[33] /* der(rover_8d.y.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[29] /* $cse33.$pDERB.dummyVarB JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[28] /* $cse32.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -5566,7 +5566,7 @@ void RoverExample_Components_Rover_eqFunction_730(DATA *data, threadData_t *thre
   modelica_boolean tmp247;
   modelica_boolean tmp248;
   modelica_real tmp249;
-  tmp246 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),0.001);
+  tmp246 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),0.001);
   tmp248 = (modelica_boolean)tmp246;
   if(tmp248)
   {
@@ -5574,10 +5574,10 @@ void RoverExample_Components_Rover_eqFunction_730(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp247 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),1.0);
-    tmp249 = (tmp247?0.0:jacobian->tmpVars[7] /* $cse14.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
+    tmp247 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),1.0);
+    tmp249 = (tmp247?0.0:jacobian->tmpVars[9] /* $cse14.$pDERB.dummyVarB JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[6] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp249;
+  jacobian->tmpVars[8] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */ = tmp249;
   TRACE_POP
 }
 
@@ -5593,8 +5593,8 @@ void RoverExample_Components_Rover_eqFunction_731(DATA *data, threadData_t *thre
   const int subClockIndex = 54;
   const int equationIndexes[2] = {1,731};
   modelica_real tmp250;
-  tmp250 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[17] /* der(rover_8d.kappa_rr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[6] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp250 * tmp250),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp250 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[17] /* der(rover_8d.kappa_rr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[8] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp250 * tmp250),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -5610,8 +5610,8 @@ void RoverExample_Components_Rover_eqFunction_732(DATA *data, threadData_t *thre
   const int subClockIndex = 55;
   const int equationIndexes[2] = {1,732};
   modelica_real tmp251;
-  tmp251 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[16] /* der(rover_8d.kappa_rl.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[6] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp251 * tmp251),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp251 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[16] /* der(rover_8d.kappa_rl.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[8] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp251 * tmp251),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -5627,8 +5627,8 @@ void RoverExample_Components_Rover_eqFunction_733(DATA *data, threadData_t *thre
   const int subClockIndex = 56;
   const int equationIndexes[2] = {1,733};
   modelica_real tmp252;
-  tmp252 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[15] /* der(rover_8d.kappa_fr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[6] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp252 * tmp252),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp252 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[15] /* der(rover_8d.kappa_fr.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[8] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp252 * tmp252),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -5644,8 +5644,8 @@ void RoverExample_Components_Rover_eqFunction_734(DATA *data, threadData_t *thre
   const int subClockIndex = 57;
   const int equationIndexes[2] = {1,734};
   modelica_real tmp253;
-  tmp253 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[14] /* der(rover_8d.kappa_fl.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[6] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp253 * tmp253),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
+  tmp253 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[14] /* der(rover_8d.kappa_fl.$pDERB.dummyVarB) JACOBIAN_VAR */ = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION(jacobian->tmpVars[8] /* $cse13.$pDERB.dummyVarB JACOBIAN_TMP_VAR */,(tmp253 * tmp253),"(rover_8d.Lrelx * $cse13) ^ 2.0"))));
   TRACE_POP
 }
 
@@ -6235,7 +6235,7 @@ void RoverExample_Components_Rover_eqFunction_492(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 33;
   const int equationIndexes[2] = {1,492};
-  jacobian->resultVars[1] /* der(rover_3d.psi.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[53] /* $cse6.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[57] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
+  jacobian->resultVars[1] /* der(rover_3d.psi.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION(jacobian->tmpVars[55] /* $cse6.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[55] /* rover_3d.l_total PARAM */),"rover_3d.l_total"));
   TRACE_POP
 }
 
@@ -6250,7 +6250,7 @@ void RoverExample_Components_Rover_eqFunction_493(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 34;
   const int equationIndexes[2] = {1,493};
-  jacobian->tmpVars[121] /* rover_8d.Vq.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[23] /* $cse12.$pDERA.dummyVarA JACOBIAN_TMP_VAR */));
+  jacobian->tmpVars[121] /* rover_8d.Vq.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * (jacobian->tmpVars[25] /* $cse12.$pDERA.dummyVarA JACOBIAN_TMP_VAR */));
   TRACE_POP
 }
 
@@ -6297,7 +6297,7 @@ void RoverExample_Components_Rover_eqFunction_496(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,496};
   modelica_real tmp254;
   tmp254 = jacobian->tmpVars[4] /* $cse59 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[38] /* $cse27.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp254 * tmp254),"$cse59 ^ 2.0"));
+  jacobian->tmpVars[40] /* $cse27.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (DIVISION(jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp254 * tmp254),"$cse59 ^ 2.0"));
   TRACE_POP
 }
 
@@ -6316,7 +6316,7 @@ void RoverExample_Components_Rover_eqFunction_497(DATA *data, threadData_t *thre
   modelica_boolean tmp256;
   modelica_boolean tmp257;
   modelica_real tmp258;
-  tmp255 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),0.001);
+  tmp255 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),0.001);
   tmp257 = (modelica_boolean)tmp255;
   if(tmp257)
   {
@@ -6324,10 +6324,10 @@ void RoverExample_Components_Rover_eqFunction_497(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp256 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */),1.0);
-    tmp258 = (tmp256?0.0:jacobian->tmpVars[38] /* $cse27.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
+    tmp256 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */),1.0);
+    tmp258 = (tmp256?0.0:jacobian->tmpVars[40] /* $cse27.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[37] /* $cse26.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp258;
+  jacobian->tmpVars[39] /* $cse26.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp258;
   TRACE_POP
 }
 
@@ -6342,7 +6342,7 @@ void RoverExample_Components_Rover_eqFunction_498(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 39;
   const int equationIndexes[2] = {1,498};
-  jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */));
+  jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */));
   TRACE_POP
 }
 
@@ -6359,7 +6359,7 @@ void RoverExample_Components_Rover_eqFunction_499(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,499};
   modelica_real tmp259;
   tmp259 = jacobian->tmpVars[5] /* $cse58 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[39] /* $cse28.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp259 * tmp259),"$cse58 ^ 2.0"));
+  jacobian->tmpVars[41] /* $cse28.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp259 * tmp259),"$cse58 ^ 2.0"));
   TRACE_POP
 }
 
@@ -6391,7 +6391,7 @@ void RoverExample_Components_Rover_eqFunction_501(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,501};
   modelica_real tmp260;
   tmp260 = jacobian->tmpVars[6] /* $cse57 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[43] /* $cse31.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (DIVISION(jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp260 * tmp260),"$cse57 ^ 2.0"));
+  jacobian->tmpVars[45] /* $cse31.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (DIVISION(jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp260 * tmp260),"$cse57 ^ 2.0"));
   TRACE_POP
 }
 
@@ -6410,7 +6410,7 @@ void RoverExample_Components_Rover_eqFunction_502(DATA *data, threadData_t *thre
   modelica_boolean tmp262;
   modelica_boolean tmp263;
   modelica_real tmp264;
-  tmp261 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),0.001);
+  tmp261 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),0.001);
   tmp263 = (modelica_boolean)tmp261;
   if(tmp263)
   {
@@ -6418,10 +6418,10 @@ void RoverExample_Components_Rover_eqFunction_502(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp262 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */),1.0);
-    tmp264 = (tmp262?0.0:jacobian->tmpVars[43] /* $cse31.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
+    tmp262 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */),1.0);
+    tmp264 = (tmp262?0.0:jacobian->tmpVars[45] /* $cse31.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[42] /* $cse30.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp264;
+  jacobian->tmpVars[44] /* $cse30.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp264;
   TRACE_POP
 }
 
@@ -6436,7 +6436,7 @@ void RoverExample_Components_Rover_eqFunction_503(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 44;
   const int equationIndexes[2] = {1,503};
-  jacobian->resultVars[18] /* der(rover_8d.lambda.$pDERA.dummyVarA) JACOBIAN_VAR */ = (0.25) * ((jacobian->seedVars[19] /* rover_8d.omega_fl.SeedA SEED_VAR */ + jacobian->seedVars[21] /* rover_8d.omega_rl.SeedA SEED_VAR */ + jacobian->seedVars[22] /* rover_8d.omega_rr.SeedA SEED_VAR */ + jacobian->seedVars[20] /* rover_8d.omega_fr.SeedA SEED_VAR */) * ((data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */)));
+  jacobian->resultVars[18] /* der(rover_8d.lambda.$pDERA.dummyVarA) JACOBIAN_VAR */ = (0.25) * ((jacobian->seedVars[19] /* rover_8d.omega_fl.SeedA SEED_VAR */ + jacobian->seedVars[21] /* rover_8d.omega_rl.SeedA SEED_VAR */ + jacobian->seedVars[22] /* rover_8d.omega_rr.SeedA SEED_VAR */ + jacobian->seedVars[20] /* rover_8d.omega_fr.SeedA SEED_VAR */) * ((data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */)));
   TRACE_POP
 }
 
@@ -6466,7 +6466,7 @@ void RoverExample_Components_Rover_eqFunction_505(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 46;
   const int equationIndexes[2] = {1,505};
-  jacobian->tmpVars[49] /* $cse37.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[7] /* $cse56 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[24] /* rover_8d.phi.SeedA SEED_VAR */);
+  jacobian->tmpVars[51] /* $cse37.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[7] /* $cse56 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[24] /* rover_8d.phi.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6481,7 +6481,7 @@ void RoverExample_Components_Rover_eqFunction_506(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 47;
   const int equationIndexes[2] = {1,506};
-  jacobian->tmpVars[48] /* $cse36.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse55 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[24] /* rover_8d.phi.SeedA SEED_VAR */);
+  jacobian->tmpVars[50] /* $cse36.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[8] /* $cse55 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[24] /* rover_8d.phi.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6496,7 +6496,7 @@ void RoverExample_Components_Rover_eqFunction_507(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 48;
   const int equationIndexes[2] = {1,507};
-  jacobian->tmpVars[47] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[9] /* $cse54 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
+  jacobian->tmpVars[49] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[9] /* $cse54 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6511,7 +6511,7 @@ void RoverExample_Components_Rover_eqFunction_508(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 49;
   const int equationIndexes[2] = {1,508};
-  jacobian->tmpVars[46] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse53 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
+  jacobian->tmpVars[48] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[10] /* $cse53 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6526,7 +6526,7 @@ void RoverExample_Components_Rover_eqFunction_509(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 50;
   const int equationIndexes[2] = {1,509};
-  jacobian->tmpVars[45] /* $cse33.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[11] /* $cse52 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[25] /* rover_8d.psi.SeedA SEED_VAR */);
+  jacobian->tmpVars[47] /* $cse33.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[11] /* $cse52 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[25] /* rover_8d.psi.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6541,7 +6541,7 @@ void RoverExample_Components_Rover_eqFunction_510(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 51;
   const int equationIndexes[2] = {1,510};
-  jacobian->tmpVars[44] /* $cse32.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[12] /* $cse51 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[25] /* rover_8d.psi.SeedA SEED_VAR */);
+  jacobian->tmpVars[46] /* $cse32.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[12] /* $cse51 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[25] /* rover_8d.psi.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6556,7 +6556,7 @@ void RoverExample_Components_Rover_eqFunction_511(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 52;
   const int equationIndexes[2] = {1,511};
-  jacobian->resultVars[33] /* der(rover_8d.y.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[45] /* $cse33.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse33 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[44] /* $cse32.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse32 variable */));
+  jacobian->resultVars[33] /* der(rover_8d.y.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[47] /* $cse33.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse33 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * (jacobian->tmpVars[46] /* $cse32.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse32 variable */));
   TRACE_POP
 }
 
@@ -6571,7 +6571,7 @@ void RoverExample_Components_Rover_eqFunction_512(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 53;
   const int equationIndexes[2] = {1,512};
-  jacobian->resultVars[32] /* der(rover_8d.x.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[44] /* $cse32.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse32 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */))) * (jacobian->tmpVars[45] /* $cse33.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse33 variable */)));
+  jacobian->resultVars[32] /* der(rover_8d.x.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * (jacobian->tmpVars[46] /* $cse32.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse32 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */))) * (jacobian->tmpVars[47] /* $cse33.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse33 variable */)));
   TRACE_POP
 }
 
@@ -6616,7 +6616,7 @@ void RoverExample_Components_Rover_eqFunction_514(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 55;
   const int equationIndexes[2] = {1,514};
-  jacobian->tmpVars[40] /* $cse29.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[125] /* rover_8d.alpha_rr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[13] /* $cse50 JACOBIAN_TMP_VAR */,"1.0 + $cse50"));
+  jacobian->tmpVars[42] /* $cse29.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[125] /* rover_8d.alpha_rr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[13] /* $cse50 JACOBIAN_TMP_VAR */,"1.0 + $cse50"));
   TRACE_POP
 }
 
@@ -6632,8 +6632,8 @@ void RoverExample_Components_Rover_eqFunction_515(DATA *data, threadData_t *thre
   const int subClockIndex = 56;
   const int equationIndexes[2] = {1,515};
   modelica_real tmp269;
-  tmp269 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */));
-  jacobian->resultVars[12] /* der(rover_8d.alpha_rr.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[39] /* $cse28.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[40] /* $cse29.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (jacobian->tmpVars[42] /* $cse30.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp269 * tmp269),"(rover_8d.Lrely * $cse30) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * ((jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse30 * rover_8d.Lrely"))));
+  tmp269 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */));
+  jacobian->resultVars[12] /* der(rover_8d.alpha_rr.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[41] /* $cse28.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[42] /* $cse29.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (jacobian->tmpVars[44] /* $cse30.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp269 * tmp269),"(rover_8d.Lrely * $cse30) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */))) * ((jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse30 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -6678,7 +6678,7 @@ void RoverExample_Components_Rover_eqFunction_517(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 58;
   const int equationIndexes[2] = {1,517};
-  jacobian->tmpVars[36] /* $cse25.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[124] /* rover_8d.alpha_rl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[14] /* $cse49 JACOBIAN_TMP_VAR */,"1.0 + $cse49"));
+  jacobian->tmpVars[38] /* $cse25.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[124] /* rover_8d.alpha_rl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[14] /* $cse49 JACOBIAN_TMP_VAR */,"1.0 + $cse49"));
   TRACE_POP
 }
 
@@ -6694,8 +6694,8 @@ void RoverExample_Components_Rover_eqFunction_518(DATA *data, threadData_t *thre
   const int subClockIndex = 59;
   const int equationIndexes[2] = {1,518};
   modelica_real tmp274;
-  tmp274 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
-  jacobian->resultVars[11] /* der(rover_8d.alpha_rl.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * ((jacobian->tmpVars[37] /* $cse26.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[36] /* $cse25.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))))),(tmp274 * tmp274),"($cse26 * rover_8d.Lrely) ^ 2.0") + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[39] /* $cse28.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * ((jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)),"rover_8d.Lrely * $cse26"))));
+  tmp274 = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */));
+  jacobian->resultVars[11] /* der(rover_8d.alpha_rl.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * ((jacobian->tmpVars[39] /* $cse26.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))) - ((jacobian->tmpVars[38] /* $cse25.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */))))),(tmp274 * tmp274),"($cse26 * rover_8d.Lrely) ^ 2.0") + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse28 variable */))) * (DIVISION(jacobian->tmpVars[172] /* rover_8d.vy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[41] /* $cse28.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */))) * ((jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)),"rover_8d.Lrely * $cse26"))));
   TRACE_POP
 }
 
@@ -6740,7 +6740,7 @@ void RoverExample_Components_Rover_eqFunction_520(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 61;
   const int equationIndexes[2] = {1,520};
-  jacobian->tmpVars[32] /* $cse21.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[123] /* rover_8d.alpha_fr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[15] /* $cse48 JACOBIAN_TMP_VAR */,"1.0 + $cse48"));
+  jacobian->tmpVars[34] /* $cse21.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[123] /* rover_8d.alpha_fr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[15] /* $cse48 JACOBIAN_TMP_VAR */,"1.0 + $cse48"));
   TRACE_POP
 }
 
@@ -6785,7 +6785,7 @@ void RoverExample_Components_Rover_eqFunction_522(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 63;
   const int equationIndexes[2] = {1,522};
-  jacobian->tmpVars[28] /* $cse17.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[122] /* rover_8d.alpha_fl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[16] /* $cse47 JACOBIAN_TMP_VAR */,"1.0 + $cse47"));
+  jacobian->tmpVars[30] /* $cse17.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (2.0) * (DIVISION(jacobian->tmpVars[122] /* rover_8d.alpha_fl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,1.0 + jacobian->tmpVars[16] /* $cse47 JACOBIAN_TMP_VAR */,"1.0 + $cse47"));
   TRACE_POP
 }
 
@@ -6800,7 +6800,7 @@ void RoverExample_Components_Rover_eqFunction_523(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 64;
   const int equationIndexes[2] = {1,523};
-  jacobian->tmpVars[27] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[17] /* $cse46 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
+  jacobian->tmpVars[29] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[17] /* $cse46 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6815,7 +6815,7 @@ void RoverExample_Components_Rover_eqFunction_524(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 65;
   const int equationIndexes[2] = {1,524};
-  jacobian->tmpVars[26] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[18] /* $cse45 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
+  jacobian->tmpVars[28] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[18] /* $cse45 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[13] /* rover_8d.delta.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -6830,7 +6830,7 @@ void RoverExample_Components_Rover_eqFunction_525(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 66;
   const int equationIndexes[2] = {1,525};
-  jacobian->tmpVars[171] /* rover_8d.vy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[26] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */))) * (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[27] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
+  jacobian->tmpVars[171] /* rover_8d.vy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[28] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */))) * (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[29] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
   TRACE_POP
 }
 
@@ -6847,7 +6847,7 @@ void RoverExample_Components_Rover_eqFunction_526(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,526};
   modelica_real tmp283;
   tmp283 = jacobian->tmpVars[3] /* $cse60 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[35] /* $cse24.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[171] /* rover_8d.vy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp283 * tmp283),"$cse60 ^ 2.0"));
+  jacobian->tmpVars[37] /* $cse24.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */))) * (DIVISION(jacobian->tmpVars[171] /* rover_8d.vy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp283 * tmp283),"$cse60 ^ 2.0"));
   TRACE_POP
 }
 
@@ -6862,7 +6862,7 @@ void RoverExample_Components_Rover_eqFunction_527(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 68;
   const int equationIndexes[2] = {1,527};
-  jacobian->tmpVars[167] /* rover_8d.vx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[26] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[27] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[167] /* rover_8d.vx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[28] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[29] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -6879,7 +6879,7 @@ void RoverExample_Components_Rover_eqFunction_528(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,528};
   modelica_real tmp284;
   tmp284 = jacobian->tmpVars[2] /* $cse61 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[34] /* $cse23.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[167] /* rover_8d.vx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp284 * tmp284),"$cse61 ^ 2.0"));
+  jacobian->tmpVars[36] /* $cse23.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (DIVISION(jacobian->tmpVars[167] /* rover_8d.vx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp284 * tmp284),"$cse61 ^ 2.0"));
   TRACE_POP
 }
 
@@ -6898,7 +6898,7 @@ void RoverExample_Components_Rover_eqFunction_529(DATA *data, threadData_t *thre
   modelica_boolean tmp286;
   modelica_boolean tmp287;
   modelica_real tmp288;
-  tmp285 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),0.001);
+  tmp285 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),0.001);
   tmp287 = (modelica_boolean)tmp285;
   if(tmp287)
   {
@@ -6906,10 +6906,10 @@ void RoverExample_Components_Rover_eqFunction_529(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp286 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */),1.0);
-    tmp288 = (tmp286?0.0:jacobian->tmpVars[34] /* $cse23.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
+    tmp286 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */),1.0);
+    tmp288 = (tmp286?0.0:jacobian->tmpVars[36] /* $cse23.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[33] /* $cse22.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp288;
+  jacobian->tmpVars[35] /* $cse22.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp288;
   TRACE_POP
 }
 
@@ -6925,8 +6925,8 @@ void RoverExample_Components_Rover_eqFunction_530(DATA *data, threadData_t *thre
   const int subClockIndex = 71;
   const int equationIndexes[2] = {1,530};
   modelica_real tmp289;
-  tmp289 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */));
-  jacobian->resultVars[10] /* der(rover_8d.alpha_fr.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[171] /* rover_8d.vy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[35] /* $cse24.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[32] /* $cse21.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (jacobian->tmpVars[33] /* $cse22.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp289 * tmp289),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[167] /* rover_8d.vx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
+  tmp289 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */));
+  jacobian->resultVars[10] /* der(rover_8d.alpha_fr.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse24 variable */))) * (DIVISION(jacobian->tmpVars[171] /* rover_8d.vy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[37] /* $cse24.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[34] /* $cse21.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (jacobian->tmpVars[35] /* $cse22.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp289 * tmp289),"(rover_8d.Lrely * $cse22) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */))) * ((jacobian->tmpVars[167] /* rover_8d.vx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse22 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -6941,7 +6941,7 @@ void RoverExample_Components_Rover_eqFunction_531(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 72;
   const int equationIndexes[2] = {1,531};
-  jacobian->tmpVars[170] /* rover_8d.vy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[26] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */))) * (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[27] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
+  jacobian->tmpVars[170] /* rover_8d.vy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[28] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */))) * (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[29] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
   TRACE_POP
 }
 
@@ -6958,7 +6958,7 @@ void RoverExample_Components_Rover_eqFunction_532(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,532};
   modelica_real tmp290;
   tmp290 = jacobian->tmpVars[1] /* $cse62 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[31] /* $cse20.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[170] /* rover_8d.vy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp290 * tmp290),"$cse62 ^ 2.0"));
+  jacobian->tmpVars[33] /* $cse20.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */))) * (DIVISION(jacobian->tmpVars[170] /* rover_8d.vy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp290 * tmp290),"$cse62 ^ 2.0"));
   TRACE_POP
 }
 
@@ -6973,7 +6973,7 @@ void RoverExample_Components_Rover_eqFunction_533(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 74;
   const int equationIndexes[2] = {1,533};
-  jacobian->tmpVars[166] /* rover_8d.vx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[26] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[27] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  jacobian->tmpVars[166] /* rover_8d.vx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[28] /* $cse15.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * (jacobian->seedVars[30] /* rover_8d.vy.SeedA SEED_VAR */ + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) + (jacobian->tmpVars[29] /* $cse16.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -6990,7 +6990,7 @@ void RoverExample_Components_Rover_eqFunction_534(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,534};
   modelica_real tmp291;
   tmp291 = jacobian->tmpVars[0] /* $cse63 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[30] /* $cse19.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[166] /* rover_8d.vx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp291 * tmp291),"$cse63 ^ 2.0"));
+  jacobian->tmpVars[32] /* $cse19.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (DIVISION(jacobian->tmpVars[166] /* rover_8d.vx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(tmp291 * tmp291),"$cse63 ^ 2.0"));
   TRACE_POP
 }
 
@@ -7009,7 +7009,7 @@ void RoverExample_Components_Rover_eqFunction_535(DATA *data, threadData_t *thre
   modelica_boolean tmp293;
   modelica_boolean tmp294;
   modelica_real tmp295;
-  tmp292 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),0.001);
+  tmp292 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),0.001);
   tmp294 = (modelica_boolean)tmp292;
   if(tmp294)
   {
@@ -7017,10 +7017,10 @@ void RoverExample_Components_Rover_eqFunction_535(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp293 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */),1.0);
-    tmp295 = (tmp293?0.0:jacobian->tmpVars[30] /* $cse19.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
+    tmp293 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */),1.0);
+    tmp295 = (tmp293?0.0:jacobian->tmpVars[32] /* $cse19.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[29] /* $cse18.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp295;
+  jacobian->tmpVars[31] /* $cse18.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp295;
   TRACE_POP
 }
 
@@ -7036,8 +7036,8 @@ void RoverExample_Components_Rover_eqFunction_536(DATA *data, threadData_t *thre
   const int subClockIndex = 77;
   const int equationIndexes[2] = {1,536};
   modelica_real tmp296;
-  tmp296 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */));
-  jacobian->resultVars[9] /* der(rover_8d.alpha_fl.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[170] /* rover_8d.vy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[31] /* $cse20.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[28] /* $cse17.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (jacobian->tmpVars[29] /* $cse18.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp296 * tmp296),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[166] /* rover_8d.vx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
+  tmp296 = ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */));
+  jacobian->resultVars[9] /* der(rover_8d.alpha_fl.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse20 variable */))) * (DIVISION(jacobian->tmpVars[170] /* rover_8d.vy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely")) - ((jacobian->tmpVars[33] /* $cse20.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely"))) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * (((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * (DIVISION((jacobian->tmpVars[30] /* $cse17.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (jacobian->tmpVars[31] /* $cse18.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp296 * tmp296),"(rover_8d.Lrely * $cse18) ^ 2.0")))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */))) * ((jacobian->tmpVars[166] /* rover_8d.vx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse18 * rover_8d.Lrely"))));
   TRACE_POP
 }
 
@@ -7056,7 +7056,7 @@ void RoverExample_Components_Rover_eqFunction_537(DATA *data, threadData_t *thre
   modelica_boolean tmp298;
   modelica_boolean tmp299;
   modelica_real tmp300;
-  tmp297 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp297 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp299 = (modelica_boolean)tmp297;
   if(tmp299)
   {
@@ -7064,10 +7064,10 @@ void RoverExample_Components_Rover_eqFunction_537(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp298 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp298 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp300 = (tmp298?0.0:jacobian->seedVars[17] /* rover_8d.kappa_rr.SeedA SEED_VAR */);
   }
-  jacobian->tmpVars[153] /* rover_8d.kappa_rr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp300;
+  jacobian->tmpVars[141] /* rover_8d.kappa_rr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp300;
   TRACE_POP
 }
 
@@ -7088,8 +7088,8 @@ void RoverExample_Components_Rover_eqFunction_538(DATA *data, threadData_t *thre
   modelica_real tmp304;
   modelica_real tmp305;
   modelica_real tmp306;
-  tmp301 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */);
-  tmp302 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */);
+  tmp301 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */);
+  tmp302 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */);
   tmp303 = (tmp301 * tmp301) + (tmp302 * tmp302);
   if(!(tmp303 >= 0.0))
   {
@@ -7102,8 +7102,8 @@ void RoverExample_Components_Rover_eqFunction_538(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0) was %g should be >= 0", tmp303);
     }
-  }tmp304 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */);
-  tmp305 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */);
+  }tmp304 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */);
+  tmp305 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */);
   tmp306 = (tmp304 * tmp304) + (tmp305 * tmp305);
   if(!(tmp306 >= 0.0))
   {
@@ -7117,7 +7117,7 @@ void RoverExample_Components_Rover_eqFunction_538(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0) was %g should be >= 0", tmp306);
     }
   }
-  jacobian->tmpVars[165] /* rover_8d.vs_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */)) * (jacobian->tmpVars[153] /* rover_8d.kappa_rr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (jacobian->tmpVars[40] /* $cse29.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp303),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)"))) + (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp306));
+  jacobian->tmpVars[165] /* rover_8d.vs_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */)) * (jacobian->tmpVars[141] /* rover_8d.kappa_rr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (jacobian->tmpVars[42] /* $cse29.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp303),"sqrt(rover_8d.kappa_rr_bnd ^ 2.0 + $cse29 ^ 2.0)"))) + (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp306));
   TRACE_POP
 }
 
@@ -7166,7 +7166,7 @@ void RoverExample_Components_Rover_eqFunction_540(DATA *data, threadData_t *thre
   modelica_boolean tmp312;
   modelica_boolean tmp313;
   modelica_real tmp314;
-  tmp311 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp311 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp313 = (modelica_boolean)tmp311;
   if(tmp313)
   {
@@ -7174,10 +7174,10 @@ void RoverExample_Components_Rover_eqFunction_540(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp312 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp312 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp314 = (tmp312?0.0:jacobian->seedVars[16] /* rover_8d.kappa_rl.SeedA SEED_VAR */);
   }
-  jacobian->tmpVars[152] /* rover_8d.kappa_rl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp314;
+  jacobian->tmpVars[140] /* rover_8d.kappa_rl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp314;
   TRACE_POP
 }
 
@@ -7198,8 +7198,8 @@ void RoverExample_Components_Rover_eqFunction_541(DATA *data, threadData_t *thre
   modelica_real tmp318;
   modelica_real tmp319;
   modelica_real tmp320;
-  tmp315 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */);
-  tmp316 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */);
+  tmp315 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */);
+  tmp316 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */);
   tmp317 = (tmp315 * tmp315) + (tmp316 * tmp316);
   if(!(tmp317 >= 0.0))
   {
@@ -7212,8 +7212,8 @@ void RoverExample_Components_Rover_eqFunction_541(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0) was %g should be >= 0", tmp317);
     }
-  }tmp318 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */);
-  tmp319 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */);
+  }tmp318 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */);
+  tmp319 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */);
   tmp320 = (tmp318 * tmp318) + (tmp319 * tmp319);
   if(!(tmp320 >= 0.0))
   {
@@ -7227,7 +7227,7 @@ void RoverExample_Components_Rover_eqFunction_541(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0) was %g should be >= 0", tmp320);
     }
   }
-  jacobian->tmpVars[164] /* rover_8d.vs_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */)) * (jacobian->tmpVars[152] /* rover_8d.kappa_rl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (jacobian->tmpVars[36] /* $cse25.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp317),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)"))) + (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp320));
+  jacobian->tmpVars[164] /* rover_8d.vs_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */)) * (jacobian->tmpVars[140] /* rover_8d.kappa_rl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (jacobian->tmpVars[38] /* $cse25.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp317),"sqrt(rover_8d.kappa_rl_bnd ^ 2.0 + $cse25 ^ 2.0)"))) + (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp320));
   TRACE_POP
 }
 
@@ -7276,7 +7276,7 @@ void RoverExample_Components_Rover_eqFunction_543(DATA *data, threadData_t *thre
   modelica_boolean tmp326;
   modelica_boolean tmp327;
   modelica_real tmp328;
-  tmp325 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp325 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp327 = (modelica_boolean)tmp325;
   if(tmp327)
   {
@@ -7284,10 +7284,10 @@ void RoverExample_Components_Rover_eqFunction_543(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp326 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp326 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp328 = (tmp326?0.0:jacobian->seedVars[15] /* rover_8d.kappa_fr.SeedA SEED_VAR */);
   }
-  jacobian->tmpVars[151] /* rover_8d.kappa_fr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp328;
+  jacobian->tmpVars[139] /* rover_8d.kappa_fr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp328;
   TRACE_POP
 }
 
@@ -7308,8 +7308,8 @@ void RoverExample_Components_Rover_eqFunction_544(DATA *data, threadData_t *thre
   modelica_real tmp332;
   modelica_real tmp333;
   modelica_real tmp334;
-  tmp329 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */);
-  tmp330 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */);
+  tmp329 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */);
+  tmp330 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */);
   tmp331 = (tmp329 * tmp329) + (tmp330 * tmp330);
   if(!(tmp331 >= 0.0))
   {
@@ -7322,8 +7322,8 @@ void RoverExample_Components_Rover_eqFunction_544(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0) was %g should be >= 0", tmp331);
     }
-  }tmp332 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */);
-  tmp333 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */);
+  }tmp332 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */);
+  tmp333 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */);
   tmp334 = (tmp332 * tmp332) + (tmp333 * tmp333);
   if(!(tmp334 >= 0.0))
   {
@@ -7337,7 +7337,7 @@ void RoverExample_Components_Rover_eqFunction_544(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0) was %g should be >= 0", tmp334);
     }
   }
-  jacobian->tmpVars[163] /* rover_8d.vs_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */)) * (jacobian->tmpVars[151] /* rover_8d.kappa_fr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (jacobian->tmpVars[32] /* $cse21.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp331),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)"))) + (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp334));
+  jacobian->tmpVars[163] /* rover_8d.vs_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */)) * (jacobian->tmpVars[139] /* rover_8d.kappa_fr_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (jacobian->tmpVars[34] /* $cse21.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp331),"sqrt(rover_8d.kappa_fr_bnd ^ 2.0 + $cse21 ^ 2.0)"))) + (jacobian->tmpVars[169] /* rover_8d.vx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp334));
   TRACE_POP
 }
 
@@ -7386,7 +7386,7 @@ void RoverExample_Components_Rover_eqFunction_546(DATA *data, threadData_t *thre
   modelica_boolean tmp340;
   modelica_boolean tmp341;
   modelica_real tmp342;
-  tmp339 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */));
+  tmp339 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */));
   tmp341 = (modelica_boolean)tmp339;
   if(tmp341)
   {
@@ -7394,10 +7394,10 @@ void RoverExample_Components_Rover_eqFunction_546(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp340 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+    tmp340 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),(data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
     tmp342 = (tmp340?0.0:jacobian->seedVars[14] /* rover_8d.kappa_fl.SeedA SEED_VAR */);
   }
-  jacobian->tmpVars[150] /* rover_8d.kappa_fl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp342;
+  jacobian->tmpVars[138] /* rover_8d.kappa_fl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp342;
   TRACE_POP
 }
 
@@ -7418,8 +7418,8 @@ void RoverExample_Components_Rover_eqFunction_547(DATA *data, threadData_t *thre
   modelica_real tmp346;
   modelica_real tmp347;
   modelica_real tmp348;
-  tmp343 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */);
-  tmp344 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */);
+  tmp343 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */);
+  tmp344 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */);
   tmp345 = (tmp343 * tmp343) + (tmp344 * tmp344);
   if(!(tmp345 >= 0.0))
   {
@@ -7432,8 +7432,8 @@ void RoverExample_Components_Rover_eqFunction_547(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0) was %g should be >= 0", tmp345);
     }
-  }tmp346 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */);
-  tmp347 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */);
+  }tmp346 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */);
+  tmp347 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */);
   tmp348 = (tmp346 * tmp346) + (tmp347 * tmp347);
   if(!(tmp348 >= 0.0))
   {
@@ -7447,7 +7447,7 @@ void RoverExample_Components_Rover_eqFunction_547(DATA *data, threadData_t *thre
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0) was %g should be >= 0", tmp348);
     }
   }
-  jacobian->tmpVars[162] /* rover_8d.vs_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */)) * (jacobian->tmpVars[150] /* rover_8d.kappa_fl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (jacobian->tmpVars[28] /* $cse17.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp345),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)"))) + (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp348));
+  jacobian->tmpVars[162] /* rover_8d.vs_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) * (DIVISION((2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */)) * (jacobian->tmpVars[138] /* rover_8d.kappa_fl_bnd.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (jacobian->tmpVars[30] /* $cse17.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),sqrt(tmp345),"sqrt(rover_8d.kappa_fl_bnd ^ 2.0 + $cse17 ^ 2.0)"))) + (jacobian->tmpVars[168] /* rover_8d.vx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * (sqrt(tmp348));
   TRACE_POP
 }
 
@@ -7485,9 +7485,9 @@ void RoverExample_Components_Rover_eqFunction_548(DATA *data, threadData_t *thre
 equation index: 593
 type: LINEAR
 
+<var>rover_8d.fz_rl.$pDERA.dummyVarA</var>
 <var>rover_8d.fz_fr.$pDERA.dummyVarA</var>
 <var>rover_8d.fz_rr.$pDERA.dummyVarA</var>
-<var>rover_8d.fz_rl.$pDERA.dummyVarA</var>
 <var>rover_8d.fz_fl.$pDERA.dummyVarA</var>
 <row>
 
@@ -7504,7 +7504,7 @@ void RoverExample_Components_Rover_eqFunction_593(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,593};
   /* Linear equation system */
   int retValue;
-  double aux_x[4] = { jacobian->tmpVars[147] /* rover_8d.fz_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,jacobian->tmpVars[149] /* rover_8d.fz_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,jacobian->tmpVars[148] /* rover_8d.fz_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,jacobian->tmpVars[146] /* rover_8d.fz_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ };
+  double aux_x[4] = { jacobian->tmpVars[136] /* rover_8d.fz_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,jacobian->tmpVars[135] /* rover_8d.fz_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,jacobian->tmpVars[137] /* rover_8d.fz_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */,jacobian->tmpVars[134] /* rover_8d.fz_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ };
   if(OMC_ACTIVE_STREAM(OMC_LOG_DT))
   {
     infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 593 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
@@ -7520,10 +7520,10 @@ void RoverExample_Components_Rover_eqFunction_593(DATA *data, threadData_t *thre
     throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 593 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
   }
   /* write solution */
-  jacobian->tmpVars[147] /* rover_8d.fz_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[0];
-  jacobian->tmpVars[149] /* rover_8d.fz_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[1];
-  jacobian->tmpVars[148] /* rover_8d.fz_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[2];
-  jacobian->tmpVars[146] /* rover_8d.fz_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[3];
+  jacobian->tmpVars[136] /* rover_8d.fz_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[0];
+  jacobian->tmpVars[135] /* rover_8d.fz_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[1];
+  jacobian->tmpVars[137] /* rover_8d.fz_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[2];
+  jacobian->tmpVars[134] /* rover_8d.fz_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[3];
 
   TRACE_POP
 }
@@ -7554,12 +7554,42 @@ void RoverExample_Components_Rover_eqFunction_595(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 92;
   const int equationIndexes[2] = {1,595};
-  jacobian->resultVars[23] /* der(rover_8d.p.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[48] /* $cse36.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[49] /* $cse37.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[127] /* rover_8d.ay.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse37 variable */)))) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */))) + ((-(data->simulationInfo->realParameter[109] /* rover_8d.k_rllsp PARAM */))) * (jacobian->seedVars[24] /* rover_8d.phi.SeedA SEED_VAR */) - (((data->simulationInfo->realParameter[85] /* rover_8d.c_rllsp PARAM */)) * (jacobian->seedVars[23] /* rover_8d.p.SeedA SEED_VAR */)),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx");
+  jacobian->resultVars[23] /* der(rover_8d.p.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((9.80665) * (jacobian->tmpVars[50] /* $cse36.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */))) * (jacobian->tmpVars[51] /* $cse37.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[127] /* rover_8d.ay.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse37 variable */)))) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */))) + ((-(data->simulationInfo->realParameter[107] /* rover_8d.k_rllsp PARAM */))) * (jacobian->seedVars[24] /* rover_8d.phi.SeedA SEED_VAR */) - (((data->simulationInfo->realParameter[85] /* rover_8d.c_rllsp PARAM */)) * (jacobian->seedVars[23] /* rover_8d.p.SeedA SEED_VAR */)),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx");
   TRACE_POP
 }
 
 /*
-equation index: 608
+equation index: 596
+type: SIMPLE_ASSIGN
+$DER.rover_8d.r.$pDERA.dummyVarA = (0.5 * (rover_8d.Fx_fl * $cse34.$pDERA.dummyVarA + rover_8d.Fx_fl.$pDERA.dummyVarA * $cse34 + rover_8d.Fy_fl * $cse35.$pDERA.dummyVarA + rover_8d.Fy_fl.$pDERA.dummyVarA * $cse35 + rover_8d.Fx_rl.$pDERA.dummyVarA + (-rover_8d.Fx_fr) * $cse34.$pDERA.dummyVarA - rover_8d.Fx_fr.$pDERA.dummyVarA * $cse34 - rover_8d.Fy_fr.$pDERA.dummyVarA * $cse35 - rover_8d.Fy_fr * $cse35.$pDERA.dummyVarA - rover_8d.Fx_rr.$pDERA.dummyVarA) * rover_8d.tw + rover_8d.l_front * (rover_8d.Fy_fl * $cse34.$pDERA.dummyVarA + rover_8d.Fy_fl.$pDERA.dummyVarA * $cse34 + (-rover_8d.Fx_fl) * $cse35.$pDERA.dummyVarA - rover_8d.Fx_fl.$pDERA.dummyVarA * $cse35) + rover_8d.l_front * (rover_8d.Fy_fr * $cse34.$pDERA.dummyVarA + rover_8d.Fy_fr.$pDERA.dummyVarA * $cse34 + (-rover_8d.Fx_fr) * $cse35.$pDERA.dummyVarA - rover_8d.Fx_fr.$pDERA.dummyVarA * $cse35) - rover_8d.l_rear * (rover_8d.Fy_rl.$pDERA.dummyVarA + rover_8d.Fy_rr.$pDERA.dummyVarA)) / rover_8d.I_zz
+*/
+void RoverExample_Components_Rover_eqFunction_596(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 93;
+  const int equationIndexes[2] = {1,596};
+  jacobian->resultVars[27] /* der(rover_8d.r.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[48] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[107] /* rover_8d.Fx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[49] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[111] /* rover_8d.Fy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[109] /* rover_8d.Fx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[48] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[108] /* rover_8d.Fx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */))) - ((jacobian->tmpVars[112] /* rover_8d.Fy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[49] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[110] /* rover_8d.Fx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[48] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[111] /* rover_8d.Fy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[49] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[107] /* rover_8d.Fx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[48] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[112] /* rover_8d.Fy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[49] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[108] /* rover_8d.Fx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[113] /* rover_8d.Fy_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ + jacobian->tmpVars[114] /* rover_8d.Fy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
+  TRACE_POP
+}
+
+/*
+equation index: 597
+type: SIMPLE_ASSIGN
+$DER.rover_8d.vy.$pDERA.dummyVarA = rover_8d.ay.$pDERA.dummyVarA + (rover_8d.l_rear * rover_8d.mass_unsprung_rear - rover_8d.l_front * rover_8d.mass_unsprung_front) * $DER.rover_8d.r.$pDERA.dummyVarA / rover_8d.mass_total + (-rover_8d.vx) * rover_8d.r.SeedA - rover_8d.vx.SeedA * rover_8d.r
+*/
+void RoverExample_Components_Rover_eqFunction_597(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 94;
+  const int equationIndexes[2] = {1,597};
+  jacobian->resultVars[30] /* der(rover_8d.vy.$pDERA.dummyVarA) JACOBIAN_VAR */ = jacobian->tmpVars[127] /* rover_8d.ay.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ + (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->resultVars[27] /* der(rover_8d.r.$pDERA.dummyVarA) JACOBIAN_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total")) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */) - ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  TRACE_POP
+}
+
+/*
+equation index: 610
 type: LINEAR
 
 <var>rover_8d.thr.$pDERA.dummyVarA</var>
@@ -7570,18 +7600,18 @@ type: LINEAR
 </matrix>
 */
 OMC_DISABLE_OPT
-void RoverExample_Components_Rover_eqFunction_608(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+void RoverExample_Components_Rover_eqFunction_610(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 93;
-  const int equationIndexes[2] = {1,608};
+  const int subClockIndex = 95;
+  const int equationIndexes[2] = {1,610};
   /* Linear equation system */
   int retValue;
   double aux_x[1] = { jacobian->tmpVars[161] /* rover_8d.thr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ };
   if(OMC_ACTIVE_STREAM(OMC_LOG_DT))
   {
-    infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 608 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
+    infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 610 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
     messageClose(OMC_LOG_DT);
   }
   data->simulationInfo->linearSystemData[9].parDynamicData[omc_get_thread_num()].parentJacobian = jacobian;
@@ -7590,42 +7620,12 @@ void RoverExample_Components_Rover_eqFunction_608(DATA *data, threadData_t *thre
   
   /* check if solution process was successful */
   if (retValue > 0){
-    const int indexes[2] = {1,608};
-    throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 608 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
+    const int indexes[2] = {1,610};
+    throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 610 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
   }
   /* write solution */
   jacobian->tmpVars[161] /* rover_8d.thr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = aux_x[0];
 
-  TRACE_POP
-}
-
-/*
-equation index: 609
-type: SIMPLE_ASSIGN
-$DER.rover_8d.r.$pDERA.dummyVarA = (0.5 * (rover_8d.Fx_fl * $cse34.$pDERA.dummyVarA + rover_8d.Fx_fl.$pDERA.dummyVarA * $cse34 + rover_8d.Fy_fl * $cse35.$pDERA.dummyVarA + rover_8d.Fy_fl.$pDERA.dummyVarA * $cse35 + rover_8d.Fx_rl.$pDERA.dummyVarA + (-rover_8d.Fx_fr) * $cse34.$pDERA.dummyVarA - rover_8d.Fx_fr.$pDERA.dummyVarA * $cse34 - rover_8d.Fy_fr.$pDERA.dummyVarA * $cse35 - rover_8d.Fy_fr * $cse35.$pDERA.dummyVarA - rover_8d.Fx_rr.$pDERA.dummyVarA) * rover_8d.tw + rover_8d.l_front * (rover_8d.Fy_fl * $cse34.$pDERA.dummyVarA + rover_8d.Fy_fl.$pDERA.dummyVarA * $cse34 + (-rover_8d.Fx_fl) * $cse35.$pDERA.dummyVarA - rover_8d.Fx_fl.$pDERA.dummyVarA * $cse35) + rover_8d.l_front * (rover_8d.Fy_fr * $cse34.$pDERA.dummyVarA + rover_8d.Fy_fr.$pDERA.dummyVarA * $cse34 + (-rover_8d.Fx_fr) * $cse35.$pDERA.dummyVarA - rover_8d.Fx_fr.$pDERA.dummyVarA * $cse35) - rover_8d.l_rear * (rover_8d.Fy_rl.$pDERA.dummyVarA + rover_8d.Fy_rr.$pDERA.dummyVarA)) / rover_8d.I_zz
-*/
-void RoverExample_Components_Rover_eqFunction_609(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 94;
-  const int equationIndexes[2] = {1,609};
-  jacobian->resultVars[27] /* der(rover_8d.r.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * (jacobian->tmpVars[46] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[107] /* rover_8d.Fx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[47] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[111] /* rover_8d.Fy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[109] /* rover_8d.Fx_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[46] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[108] /* rover_8d.Fx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */))) - ((jacobian->tmpVars[112] /* rover_8d.Fy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[47] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)) - jacobian->tmpVars[110] /* rover_8d.Fx_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * (jacobian->tmpVars[46] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[111] /* rover_8d.Fy_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */))) * (jacobian->tmpVars[47] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[107] /* rover_8d.Fx_fl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * (jacobian->tmpVars[46] /* $cse34.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) + (jacobian->tmpVars[112] /* rover_8d.Fy_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */))) * (jacobian->tmpVars[47] /* $cse35.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) - ((jacobian->tmpVars[108] /* rover_8d.Fx_fr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (jacobian->tmpVars[113] /* rover_8d.Fy_rl.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ + jacobian->tmpVars[114] /* rover_8d.Fy_rr.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz");
-  TRACE_POP
-}
-
-/*
-equation index: 610
-type: SIMPLE_ASSIGN
-$DER.rover_8d.vy.$pDERA.dummyVarA = rover_8d.ay.$pDERA.dummyVarA + (rover_8d.l_rear * rover_8d.mass_unsprung_rear - rover_8d.l_front * rover_8d.mass_unsprung_front) * $DER.rover_8d.r.$pDERA.dummyVarA / rover_8d.mass_total + (-rover_8d.vx) * rover_8d.r.SeedA - rover_8d.vx.SeedA * rover_8d.r
-*/
-void RoverExample_Components_Rover_eqFunction_610(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 95;
-  const int equationIndexes[2] = {1,610};
-  jacobian->resultVars[30] /* der(rover_8d.vy.$pDERA.dummyVarA) JACOBIAN_VAR */ = jacobian->tmpVars[127] /* rover_8d.ay.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ + (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION(jacobian->resultVars[27] /* der(rover_8d.r.$pDERA.dummyVarA) JACOBIAN_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total")) + ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */) - ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 
@@ -7642,7 +7642,7 @@ void RoverExample_Components_Rover_eqFunction_611(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,611};
   modelica_real tmp353;
   tmp353 = jacobian->tmpVars[19] /* $cse44 JACOBIAN_TMP_VAR */;
-  jacobian->tmpVars[25] /* $cse14.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (DIVISION(jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(tmp353 * tmp353),"$cse44 ^ 2.0"));
+  jacobian->tmpVars[27] /* $cse14.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */))) * (DIVISION(jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(tmp353 * tmp353),"$cse44 ^ 2.0"));
   TRACE_POP
 }
 
@@ -7661,7 +7661,7 @@ void RoverExample_Components_Rover_eqFunction_612(DATA *data, threadData_t *thre
   modelica_boolean tmp355;
   modelica_boolean tmp356;
   modelica_real tmp357;
-  tmp354 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),0.001);
+  tmp354 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),0.001);
   tmp356 = (modelica_boolean)tmp354;
   if(tmp356)
   {
@@ -7669,10 +7669,10 @@ void RoverExample_Components_Rover_eqFunction_612(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp355 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */),1.0);
-    tmp357 = (tmp355?0.0:jacobian->tmpVars[25] /* $cse14.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
+    tmp355 = Greater((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */),1.0);
+    tmp357 = (tmp355?0.0:jacobian->tmpVars[27] /* $cse14.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
   }
-  jacobian->tmpVars[24] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp357;
+  jacobian->tmpVars[26] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = tmp357;
   TRACE_POP
 }
 
@@ -7688,8 +7688,8 @@ void RoverExample_Components_Rover_eqFunction_613(DATA *data, threadData_t *thre
   const int subClockIndex = 98;
   const int equationIndexes[2] = {1,613};
   modelica_real tmp358;
-  tmp358 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[17] /* der(rover_8d.kappa_rr.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[22] /* rover_8d.omega_rr.SeedA SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[17] /* rover_8d.kappa_rr.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */)) * (jacobian->tmpVars[24] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp358 * tmp358),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp358 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[17] /* der(rover_8d.kappa_rr.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[22] /* rover_8d.omega_rr.SeedA SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[17] /* rover_8d.kappa_rr.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */)) * (jacobian->tmpVars[26] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp358 * tmp358),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -7705,8 +7705,8 @@ void RoverExample_Components_Rover_eqFunction_614(DATA *data, threadData_t *thre
   const int subClockIndex = 99;
   const int equationIndexes[2] = {1,614};
   modelica_real tmp359;
-  tmp359 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[16] /* der(rover_8d.kappa_rl.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[21] /* rover_8d.omega_rl.SeedA SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[16] /* rover_8d.kappa_rl.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */)) * (jacobian->tmpVars[24] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp359 * tmp359),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp359 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[16] /* der(rover_8d.kappa_rl.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[21] /* rover_8d.omega_rl.SeedA SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[16] /* rover_8d.kappa_rl.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */)) * (jacobian->tmpVars[26] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp359 * tmp359),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -7722,8 +7722,8 @@ void RoverExample_Components_Rover_eqFunction_615(DATA *data, threadData_t *thre
   const int subClockIndex = 100;
   const int equationIndexes[2] = {1,615};
   modelica_real tmp360;
-  tmp360 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[15] /* der(rover_8d.kappa_fr.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[20] /* rover_8d.omega_fr.SeedA SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[15] /* rover_8d.kappa_fr.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */)) * (jacobian->tmpVars[24] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp360 * tmp360),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp360 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[15] /* der(rover_8d.kappa_fr.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[20] /* rover_8d.omega_fr.SeedA SEED_VAR */) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[15] /* rover_8d.kappa_fr.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */)) * (jacobian->tmpVars[26] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp360 * tmp360),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -7739,8 +7739,8 @@ void RoverExample_Components_Rover_eqFunction_616(DATA *data, threadData_t *thre
   const int subClockIndex = 101;
   const int equationIndexes[2] = {1,616};
   modelica_real tmp361;
-  tmp361 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */));
-  jacobian->resultVars[14] /* der(rover_8d.kappa_fl.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[19] /* rover_8d.omega_fl.SeedA SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[14] /* rover_8d.kappa_fl.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */)) * (jacobian->tmpVars[24] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp361 * tmp361),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
+  tmp361 = ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */));
+  jacobian->resultVars[14] /* der(rover_8d.kappa_fl.$pDERA.dummyVarA) JACOBIAN_VAR */ = DIVISION(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * (jacobian->seedVars[19] /* rover_8d.omega_fl.SeedA SEED_VAR */) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */)) - jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */,(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx") + ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * (DIVISION((jacobian->seedVars[14] /* rover_8d.kappa_fl.SeedA SEED_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */)) * (jacobian->tmpVars[26] /* $cse13.$pDERA.dummyVarA JACOBIAN_TMP_VAR */)),(tmp361 * tmp361),"(rover_8d.Lrelx * $cse13) ^ 2.0"))) - ((sign((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * ((jacobian->seedVars[29] /* rover_8d.vx.SeedA SEED_VAR */ + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * (jacobian->seedVars[27] /* rover_8d.r.SeedA SEED_VAR */))) * (DIVISION((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)) * ((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)),"$cse13 * rover_8d.Lrelx"))));
   TRACE_POP
 }
 
@@ -7755,7 +7755,7 @@ void RoverExample_Components_Rover_eqFunction_617(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 102;
   const int equationIndexes[2] = {1,617};
-  jacobian->tmpVars[51] /* $cse4.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[20] /* $cse43 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[1] /* rover_3d.psi.SeedA SEED_VAR */);
+  jacobian->tmpVars[53] /* $cse4.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = (jacobian->tmpVars[20] /* $cse43 JACOBIAN_TMP_VAR */) * (jacobian->seedVars[1] /* rover_3d.psi.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -7770,7 +7770,7 @@ void RoverExample_Components_Rover_eqFunction_618(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 103;
   const int equationIndexes[2] = {1,618};
-  jacobian->resultVars[6] /* der(rover_3d.y.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[51] /* $cse4.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
+  jacobian->resultVars[6] /* der(rover_3d.y.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[53] /* $cse4.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -7785,7 +7785,7 @@ void RoverExample_Components_Rover_eqFunction_619(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 104;
   const int equationIndexes[2] = {1,619};
-  jacobian->tmpVars[41] /* $cse3.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[21] /* $cse42 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[1] /* rover_3d.psi.SeedA SEED_VAR */);
+  jacobian->tmpVars[43] /* $cse3.$pDERA.dummyVarA JACOBIAN_TMP_VAR */ = ((-jacobian->tmpVars[21] /* $cse42 JACOBIAN_TMP_VAR */)) * (jacobian->seedVars[1] /* rover_3d.psi.SeedA SEED_VAR */);
   TRACE_POP
 }
 
@@ -7800,7 +7800,7 @@ void RoverExample_Components_Rover_eqFunction_620(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 105;
   const int equationIndexes[2] = {1,620};
-  jacobian->resultVars[5] /* der(rover_3d.x.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[41] /* $cse3.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
+  jacobian->resultVars[5] /* der(rover_3d.x.$pDERA.dummyVarA) JACOBIAN_VAR */ = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (jacobian->tmpVars[43] /* $cse3.$pDERA.dummyVarA JACOBIAN_TMP_VAR */);
   TRACE_POP
 }
 
@@ -7913,8 +7913,8 @@ int RoverExample_Components_Rover_functionJacA_column(DATA* data, threadData_t *
   RoverExample_Components_Rover_eqFunction_593(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_594(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_595(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_608(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_609(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_596(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_597(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_610(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_611(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_612(data, threadData, jacobian, parentJacobian);
@@ -7943,7 +7943,7 @@ void RoverExample_Components_Rover_eqFunction_993(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 0;
   const int equationIndexes[2] = {1,993};
-  jacobian->tmpVars[0] /* rover_8d.Fx_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[0] /* rover_8d.Fx_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
@@ -7958,7 +7958,7 @@ void RoverExample_Components_Rover_eqFunction_994(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 1;
   const int equationIndexes[2] = {1,994};
-  jacobian->tmpVars[1] /* rover_8d.Fy_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[1] /* rover_8d.Fy_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
@@ -7973,7 +7973,7 @@ void RoverExample_Components_Rover_eqFunction_995(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 2;
   const int equationIndexes[2] = {1,995};
-  jacobian->tmpVars[2] /* rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[2] /* rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
@@ -7988,14 +7988,14 @@ void RoverExample_Components_Rover_eqFunction_996(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 3;
   const int equationIndexes[2] = {1,996};
-  jacobian->tmpVars[3] /* rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[3] /* rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 997
 type: SIMPLE_ASSIGN
-rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_997(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8003,14 +8003,14 @@ void RoverExample_Components_Rover_eqFunction_997(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 4;
   const int equationIndexes[2] = {1,997};
-  jacobian->tmpVars[4] /* rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[4] /* rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 998
 type: SIMPLE_ASSIGN
-rover_8d.Fy_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_998(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8018,14 +8018,14 @@ void RoverExample_Components_Rover_eqFunction_998(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 5;
   const int equationIndexes[2] = {1,998};
-  jacobian->tmpVars[5] /* rover_8d.Fy_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[5] /* rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 999
 type: SIMPLE_ASSIGN
-rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_fl_bnd)
+rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_999(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8033,14 +8033,14 @@ void RoverExample_Components_Rover_eqFunction_999(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 6;
   const int equationIndexes[2] = {1,999};
-  jacobian->tmpVars[6] /* rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[6] /* rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 1000
 type: SIMPLE_ASSIGN
-rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_fl_bnd)
+$DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = (rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse34 + rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse35 + rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse34 + rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse35 + rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 + rover_8d.Fx_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) / rover_8d.mass_total
 */
 void RoverExample_Components_Rover_eqFunction_1000(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8048,14 +8048,14 @@ void RoverExample_Components_Rover_eqFunction_1000(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 7;
   const int equationIndexes[2] = {1,1000};
-  jacobian->tmpVars[7] /* rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[7] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[5] /* rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[4] /* rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + (jacobian->tmpVars[2] /* rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[3] /* rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[6] /* rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[0] /* rover_8d.Fx_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
 /*
 equation index: 1001
 type: SIMPLE_ASSIGN
-$DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = (rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse34 + rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse35 + rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse34 + rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * $cse35 + rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 + rover_8d.Fx_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) / rover_8d.mass_total
+rover_8d.Fy_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_1001(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8063,7 +8063,7 @@ void RoverExample_Components_Rover_eqFunction_1001(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 8;
   const int equationIndexes[2] = {1,1001};
-  jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[6] /* rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[7] /* rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + (jacobian->tmpVars[2] /* rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[3] /* rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[4] /* rover_8d.Fx_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[0] /* rover_8d.Fx_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[8] /* rover_8d.Fy_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
@@ -8078,14 +8078,14 @@ void RoverExample_Components_Rover_eqFunction_1002(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 9;
   const int equationIndexes[2] = {1,1002};
-  jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[7] /* rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[3] /* rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + jacobian->tmpVars[5] /* rover_8d.Fy_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[1] /* rover_8d.Fy_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[2] /* rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[6] /* rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[4] /* rover_8d.Fy_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[3] /* rover_8d.Fy_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + jacobian->tmpVars[8] /* rover_8d.Fy_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[1] /* rover_8d.Fy_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[2] /* rover_8d.Fx_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[5] /* rover_8d.Fx_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
 /*
 equation index: 1003
 type: SIMPLE_ASSIGN
-rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total - ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
+rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total - ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_1003(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8093,14 +8093,14 @@ void RoverExample_Components_Rover_eqFunction_1003(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 10;
   const int equationIndexes[2] = {1,1003};
-  jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[10] /* rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
 /*
 equation index: 1004
 type: SIMPLE_ASSIGN
-rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rr * rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)
+rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_1004(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8123,8 +8123,8 @@ void RoverExample_Components_Rover_eqFunction_1004(DATA *data, threadData_t *thr
   modelica_real tmp374;
   modelica_boolean tmp375;
   modelica_real tmp376;
-  tmp362 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-  tmp363 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+  tmp362 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+  tmp363 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
   tmp364 = (tmp362 * tmp362) + (tmp363 * tmp363) + 1e-15;
   if(!(tmp364 >= 0.0))
   {
@@ -8135,9 +8135,9 @@ void RoverExample_Components_Rover_eqFunction_1004(DATA *data, threadData_t *thr
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp364);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp364);
     }
-  }tmp365 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp364),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp365 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp364),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp375 = (modelica_boolean)tmp365;
   if(tmp375)
   {
@@ -8145,8 +8145,8 @@ void RoverExample_Components_Rover_eqFunction_1004(DATA *data, threadData_t *thr
   }
   else
   {
-    tmp366 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-    tmp367 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+    tmp366 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+    tmp367 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
     tmp368 = (tmp366 * tmp366) + (tmp367 * tmp367) + 1e-15;
     if(!(tmp368 >= 0.0))
     {
@@ -8157,9 +8157,9 @@ void RoverExample_Components_Rover_eqFunction_1004(DATA *data, threadData_t *thr
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp368);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp368);
       }
-    }tmp369 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp368),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp369 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp368),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp373 = (modelica_boolean)tmp369;
     if(tmp373)
     {
@@ -8167,8 +8167,8 @@ void RoverExample_Components_Rover_eqFunction_1004(DATA *data, threadData_t *thr
     }
     else
     {
-      tmp370 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-      tmp371 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+      tmp370 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+      tmp371 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
       tmp372 = (tmp370 * tmp370) + (tmp371 * tmp371) + 1e-15;
       if(!(tmp372 >= 0.0))
       {
@@ -8179,21 +8179,21 @@ void RoverExample_Components_Rover_eqFunction_1004(DATA *data, threadData_t *thr
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp372);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp372);
         }
       }
-      tmp374 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp372),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
+      tmp374 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp372),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
     }
     tmp376 = tmp374;
   }
-  jacobian->tmpVars[11] /* rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp376;
+  jacobian->tmpVars[11] /* rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp376;
   TRACE_POP
 }
 
 /*
 equation index: 1005
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total - ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total + ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_1005(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8201,14 +8201,14 @@ void RoverExample_Components_Rover_eqFunction_1005(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 12;
   const int equationIndexes[2] = {1,1005};
-  jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[12] /* rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 1006
 type: SIMPLE_ASSIGN
-rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
+rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_1006(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8231,8 +8231,8 @@ void RoverExample_Components_Rover_eqFunction_1006(DATA *data, threadData_t *thr
   modelica_real tmp389;
   modelica_boolean tmp390;
   modelica_real tmp391;
-  tmp377 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-  tmp378 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+  tmp377 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+  tmp378 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
   tmp379 = (tmp377 * tmp377) + (tmp378 * tmp378) + 1e-15;
   if(!(tmp379 >= 0.0))
   {
@@ -8243,9 +8243,9 @@ void RoverExample_Components_Rover_eqFunction_1006(DATA *data, threadData_t *thr
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp379);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp379);
     }
-  }tmp380 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp379),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp380 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp379),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp390 = (modelica_boolean)tmp380;
   if(tmp390)
   {
@@ -8253,8 +8253,8 @@ void RoverExample_Components_Rover_eqFunction_1006(DATA *data, threadData_t *thr
   }
   else
   {
-    tmp381 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-    tmp382 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+    tmp381 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+    tmp382 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
     tmp383 = (tmp381 * tmp381) + (tmp382 * tmp382) + 1e-15;
     if(!(tmp383 >= 0.0))
     {
@@ -8265,9 +8265,9 @@ void RoverExample_Components_Rover_eqFunction_1006(DATA *data, threadData_t *thr
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp383);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp383);
       }
-    }tmp384 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp383),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp384 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp383),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp388 = (modelica_boolean)tmp384;
     if(tmp388)
     {
@@ -8275,8 +8275,8 @@ void RoverExample_Components_Rover_eqFunction_1006(DATA *data, threadData_t *thr
     }
     else
     {
-      tmp385 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-      tmp386 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+      tmp385 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+      tmp386 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
       tmp387 = (tmp385 * tmp385) + (tmp386 * tmp386) + 1e-15;
       if(!(tmp387 >= 0.0))
       {
@@ -8287,21 +8287,21 @@ void RoverExample_Components_Rover_eqFunction_1006(DATA *data, threadData_t *thr
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp387);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp387);
         }
       }
-      tmp389 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp387),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
+      tmp389 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp387),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
     }
     tmp391 = tmp389;
   }
-  jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp391;
+  jacobian->tmpVars[13] /* rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp391;
   TRACE_POP
 }
 
 /*
 equation index: 1007
 type: SIMPLE_ASSIGN
-rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total + ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
+rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total - ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_1007(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8309,14 +8309,14 @@ void RoverExample_Components_Rover_eqFunction_1007(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 14;
   const int equationIndexes[2] = {1,1007};
-  jacobian->tmpVars[14] /* rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[14] /* rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
 /*
 equation index: 1008
 type: SIMPLE_ASSIGN
-rover_8d.z_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
+rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rr * rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_1008(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8339,8 +8339,8 @@ void RoverExample_Components_Rover_eqFunction_1008(DATA *data, threadData_t *thr
   modelica_real tmp404;
   modelica_boolean tmp405;
   modelica_real tmp406;
-  tmp392 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-  tmp393 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+  tmp392 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+  tmp393 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
   tmp394 = (tmp392 * tmp392) + (tmp393 * tmp393) + 1e-15;
   if(!(tmp394 >= 0.0))
   {
@@ -8351,9 +8351,9 @@ void RoverExample_Components_Rover_eqFunction_1008(DATA *data, threadData_t *thr
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp394);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp394);
     }
-  }tmp395 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp394),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp395 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp394),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp405 = (modelica_boolean)tmp395;
   if(tmp405)
   {
@@ -8361,8 +8361,8 @@ void RoverExample_Components_Rover_eqFunction_1008(DATA *data, threadData_t *thr
   }
   else
   {
-    tmp396 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-    tmp397 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+    tmp396 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+    tmp397 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
     tmp398 = (tmp396 * tmp396) + (tmp397 * tmp397) + 1e-15;
     if(!(tmp398 >= 0.0))
     {
@@ -8373,9 +8373,9 @@ void RoverExample_Components_Rover_eqFunction_1008(DATA *data, threadData_t *thr
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp398);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp398);
       }
-    }tmp399 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp398),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp399 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp398),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp403 = (modelica_boolean)tmp399;
     if(tmp403)
     {
@@ -8383,8 +8383,8 @@ void RoverExample_Components_Rover_eqFunction_1008(DATA *data, threadData_t *thr
     }
     else
     {
-      tmp400 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-      tmp401 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+      tmp400 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+      tmp401 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
       tmp402 = (tmp400 * tmp400) + (tmp401 * tmp401) + 1e-15;
       if(!(tmp402 >= 0.0))
       {
@@ -8395,21 +8395,21 @@ void RoverExample_Components_Rover_eqFunction_1008(DATA *data, threadData_t *thr
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp402);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp402);
         }
       }
-      tmp404 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp402),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
+      tmp404 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp402),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
     }
     tmp406 = tmp404;
   }
-  jacobian->tmpVars[15] /* rover_8d.z_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp406;
+  jacobian->tmpVars[15] /* rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp406;
   TRACE_POP
 }
 
 /*
 equation index: 1009
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total + ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 / rover_8d.l_total + ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_1009(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8417,14 +8417,14 @@ void RoverExample_Components_Rover_eqFunction_1009(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 16;
   const int equationIndexes[2] = {1,1009};
-  jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[16] /* rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* der(rover_8d.vx.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* ay_meas.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 1010
 type: SIMPLE_ASSIGN
-rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
+rover_8d.z_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_1010(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8447,8 +8447,8 @@ void RoverExample_Components_Rover_eqFunction_1010(DATA *data, threadData_t *thr
   modelica_real tmp419;
   modelica_boolean tmp420;
   modelica_real tmp421;
-  tmp407 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-  tmp408 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+  tmp407 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+  tmp408 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
   tmp409 = (tmp407 * tmp407) + (tmp408 * tmp408) + 1e-15;
   if(!(tmp409 >= 0.0))
   {
@@ -8459,9 +8459,9 @@ void RoverExample_Components_Rover_eqFunction_1010(DATA *data, threadData_t *thr
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp409);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp409);
     }
-  }tmp410 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp409),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp410 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp409),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp420 = (modelica_boolean)tmp410;
   if(tmp420)
   {
@@ -8469,8 +8469,8 @@ void RoverExample_Components_Rover_eqFunction_1010(DATA *data, threadData_t *thr
   }
   else
   {
-    tmp411 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-    tmp412 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+    tmp411 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+    tmp412 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
     tmp413 = (tmp411 * tmp411) + (tmp412 * tmp412) + 1e-15;
     if(!(tmp413 >= 0.0))
     {
@@ -8481,9 +8481,9 @@ void RoverExample_Components_Rover_eqFunction_1010(DATA *data, threadData_t *thr
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp413);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp413);
       }
-    }tmp414 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp413),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp414 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp413),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp418 = (modelica_boolean)tmp414;
     if(tmp418)
     {
@@ -8491,8 +8491,8 @@ void RoverExample_Components_Rover_eqFunction_1010(DATA *data, threadData_t *thr
     }
     else
     {
-      tmp415 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-      tmp416 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+      tmp415 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+      tmp416 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
       tmp417 = (tmp415 * tmp415) + (tmp416 * tmp416) + 1e-15;
       if(!(tmp417 >= 0.0))
       {
@@ -8503,21 +8503,21 @@ void RoverExample_Components_Rover_eqFunction_1010(DATA *data, threadData_t *thr
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp417);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp417);
         }
       }
-      tmp419 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp417),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
+      tmp419 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp417),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
     }
     tmp421 = tmp419;
   }
-  jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp421;
+  jacobian->tmpVars[17] /* rover_8d.z_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */ = tmp421;
   TRACE_POP
 }
 
 /*
 equation index: 1011
 type: SIMPLE_ASSIGN
-$res_LSJac10_1.$pDERLSJac10.dummyVarLSJac10 = (if rover_8d.z_fl < 1.0 then rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (2.0 - rover_8d.z_fl - rover_8d.z_fl) else 0.0) - rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10
+$res_LSJac10_1.$pDERLSJac10.dummyVarLSJac10 = (if rover_8d.z_rr < 1.0 then rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (2.0 - rover_8d.z_rr - rover_8d.z_rr) else 0.0) - rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10
 */
 void RoverExample_Components_Rover_eqFunction_1011(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8526,8 +8526,8 @@ void RoverExample_Components_Rover_eqFunction_1011(DATA *data, threadData_t *thr
   const int subClockIndex = 18;
   const int equationIndexes[2] = {1,1011};
   modelica_boolean tmp422;
-  tmp422 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */),1.0);
-  jacobian->resultVars[0] /* $res_LSJac10_1.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp422?(jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
+  tmp422 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */),1.0);
+  jacobian->resultVars[0] /* $res_LSJac10_1.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp422?(jacobian->tmpVars[15] /* rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
   TRACE_POP
 }
 
@@ -8544,14 +8544,14 @@ void RoverExample_Components_Rover_eqFunction_1012(DATA *data, threadData_t *thr
   const int equationIndexes[2] = {1,1012};
   modelica_boolean tmp423;
   tmp423 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */),1.0);
-  jacobian->resultVars[1] /* $res_LSJac10_2.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp423?(jacobian->tmpVars[15] /* rover_8d.z_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
+  jacobian->resultVars[1] /* $res_LSJac10_2.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp423?(jacobian->tmpVars[17] /* rover_8d.z_rl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 1013
 type: SIMPLE_ASSIGN
-$res_LSJac10_3.$pDERLSJac10.dummyVarLSJac10 = (if rover_8d.z_fr < 1.0 then rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (2.0 - rover_8d.z_fr - rover_8d.z_fr) else 0.0) - rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10
+$res_LSJac10_3.$pDERLSJac10.dummyVarLSJac10 = (if rover_8d.z_fl < 1.0 then rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (2.0 - rover_8d.z_fl - rover_8d.z_fl) else 0.0) - rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10
 */
 void RoverExample_Components_Rover_eqFunction_1013(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8560,15 +8560,15 @@ void RoverExample_Components_Rover_eqFunction_1013(DATA *data, threadData_t *thr
   const int subClockIndex = 20;
   const int equationIndexes[2] = {1,1013};
   modelica_boolean tmp424;
-  tmp424 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */),1.0);
-  jacobian->resultVars[2] /* $res_LSJac10_3.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp424?(jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
+  tmp424 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */),1.0);
+  jacobian->resultVars[2] /* $res_LSJac10_3.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp424?(jacobian->tmpVars[13] /* rover_8d.z_fl.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 1014
 type: SIMPLE_ASSIGN
-$res_LSJac10_4.$pDERLSJac10.dummyVarLSJac10 = (if rover_8d.z_rr < 1.0 then rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (2.0 - rover_8d.z_rr - rover_8d.z_rr) else 0.0) - rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10
+$res_LSJac10_4.$pDERLSJac10.dummyVarLSJac10 = (if rover_8d.z_fr < 1.0 then rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 * (2.0 - rover_8d.z_fr - rover_8d.z_fr) else 0.0) - rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10
 */
 void RoverExample_Components_Rover_eqFunction_1014(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8577,8 +8577,8 @@ void RoverExample_Components_Rover_eqFunction_1014(DATA *data, threadData_t *thr
   const int subClockIndex = 21;
   const int equationIndexes[2] = {1,1014};
   modelica_boolean tmp425;
-  tmp425 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */),1.0);
-  jacobian->resultVars[3] /* $res_LSJac10_4.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp425?(jacobian->tmpVars[11] /* rover_8d.z_rr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_rr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
+  tmp425 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */),1.0);
+  jacobian->resultVars[3] /* $res_LSJac10_4.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_VAR */ = (tmp425?(jacobian->tmpVars[11] /* rover_8d.z_fr.$pDERD.dummyVarD.$pDERLSJac10.dummyVarLSJac10 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_fr.$pDERD.dummyVarD.SeedLSJac10 SEED_VAR */;
   TRACE_POP
 }
 
@@ -8644,7 +8644,7 @@ void RoverExample_Components_Rover_eqFunction_1045(DATA *data, threadData_t *thr
 /*
 equation index: 1046
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 / rover_8d.I_wheel
+$DER.rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_1046(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8652,14 +8652,14 @@ void RoverExample_Components_Rover_eqFunction_1046(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 1;
   const int equationIndexes[2] = {1,1046};
-  jacobian->tmpVars[1] /* der(rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 1047
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 / rover_8d.I_wheel
+$DER.rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_1047(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8667,14 +8667,14 @@ void RoverExample_Components_Rover_eqFunction_1047(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 2;
   const int equationIndexes[2] = {1,1047};
-  jacobian->tmpVars[2] /* der(rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 1048
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 / rover_8d.I_wheel
+$DER.rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_1048(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8682,14 +8682,14 @@ void RoverExample_Components_Rover_eqFunction_1048(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 3;
   const int equationIndexes[2] = {1,1048};
-  jacobian->tmpVars[3] /* der(rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 1049
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = 4.0 * $DER.rover_8d.omega.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 / rover_8d.gratio - $DER.rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 - $DER.rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 - $DER.rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11
+$DER.rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 = 4.0 * $DER.rover_8d.omega.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 / rover_8d.gratio - $DER.rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 - $DER.rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 - $DER.rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11
 */
 void RoverExample_Components_Rover_eqFunction_1049(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8697,14 +8697,14 @@ void RoverExample_Components_Rover_eqFunction_1049(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 4;
   const int equationIndexes[2] = {1,1049};
-  jacobian->tmpVars[4] /* der(rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */;
+  jacobian->tmpVars[4] /* der(rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[2] /* der(rover_8d.omega_rr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 1050
 type: SIMPLE_ASSIGN
-$res_LSJac11_1.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 - $DER.rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 * rover_8d.I_wheel
+$res_LSJac11_1.$pDERLSJac11.dummyVarLSJac11 = rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 - $DER.rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11 * rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_1050(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8712,7 +8712,7 @@ void RoverExample_Components_Rover_eqFunction_1050(DATA *data, threadData_t *thr
   const int baseClockIndex = 0;
   const int subClockIndex = 5;
   const int equationIndexes[2] = {1,1050};
-  jacobian->resultVars[0] /* $res_LSJac11_1.$pDERLSJac11.dummyVarLSJac11 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_rl.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
+  jacobian->resultVars[0] /* $res_LSJac11_1.$pDERLSJac11.dummyVarLSJac11 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.$pDERD.dummyVarD.SeedLSJac11 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_fr.$pDERD.dummyVarD.$pDERLSJac11.dummyVarLSJac11) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
   TRACE_POP
 }
 
@@ -8747,7 +8747,7 @@ int RoverExample_Components_Rover_functionJacLSJac11_column(DATA* data, threadDa
 /*
 equation index: 873
 type: SIMPLE_ASSIGN
-rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_fr_bnd * rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fr_bnd)
+rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_873(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8755,14 +8755,14 @@ void RoverExample_Components_Rover_eqFunction_873(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 0;
   const int equationIndexes[2] = {1,873};
-  jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[0] /* rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 874
 type: SIMPLE_ASSIGN
-rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse21 * rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fr_bnd)
+rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_874(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8770,14 +8770,14 @@ void RoverExample_Components_Rover_eqFunction_874(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 1;
   const int equationIndexes[2] = {1,874};
-  jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[1] /* rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 875
 type: SIMPLE_ASSIGN
-rover_8d.Fx_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_rr_bnd * rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rr_bnd)
+rover_8d.Fx_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_875(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8785,14 +8785,14 @@ void RoverExample_Components_Rover_eqFunction_875(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 2;
   const int equationIndexes[2] = {1,875};
-  jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[2] /* rover_8d.Fx_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 876
 type: SIMPLE_ASSIGN
-rover_8d.Fy_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse29 * rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rr_bnd)
+rover_8d.Fy_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_876(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8800,14 +8800,14 @@ void RoverExample_Components_Rover_eqFunction_876(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 3;
   const int equationIndexes[2] = {1,876};
-  jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[3] /* rover_8d.Fy_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 877
 type: SIMPLE_ASSIGN
-rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fl_bnd)
+rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse21 * rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_877(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8815,14 +8815,14 @@ void RoverExample_Components_Rover_eqFunction_877(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 4;
   const int equationIndexes[2] = {1,877};
-  jacobian->tmpVars[4] /* rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[4] /* rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 878
 type: SIMPLE_ASSIGN
-rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fl_bnd)
+rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_fr_bnd * rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_fr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_878(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8830,14 +8830,14 @@ void RoverExample_Components_Rover_eqFunction_878(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 5;
   const int equationIndexes[2] = {1,878};
-  jacobian->tmpVars[5] /* rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[5] /* rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 879
 type: SIMPLE_ASSIGN
-rover_8d.Fx_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fx_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_kappa * rover_8d.kappa_rr_bnd * rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_879(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8845,7 +8845,7 @@ void RoverExample_Components_Rover_eqFunction_879(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 6;
   const int equationIndexes[2] = {1,879};
-  jacobian->tmpVars[6] /* rover_8d.Fx_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[6] /* rover_8d.Fx_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
@@ -8860,14 +8860,14 @@ void RoverExample_Components_Rover_eqFunction_880(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 7;
   const int equationIndexes[2] = {1,880};
-  jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[4] /* rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[5] /* rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + (jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[6] /* rover_8d.Fx_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[0] /* rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + (jacobian->tmpVars[5] /* rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[4] /* rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[2] /* rover_8d.Fx_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[6] /* rover_8d.Fx_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
 /*
 equation index: 881
 type: SIMPLE_ASSIGN
-rover_8d.Fy_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fy_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = rover_8d.c_alpha * $cse29 * rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 / (1.0 - rover_8d.kappa_rr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_881(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8875,7 +8875,7 @@ void RoverExample_Components_Rover_eqFunction_881(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 8;
   const int equationIndexes[2] = {1,881};
-  jacobian->tmpVars[8] /* rover_8d.Fy_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[8] /* rover_8d.Fy_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
@@ -8890,14 +8890,14 @@ void RoverExample_Components_Rover_eqFunction_882(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 9;
   const int equationIndexes[2] = {1,882};
-  jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[5] /* rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + jacobian->tmpVars[8] /* rover_8d.Fy_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[4] /* rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[1] /* rover_8d.Fy_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[4] /* rover_8d.Fy_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + jacobian->tmpVars[3] /* rover_8d.Fy_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[8] /* rover_8d.Fy_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[0] /* rover_8d.Fx_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[5] /* rover_8d.Fx_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
 /*
 equation index: 883
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 / rover_8d.l_total + rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 / rover_8d.l_total - rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_883(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8905,14 +8905,14 @@ void RoverExample_Components_Rover_eqFunction_883(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 10;
   const int equationIndexes[2] = {1,883};
-  jacobian->tmpVars[10] /* rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[10] /* rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
 /*
 equation index: 884
 type: SIMPLE_ASSIGN
-rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
+rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_884(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -8935,8 +8935,8 @@ void RoverExample_Components_Rover_eqFunction_884(DATA *data, threadData_t *thre
   modelica_real tmp438;
   modelica_boolean tmp439;
   modelica_real tmp440;
-  tmp426 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-  tmp427 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+  tmp426 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+  tmp427 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
   tmp428 = (tmp426 * tmp426) + (tmp427 * tmp427) + 1e-15;
   if(!(tmp428 >= 0.0))
   {
@@ -8947,9 +8947,9 @@ void RoverExample_Components_Rover_eqFunction_884(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp428);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp428);
     }
-  }tmp429 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp428),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp429 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp428),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp439 = (modelica_boolean)tmp429;
   if(tmp439)
   {
@@ -8957,8 +8957,8 @@ void RoverExample_Components_Rover_eqFunction_884(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp430 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-    tmp431 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+    tmp430 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+    tmp431 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
     tmp432 = (tmp430 * tmp430) + (tmp431 * tmp431) + 1e-15;
     if(!(tmp432 >= 0.0))
     {
@@ -8969,9 +8969,9 @@ void RoverExample_Components_Rover_eqFunction_884(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp432);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp432);
       }
-    }tmp433 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp432),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp433 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp432),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp437 = (modelica_boolean)tmp433;
     if(tmp437)
     {
@@ -8979,8 +8979,8 @@ void RoverExample_Components_Rover_eqFunction_884(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp434 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-      tmp435 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+      tmp434 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+      tmp435 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
       tmp436 = (tmp434 * tmp434) + (tmp435 * tmp435) + 1e-15;
       if(!(tmp436 >= 0.0))
       {
@@ -8991,21 +8991,21 @@ void RoverExample_Components_Rover_eqFunction_884(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp436);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp436);
         }
       }
-      tmp438 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp436),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
+      tmp438 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp436),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
     }
     tmp440 = tmp438;
   }
-  jacobian->tmpVars[11] /* rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = tmp440;
+  jacobian->tmpVars[11] /* rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = tmp440;
   TRACE_POP
 }
 
 /*
 equation index: 885
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 / rover_8d.l_total - rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 / rover_8d.l_total + rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_885(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9013,14 +9013,14 @@ void RoverExample_Components_Rover_eqFunction_885(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 12;
   const int equationIndexes[2] = {1,885};
-  jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[12] /* rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 886
 type: SIMPLE_ASSIGN
-rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
+rover_8d.z_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_886(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9043,8 +9043,8 @@ void RoverExample_Components_Rover_eqFunction_886(DATA *data, threadData_t *thre
   modelica_real tmp453;
   modelica_boolean tmp454;
   modelica_real tmp455;
-  tmp441 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-  tmp442 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+  tmp441 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+  tmp442 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
   tmp443 = (tmp441 * tmp441) + (tmp442 * tmp442) + 1e-15;
   if(!(tmp443 >= 0.0))
   {
@@ -9055,9 +9055,9 @@ void RoverExample_Components_Rover_eqFunction_886(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp443);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp443);
     }
-  }tmp444 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp443),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp444 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp443),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp454 = (modelica_boolean)tmp444;
   if(tmp454)
   {
@@ -9065,8 +9065,8 @@ void RoverExample_Components_Rover_eqFunction_886(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp445 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-    tmp446 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+    tmp445 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+    tmp446 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
     tmp447 = (tmp445 * tmp445) + (tmp446 * tmp446) + 1e-15;
     if(!(tmp447 >= 0.0))
     {
@@ -9077,9 +9077,9 @@ void RoverExample_Components_Rover_eqFunction_886(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp447);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp447);
       }
-    }tmp448 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp447),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp448 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp447),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp452 = (modelica_boolean)tmp448;
     if(tmp452)
     {
@@ -9087,8 +9087,8 @@ void RoverExample_Components_Rover_eqFunction_886(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp449 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-      tmp450 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+      tmp449 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+      tmp450 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
       tmp451 = (tmp449 * tmp449) + (tmp450 * tmp450) + 1e-15;
       if(!(tmp451 >= 0.0))
       {
@@ -9099,14 +9099,14 @@ void RoverExample_Components_Rover_eqFunction_886(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp451);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp451);
         }
       }
-      tmp453 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp451),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
+      tmp453 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp451),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
     }
     tmp455 = tmp453;
   }
-  jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = tmp455;
+  jacobian->tmpVars[13] /* rover_8d.z_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = tmp455;
   TRACE_POP
 }
 
@@ -9121,7 +9121,7 @@ void RoverExample_Components_Rover_eqFunction_887(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 14;
   const int equationIndexes[2] = {1,887};
-  jacobian->tmpVars[14] /* rover_8d.Fz_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[14] /* rover_8d.Fz_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
@@ -9151,8 +9151,8 @@ void RoverExample_Components_Rover_eqFunction_888(DATA *data, threadData_t *thre
   modelica_real tmp468;
   modelica_boolean tmp469;
   modelica_real tmp470;
-  tmp456 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-  tmp457 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+  tmp456 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+  tmp457 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
   tmp458 = (tmp456 * tmp456) + (tmp457 * tmp457) + 1e-15;
   if(!(tmp458 >= 0.0))
   {
@@ -9165,7 +9165,7 @@ void RoverExample_Components_Rover_eqFunction_888(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp458);
     }
-  }tmp459 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp458),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp459 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp458),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp469 = (modelica_boolean)tmp459;
   if(tmp469)
   {
@@ -9173,8 +9173,8 @@ void RoverExample_Components_Rover_eqFunction_888(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp460 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-    tmp461 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+    tmp460 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+    tmp461 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
     tmp462 = (tmp460 * tmp460) + (tmp461 * tmp461) + 1e-15;
     if(!(tmp462 >= 0.0))
     {
@@ -9187,7 +9187,7 @@ void RoverExample_Components_Rover_eqFunction_888(DATA *data, threadData_t *thre
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
         throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp462);
       }
-    }tmp463 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp462),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp463 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp462),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp467 = (modelica_boolean)tmp463;
     if(tmp467)
     {
@@ -9195,8 +9195,8 @@ void RoverExample_Components_Rover_eqFunction_888(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp464 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-      tmp465 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+      tmp464 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+      tmp465 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
       tmp466 = (tmp464 * tmp464) + (tmp465 * tmp465) + 1e-15;
       if(!(tmp466 >= 0.0))
       {
@@ -9210,7 +9210,7 @@ void RoverExample_Components_Rover_eqFunction_888(DATA *data, threadData_t *thre
           throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp466);
         }
       }
-      tmp468 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp466),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
+      tmp468 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp466),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
     }
     tmp470 = tmp468;
   }
@@ -9221,7 +9221,7 @@ void RoverExample_Components_Rover_eqFunction_888(DATA *data, threadData_t *thre
 /*
 equation index: 889
 type: SIMPLE_ASSIGN
-rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 / rover_8d.l_total + rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
+rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 / rover_8d.l_total + rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_889(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9229,14 +9229,14 @@ void RoverExample_Components_Rover_eqFunction_889(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 16;
   const int equationIndexes[2] = {1,889};
-  jacobian->tmpVars[16] /* rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[7] /* rover_8d.ax.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 890
 type: SIMPLE_ASSIGN
-rover_8d.z_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
+rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_890(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9259,8 +9259,8 @@ void RoverExample_Components_Rover_eqFunction_890(DATA *data, threadData_t *thre
   modelica_real tmp483;
   modelica_boolean tmp484;
   modelica_real tmp485;
-  tmp471 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-  tmp472 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+  tmp471 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+  tmp472 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
   tmp473 = (tmp471 * tmp471) + (tmp472 * tmp472) + 1e-15;
   if(!(tmp473 >= 0.0))
   {
@@ -9271,9 +9271,9 @@ void RoverExample_Components_Rover_eqFunction_890(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp473);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp473);
     }
-  }tmp474 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp473),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp474 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp473),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp484 = (modelica_boolean)tmp474;
   if(tmp484)
   {
@@ -9281,8 +9281,8 @@ void RoverExample_Components_Rover_eqFunction_890(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp475 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-    tmp476 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+    tmp475 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+    tmp476 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
     tmp477 = (tmp475 * tmp475) + (tmp476 * tmp476) + 1e-15;
     if(!(tmp477 >= 0.0))
     {
@@ -9293,9 +9293,9 @@ void RoverExample_Components_Rover_eqFunction_890(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp477);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp477);
       }
-    }tmp478 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp477),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp478 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp477),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp482 = (modelica_boolean)tmp478;
     if(tmp482)
     {
@@ -9303,8 +9303,8 @@ void RoverExample_Components_Rover_eqFunction_890(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp479 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-      tmp480 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+      tmp479 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+      tmp480 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
       tmp481 = (tmp479 * tmp479) + (tmp480 * tmp480) + 1e-15;
       if(!(tmp481 >= 0.0))
       {
@@ -9315,14 +9315,14 @@ void RoverExample_Components_Rover_eqFunction_890(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp481);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp481);
         }
       }
-      tmp483 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp481),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
+      tmp483 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp481),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
     }
     tmp485 = tmp483;
   }
-  jacobian->tmpVars[17] /* rover_8d.z_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = tmp485;
+  jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */ = tmp485;
   TRACE_POP
 }
 
@@ -9339,7 +9339,7 @@ void RoverExample_Components_Rover_eqFunction_891(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,891};
   modelica_boolean tmp486;
   tmp486 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */),1.0);
-  jacobian->resultVars[0] /* $res_LSJac8_1.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp486?(jacobian->tmpVars[17] /* rover_8d.z_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
+  jacobian->resultVars[0] /* $res_LSJac8_1.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp486?(jacobian->tmpVars[13] /* rover_8d.z_rl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_rl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
   TRACE_POP
 }
 
@@ -9356,14 +9356,14 @@ void RoverExample_Components_Rover_eqFunction_892(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,892};
   modelica_boolean tmp487;
   tmp487 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */),1.0);
-  jacobian->resultVars[1] /* $res_LSJac8_2.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp487?(jacobian->tmpVars[15] /* rover_8d.z_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
+  jacobian->resultVars[1] /* $res_LSJac8_2.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp487?(jacobian->tmpVars[15] /* rover_8d.z_rr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_rr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 893
 type: SIMPLE_ASSIGN
-$res_LSJac8_3.$pDERLSJac8.dummyVarLSJac8 = (if rover_8d.z_fl < 1.0 then rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (2.0 - rover_8d.z_fl - rover_8d.z_fl) else 0.0) - rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8
+$res_LSJac8_3.$pDERLSJac8.dummyVarLSJac8 = (if rover_8d.z_fr < 1.0 then rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (2.0 - rover_8d.z_fr - rover_8d.z_fr) else 0.0) - rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8
 */
 void RoverExample_Components_Rover_eqFunction_893(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9372,15 +9372,15 @@ void RoverExample_Components_Rover_eqFunction_893(DATA *data, threadData_t *thre
   const int subClockIndex = 20;
   const int equationIndexes[2] = {1,893};
   modelica_boolean tmp488;
-  tmp488 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */),1.0);
-  jacobian->resultVars[2] /* $res_LSJac8_3.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp488?(jacobian->tmpVars[11] /* rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
+  tmp488 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */),1.0);
+  jacobian->resultVars[2] /* $res_LSJac8_3.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp488?(jacobian->tmpVars[11] /* rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 894
 type: SIMPLE_ASSIGN
-$res_LSJac8_4.$pDERLSJac8.dummyVarLSJac8 = (if rover_8d.z_fr < 1.0 then rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (2.0 - rover_8d.z_fr - rover_8d.z_fr) else 0.0) - rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8
+$res_LSJac8_4.$pDERLSJac8.dummyVarLSJac8 = (if rover_8d.z_fl < 1.0 then rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 * (2.0 - rover_8d.z_fl - rover_8d.z_fl) else 0.0) - rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8
 */
 void RoverExample_Components_Rover_eqFunction_894(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9389,8 +9389,8 @@ void RoverExample_Components_Rover_eqFunction_894(DATA *data, threadData_t *thre
   const int subClockIndex = 21;
   const int equationIndexes[2] = {1,894};
   modelica_boolean tmp489;
-  tmp489 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */),1.0);
-  jacobian->resultVars[3] /* $res_LSJac8_4.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp489?(jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
+  tmp489 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */),1.0);
+  jacobian->resultVars[3] /* $res_LSJac8_4.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_VAR */ = (tmp489?(jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERC.dummyVarC.$pDERLSJac8.dummyVarLSJac8 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERC.dummyVarC.SeedLSJac8 SEED_VAR */;
   TRACE_POP
 }
 
@@ -9439,92 +9439,92 @@ int RoverExample_Components_Rover_functionJacLSJac8_column(DATA* data, threadDat
 /* dynamic equations */
 
 /*
-equation index: 905
-type: SIMPLE_ASSIGN
-$DER.rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = (-4.0) * rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.J
-*/
-void RoverExample_Components_Rover_eqFunction_905(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 0;
-  const int equationIndexes[2] = {1,905};
-  jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = (-4.0) * (DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[67] /* rover_8d.J PARAM */),"rover_8d.J"));
-  TRACE_POP
-}
-
-/*
-equation index: 906
-type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.I_wheel
-*/
-void RoverExample_Components_Rover_eqFunction_906(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 1;
-  const int equationIndexes[2] = {1,906};
-  jacobian->tmpVars[1] /* der(rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
-  TRACE_POP
-}
-
-/*
-equation index: 907
-type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.I_wheel
-*/
-void RoverExample_Components_Rover_eqFunction_907(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 2;
-  const int equationIndexes[2] = {1,907};
-  jacobian->tmpVars[2] /* der(rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
-  TRACE_POP
-}
-
-/*
 equation index: 908
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.I_wheel
+$DER.rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = (-4.0) * rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.J
 */
 void RoverExample_Components_Rover_eqFunction_908(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 3;
+  const int subClockIndex = 0;
   const int equationIndexes[2] = {1,908};
-  jacobian->tmpVars[3] /* der(rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = (-4.0) * (DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[67] /* rover_8d.J PARAM */),"rover_8d.J"));
   TRACE_POP
 }
 
 /*
 equation index: 909
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = 4.0 * $DER.rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 / rover_8d.gratio - $DER.rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 - $DER.rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 - $DER.rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9
+$DER.rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_909(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 4;
+  const int subClockIndex = 1;
   const int equationIndexes[2] = {1,909};
-  jacobian->tmpVars[4] /* der(rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[1] /* der(rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[2] /* der(rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */;
+  jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 910
 type: SIMPLE_ASSIGN
-$res_LSJac9_1.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 - $DER.rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 * rover_8d.I_wheel
+$DER.rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_910(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 5;
+  const int subClockIndex = 2;
   const int equationIndexes[2] = {1,910};
-  jacobian->resultVars[0] /* $res_LSJac9_1.$pDERLSJac9.dummyVarLSJac9 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
+  jacobian->tmpVars[2] /* der(rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  TRACE_POP
+}
+
+/*
+equation index: 911
+type: SIMPLE_ASSIGN
+$DER.rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 / rover_8d.I_wheel
+*/
+void RoverExample_Components_Rover_eqFunction_911(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 3;
+  const int equationIndexes[2] = {1,911};
+  jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  TRACE_POP
+}
+
+/*
+equation index: 912
+type: SIMPLE_ASSIGN
+$DER.rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 = 4.0 * $DER.rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 / rover_8d.gratio - $DER.rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 - $DER.rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 - $DER.rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9
+*/
+void RoverExample_Components_Rover_eqFunction_912(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 4;
+  const int equationIndexes[2] = {1,912};
+  jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[2] /* der(rover_8d.omega_fr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */;
+  TRACE_POP
+}
+
+/*
+equation index: 913
+type: SIMPLE_ASSIGN
+$res_LSJac9_1.$pDERLSJac9.dummyVarLSJac9 = rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 - $DER.rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9 * rover_8d.I_wheel
+*/
+void RoverExample_Components_Rover_eqFunction_913(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 5;
+  const int equationIndexes[2] = {1,913};
+  jacobian->resultVars[0] /* $res_LSJac9_1.$pDERLSJac9.dummyVarLSJac9 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.$pDERC.dummyVarC.SeedLSJac9 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERC.dummyVarC.$pDERLSJac9.dummyVarLSJac9) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
   TRACE_POP
 }
 
@@ -9544,12 +9544,12 @@ int RoverExample_Components_Rover_functionJacLSJac9_column(DATA* data, threadDat
   TRACE_PUSH
 
   int index = RoverExample_Components_Rover_INDEX_JAC_LSJac9;
-  RoverExample_Components_Rover_eqFunction_905(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_906(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_907(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_908(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_909(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_910(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_911(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_912(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_913(data, threadData, jacobian, parentJacobian);
   TRACE_POP
   return 0;
 }
@@ -9567,7 +9567,7 @@ void RoverExample_Components_Rover_eqFunction_689(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 0;
   const int equationIndexes[2] = {1,689};
-  jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
@@ -9582,7 +9582,7 @@ void RoverExample_Components_Rover_eqFunction_690(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 1;
   const int equationIndexes[2] = {1,690};
-  jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
@@ -9597,7 +9597,7 @@ void RoverExample_Components_Rover_eqFunction_691(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 2;
   const int equationIndexes[2] = {1,691};
-  jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
@@ -9612,14 +9612,14 @@ void RoverExample_Components_Rover_eqFunction_692(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 3;
   const int equationIndexes[2] = {1,692};
-  jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 693
 type: SIMPLE_ASSIGN
-rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_693(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9627,14 +9627,14 @@ void RoverExample_Components_Rover_eqFunction_693(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 4;
   const int equationIndexes[2] = {1,693};
-  jacobian->tmpVars[4] /* rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[4] /* rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 694
 type: SIMPLE_ASSIGN
-rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_694(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9642,14 +9642,14 @@ void RoverExample_Components_Rover_eqFunction_694(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 5;
   const int equationIndexes[2] = {1,694};
-  jacobian->tmpVars[5] /* rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[5] /* rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 695
 type: SIMPLE_ASSIGN
-rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_fl_bnd)
+rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_695(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9657,14 +9657,14 @@ void RoverExample_Components_Rover_eqFunction_695(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 6;
   const int equationIndexes[2] = {1,695};
-  jacobian->tmpVars[6] /* rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[6] /* rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 696
 type: SIMPLE_ASSIGN
-rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_fl_bnd)
+rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 + rover_8d.Fy_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 + ((-rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) - rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) * $cse35) / rover_8d.mass_total
 */
 void RoverExample_Components_Rover_eqFunction_696(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9672,14 +9672,14 @@ void RoverExample_Components_Rover_eqFunction_696(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 7;
   const int equationIndexes[2] = {1,696};
-  jacobian->tmpVars[7] /* rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[7] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[5] /* rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + jacobian->tmpVars[6] /* rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[4] /* rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
 /*
 equation index: 697
 type: SIMPLE_ASSIGN
-$DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse35 + rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse35 + rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 + rover_8d.Fx_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) / rover_8d.mass_total
+rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_697(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9687,14 +9687,14 @@ void RoverExample_Components_Rover_eqFunction_697(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 8;
   const int equationIndexes[2] = {1,697};
-  jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[7] /* rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[6] /* rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + (jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[5] /* rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[8] /* rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 698
 type: SIMPLE_ASSIGN
-rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 + rover_8d.Fy_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 + ((-rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) - rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) * $cse35) / rover_8d.mass_total
+$DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse35 + rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse34 + rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * $cse35 + rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 + rover_8d.Fx_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) / rover_8d.mass_total
 */
 void RoverExample_Components_Rover_eqFunction_698(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9702,14 +9702,14 @@ void RoverExample_Components_Rover_eqFunction_698(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 9;
   const int equationIndexes[2] = {1,698};
-  jacobian->tmpVars[9] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[6] /* rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + jacobian->tmpVars[4] /* rover_8d.Fy_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[7] /* rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[9] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[4] /* rover_8d.Fx_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[5] /* rover_8d.Fy_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + (jacobian->tmpVars[0] /* rover_8d.Fx_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[8] /* rover_8d.Fx_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
 /*
 equation index: 699
 type: SIMPLE_ASSIGN
-rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total + rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
+rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total - rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_699(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9717,14 +9717,14 @@ void RoverExample_Components_Rover_eqFunction_699(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 10;
   const int equationIndexes[2] = {1,699};
-  jacobian->tmpVars[10] /* rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[7] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
 /*
 equation index: 700
 type: SIMPLE_ASSIGN
-rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
+rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rr * rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_700(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9747,8 +9747,8 @@ void RoverExample_Components_Rover_eqFunction_700(DATA *data, threadData_t *thre
   modelica_real tmp502;
   modelica_boolean tmp503;
   modelica_real tmp504;
-  tmp490 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-  tmp491 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+  tmp490 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+  tmp491 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
   tmp492 = (tmp490 * tmp490) + (tmp491 * tmp491) + 1e-15;
   if(!(tmp492 >= 0.0))
   {
@@ -9759,9 +9759,9 @@ void RoverExample_Components_Rover_eqFunction_700(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp492);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp492);
     }
-  }tmp493 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp492),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp493 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp492),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp503 = (modelica_boolean)tmp493;
   if(tmp503)
   {
@@ -9769,8 +9769,8 @@ void RoverExample_Components_Rover_eqFunction_700(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp494 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-    tmp495 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+    tmp494 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+    tmp495 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
     tmp496 = (tmp494 * tmp494) + (tmp495 * tmp495) + 1e-15;
     if(!(tmp496 >= 0.0))
     {
@@ -9781,9 +9781,9 @@ void RoverExample_Components_Rover_eqFunction_700(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp496);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp496);
       }
-    }tmp497 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp496),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp497 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp496),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp501 = (modelica_boolean)tmp497;
     if(tmp501)
     {
@@ -9791,8 +9791,8 @@ void RoverExample_Components_Rover_eqFunction_700(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp498 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-      tmp499 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+      tmp498 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+      tmp499 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
       tmp500 = (tmp498 * tmp498) + (tmp499 * tmp499) + 1e-15;
       if(!(tmp500 >= 0.0))
       {
@@ -9803,21 +9803,21 @@ void RoverExample_Components_Rover_eqFunction_700(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp500);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp500);
         }
       }
-      tmp502 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp500),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
+      tmp502 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp500),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
     }
     tmp504 = tmp502;
   }
-  jacobian->tmpVars[11] /* rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp504;
+  jacobian->tmpVars[11] /* rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp504;
   TRACE_POP
 }
 
 /*
 equation index: 701
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total + rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total - rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_701(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9825,14 +9825,14 @@ void RoverExample_Components_Rover_eqFunction_701(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 12;
   const int equationIndexes[2] = {1,701};
-  jacobian->tmpVars[12] /* rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[7] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
 /*
 equation index: 702
 type: SIMPLE_ASSIGN
-rover_8d.z_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
+rover_8d.z_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_702(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9855,8 +9855,8 @@ void RoverExample_Components_Rover_eqFunction_702(DATA *data, threadData_t *thre
   modelica_real tmp517;
   modelica_boolean tmp518;
   modelica_real tmp519;
-  tmp505 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-  tmp506 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+  tmp505 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+  tmp506 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
   tmp507 = (tmp505 * tmp505) + (tmp506 * tmp506) + 1e-15;
   if(!(tmp507 >= 0.0))
   {
@@ -9867,9 +9867,9 @@ void RoverExample_Components_Rover_eqFunction_702(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp507);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp507);
     }
-  }tmp508 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp507),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp508 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp507),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp518 = (modelica_boolean)tmp508;
   if(tmp518)
   {
@@ -9877,8 +9877,8 @@ void RoverExample_Components_Rover_eqFunction_702(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp509 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-    tmp510 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+    tmp509 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+    tmp510 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
     tmp511 = (tmp509 * tmp509) + (tmp510 * tmp510) + 1e-15;
     if(!(tmp511 >= 0.0))
     {
@@ -9889,9 +9889,9 @@ void RoverExample_Components_Rover_eqFunction_702(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp511);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp511);
       }
-    }tmp512 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp511),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp512 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp511),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp516 = (modelica_boolean)tmp512;
     if(tmp516)
     {
@@ -9899,8 +9899,8 @@ void RoverExample_Components_Rover_eqFunction_702(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp513 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-      tmp514 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+      tmp513 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+      tmp514 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
       tmp515 = (tmp513 * tmp513) + (tmp514 * tmp514) + 1e-15;
       if(!(tmp515 >= 0.0))
       {
@@ -9911,21 +9911,21 @@ void RoverExample_Components_Rover_eqFunction_702(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp515);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp515);
         }
       }
-      tmp517 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp515),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
+      tmp517 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp515),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
     }
     tmp519 = tmp517;
   }
-  jacobian->tmpVars[13] /* rover_8d.z_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp519;
+  jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp519;
   TRACE_POP
 }
 
 /*
 equation index: 703
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total - rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total + rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_703(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9933,14 +9933,14 @@ void RoverExample_Components_Rover_eqFunction_703(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 14;
   const int equationIndexes[2] = {1,703};
-  jacobian->tmpVars[14] /* rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[14] /* rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[7] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 704
 type: SIMPLE_ASSIGN
-rover_8d.z_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
+rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_704(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -9963,8 +9963,8 @@ void RoverExample_Components_Rover_eqFunction_704(DATA *data, threadData_t *thre
   modelica_real tmp532;
   modelica_boolean tmp533;
   modelica_real tmp534;
-  tmp520 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-  tmp521 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+  tmp520 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+  tmp521 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
   tmp522 = (tmp520 * tmp520) + (tmp521 * tmp521) + 1e-15;
   if(!(tmp522 >= 0.0))
   {
@@ -9975,9 +9975,9 @@ void RoverExample_Components_Rover_eqFunction_704(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp522);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp522);
     }
-  }tmp523 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp522),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp523 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp522),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp533 = (modelica_boolean)tmp523;
   if(tmp533)
   {
@@ -9985,8 +9985,8 @@ void RoverExample_Components_Rover_eqFunction_704(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp524 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-    tmp525 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+    tmp524 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+    tmp525 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
     tmp526 = (tmp524 * tmp524) + (tmp525 * tmp525) + 1e-15;
     if(!(tmp526 >= 0.0))
     {
@@ -9997,9 +9997,9 @@ void RoverExample_Components_Rover_eqFunction_704(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp526);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp526);
       }
-    }tmp527 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp526),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp527 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp526),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp531 = (modelica_boolean)tmp527;
     if(tmp531)
     {
@@ -10007,8 +10007,8 @@ void RoverExample_Components_Rover_eqFunction_704(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp528 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-      tmp529 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+      tmp528 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+      tmp529 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
       tmp530 = (tmp528 * tmp528) + (tmp529 * tmp529) + 1e-15;
       if(!(tmp530 >= 0.0))
       {
@@ -10019,21 +10019,21 @@ void RoverExample_Components_Rover_eqFunction_704(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp530);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp530);
         }
       }
-      tmp532 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp530),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
+      tmp532 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp530),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
     }
     tmp534 = tmp532;
   }
-  jacobian->tmpVars[15] /* rover_8d.z_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp534;
+  jacobian->tmpVars[15] /* rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp534;
   TRACE_POP
 }
 
 /*
 equation index: 705
 type: SIMPLE_ASSIGN
-rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total - rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
+rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * $DER.rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 / rover_8d.l_total + rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_705(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10041,14 +10041,14 @@ void RoverExample_Components_Rover_eqFunction_705(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 16;
   const int equationIndexes[2] = {1,705};
-  jacobian->tmpVars[16] /* rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* der(rover_8d.vx.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[7] /* rover_8d.ay.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 706
 type: SIMPLE_ASSIGN
-rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rr * rover_8d.Fz_rr * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rr * rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_rr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)
+rover_8d.z_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_706(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10071,8 +10071,8 @@ void RoverExample_Components_Rover_eqFunction_706(DATA *data, threadData_t *thre
   modelica_real tmp547;
   modelica_boolean tmp548;
   modelica_real tmp549;
-  tmp535 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-  tmp536 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+  tmp535 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+  tmp536 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
   tmp537 = (tmp535 * tmp535) + (tmp536 * tmp536) + 1e-15;
   if(!(tmp537 >= 0.0))
   {
@@ -10083,9 +10083,9 @@ void RoverExample_Components_Rover_eqFunction_706(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp537);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp537);
     }
-  }tmp538 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp537),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp538 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp537),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp548 = (modelica_boolean)tmp538;
   if(tmp548)
   {
@@ -10093,8 +10093,8 @@ void RoverExample_Components_Rover_eqFunction_706(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp539 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-    tmp540 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+    tmp539 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+    tmp540 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
     tmp541 = (tmp539 * tmp539) + (tmp540 * tmp540) + 1e-15;
     if(!(tmp541 >= 0.0))
     {
@@ -10105,9 +10105,9 @@ void RoverExample_Components_Rover_eqFunction_706(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp541);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp541);
       }
-    }tmp542 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp541),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp542 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp541),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp546 = (modelica_boolean)tmp542;
     if(tmp546)
     {
@@ -10115,8 +10115,8 @@ void RoverExample_Components_Rover_eqFunction_706(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp543 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-      tmp544 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+      tmp543 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+      tmp544 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
       tmp545 = (tmp543 * tmp543) + (tmp544 * tmp544) + 1e-15;
       if(!(tmp545 >= 0.0))
       {
@@ -10127,21 +10127,21 @@ void RoverExample_Components_Rover_eqFunction_706(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp545);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp545);
         }
       }
-      tmp547 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp545),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
+      tmp547 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp545),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
     }
     tmp549 = tmp547;
   }
-  jacobian->tmpVars[17] /* rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp549;
+  jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */ = tmp549;
   TRACE_POP
 }
 
 /*
 equation index: 707
 type: SIMPLE_ASSIGN
-$res_LSJac6_1.$pDERLSJac6.dummyVarLSJac6 = (if rover_8d.z_rr < 1.0 then rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (2.0 - rover_8d.z_rr - rover_8d.z_rr) else 0.0) - rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6
+$res_LSJac6_1.$pDERLSJac6.dummyVarLSJac6 = (if rover_8d.z_rl < 1.0 then rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (2.0 - rover_8d.z_rl - rover_8d.z_rl) else 0.0) - rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6
 */
 void RoverExample_Components_Rover_eqFunction_707(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10150,8 +10150,8 @@ void RoverExample_Components_Rover_eqFunction_707(DATA *data, threadData_t *thre
   const int subClockIndex = 18;
   const int equationIndexes[2] = {1,707};
   modelica_boolean tmp550;
-  tmp550 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */),1.0);
-  jacobian->resultVars[0] /* $res_LSJac6_1.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp550?(jacobian->tmpVars[17] /* rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
+  tmp550 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */),1.0);
+  jacobian->resultVars[0] /* $res_LSJac6_1.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp550?(jacobian->tmpVars[15] /* rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
   TRACE_POP
 }
 
@@ -10168,14 +10168,14 @@ void RoverExample_Components_Rover_eqFunction_708(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,708};
   modelica_boolean tmp551;
   tmp551 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */),1.0);
-  jacobian->resultVars[1] /* $res_LSJac6_2.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp551?(jacobian->tmpVars[13] /* rover_8d.z_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
+  jacobian->resultVars[1] /* $res_LSJac6_2.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp551?(jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_fl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
   TRACE_POP
 }
 
 /*
 equation index: 709
 type: SIMPLE_ASSIGN
-$res_LSJac6_3.$pDERLSJac6.dummyVarLSJac6 = (if rover_8d.z_rl < 1.0 then rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (2.0 - rover_8d.z_rl - rover_8d.z_rl) else 0.0) - rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6
+$res_LSJac6_3.$pDERLSJac6.dummyVarLSJac6 = (if rover_8d.z_rr < 1.0 then rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 * (2.0 - rover_8d.z_rr - rover_8d.z_rr) else 0.0) - rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6
 */
 void RoverExample_Components_Rover_eqFunction_709(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10184,8 +10184,8 @@ void RoverExample_Components_Rover_eqFunction_709(DATA *data, threadData_t *thre
   const int subClockIndex = 20;
   const int equationIndexes[2] = {1,709};
   modelica_boolean tmp552;
-  tmp552 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */),1.0);
-  jacobian->resultVars[2] /* $res_LSJac6_3.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp552?(jacobian->tmpVars[11] /* rover_8d.z_rl.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_rl.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
+  tmp552 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */),1.0);
+  jacobian->resultVars[2] /* $res_LSJac6_3.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp552?(jacobian->tmpVars[11] /* rover_8d.z_rr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
   TRACE_POP
 }
 
@@ -10202,7 +10202,7 @@ void RoverExample_Components_Rover_eqFunction_710(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,710};
   modelica_boolean tmp553;
   tmp553 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */),1.0);
-  jacobian->resultVars[3] /* $res_LSJac6_4.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp553?(jacobian->tmpVars[15] /* rover_8d.z_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
+  jacobian->resultVars[3] /* $res_LSJac6_4.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_VAR */ = (tmp553?(jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERB.dummyVarB.$pDERLSJac6.dummyVarLSJac6 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_fr.$pDERB.dummyVarB.SeedLSJac6 SEED_VAR */;
   TRACE_POP
 }
 
@@ -10321,7 +10321,7 @@ void RoverExample_Components_Rover_eqFunction_725(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 4;
   const int equationIndexes[2] = {1,725};
-  jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_fl.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_fr.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */;
+  jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_fl.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_fr.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERB.dummyVarB.$pDERLSJac7.dummyVarLSJac7) JACOBIAN_TMP_VAR */;
   TRACE_POP
 }
 
@@ -10371,7 +10371,7 @@ int RoverExample_Components_Rover_functionJacLSJac7_column(DATA* data, threadDat
 /*
 equation index: 571
 type: SIMPLE_ASSIGN
-rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fl_bnd)
+rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_571(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10379,14 +10379,14 @@ void RoverExample_Components_Rover_eqFunction_571(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 0;
   const int equationIndexes[2] = {1,571};
-  jacobian->tmpVars[0] /* rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[0] /* rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 572
 type: SIMPLE_ASSIGN
-rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_fl_bnd * rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fl_bnd)
+rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse17 * rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_572(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10394,14 +10394,14 @@ void RoverExample_Components_Rover_eqFunction_572(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 1;
   const int equationIndexes[2] = {1,572};
-  jacobian->tmpVars[1] /* rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
+  jacobian->tmpVars[1] /* rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */)) * (DIVISION(jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),"1.0 - rover_8d.kappa_fl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 573
 type: SIMPLE_ASSIGN
-rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_rr_bnd * rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_573(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10409,14 +10409,14 @@ void RoverExample_Components_Rover_eqFunction_573(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 2;
   const int equationIndexes[2] = {1,573};
-  jacobian->tmpVars[2] /* rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 574
 type: SIMPLE_ASSIGN
-rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rl_bnd)
+rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse29 * rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_574(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10424,14 +10424,14 @@ void RoverExample_Components_Rover_eqFunction_574(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 3;
   const int equationIndexes[2] = {1,574};
-  jacobian->tmpVars[3] /* rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
+  jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 575
 type: SIMPLE_ASSIGN
-rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse29 * rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rr_bnd)
+rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_fr_bnd * rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_575(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10439,14 +10439,14 @@ void RoverExample_Components_Rover_eqFunction_575(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 4;
   const int equationIndexes[2] = {1,575};
-  jacobian->tmpVars[4] /* rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[4] /* rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 576
 type: SIMPLE_ASSIGN
-rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_rr_bnd * rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rr_bnd)
+rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse21 * rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fr_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_576(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10454,14 +10454,14 @@ void RoverExample_Components_Rover_eqFunction_576(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 5;
   const int equationIndexes[2] = {1,576};
-  jacobian->tmpVars[5] /* rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),"1.0 - rover_8d.kappa_rr_bnd")));
+  jacobian->tmpVars[5] /* rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[1] /* rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 577
 type: SIMPLE_ASSIGN
-rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_fr_bnd * rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fr_bnd)
+rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse25 * rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_577(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10469,14 +10469,14 @@ void RoverExample_Components_Rover_eqFunction_577(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 6;
   const int equationIndexes[2] = {1,577};
-  jacobian->tmpVars[6] /* rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[6] /* rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 578
 type: SIMPLE_ASSIGN
-rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_alpha * $cse21 * rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_fr_bnd)
+rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 + rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 + ((-rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4) - rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4) * $cse35) / rover_8d.mass_total
 */
 void RoverExample_Components_Rover_eqFunction_578(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10484,14 +10484,14 @@ void RoverExample_Components_Rover_eqFunction_578(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 7;
   const int equationIndexes[2] = {1,578};
-  jacobian->tmpVars[7] /* rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),"1.0 - rover_8d.kappa_fr_bnd")));
+  jacobian->tmpVars[7] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[1] /* rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[5] /* rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + jacobian->tmpVars[6] /* rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[3] /* rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[0] /* rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[4] /* rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
 /*
 equation index: 579
 type: SIMPLE_ASSIGN
-rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse35 + rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse35 + rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 + rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4) / rover_8d.mass_total
+rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = rover_8d.c_kappa * rover_8d.kappa_rl_bnd * rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 / (1.0 - rover_8d.kappa_rl_bnd)
 */
 void RoverExample_Components_Rover_eqFunction_579(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10499,14 +10499,14 @@ void RoverExample_Components_Rover_eqFunction_579(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 8;
   const int equationIndexes[2] = {1,579};
-  jacobian->tmpVars[8] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[1] /* rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[0] /* rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + (jacobian->tmpVars[6] /* rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[7] /* rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + jacobian->tmpVars[2] /* rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[5] /* rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[8] /* rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */)) * (DIVISION(jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */,1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),"1.0 - rover_8d.kappa_rl_bnd")));
   TRACE_POP
 }
 
 /*
 equation index: 580
 type: SIMPLE_ASSIGN
-rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 + rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 + ((-rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4) - rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4) * $cse35) / rover_8d.mass_total
+rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse35 + rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse34 + rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * $cse35 + rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 + rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4) / rover_8d.mass_total
 */
 void RoverExample_Components_Rover_eqFunction_580(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10514,7 +10514,7 @@ void RoverExample_Components_Rover_eqFunction_580(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 9;
   const int equationIndexes[2] = {1,580};
-  jacobian->tmpVars[9] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[0] /* rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + (jacobian->tmpVars[7] /* rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + jacobian->tmpVars[3] /* rover_8d.Fy_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[4] /* rover_8d.Fy_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ + ((-jacobian->tmpVars[1] /* rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) - jacobian->tmpVars[6] /* rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
+  jacobian->tmpVars[9] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = DIVISION((jacobian->tmpVars[0] /* rover_8d.Fx_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[1] /* rover_8d.Fy_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + (jacobian->tmpVars[4] /* rover_8d.Fx_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + (jacobian->tmpVars[5] /* rover_8d.Fy_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + jacobian->tmpVars[8] /* rover_8d.Fx_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ + jacobian->tmpVars[2] /* rover_8d.Fx_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total");
   TRACE_POP
 }
 
@@ -10529,7 +10529,7 @@ void RoverExample_Components_Rover_eqFunction_581(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 10;
   const int equationIndexes[2] = {1,581};
-  jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[7] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
@@ -10559,8 +10559,8 @@ void RoverExample_Components_Rover_eqFunction_582(DATA *data, threadData_t *thre
   modelica_real tmp566;
   modelica_boolean tmp567;
   modelica_real tmp568;
-  tmp554 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-  tmp555 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+  tmp554 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+  tmp555 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
   tmp556 = (tmp554 * tmp554) + (tmp555 * tmp555) + 1e-15;
   if(!(tmp556 >= 0.0))
   {
@@ -10573,7 +10573,7 @@ void RoverExample_Components_Rover_eqFunction_582(DATA *data, threadData_t *thre
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp556);
     }
-  }tmp557 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp556),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp557 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp556),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp567 = (modelica_boolean)tmp557;
   if(tmp567)
   {
@@ -10581,8 +10581,8 @@ void RoverExample_Components_Rover_eqFunction_582(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp558 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-    tmp559 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+    tmp558 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+    tmp559 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
     tmp560 = (tmp558 * tmp558) + (tmp559 * tmp559) + 1e-15;
     if(!(tmp560 >= 0.0))
     {
@@ -10595,7 +10595,7 @@ void RoverExample_Components_Rover_eqFunction_582(DATA *data, threadData_t *thre
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
         throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp560);
       }
-    }tmp561 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp560),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp561 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[174]] /* rover_8d.Fz_rr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp560),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp565 = (modelica_boolean)tmp561;
     if(tmp565)
     {
@@ -10603,8 +10603,8 @@ void RoverExample_Components_Rover_eqFunction_582(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp562 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */));
-      tmp563 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */));
+      tmp562 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */));
+      tmp563 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */));
       tmp564 = (tmp562 * tmp562) + (tmp563 * tmp563) + 1e-15;
       if(!(tmp564 >= 0.0))
       {
@@ -10618,7 +10618,7 @@ void RoverExample_Components_Rover_eqFunction_582(DATA *data, threadData_t *thre
           throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15) was %g should be >= 0", tmp564);
         }
       }
-      tmp566 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp564),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
+      tmp566 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[214]] /* rover_8d.mu_rr variable */)) * ((jacobian->tmpVars[10] /* rover_8d.Fz_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */),sqrt(tmp564),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse29) ^ 2.0 + 1e-15)"))));
     }
     tmp568 = tmp566;
   }
@@ -10629,7 +10629,7 @@ void RoverExample_Components_Rover_eqFunction_582(DATA *data, threadData_t *thre
 /*
 equation index: 583
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 / rover_8d.l_total + rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 / rover_8d.l_total - rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_583(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10637,14 +10637,14 @@ void RoverExample_Components_Rover_eqFunction_583(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 12;
   const int equationIndexes[2] = {1,583};
-  jacobian->tmpVars[12] /* rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[7] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
   TRACE_POP
 }
 
 /*
 equation index: 584
 type: SIMPLE_ASSIGN
-rover_8d.z_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
+rover_8d.z_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_584(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10667,8 +10667,8 @@ void RoverExample_Components_Rover_eqFunction_584(DATA *data, threadData_t *thre
   modelica_real tmp581;
   modelica_boolean tmp582;
   modelica_real tmp583;
-  tmp569 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-  tmp570 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+  tmp569 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+  tmp570 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
   tmp571 = (tmp569 * tmp569) + (tmp570 * tmp570) + 1e-15;
   if(!(tmp571 >= 0.0))
   {
@@ -10679,9 +10679,9 @@ void RoverExample_Components_Rover_eqFunction_584(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp571);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp571);
     }
-  }tmp572 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp571),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp572 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp571),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp582 = (modelica_boolean)tmp572;
   if(tmp582)
   {
@@ -10689,8 +10689,8 @@ void RoverExample_Components_Rover_eqFunction_584(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp573 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-    tmp574 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+    tmp573 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+    tmp574 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
     tmp575 = (tmp573 * tmp573) + (tmp574 * tmp574) + 1e-15;
     if(!(tmp575 >= 0.0))
     {
@@ -10701,9 +10701,9 @@ void RoverExample_Components_Rover_eqFunction_584(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp575);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp575);
       }
-    }tmp576 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp575),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp576 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp575),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp580 = (modelica_boolean)tmp576;
     if(tmp580)
     {
@@ -10711,8 +10711,8 @@ void RoverExample_Components_Rover_eqFunction_584(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp577 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */));
-      tmp578 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */));
+      tmp577 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */));
+      tmp578 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */));
       tmp579 = (tmp577 * tmp577) + (tmp578 * tmp578) + 1e-15;
       if(!(tmp579 >= 0.0))
       {
@@ -10723,21 +10723,21 @@ void RoverExample_Components_Rover_eqFunction_584(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp579);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp579);
         }
       }
-      tmp581 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp579),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
+      tmp581 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[12] /* rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp579),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
     }
     tmp583 = tmp581;
   }
-  jacobian->tmpVars[13] /* rover_8d.z_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = tmp583;
+  jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = tmp583;
   TRACE_POP
 }
 
 /*
 equation index: 585
 type: SIMPLE_ASSIGN
-rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 / rover_8d.l_total - rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
+rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 / rover_8d.l_total + rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_585(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10745,14 +10745,14 @@ void RoverExample_Components_Rover_eqFunction_585(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 14;
   const int equationIndexes[2] = {1,585};
-  jacobian->tmpVars[14] /* rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) - ((jacobian->tmpVars[9] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw")));
+  jacobian->tmpVars[14] /* rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[7] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 586
 type: SIMPLE_ASSIGN
-rover_8d.z_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fr * rover_8d.Fz_fr * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fr * rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (1.0 - rover_8d.kappa_fr_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)
+rover_8d.z_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_586(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10775,8 +10775,8 @@ void RoverExample_Components_Rover_eqFunction_586(DATA *data, threadData_t *thre
   modelica_real tmp596;
   modelica_boolean tmp597;
   modelica_real tmp598;
-  tmp584 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-  tmp585 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+  tmp584 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+  tmp585 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
   tmp586 = (tmp584 * tmp584) + (tmp585 * tmp585) + 1e-15;
   if(!(tmp586 >= 0.0))
   {
@@ -10787,9 +10787,9 @@ void RoverExample_Components_Rover_eqFunction_586(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp586);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp586);
     }
-  }tmp587 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp586),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp587 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp586),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp597 = (modelica_boolean)tmp587;
   if(tmp597)
   {
@@ -10797,8 +10797,8 @@ void RoverExample_Components_Rover_eqFunction_586(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp588 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-    tmp589 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+    tmp588 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+    tmp589 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
     tmp590 = (tmp588 * tmp588) + (tmp589 * tmp589) + 1e-15;
     if(!(tmp590 >= 0.0))
     {
@@ -10809,9 +10809,9 @@ void RoverExample_Components_Rover_eqFunction_586(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp590);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp590);
       }
-    }tmp591 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[172]] /* rover_8d.Fz_fr variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp590),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp591 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp590),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp595 = (modelica_boolean)tmp591;
     if(tmp595)
     {
@@ -10819,8 +10819,8 @@ void RoverExample_Components_Rover_eqFunction_586(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp592 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */));
-      tmp593 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */));
+      tmp592 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */));
+      tmp593 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */));
       tmp594 = (tmp592 * tmp592) + (tmp593 * tmp593) + 1e-15;
       if(!(tmp594 >= 0.0))
       {
@@ -10831,21 +10831,21 @@ void RoverExample_Components_Rover_eqFunction_586(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15) was %g should be >= 0", tmp594);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp594);
         }
       }
-      tmp596 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[212]] /* rover_8d.mu_fr variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */),sqrt(tmp594),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fr_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse21) ^ 2.0 + 1e-15)"))));
+      tmp596 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[14] /* rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp594),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
     }
     tmp598 = tmp596;
   }
-  jacobian->tmpVars[15] /* rover_8d.z_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = tmp598;
+  jacobian->tmpVars[15] /* rover_8d.z_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = tmp598;
   TRACE_POP
 }
 
 /*
 equation index: 587
 type: SIMPLE_ASSIGN
-rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = 0.5 * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 / rover_8d.l_total + rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (rover_8d.mass_sprung * rover_8d.l_front * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_rear * rover_8d.hur) / rover_8d.tw
+rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = (-0.5) * (rover_8d.mass_unsprung_front * rover_8d.huf + rover_8d.mass_sprung * rover_8d.hs + rover_8d.mass_unsprung_rear * rover_8d.hur) * rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 / rover_8d.l_total + rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (rover_8d.mass_sprung * rover_8d.l_rear * rover_8d.hs / rover_8d.l_total + rover_8d.mass_unsprung_front * rover_8d.huf) / rover_8d.tw
 */
 void RoverExample_Components_Rover_eqFunction_587(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10853,14 +10853,14 @@ void RoverExample_Components_Rover_eqFunction_587(DATA *data, threadData_t *thre
   const int baseClockIndex = 0;
   const int subClockIndex = 16;
   const int equationIndexes[2] = {1,587};
-  jacobian->tmpVars[16] /* rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[107] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[8] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[9] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (DIVISION((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[108] /* rover_8d.hur PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
+  jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = (-0.5) * ((((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)) + ((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) * ((data->simulationInfo->realParameter[106] /* rover_8d.hur PARAM */))) * (DIVISION(jacobian->tmpVars[9] /* rover_8d.ax.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + (jacobian->tmpVars[7] /* rover_8d.ay.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * (DIVISION((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */),(data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */),"rover_8d.l_total"))) + ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)) * ((data->simulationInfo->realParameter[105] /* rover_8d.huf PARAM */)),(data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */),"rover_8d.tw"));
   TRACE_POP
 }
 
 /*
 equation index: 588
 type: SIMPLE_ASSIGN
-rover_8d.z_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_rl * rover_8d.Fz_rl * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_rl * rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (1.0 - rover_8d.kappa_rl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)
+rover_8d.z_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 = if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) < rover_8d.z_min) then 0.0 else if noEvent(0.5 * rover_8d.mu_fl * rover_8d.Fz_fl * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) > rover_8d.z_max) then 0.0 else 0.5 * rover_8d.mu_fl * rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 * (1.0 - rover_8d.kappa_fl_bnd) / sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)
 */
 void RoverExample_Components_Rover_eqFunction_588(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
@@ -10883,8 +10883,8 @@ void RoverExample_Components_Rover_eqFunction_588(DATA *data, threadData_t *thre
   modelica_real tmp611;
   modelica_boolean tmp612;
   modelica_real tmp613;
-  tmp599 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-  tmp600 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+  tmp599 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+  tmp600 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
   tmp601 = (tmp599 * tmp599) + (tmp600 * tmp600) + 1e-15;
   if(!(tmp601 >= 0.0))
   {
@@ -10895,9 +10895,9 @@ void RoverExample_Components_Rover_eqFunction_588(DATA *data, threadData_t *thre
     } else {
       FILE_INFO info = {"",0,0,0,0,0};
       omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp601);
+      throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp601);
     }
-  }tmp602 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp601),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
+  }tmp602 = Less((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp601),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[129] /* rover_8d.z_min PARAM */));
   tmp612 = (modelica_boolean)tmp602;
   if(tmp612)
   {
@@ -10905,8 +10905,8 @@ void RoverExample_Components_Rover_eqFunction_588(DATA *data, threadData_t *thre
   }
   else
   {
-    tmp603 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-    tmp604 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+    tmp603 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+    tmp604 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
     tmp605 = (tmp603 * tmp603) + (tmp604 * tmp604) + 1e-15;
     if(!(tmp605 >= 0.0))
     {
@@ -10917,9 +10917,9 @@ void RoverExample_Components_Rover_eqFunction_588(DATA *data, threadData_t *thre
       } else {
         FILE_INFO info = {"",0,0,0,0,0};
         omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp605);
+        throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp605);
       }
-    }tmp606 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[173]] /* rover_8d.Fz_rl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp605),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
+    }tmp606 = Greater((0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[171]] /* rover_8d.Fz_fl variable */)) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp605),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)")))),(data->simulationInfo->realParameter[128] /* rover_8d.z_max PARAM */));
     tmp610 = (modelica_boolean)tmp606;
     if(tmp610)
     {
@@ -10927,8 +10927,8 @@ void RoverExample_Components_Rover_eqFunction_588(DATA *data, threadData_t *thre
     }
     else
     {
-      tmp607 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */));
-      tmp608 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */));
+      tmp607 = ((data->simulationInfo->realParameter[84] /* rover_8d.c_kappa PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */));
+      tmp608 = ((data->simulationInfo->realParameter[83] /* rover_8d.c_alpha PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */));
       tmp609 = (tmp607 * tmp607) + (tmp608 * tmp608) + 1e-15;
       if(!(tmp609 >= 0.0))
       {
@@ -10939,14 +10939,14 @@ void RoverExample_Components_Rover_eqFunction_588(DATA *data, threadData_t *thre
         } else {
           FILE_INFO info = {"",0,0,0,0,0};
           omc_assert_warning(info, "The following assertion has been violated %sat time %f", initial() ? "during initialization " : "", data->localData[0]->timeValue);
-          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15) was %g should be >= 0", tmp609);
+          throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15) was %g should be >= 0", tmp609);
         }
       }
-      tmp611 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[213]] /* rover_8d.mu_rl variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */),sqrt(tmp609),"sqrt((rover_8d.c_kappa * rover_8d.kappa_rl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse25) ^ 2.0 + 1e-15)"))));
+      tmp611 = (0.5) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[211]] /* rover_8d.mu_fl variable */)) * ((jacobian->tmpVars[16] /* rover_8d.Fz_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (DIVISION(1.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */),sqrt(tmp609),"sqrt((rover_8d.c_kappa * rover_8d.kappa_fl_bnd) ^ 2.0 + (rover_8d.c_alpha * $cse17) ^ 2.0 + 1e-15)"))));
     }
     tmp613 = tmp611;
   }
-  jacobian->tmpVars[17] /* rover_8d.z_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = tmp613;
+  jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */ = tmp613;
   TRACE_POP
 }
 
@@ -10963,7 +10963,7 @@ void RoverExample_Components_Rover_eqFunction_589(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,589};
   modelica_boolean tmp614;
   tmp614 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */),1.0);
-  jacobian->resultVars[0] /* $res_LSJac4_1.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp614?(jacobian->tmpVars[17] /* rover_8d.z_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
+  jacobian->resultVars[0] /* $res_LSJac4_1.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp614?(jacobian->tmpVars[15] /* rover_8d.z_rl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[232]] /* rover_8d.z_rl variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_rl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
   TRACE_POP
 }
 
@@ -10980,7 +10980,7 @@ void RoverExample_Components_Rover_eqFunction_590(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,590};
   modelica_boolean tmp615;
   tmp615 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */),1.0);
-  jacobian->resultVars[1] /* $res_LSJac4_2.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp615?(jacobian->tmpVars[15] /* rover_8d.z_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[0] /* rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
+  jacobian->resultVars[1] /* $res_LSJac4_2.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp615?(jacobian->tmpVars[13] /* rover_8d.z_fr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[231]] /* rover_8d.z_fr variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_fr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
   TRACE_POP
 }
 
@@ -10997,7 +10997,7 @@ void RoverExample_Components_Rover_eqFunction_591(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,591};
   modelica_boolean tmp616;
   tmp616 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */),1.0);
-  jacobian->resultVars[2] /* $res_LSJac4_3.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp616?(jacobian->tmpVars[11] /* rover_8d.z_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[1] /* rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
+  jacobian->resultVars[2] /* $res_LSJac4_3.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp616?(jacobian->tmpVars[11] /* rover_8d.z_rr.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */)):0.0) - jacobian->seedVars[2] /* rover_8d.fz_rr.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
   TRACE_POP
 }
 
@@ -11014,7 +11014,7 @@ void RoverExample_Components_Rover_eqFunction_592(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,592};
   modelica_boolean tmp617;
   tmp617 = Less((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */),1.0);
-  jacobian->resultVars[3] /* $res_LSJac4_4.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp617?(jacobian->tmpVars[13] /* rover_8d.z_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
+  jacobian->resultVars[3] /* $res_LSJac4_4.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_VAR */ = (tmp617?(jacobian->tmpVars[17] /* rover_8d.z_fl.$pDERA.dummyVarA.$pDERLSJac4.dummyVarLSJac4 JACOBIAN_TMP_VAR */) * (2.0 - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */)):0.0) - jacobian->seedVars[3] /* rover_8d.fz_fl.$pDERA.dummyVarA.SeedLSJac4 SEED_VAR */;
   TRACE_POP
 }
 
@@ -11063,92 +11063,92 @@ int RoverExample_Components_Rover_functionJacLSJac4_column(DATA* data, threadDat
 /* dynamic equations */
 
 /*
-equation index: 602
-type: SIMPLE_ASSIGN
-$DER.rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = (-4.0) * rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.J
-*/
-void RoverExample_Components_Rover_eqFunction_602(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 0;
-  const int equationIndexes[2] = {1,602};
-  jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = (-4.0) * (DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[67] /* rover_8d.J PARAM */),"rover_8d.J"));
-  TRACE_POP
-}
-
-/*
-equation index: 603
-type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.I_wheel
-*/
-void RoverExample_Components_Rover_eqFunction_603(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
-{
-  TRACE_PUSH
-  const int baseClockIndex = 0;
-  const int subClockIndex = 1;
-  const int equationIndexes[2] = {1,603};
-  jacobian->tmpVars[1] /* der(rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
-  TRACE_POP
-}
-
-/*
 equation index: 604
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.I_wheel
+$DER.rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = (-4.0) * rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.J
 */
 void RoverExample_Components_Rover_eqFunction_604(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 2;
+  const int subClockIndex = 0;
   const int equationIndexes[2] = {1,604};
-  jacobian->tmpVars[2] /* der(rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = (-4.0) * (DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[67] /* rover_8d.J PARAM */),"rover_8d.J"));
   TRACE_POP
 }
 
 /*
 equation index: 605
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.I_wheel
+$DER.rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_605(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 3;
+  const int subClockIndex = 1;
   const int equationIndexes[2] = {1,605};
-  jacobian->tmpVars[3] /* der(rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 606
 type: SIMPLE_ASSIGN
-$DER.rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = 4.0 * $DER.rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 / rover_8d.gratio - $DER.rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 - $DER.rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 - $DER.rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5
+$DER.rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_606(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 4;
+  const int subClockIndex = 2;
   const int equationIndexes[2] = {1,606};
-  jacobian->tmpVars[4] /* der(rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[2] /* der(rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[1] /* der(rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */;
+  jacobian->tmpVars[2] /* der(rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
   TRACE_POP
 }
 
 /*
 equation index: 607
 type: SIMPLE_ASSIGN
-$res_LSJac5_1.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 - $DER.rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 * rover_8d.I_wheel
+$DER.rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 / rover_8d.I_wheel
 */
 void RoverExample_Components_Rover_eqFunction_607(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
 {
   TRACE_PUSH
   const int baseClockIndex = 0;
-  const int subClockIndex = 5;
+  const int subClockIndex = 3;
   const int equationIndexes[2] = {1,607};
-  jacobian->resultVars[0] /* $res_LSJac5_1.$pDERLSJac5.dummyVarLSJac5 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
+  jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = DIVISION(jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */,(data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */),"rover_8d.I_wheel");
+  TRACE_POP
+}
+
+/*
+equation index: 608
+type: SIMPLE_ASSIGN
+$DER.rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 = 4.0 * $DER.rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 / rover_8d.gratio - $DER.rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 - $DER.rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 - $DER.rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5
+*/
+void RoverExample_Components_Rover_eqFunction_608(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 4;
+  const int equationIndexes[2] = {1,608};
+  jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ = (4.0) * (DIVISION(jacobian->tmpVars[0] /* der(rover_8d.omega.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */,(data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */),"rover_8d.gratio")) - jacobian->tmpVars[1] /* der(rover_8d.omega_fl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[2] /* der(rover_8d.omega_fr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */ - jacobian->tmpVars[3] /* der(rover_8d.omega_rl.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */;
+  TRACE_POP
+}
+
+/*
+equation index: 609
+type: SIMPLE_ASSIGN
+$res_LSJac5_1.$pDERLSJac5.dummyVarLSJac5 = rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 - $DER.rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5 * rover_8d.I_wheel
+*/
+void RoverExample_Components_Rover_eqFunction_609(DATA *data, threadData_t *threadData, ANALYTIC_JACOBIAN *jacobian, ANALYTIC_JACOBIAN *parentJacobian)
+{
+  TRACE_PUSH
+  const int baseClockIndex = 0;
+  const int subClockIndex = 5;
+  const int equationIndexes[2] = {1,609};
+  jacobian->resultVars[0] /* $res_LSJac5_1.$pDERLSJac5.dummyVarLSJac5 JACOBIAN_VAR */ = jacobian->seedVars[0] /* rover_8d.thr.$pDERA.dummyVarA.SeedLSJac5 SEED_VAR */ - ((jacobian->tmpVars[4] /* der(rover_8d.omega_rr.$pDERA.dummyVarA.$pDERLSJac5.dummyVarLSJac5) JACOBIAN_TMP_VAR */) * ((data->simulationInfo->realParameter[64] /* rover_8d.I_wheel PARAM */)));
   TRACE_POP
 }
 
@@ -11168,12 +11168,12 @@ int RoverExample_Components_Rover_functionJacLSJac5_column(DATA* data, threadDat
   TRACE_PUSH
 
   int index = RoverExample_Components_Rover_INDEX_JAC_LSJac5;
-  RoverExample_Components_Rover_eqFunction_602(data, threadData, jacobian, parentJacobian);
-  RoverExample_Components_Rover_eqFunction_603(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_604(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_605(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_606(data, threadData, jacobian, parentJacobian);
   RoverExample_Components_Rover_eqFunction_607(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_608(data, threadData, jacobian, parentJacobian);
+  RoverExample_Components_Rover_eqFunction_609(data, threadData, jacobian, parentJacobian);
   TRACE_POP
   return 0;
 }

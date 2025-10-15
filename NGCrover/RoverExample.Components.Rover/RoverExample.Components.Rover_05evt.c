@@ -28,9 +28,9 @@ const char *RoverExample_Components_Rover_zeroCrossingDescription(int i, int **o
   "rover_8d.delta <> 0.0",
   "mod(rover_8d.psi + 3.14159265, 6.2831853, 0)",
   "rover_8d.z_rl < 1.0",
-  "rover_8d.z_rr < 1.0",
-  "rover_8d.z_fr < 1.0",
   "rover_8d.z_fl < 1.0",
+  "rover_8d.z_fr < 1.0",
+  "rover_8d.z_rr < 1.0",
   "rover_8d.Fz_fl <= 1.5 or rover_8d.Fz_fr <= 1.5 or rover_8d.Fz_rl <= 1.5 or rover_8d.Fz_rr <= 1.5",
   "mod(rover_3d.psi + 3.14159265, 6.2831853, 4)",
   "rover_3d.delta <> 0.0",
@@ -120,8 +120,8 @@ extern void RoverExample_Components_Rover_eqFunction_322(DATA* data, threadData_
 extern void RoverExample_Components_Rover_eqFunction_345(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_346(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_348(DATA* data, threadData_t *threadData);
-extern void RoverExample_Components_Rover_eqFunction_365(DATA* data, threadData_t *threadData);
-extern void RoverExample_Components_Rover_eqFunction_366(DATA* data, threadData_t *threadData);
+extern void RoverExample_Components_Rover_eqFunction_353(DATA* data, threadData_t *threadData);
+extern void RoverExample_Components_Rover_eqFunction_354(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_367(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_368(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_369(DATA* data, threadData_t *threadData);
@@ -265,9 +265,9 @@ int RoverExample_Components_Rover_function_ZeroCrossingsEquations(DATA *data, th
 
   RoverExample_Components_Rover_eqFunction_348(data, threadData);
 
-  RoverExample_Components_Rover_eqFunction_365(data, threadData);
+  RoverExample_Components_Rover_eqFunction_353(data, threadData);
 
-  RoverExample_Components_Rover_eqFunction_366(data, threadData);
+  RoverExample_Components_Rover_eqFunction_354(data, threadData);
 
   RoverExample_Components_Rover_eqFunction_367(data, threadData);
 
@@ -376,7 +376,7 @@ int RoverExample_Components_Rover_function_ZeroCrossings(DATA *data, threadData_
   start_index = current_index;
   tmp10 = 1.0;
   tmp11 = 1.0;
-  tmp9 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */), 1.0, tmp10, tmp11, data->simulationInfo->storedRelations[4]);
+  tmp9 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */), 1.0, tmp10, tmp11, data->simulationInfo->storedRelations[4]);
   gout[start_index] = (tmp9) ? 1 : -1;
   current_index++;
 
@@ -390,7 +390,7 @@ int RoverExample_Components_Rover_function_ZeroCrossings(DATA *data, threadData_
   start_index = current_index;
   tmp16 = 1.0;
   tmp17 = 1.0;
-  tmp15 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */), 1.0, tmp16, tmp17, data->simulationInfo->storedRelations[6]);
+  tmp15 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */), 1.0, tmp16, tmp17, data->simulationInfo->storedRelations[6]);
   gout[start_index] = (tmp15) ? 1 : -1;
   current_index++;
 
@@ -426,17 +426,17 @@ int RoverExample_Components_Rover_function_ZeroCrossings(DATA *data, threadData_
 
   start_index = current_index;
   tmp32 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-  tmp34 = (9.80665) * (fabs((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)));
-  tmp35 = (1.0) * (fabs((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
-  tmp33 = LessEqZC((9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)), (DIVISION((tmp32 * tmp32),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)), tmp34, tmp35, data->simulationInfo->storedRelations[13]);
+  tmp34 = (9.80665) * (fabs((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)));
+  tmp35 = (1.0) * (fabs((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
+  tmp33 = LessEqZC((9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)), (DIVISION((tmp32 * tmp32),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)), tmp34, tmp35, data->simulationInfo->storedRelations[13]);
   gout[start_index] = (tmp33) ? 1 : -1;
   current_index++;
 
   start_index = current_index;
   tmp36 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-  tmp38 = (9.80665) * (fabs((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)));
-  tmp39 = (1.0) * (fabs((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
-  tmp37 = GreaterZC((9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)), (DIVISION((tmp36 * tmp36),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)), tmp38, tmp39, data->simulationInfo->storedRelations[14]);
+  tmp38 = (9.80665) * (fabs((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)));
+  tmp39 = (1.0) * (fabs((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
+  tmp37 = GreaterZC((9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)), (DIVISION((tmp36 * tmp36),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)), tmp38, tmp39, data->simulationInfo->storedRelations[14]);
   gout[start_index] = (tmp37) ? 1 : -1;
   current_index++;
 
@@ -454,9 +454,9 @@ const char *RoverExample_Components_Rover_relationDescription(int i)
   "rover_8d.delta == 0.0",
   "rover_8d.delta <> 0.0",
   "rover_8d.z_rl < 1.0",
-  "rover_8d.z_rr < 1.0",
-  "rover_8d.z_fr < 1.0",
   "rover_8d.z_fl < 1.0",
+  "rover_8d.z_fr < 1.0",
+  "rover_8d.z_rr < 1.0",
   "rover_8d.Fz_fl <= 1.5",
   "rover_8d.Fz_fr <= 1.5",
   "rover_8d.Fz_rl <= 1.5",
@@ -539,7 +539,7 @@ int RoverExample_Components_Rover_function_updateRelations(DATA *data, threadDat
     start_index = current_index;
     tmp47 = 1.0;
     tmp48 = 1.0;
-    tmp46 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */), 1.0, tmp47, tmp48, data->simulationInfo->storedRelations[4]);
+    tmp46 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */), 1.0, tmp47, tmp48, data->simulationInfo->storedRelations[4]);
     data->simulationInfo->relations[start_index] = tmp46;
     current_index++;
 
@@ -553,7 +553,7 @@ int RoverExample_Components_Rover_function_updateRelations(DATA *data, threadDat
     start_index = current_index;
     tmp53 = 1.0;
     tmp54 = 1.0;
-    tmp52 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */), 1.0, tmp53, tmp54, data->simulationInfo->storedRelations[6]);
+    tmp52 = LessZC((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */), 1.0, tmp53, tmp54, data->simulationInfo->storedRelations[6]);
     data->simulationInfo->relations[start_index] = tmp52;
     current_index++;
 
@@ -595,17 +595,17 @@ int RoverExample_Components_Rover_function_updateRelations(DATA *data, threadDat
 
     start_index = current_index;
     tmp67 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-    tmp69 = (9.80665) * (fabs((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)));
-    tmp70 = (1.0) * (fabs((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
-    tmp68 = LessEqZC((9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)), (DIVISION((tmp67 * tmp67),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)), tmp69, tmp70, data->simulationInfo->storedRelations[13]);
+    tmp69 = (9.80665) * (fabs((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)));
+    tmp70 = (1.0) * (fabs((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
+    tmp68 = LessEqZC((9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)), (DIVISION((tmp67 * tmp67),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)), tmp69, tmp70, data->simulationInfo->storedRelations[13]);
     data->simulationInfo->relations[start_index] = tmp68;
     current_index++;
 
     start_index = current_index;
     tmp71 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-    tmp73 = (9.80665) * (fabs((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)));
-    tmp74 = (1.0) * (fabs((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
-    tmp72 = GreaterZC((9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)), (DIVISION((tmp71 * tmp71),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)), tmp73, tmp74, data->simulationInfo->storedRelations[14]);
+    tmp73 = (9.80665) * (fabs((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)));
+    tmp74 = (1.0) * (fabs((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
+    tmp72 = GreaterZC((9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)), (DIVISION((tmp71 * tmp71),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)), tmp73, tmp74, data->simulationInfo->storedRelations[14]);
     data->simulationInfo->relations[start_index] = tmp72;
     current_index++;
   } else {
@@ -626,7 +626,7 @@ int RoverExample_Components_Rover_function_updateRelations(DATA *data, threadDat
     current_index++;
 
     start_index = current_index;
-    data->simulationInfo->relations[start_index] = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) < 1.0);
+    data->simulationInfo->relations[start_index] = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) < 1.0);
     current_index++;
 
     start_index = current_index;
@@ -634,7 +634,7 @@ int RoverExample_Components_Rover_function_updateRelations(DATA *data, threadDat
     current_index++;
 
     start_index = current_index;
-    data->simulationInfo->relations[start_index] = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[230]] /* rover_8d.z_fl variable */) < 1.0);
+    data->simulationInfo->relations[start_index] = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[233]] /* rover_8d.z_rr variable */) < 1.0);
     current_index++;
 
     start_index = current_index;
@@ -663,12 +663,12 @@ int RoverExample_Components_Rover_function_updateRelations(DATA *data, threadDat
 
     start_index = current_index;
     tmp75 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-    data->simulationInfo->relations[start_index] = ((9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)) <= (DIVISION((tmp75 * tmp75),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
+    data->simulationInfo->relations[start_index] = ((9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)) <= (DIVISION((tmp75 * tmp75),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
     current_index++;
 
     start_index = current_index;
     tmp76 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-    data->simulationInfo->relations[start_index] = ((9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)) > (DIVISION((tmp76 * tmp76),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
+    data->simulationInfo->relations[start_index] = ((9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)) > (DIVISION((tmp76 * tmp76),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius")) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
     current_index++;
   }
   

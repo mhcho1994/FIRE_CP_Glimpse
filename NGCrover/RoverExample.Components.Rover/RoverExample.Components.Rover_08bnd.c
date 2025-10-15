@@ -33,56 +33,56 @@ void RoverExample_Components_Rover_updateBoundParameters_0(DATA *data, threadDat
 /*
 equation index: 397
 type: SIMPLE_ASSIGN
-$cse1 = sin(1.570796325 - rover_3d.emi.lat0)
+$cse1 = sin(1.570796325 - rover_3d.mag.lat0)
 */
 OMC_DISABLE_OPT
 static void RoverExample_Components_Rover_eqFunction_397(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,397};
-  (data->simulationInfo->realParameter[0] /* $cse1 PARAM */) = sin(1.570796325 - (data->simulationInfo->realParameter[56] /* rover_3d.emi.lat0 PARAM */));
+  (data->simulationInfo->realParameter[0] /* $cse1 PARAM */) = sin(1.570796325 - (data->simulationInfo->realParameter[57] /* rover_3d.mag.lat0 PARAM */));
   TRACE_POP
 }
 
 /*
 equation index: 398
 type: SIMPLE_ASSIGN
-$cse2 = cos(1.570796325 - rover_3d.emi.lat0)
+$cse2 = cos(1.570796325 - rover_3d.mag.lat0)
 */
 OMC_DISABLE_OPT
 static void RoverExample_Components_Rover_eqFunction_398(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,398};
-  (data->simulationInfo->realParameter[3] /* $cse2 PARAM */) = cos(1.570796325 - (data->simulationInfo->realParameter[56] /* rover_3d.emi.lat0 PARAM */));
+  (data->simulationInfo->realParameter[1] /* $cse2 PARAM */) = cos(1.570796325 - (data->simulationInfo->realParameter[57] /* rover_3d.mag.lat0 PARAM */));
   TRACE_POP
 }
 
 /*
 equation index: 399
 type: SIMPLE_ASSIGN
-$cse10 = sin(1.570796325 - rover_8d.emi.lat0)
+$cse7 = sin(1.570796325 - rover_8d.mag.lat0)
 */
 OMC_DISABLE_OPT
 static void RoverExample_Components_Rover_eqFunction_399(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,399};
-  (data->simulationInfo->realParameter[1] /* $cse10 PARAM */) = sin(1.570796325 - (data->simulationInfo->realParameter[93] /* rover_8d.emi.lat0 PARAM */));
+  (data->simulationInfo->realParameter[5] /* $cse7 PARAM */) = sin(1.570796325 - (data->simulationInfo->realParameter[116] /* rover_8d.mag.lat0 PARAM */));
   TRACE_POP
 }
 
 /*
 equation index: 400
 type: SIMPLE_ASSIGN
-$cse11 = cos(1.570796325 - rover_8d.emi.lat0)
+$cse8 = cos(1.570796325 - rover_8d.mag.lat0)
 */
 OMC_DISABLE_OPT
 static void RoverExample_Components_Rover_eqFunction_400(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,400};
-  (data->simulationInfo->realParameter[2] /* $cse11 PARAM */) = cos(1.570796325 - (data->simulationInfo->realParameter[93] /* rover_8d.emi.lat0 PARAM */));
+  (data->simulationInfo->realParameter[6] /* $cse8 PARAM */) = cos(1.570796325 - (data->simulationInfo->realParameter[116] /* rover_8d.mag.lat0 PARAM */));
   TRACE_POP
 }
 
@@ -316,7 +316,7 @@ static void RoverExample_Components_Rover_eqFunction_411(DATA *data, threadData_
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,411};
-  (data->simulationInfo->realParameter[4] /* $cse39 PARAM */) = cos((data->simulationInfo->realParameter[18] /* gyroatk.Phi_d PARAM */));
+  (data->simulationInfo->realParameter[2] /* $cse39 PARAM */) = cos((data->simulationInfo->realParameter[18] /* gyroatk.Phi_d PARAM */));
   TRACE_POP
 }
 extern void RoverExample_Components_Rover_eqFunction_37(DATA *data, threadData_t *threadData);
@@ -332,7 +332,7 @@ static void RoverExample_Components_Rover_eqFunction_413(DATA *data, threadData_
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,413};
-  (data->simulationInfo->realParameter[5] /* $cse40 PARAM */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[147]] /* rover_3d.phi_f variable */) + (data->simulationInfo->realParameter[58] /* rover_3d.phi_t PARAM */));
+  (data->simulationInfo->realParameter[3] /* $cse40 PARAM */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[147]] /* rover_3d.phi_f variable */) + (data->simulationInfo->realParameter[58] /* rover_3d.phi_t PARAM */));
   TRACE_POP
 }
 
@@ -346,7 +346,7 @@ static void RoverExample_Components_Rover_eqFunction_414(DATA *data, threadData_
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,414};
-  (data->simulationInfo->realParameter[6] /* $cse41 PARAM */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[147]] /* rover_3d.phi_f variable */));
+  (data->simulationInfo->realParameter[4] /* $cse41 PARAM */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[147]] /* rover_3d.phi_f variable */));
   TRACE_POP
 }
 
@@ -856,9 +856,9 @@ static void RoverExample_Components_Rover_eqFunction_436(DATA *data, threadData_
   modelica_real tmp55;
   modelica_real tmp56;
   modelica_real tmp57;
-  tmp54 = (data->simulationInfo->realParameter[101] /* rover_8d.emi.x_wire[1] PARAM */);
-  tmp55 = (data->simulationInfo->realParameter[102] /* rover_8d.emi.x_wire[2] PARAM */);
-  tmp56 = (data->simulationInfo->realParameter[103] /* rover_8d.emi.x_wire[3] PARAM */);
+  tmp54 = (data->simulationInfo->realParameter[99] /* rover_8d.emi.x_wire[1] PARAM */);
+  tmp55 = (data->simulationInfo->realParameter[100] /* rover_8d.emi.x_wire[2] PARAM */);
+  tmp56 = (data->simulationInfo->realParameter[101] /* rover_8d.emi.x_wire[3] PARAM */);
   tmp57 = (tmp54 * tmp54) + (tmp55 * tmp55) + (tmp56 * tmp56);
   if(!(tmp57 >= 0.0))
   {
@@ -872,7 +872,7 @@ static void RoverExample_Components_Rover_eqFunction_436(DATA *data, threadData_
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.emi.x_wire[1] ^ 2.0 + rover_8d.emi.x_wire[2] ^ 2.0 + rover_8d.emi.x_wire[3] ^ 2.0) was %g should be >= 0", tmp57);
     }
   }
-  (data->simulationInfo->realParameter[91] /* rover_8d.emi.dist_wire PARAM */) = sqrt(tmp57);
+  (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_wire PARAM */) = sqrt(tmp57);
   TRACE_POP
 }
 
@@ -890,9 +890,9 @@ static void RoverExample_Components_Rover_eqFunction_437(DATA *data, threadData_
   modelica_real tmp59;
   modelica_real tmp60;
   modelica_real tmp61;
-  tmp58 = (data->simulationInfo->realParameter[98] /* rover_8d.emi.x_motor[1] PARAM */);
-  tmp59 = (data->simulationInfo->realParameter[99] /* rover_8d.emi.x_motor[2] PARAM */);
-  tmp60 = (data->simulationInfo->realParameter[100] /* rover_8d.emi.x_motor[3] PARAM */);
+  tmp58 = (data->simulationInfo->realParameter[96] /* rover_8d.emi.x_motor[1] PARAM */);
+  tmp59 = (data->simulationInfo->realParameter[97] /* rover_8d.emi.x_motor[2] PARAM */);
+  tmp60 = (data->simulationInfo->realParameter[98] /* rover_8d.emi.x_motor[3] PARAM */);
   tmp61 = (tmp58 * tmp58) + (tmp59 * tmp59) + (tmp60 * tmp60);
   if(!(tmp61 >= 0.0))
   {
@@ -906,7 +906,7 @@ static void RoverExample_Components_Rover_eqFunction_437(DATA *data, threadData_
       throwStreamPrintWithEquationIndexes(threadData, info, equationIndexes, "Model error: Argument of sqrt(rover_8d.emi.x_motor[1] ^ 2.0 + rover_8d.emi.x_motor[2] ^ 2.0 + rover_8d.emi.x_motor[3] ^ 2.0) was %g should be >= 0", tmp61);
     }
   }
-  (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_motor PARAM */) = sqrt(tmp61);
+  (data->simulationInfo->realParameter[89] /* rover_8d.emi.dist_motor PARAM */) = sqrt(tmp61);
   TRACE_POP
 }
 
@@ -948,7 +948,7 @@ static void RoverExample_Components_Rover_eqFunction_440(DATA *data, threadData_
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,440};
-  (data->simulationInfo->realParameter[94] /* rover_8d.emi.mag_motor PARAM */) = (3978.87358184391) * (((data->simulationInfo->realParameter[87] /* rover_8d.emi.B PARAM */)) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */)));
+  (data->simulationInfo->realParameter[92] /* rover_8d.emi.mag_motor PARAM */) = (3978.87358184391) * (((data->simulationInfo->realParameter[87] /* rover_8d.emi.B PARAM */)) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */)));
   TRACE_POP
 }
 
@@ -1004,7 +1004,7 @@ static void RoverExample_Components_Rover_eqFunction_444(DATA *data, threadData_
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,444};
-  (data->simulationInfo->realParameter[70] /* rover_8d.Kt_phi PARAM */) = ((data->simulationInfo->realParameter[104] /* rover_8d.eta_mech PARAM */)) * (((data->simulationInfo->realParameter[75] /* rover_8d.Np PARAM */)) * (((data->simulationInfo->realParameter[76] /* rover_8d.Nw PARAM */)) * (((data->simulationInfo->realParameter[61] /* rover_8d.A PARAM */)) * ((data->simulationInfo->realParameter[63] /* rover_8d.B PARAM */)))));
+  (data->simulationInfo->realParameter[70] /* rover_8d.Kt_phi PARAM */) = ((data->simulationInfo->realParameter[102] /* rover_8d.eta_mech PARAM */)) * (((data->simulationInfo->realParameter[75] /* rover_8d.Np PARAM */)) * (((data->simulationInfo->realParameter[76] /* rover_8d.Nw PARAM */)) * (((data->simulationInfo->realParameter[61] /* rover_8d.A PARAM */)) * ((data->simulationInfo->realParameter[63] /* rover_8d.B PARAM */)))));
   TRACE_POP
 }
 
@@ -1050,7 +1050,7 @@ static void RoverExample_Components_Rover_eqFunction_447(DATA *data, threadData_
   const int equationIndexes[2] = {1,447};
   modelica_real tmp63;
   modelica_real tmp64;
-  tmp63 = (data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */);
+  tmp63 = (data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */);
   tmp64 = (data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */);
   (data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */) = (0.08333333333333333) * (((data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */)) * ((tmp63 * tmp63) + (tmp64 * tmp64)));
   TRACE_POP

@@ -31,29 +31,29 @@ int RoverExample_Components_Webserver_updateBoundVariableAttributes(DATA *data, 
 void RoverExample_Components_Webserver_updateBoundParameters_0(DATA *data, threadData_t *threadData);
 
 /*
-equation index: 5
+equation index: 4
 type: SIMPLE_ASSIGN
 repeat_interval_count = integer(repeat_interval / sample_interval)
+*/
+OMC_DISABLE_OPT
+static void RoverExample_Components_Webserver_eqFunction_4(DATA *data, threadData_t *threadData)
+{
+  TRACE_PUSH
+  const int equationIndexes[2] = {1,4};
+  (data->simulationInfo->integerParameter[0] /* repeat_interval_count PARAM */) = ((modelica_integer)floor(DIVISION_SIM((data->simulationInfo->realParameter[0] /* repeat_interval PARAM */),(data->simulationInfo->realParameter[1] /* sample_interval PARAM */),"sample_interval",equationIndexes)));
+  TRACE_POP
+}
+
+/*
+equation index: 5
+type: SIMPLE_ASSIGN
+turn_interval_count = integer(turn_interval / sample_interval)
 */
 OMC_DISABLE_OPT
 static void RoverExample_Components_Webserver_eqFunction_5(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,5};
-  (data->simulationInfo->integerParameter[0] /* repeat_interval_count PARAM */) = ((modelica_integer)floor(DIVISION_SIM((data->simulationInfo->realParameter[0] /* repeat_interval PARAM */),(data->simulationInfo->realParameter[1] /* sample_interval PARAM */),"sample_interval",equationIndexes)));
-  TRACE_POP
-}
-
-/*
-equation index: 6
-type: SIMPLE_ASSIGN
-turn_interval_count = integer(turn_interval / sample_interval)
-*/
-OMC_DISABLE_OPT
-static void RoverExample_Components_Webserver_eqFunction_6(DATA *data, threadData_t *threadData)
-{
-  TRACE_PUSH
-  const int equationIndexes[2] = {1,6};
   (data->simulationInfo->integerParameter[1] /* turn_interval_count PARAM */) = ((modelica_integer)floor(DIVISION_SIM((data->simulationInfo->realParameter[2] /* turn_interval PARAM */),(data->simulationInfo->realParameter[1] /* sample_interval PARAM */),"sample_interval",equationIndexes)));
   TRACE_POP
 }
@@ -61,8 +61,8 @@ OMC_DISABLE_OPT
 void RoverExample_Components_Webserver_updateBoundParameters_0(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
+  RoverExample_Components_Webserver_eqFunction_4(data, threadData);
   RoverExample_Components_Webserver_eqFunction_5(data, threadData);
-  RoverExample_Components_Webserver_eqFunction_6(data, threadData);
   TRACE_POP
 }
 OMC_DISABLE_OPT

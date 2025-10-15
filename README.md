@@ -1,14 +1,10 @@
 # FIRE_CP_Glimpse  
 ### Cyber-Physical Co-Simulation of Drone and Rover via FMUs
-
-This repository provides **Python-based orchestration and co-simulation scripts** for **cyber-physical models of drones and rovers**.  
-Each model is exported from **Modelica** as an **FMU (Functional Mock-up Unit)** and executed within a **Python simulation loop** that integrates control, sensing, communication, and fault/attack dynamics.  
-The repository is part of the **CyPhER** framework for cyber-physical vulnerability analysis and **CP-Glimpse**, the low-fidelity simulation tool for proactive risk assessment.
+This repository provides **Python-based orchestration and co-simulation scripts** for **cyber-physical models of drones and rovers**. Each model is exported from **Modelica** as an **FMU (Functional Mock-up Unit)** and executed within a **Python simulation loop** that integrates control, sensing, communication, and fault/attack dynamics. The repository is part of the **CyPhER** framework for cyber-physical vulnerability analysis and **CP-Glimpse**, the low-fidelity simulation tool for proactive risk assessment.
 
 ---
 
 ## Overview
-
 - The **Modelica models** of drone and rover (see [FIRE_CP_Modelica](https://github.com/mhcho1994/FIRE_CP_Modelica)) define the coupled **cyber–physical system models**:  
   - Physical: chassis, tire, rotor, aerodynamic, actuator, and sensor models  
   - Cyber: control laws, state estimation, and network/communication layers  
@@ -22,13 +18,61 @@ The repository is part of the **CyPhER** framework for cyber-physical vulnerabil
 ---
 
 ## Repository Structure
+TBF
 
 ---
 
 ## Setup & Dependencies
-Typical dependencies:
-fmpy or pyfmi – FMU simulation
-numpy, scipy – numerical operations
-pandas – structured logging
-matplotlib / seaborn – plotting
-(optional) casadi – optimization or reachability
+
+### 1. Install OpenModelica
+OpenModelica can be installed from the **Download** tab on the official site:  
+[https://openmodelica.org/](https://openmodelica.org/)
+
+- **Windows / macOS:** Use the installer from the website (recommended).
+- **Linux (Ubuntu/Debian):** Use the official repo:
+
+```bash
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+
+# Add OpenModelica key & repo
+sudo curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc | \
+  sudo gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/openmodelica-keyring.gpg] \
+  https://build.openmodelica.org/apt \
+  $(cat /etc/os-release | grep "\(UBUNTU\|DEBIAN\|VERSION\)_CODENAME" | sort | cut -d= -f 2 | head -1) \
+  stable" | sudo tee /etc/apt/sources.list.d/openmodelica.list
+
+sudo apt update
+sudo apt install openmodelica
+```
+
+Quick check:
+```bash
+omc --version
+```
+> You only need OpenModelica if you plan to **export/re-export FMUs** from your Modelica models. If you already have the `.fmu` files, you can skip this.
+
+### 2. Install Python packages
+Use whichever you prefer—**venv** or **conda**. Example with `venv`:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate     # (Windows: .venv\Scripts\activate)
+pip install -r requirements.txt
+```
+
+Sanity check (optional):
+```bash
+python -c "import numpy, pandas; print('NumPy/Pandas OK')"
+```
+
+### 3. Run the simulation
+Navigate to the repository root and run the **NGCRover** entry point:
+
+```bash
+# Basic run (from repo root)
+python NGCRover/main.py
+```
+Recommend to use a code editor like VS Code.

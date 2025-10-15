@@ -9,11 +9,11 @@
 
   OPENMODELICAHOME                    = "/usr/bin/.."
 
-  guid                                = "{abb0c919-4706-4bcc-beca-03a59a0c7ee6}"
+  guid                                = "{ed085fef-f30a-4124-8dea-b27fee34e238}"
 
   description                         = ""
   generationTool                      = "OpenModelica Compiler OpenModelica 1.25.0~2-ge56b89b"
-  generationDateAndTime               = "2025-06-07T21:33:10Z"
+  generationDateAndTime               = "2025-10-15T16:30:05Z"
 
   variableNamingConvention            = "structured"
 
@@ -66,7 +66,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "104" startColumn = "7" endLine = "104" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "104" startColumn = "7" endLine = "104" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -78,7 +78,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "104" startColumn = "7" endLine = "104" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "104" startColumn = "7" endLine = "104" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -90,7 +90,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "104" startColumn = "7" endLine = "104" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "104" startColumn = "7" endLine = "104" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -102,7 +102,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "106" startColumn = "7" endLine = "106" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "106" startColumn = "7" endLine = "106" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -114,7 +114,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "106" startColumn = "7" endLine = "106" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "106" startColumn = "7" endLine = "106" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -126,7 +126,7 @@
     alias = "noAlias"
     classIndex = "5" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "106" startColumn = "7" endLine = "106" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "106" startColumn = "7" endLine = "106" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -138,7 +138,7 @@
     alias = "noAlias"
     classIndex = "6" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "105" startColumn = "7" endLine = "105" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "105" startColumn = "7" endLine = "105" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -150,7 +150,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "103" startColumn = "7" endLine = "103" endColumn = "58" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "103" startColumn = "7" endLine = "103" endColumn = "58" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -162,7 +162,7 @@
     alias = "noAlias"
     classIndex = "8" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "103" startColumn = "7" endLine = "103" endColumn = "58" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "103" startColumn = "7" endLine = "103" endColumn = "58" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -174,7 +174,7 @@
     alias = "noAlias"
     classIndex = "9" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "105" startColumn = "7" endLine = "105" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "105" startColumn = "7" endLine = "105" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -186,7 +186,7 @@
     alias = "noAlias"
     classIndex = "10" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "105" startColumn = "7" endLine = "105" endColumn = "50" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "105" startColumn = "7" endLine = "105" endColumn = "50" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -198,7 +198,7 @@
     alias = "noAlias"
     classIndex = "11" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "103" startColumn = "7" endLine = "103" endColumn = "58" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "103" startColumn = "7" endLine = "103" endColumn = "58" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -210,7 +210,7 @@
     alias = "noAlias"
     classIndex = "12" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "102" startColumn = "7" endLine = "102" endColumn = "32" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "102" startColumn = "7" endLine = "102" endColumn = "32" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -222,7 +222,7 @@
     alias = "noAlias"
     classIndex = "13" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "102" startColumn = "7" endLine = "102" endColumn = "32" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "102" startColumn = "7" endLine = "102" endColumn = "32" fileWritable = "true">
     <Real fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -233,7 +233,7 @@
     alias = "noAlias"
     classIndex = "14" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "116" startColumn = "7" endLine = "116" endColumn = "31" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "116" startColumn = "7" endLine = "116" endColumn = "31" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -244,7 +244,7 @@
     alias = "noAlias"
     classIndex = "15" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "123" startColumn = "7" endLine = "123" endColumn = "35" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "123" startColumn = "7" endLine = "123" endColumn = "35" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -255,7 +255,7 @@
     alias = "noAlias"
     classIndex = "16" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "128" startColumn = "7" endLine = "128" endColumn = "71" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "128" startColumn = "7" endLine = "128" endColumn = "71" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -266,7 +266,7 @@
     alias = "noAlias"
     classIndex = "17" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "128" startColumn = "7" endLine = "128" endColumn = "71" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "128" startColumn = "7" endLine = "128" endColumn = "71" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -277,7 +277,7 @@
     alias = "noAlias"
     classIndex = "18" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "128" startColumn = "7" endLine = "128" endColumn = "71" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "128" startColumn = "7" endLine = "128" endColumn = "71" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -288,7 +288,7 @@
     alias = "noAlias"
     classIndex = "19" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "117" startColumn = "7" endLine = "117" endColumn = "40" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "117" startColumn = "7" endLine = "117" endColumn = "40" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -299,7 +299,7 @@
     alias = "noAlias"
     classIndex = "20" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "129" startColumn = "7" endLine = "129" endColumn = "42" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "129" startColumn = "7" endLine = "129" endColumn = "42" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -310,7 +310,7 @@
     alias = "noAlias"
     classIndex = "21" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "121" startColumn = "7" endLine = "121" endColumn = "37" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "121" startColumn = "7" endLine = "121" endColumn = "37" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -321,7 +321,7 @@
     alias = "noAlias"
     classIndex = "22" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -332,7 +332,7 @@
     alias = "noAlias"
     classIndex = "23" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -343,7 +343,7 @@
     alias = "noAlias"
     classIndex = "24" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -354,7 +354,7 @@
     alias = "noAlias"
     classIndex = "25" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "127" startColumn = "7" endLine = "127" endColumn = "78" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -365,7 +365,7 @@
     alias = "noAlias"
     classIndex = "26" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "122" startColumn = "7" endLine = "122" endColumn = "31" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "122" startColumn = "7" endLine = "122" endColumn = "31" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -376,7 +376,7 @@
     alias = "noAlias"
     classIndex = "27" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "119" startColumn = "7" endLine = "119" endColumn = "35" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "119" startColumn = "7" endLine = "119" endColumn = "35" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -387,7 +387,7 @@
     alias = "noAlias"
     classIndex = "28" classType = "rAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "120" startColumn = "7" endLine = "120" endColumn = "35" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "120" startColumn = "7" endLine = "120" endColumn = "35" fileWritable = "true">
     <Real start="0.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -398,7 +398,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "125" startColumn = "7" endLine = "125" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "125" startColumn = "7" endLine = "125" endColumn = "33" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -409,7 +409,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "126" startColumn = "7" endLine = "126" endColumn = "32" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "126" startColumn = "7" endLine = "126" endColumn = "32" fileWritable = "true">
     <Real start="0.1" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -420,7 +420,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "93" startColumn = "7" endLine = "93" endColumn = "56" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "93" startColumn = "7" endLine = "93" endColumn = "56" fileWritable = "true">
     <Real start="0.44121923440000005" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -431,7 +431,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "94" startColumn = "7" endLine = "94" endColumn = "57" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "94" startColumn = "7" endLine = "94" endColumn = "57" fileWritable = "true">
     <Real start="0.44121923440000005" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -442,7 +442,7 @@
     alias = "noAlias"
     classIndex = "4" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "97" startColumn = "7" endLine = "97" endColumn = "43" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "97" startColumn = "7" endLine = "97" endColumn = "43" fileWritable = "true">
     <Real start="0.1" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -453,7 +453,7 @@
     alias = "noAlias"
     classIndex = "5" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "98" startColumn = "7" endLine = "98" endColumn = "54" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "98" startColumn = "7" endLine = "98" endColumn = "54" fileWritable = "true">
     <Real start="1.2217304750000002" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -464,7 +464,7 @@
     alias = "noAlias"
     classIndex = "6" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "95" startColumn = "7" endLine = "95" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "95" startColumn = "7" endLine = "95" endColumn = "33" fileWritable = "true">
     <Real start="1.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -475,7 +475,7 @@
     alias = "noAlias"
     classIndex = "7" classType = "rPar"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "96" startColumn = "7" endLine = "96" endColumn = "34" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "96" startColumn = "7" endLine = "96" endColumn = "34" fileWritable = "true">
     <Real start="15.0" fixed="true" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -487,7 +487,7 @@
     alias = "alias" aliasVariable="ax_acc" aliasVariableId="0"
     classIndex = "0" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "145" startColumn = "7" endLine = "145" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "145" startColumn = "7" endLine = "145" endColumn = "33" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -499,7 +499,7 @@
     alias = "alias" aliasVariable="ay_acc" aliasVariableId="1"
     classIndex = "1" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "146" startColumn = "7" endLine = "146" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "146" startColumn = "7" endLine = "146" endColumn = "33" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -511,7 +511,7 @@
     alias = "alias" aliasVariable="az_acc" aliasVariableId="2"
     classIndex = "2" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "147" startColumn = "7" endLine = "147" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "147" startColumn = "7" endLine = "147" endColumn = "33" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -523,7 +523,7 @@
     alias = "alias" aliasVariable="mx_mag" aliasVariableId="3"
     classIndex = "3" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "151" startColumn = "7" endLine = "151" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "151" startColumn = "7" endLine = "151" endColumn = "33" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -535,7 +535,7 @@
     alias = "alias" aliasVariable="my_mag" aliasVariableId="4"
     classIndex = "4" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "152" startColumn = "7" endLine = "152" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "152" startColumn = "7" endLine = "152" endColumn = "33" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -547,7 +547,7 @@
     alias = "alias" aliasVariable="mz_mag" aliasVariableId="5"
     classIndex = "5" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "153" startColumn = "7" endLine = "153" endColumn = "33" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "153" startColumn = "7" endLine = "153" endColumn = "33" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -559,7 +559,7 @@
     alias = "alias" aliasVariable="p_gyro" aliasVariableId="6"
     classIndex = "6" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "148" startColumn = "7" endLine = "148" endColumn = "32" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "148" startColumn = "7" endLine = "148" endColumn = "32" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -571,7 +571,7 @@
     alias = "alias" aliasVariable="phi_gyro" aliasVariableId="7"
     classIndex = "7" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "142" startColumn = "7" endLine = "142" endColumn = "36" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "142" startColumn = "7" endLine = "142" endColumn = "36" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -583,7 +583,7 @@
     alias = "alias" aliasVariable="psi_gyro" aliasVariableId="8"
     classIndex = "8" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "144" startColumn = "7" endLine = "144" endColumn = "36" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "144" startColumn = "7" endLine = "144" endColumn = "36" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -595,7 +595,7 @@
     alias = "alias" aliasVariable="q_gyro" aliasVariableId="9"
     classIndex = "9" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "149" startColumn = "7" endLine = "149" endColumn = "32" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "149" startColumn = "7" endLine = "149" endColumn = "32" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -607,7 +607,7 @@
     alias = "alias" aliasVariable="r_gyro" aliasVariableId="10"
     classIndex = "10" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "150" startColumn = "7" endLine = "150" endColumn = "32" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "150" startColumn = "7" endLine = "150" endColumn = "32" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -619,7 +619,7 @@
     alias = "alias" aliasVariable="theta_gyro" aliasVariableId="11"
     classIndex = "11" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "143" startColumn = "7" endLine = "143" endColumn = "40" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "143" startColumn = "7" endLine = "143" endColumn = "40" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -631,7 +631,7 @@
     alias = "alias" aliasVariable="x" aliasVariableId="12"
     classIndex = "12" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "140" startColumn = "7" endLine = "140" endColumn = "27" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "140" startColumn = "7" endLine = "140" endColumn = "27" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -643,7 +643,7 @@
     alias = "alias" aliasVariable="y" aliasVariableId="13"
     classIndex = "13" classType = "rAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "141" startColumn = "7" endLine = "141" endColumn = "27" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "141" startColumn = "7" endLine = "141" endColumn = "27" fileWritable = "true">
     <Real fixed="false" useNominal="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -654,7 +654,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "iAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "114" startColumn = "7" endLine = "114" endColumn = "58" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "114" startColumn = "7" endLine = "114" endColumn = "58" fileWritable = "true">
     <Integer fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -665,7 +665,7 @@
     alias = "noAlias"
     classIndex = "1" classType = "iAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "114" startColumn = "7" endLine = "114" endColumn = "58" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "114" startColumn = "7" endLine = "114" endColumn = "58" fileWritable = "true">
     <Integer fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -676,7 +676,7 @@
     alias = "noAlias"
     classIndex = "2" classType = "iAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "118" startColumn = "7" endLine = "118" endColumn = "34" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "118" startColumn = "7" endLine = "118" endColumn = "34" fileWritable = "true">
     <Integer start="0" fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -688,7 +688,7 @@
     alias = "noAlias"
     classIndex = "3" classType = "iAlg"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "110" startColumn = "7" endLine = "110" endColumn = "35" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "110" startColumn = "7" endLine = "110" endColumn = "35" fileWritable = "true">
     <Integer fixed="true" />
   </ScalarVariable>
   <ScalarVariable
@@ -700,7 +700,7 @@
     alias = "alias" aliasVariable="pwm_throttle" aliasVariableId="1"
     classIndex = "0" classType = "iAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "137" startColumn = "7" endLine = "137" endColumn = "38" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "137" startColumn = "7" endLine = "137" endColumn = "38" fileWritable = "true">
     <Integer fixed="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -712,7 +712,7 @@
     alias = "alias" aliasVariable="pwm_steering" aliasVariableId="0"
     classIndex = "1" classType = "iAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "138" startColumn = "7" endLine = "138" endColumn = "38" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "138" startColumn = "7" endLine = "138" endColumn = "38" fileWritable = "true">
     <Integer fixed="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -724,7 +724,7 @@
     alias = "alias" aliasVariable="turn" aliasVariableId="3"
     classIndex = "2" classType = "iAli"
     isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "135" startColumn = "7" endLine = "135" endColumn = "30" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "135" startColumn = "7" endLine = "135" endColumn = "30" fileWritable = "true">
     <Integer fixed="false" />
   </ScalarVariable>
   <ScalarVariable
@@ -736,7 +736,7 @@
     alias = "noAlias"
     classIndex = "0" classType = "bAlg"
     isProtected = "true" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
-    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model/MFRover_FMUgen.mo" startLine = "157" startColumn = "7" endLine = "229" endColumn = "15" fileWritable = "true">
+    fileName = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model/MFRover.mo" startLine = "157" startColumn = "7" endLine = "229" endColumn = "15" fileWritable = "true">
     <Boolean fixed="true" />
   </ScalarVariable>
 

@@ -18,7 +18,7 @@ def suppress_stdout():
         finally:
             sys.stdout = old_stdout
 
-def simulation_with_controller_webserver(N, tf = 20, dt = 0.1, fidelity = 1, attack_scenario = 0, parameter_file = "rover_specs2.json"):
+def simulation_with_controller_webserver(N, tf = 20, dt = 0.1, fidelity = 1, attack_scenario = 0, parameter_file = "rover_parameters.json"):
     sim = roversim.MFRoverClosedSIM(fidelity = fidelity, attack_scenario = attack_scenario, parameter_file = parameter_file)
     destination = os.path.join(os.getcwd(), f"results")
 
@@ -47,7 +47,7 @@ def read_plot_logs(monte_carlo_plot = 0, attack_scenario = 0):
             plt.figure()
             plt.subplot(2,1,1)
             plt.plot(np.array(df['time']), np.array(df['mx_meas']), color = '#1f77b4', label = 'total')
-            plt.plot(np.array(df['time']), np.array(df['rover_8d.emi.b_earth[1]']), color = "#0d8917", label= 'earth')
+            plt.plot(np.array(df['time']), np.array(df['rover_8d.mag.b_earth[1]']), color = "#0d8917", label= 'earth')
             plt.plot(np.array(df['time']), np.array(df['rover_8d.emi.b_wire[1]']), color = "#d62728", label= 'wire-induced')
             plt.grid()
             plt.ylabel(r'$m_{x}$ [T]')
@@ -56,7 +56,7 @@ def read_plot_logs(monte_carlo_plot = 0, attack_scenario = 0):
             plt.title('magnetic field strength (wire-induced EMI disturbances)')
             plt.subplot(2,1,2)
             plt.plot(np.array(df['time']), np.array(df['my_meas']), color = '#1f77b4')
-            plt.plot(np.array(df['time']), np.array(df['rover_8d.emi.b_earth[2]']), color = "#0d8917")
+            plt.plot(np.array(df['time']), np.array(df['rover_8d.mag.b_earth[2]']), color = "#0d8917")
             plt.plot(np.array(df['time']), np.array(df['rover_8d.emi.b_wire[2]']), color = "#d62728")
             plt.grid()
             plt.ylabel(r'$m_{y}$ [T]')
@@ -106,50 +106,19 @@ def read_plot_logs(monte_carlo_plot = 0, attack_scenario = 0):
             plt.legend()
             plt.title('motor input voltage/current')
 
-    # # Monte-carlo
-    # plt.figure()
-    # for file in log_files:
-    #     df = pd.read_csv(file)
-    #     plt.plot(np.array(df['x_meas']), np.array(df['y_meas']), color = '#1f77b4')
-    # plt.grid()
-    # plt.xlabel('x [m]')
-    # plt.ylabel('y [m]')
-    # plt.xlim((-5,15))
-    # plt.ylim((-5,20))
-    # plt.title('2-d trajectories of rover under gyro acoustic noise attack (low speed)')
-
-    # Single-run
-    # plt.figure()
-    # plt.plot(np.array(df['time']), np.array(df['rover_3d.r'])/np.pi*180, color = '#1f77b4', label = 'attack-free')
-    # plt.plot(np.array(df['time']), np.array(df['r_meas'])/np.pi*180, color = '#d62728', label = 'attacked')
-    # plt.grid()
-    # plt.legend()
-    # plt.xlabel('time [sec]')
-    # plt.ylabel('yaw rate [deg/s]')
-    # # plt.title('yaw rate disrupted by gyro ultrasound acoustic attack (low speed)')
-    # plt.title('yaw rate disrupted by EMI disturbances from cable harness')
-
-    # plt.figure()
-    # plt.plot(np.array(df['time']), np.array(df['psi_meas'])/np.pi*180, color = '#1f77b4', label = 'attack-free')
-    # plt.plot(np.array(df['time']), np.array(df['psi_filtered'])/np.pi*180, color = '#d62728', label = 'attacked')
-    # plt.grid()
-    # plt.legend()
-    # plt.xlabel('time [sec]')
-    # plt.ylabel('heading [deg]')
-    # # plt.title('heading disrupted by gyro ultrasound acoustic attack (low speed)')
-    # plt.title('heading disrupted by EMI disturbances from cable harness')
-
-    # plt.figure()
-    # plt.plot(np.array(df['x_meas']), np.array(df['y_meas']), color = '#1f77b4')
-    # plt.grid()
-    # plt.xlabel('x [m]')
-    # plt.ylabel('y [m]')
-    # plt.xlim((-5,15))
-    # plt.ylim((-5,20))
-    # # plt.title('2-d trajectories of rover under gyro acoustic noise attack (attack-free)')
-    # plt.title('2-d trajectories of rover under EMI disturbances (attack-free)')
-
-
+    elif monte_carlo_plot == 1:
+        # Monte-carlo
+        if attack_scenario == 3:
+            plt.figure()
+            for file in log_files:
+                df = pd.read_csv(file)
+                plt.plot(np.array(df['x_meas']), np.array(df['y_meas']), color = '#1f77b4')
+            plt.grid()
+            plt.xlabel('x [m]')
+            plt.ylabel('y [m]')
+            plt.xlim((-5,15))
+            plt.ylim((-5,20))
+            plt.title('2-d trajectories of rover under gyro acoustic noise attack (low speed)')
 
     plt.show()
 

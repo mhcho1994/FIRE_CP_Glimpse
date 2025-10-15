@@ -705,9 +705,9 @@ static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_2_name,16,_OMC_LIT_RESOURCE_2_na
 static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_2_dir,67,_OMC_LIT_RESOURCE_2_dir_data);
 
 #define _OMC_LIT_RESOURCE_3_name_data "RoverExample"
-#define _OMC_LIT_RESOURCE_3_dir_data "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model"
+#define _OMC_LIT_RESOURCE_3_dir_data "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model"
 static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_3_name,12,_OMC_LIT_RESOURCE_3_name_data);
-static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_3_dir,75,_OMC_LIT_RESOURCE_3_dir_data);
+static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_3_dir,82,_OMC_LIT_RESOURCE_3_dir_data);
 
 static const MMC_DEFSTRUCTLIT(_OMC_LIT_RESOURCES,8,MMC_ARRAY_TAG) {MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_0_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_0_dir), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_1_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_1_dir), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_2_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_2_dir), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_3_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_3_dir)}};
 void RoverExample_Components_Controller_setupDataStruc(DATA *data, threadData_t *threadData)
@@ -719,8 +719,8 @@ void RoverExample_Components_Controller_setupDataStruc(DATA *data, threadData_t 
   data->modelData->modelName = "RoverExample.Components.Controller";
   data->modelData->modelFilePrefix = "RoverExample.Components.Controller";
   data->modelData->resultFileName = NULL;
-  data->modelData->modelDir = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model";
-  data->modelData->modelGUID = "{abb0c919-4706-4bcc-beca-03a59a0c7ee6}";
+  data->modelData->modelDir = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model";
+  data->modelData->modelGUID = "{ed085fef-f30a-4124-8dea-b27fee34e238}";
   #if defined(OPENMODELICA_XML_FROM_FILE_AT_RUNTIME)
   data->modelData->initXMLData = NULL;
   data->modelData->modelDataXml.infoXMLData = NULL;

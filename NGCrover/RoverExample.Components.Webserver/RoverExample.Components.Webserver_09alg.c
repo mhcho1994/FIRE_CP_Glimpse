@@ -6,18 +6,18 @@ extern "C" {
 #endif
 
 /* forwarded equations */
-extern void RoverExample_Components_Webserver_eqFunction_4(DATA* data, threadData_t *threadData);
+extern void RoverExample_Components_Webserver_eqFunction_3(DATA* data, threadData_t *threadData);
 
 static void functionAlg_system0(DATA *data, threadData_t *threadData)
 {
   int id;
 
   static void (*const eqFunctions[1])(DATA*, threadData_t*) = {
-    RoverExample_Components_Webserver_eqFunction_4
+    RoverExample_Components_Webserver_eqFunction_3
   };
   
   static const int eqIndices[1] = {
-    4
+    3
   };
   
   for (id = 0; id < 1; id++) {

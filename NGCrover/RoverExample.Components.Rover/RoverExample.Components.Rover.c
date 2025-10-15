@@ -216,7 +216,7 @@ void RoverExample_Components_Rover_eqFunction_209(DATA *data, threadData_t *thre
 equation index: 210
 type: ARRAY_CALL_ASSIGN
 
-rover_3d.emi.C_n2b = transpose(RoverExample.Utils.eul2rot({rover_3d.phi, rover_3d.theta, rover_3d.psi}))
+rover_3d.mag.C_n2b = transpose(RoverExample.Utils.eul2rot({rover_3d.phi, rover_3d.theta, rover_3d.psi}))
 */
 void RoverExample_Components_Rover_eqFunction_210(DATA *data, threadData_t *threadData)
 {
@@ -229,44 +229,44 @@ void RoverExample_Components_Rover_eqFunction_210(DATA *data, threadData_t *thre
   array_alloc_scalar_real_array(&tmp0, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[0]] /* rover_3d.phi STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[2]] /* rover_3d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[1]] /* rover_3d.psi STATE(1) */));
   tmp1 = omc_RoverExample_Utils_eul2rot(threadData, tmp0);
   transpose_alloc_real_array(&tmp1, &tmp2);
-  real_array_create(&tmp3, ((modelica_real*)&((&(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[133]] /* rover_3d.emi.C_n2b[1,1] variable */))[(((modelica_integer) 1) - 1) * 3 + (((modelica_integer) 1)-1)])), 2, (_index_t)3, (_index_t)3);
+  real_array_create(&tmp3, ((modelica_real*)&((&(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[134]] /* rover_3d.mag.C_n2b[1,1] variable */))[(((modelica_integer) 1) - 1) * 3 + (((modelica_integer) 1)-1)])), 2, (_index_t)3, (_index_t)3);
   real_array_copy_data(tmp2, tmp3);
   TRACE_POP
 }
 /*
 equation index: 211
 type: SIMPLE_ASSIGN
-rover_3d.my = rover_3d.emi.C_n2b[2,1] * rover_3d.emi.b_earth0 * $cse1 + (-2.0) * rover_3d.emi.C_n2b[2,3] * rover_3d.emi.b_earth0 * $cse2
+rover_3d.my = rover_3d.mag.C_n2b[2,1] * rover_3d.mag.b_earth0 * $cse1 + (-2.0) * rover_3d.mag.C_n2b[2,3] * rover_3d.mag.b_earth0 * $cse2
 */
 void RoverExample_Components_Rover_eqFunction_211(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,211};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[144]] /* rover_3d.my variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[136]] /* rover_3d.emi.C_n2b[2,1] variable */)) * (((data->simulationInfo->realParameter[55] /* rover_3d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[0] /* $cse1 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[138]] /* rover_3d.emi.C_n2b[2,3] variable */)) * (((data->simulationInfo->realParameter[55] /* rover_3d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[3] /* $cse2 PARAM */))));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[144]] /* rover_3d.my variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[137]] /* rover_3d.mag.C_n2b[2,1] variable */)) * (((data->simulationInfo->realParameter[56] /* rover_3d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[0] /* $cse1 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[139]] /* rover_3d.mag.C_n2b[2,3] variable */)) * (((data->simulationInfo->realParameter[56] /* rover_3d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse2 PARAM */))));
   TRACE_POP
 }
 /*
 equation index: 212
 type: SIMPLE_ASSIGN
-rover_3d.mx = rover_3d.emi.C_n2b[1,1] * rover_3d.emi.b_earth0 * $cse1 + (-2.0) * rover_3d.emi.C_n2b[1,3] * rover_3d.emi.b_earth0 * $cse2
+rover_3d.mx = rover_3d.mag.C_n2b[1,1] * rover_3d.mag.b_earth0 * $cse1 + (-2.0) * rover_3d.mag.C_n2b[1,3] * rover_3d.mag.b_earth0 * $cse2
 */
 void RoverExample_Components_Rover_eqFunction_212(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,212};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[143]] /* rover_3d.mx variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[133]] /* rover_3d.emi.C_n2b[1,1] variable */)) * (((data->simulationInfo->realParameter[55] /* rover_3d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[0] /* $cse1 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[135]] /* rover_3d.emi.C_n2b[1,3] variable */)) * (((data->simulationInfo->realParameter[55] /* rover_3d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[3] /* $cse2 PARAM */))));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[143]] /* rover_3d.mx variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[134]] /* rover_3d.mag.C_n2b[1,1] variable */)) * (((data->simulationInfo->realParameter[56] /* rover_3d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[0] /* $cse1 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[136]] /* rover_3d.mag.C_n2b[1,3] variable */)) * (((data->simulationInfo->realParameter[56] /* rover_3d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse2 PARAM */))));
   TRACE_POP
 }
 /*
 equation index: 213
 type: SIMPLE_ASSIGN
-rover_3d.mz = rover_3d.emi.C_n2b[3,1] * rover_3d.emi.b_earth0 * $cse1 + (-2.0) * rover_3d.emi.C_n2b[3,3] * rover_3d.emi.b_earth0 * $cse2
+rover_3d.mz = rover_3d.mag.C_n2b[3,1] * rover_3d.mag.b_earth0 * $cse1 + (-2.0) * rover_3d.mag.C_n2b[3,3] * rover_3d.mag.b_earth0 * $cse2
 */
 void RoverExample_Components_Rover_eqFunction_213(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,213};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[145]] /* rover_3d.mz variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[139]] /* rover_3d.emi.C_n2b[3,1] variable */)) * (((data->simulationInfo->realParameter[55] /* rover_3d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[0] /* $cse1 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[141]] /* rover_3d.emi.C_n2b[3,3] variable */)) * (((data->simulationInfo->realParameter[55] /* rover_3d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[3] /* $cse2 PARAM */))));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[145]] /* rover_3d.mz variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[140]] /* rover_3d.mag.C_n2b[3,1] variable */)) * (((data->simulationInfo->realParameter[56] /* rover_3d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[0] /* $cse1 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[142]] /* rover_3d.mag.C_n2b[3,3] variable */)) * (((data->simulationInfo->realParameter[56] /* rover_3d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse2 PARAM */))));
   TRACE_POP
 }
 /*
@@ -331,7 +331,7 @@ void RoverExample_Components_Rover_eqFunction_218(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,218};
   if(((data->localData[0]->booleanVars[data->simulationInfo->booleanVarsIndex[9]] /* $whenCondition9 DISCRETE */) && !(data->simulationInfo->booleanVarsPre[9] /* $whenCondition9 DISCRETE */) /* edge */))
   {
-    (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */) = omc_RoverExample_Utils_clip(threadData, fabs(((data->simulationInfo->realParameter[57] /* rover_3d.l_total PARAM */)) * (DIVISION_SIM(cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */)),sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */)),"sin(rover_3d.delta)",equationIndexes))), 0.0, 1000.0);
+    (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */) = omc_RoverExample_Utils_clip(threadData, fabs(((data->simulationInfo->realParameter[55] /* rover_3d.l_total PARAM */)) * (DIVISION_SIM(cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */)),sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */)),"sin(rover_3d.delta)",equationIndexes))), 0.0, 1000.0);
   }
   else if(((data->localData[0]->booleanVars[data->simulationInfo->booleanVarsIndex[8]] /* $whenCondition8 DISCRETE */) && !(data->simulationInfo->booleanVarsPre[8] /* $whenCondition8 DISCRETE */) /* edge */))
   {
@@ -353,9 +353,9 @@ void RoverExample_Components_Rover_eqFunction_220(DATA *data, threadData_t *thre
   modelica_real tmp6;
   modelica_real tmp7;
   tmp4 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-  tmp6 = (9.80665) * (fabs((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)));
-  tmp7 = (1.0) * (fabs((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
-  relationhysteresis(data, &tmp5, (9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)), (DIVISION_SIM((tmp4 * tmp4),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius",equationIndexes)) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)), tmp6, tmp7, 13, LessEq, LessEqZC);
+  tmp6 = (9.80665) * (fabs((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)));
+  tmp7 = (1.0) * (fabs((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
+  relationhysteresis(data, &tmp5, (9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)), (DIVISION_SIM((tmp4 * tmp4),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius",equationIndexes)) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)), tmp6, tmp7, 13, LessEq, LessEqZC);
   (data->localData[0]->booleanVars[data->simulationInfo->booleanVarsIndex[7]] /* $whenCondition7 DISCRETE */) = tmp5;
   TRACE_POP
 }
@@ -373,9 +373,9 @@ void RoverExample_Components_Rover_eqFunction_221(DATA *data, threadData_t *thre
   modelica_real tmp10;
   modelica_real tmp11;
   tmp8 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-  tmp10 = (9.80665) * (fabs((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)));
-  tmp11 = (1.0) * (fabs((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)));
-  relationhysteresis(data, &tmp9, (9.80665) * ((data->simulationInfo->realParameter[5] /* $cse40 PARAM */)), (DIVISION_SIM((tmp8 * tmp8),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius",equationIndexes)) * ((data->simulationInfo->realParameter[6] /* $cse41 PARAM */)), tmp10, tmp11, 14, Greater, GreaterZC);
+  tmp10 = (9.80665) * (fabs((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)));
+  tmp11 = (1.0) * (fabs((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)));
+  relationhysteresis(data, &tmp9, (9.80665) * ((data->simulationInfo->realParameter[3] /* $cse40 PARAM */)), (DIVISION_SIM((tmp8 * tmp8),(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[243]] /* rover_3d.turn_radius DISCRETE */),"rover_3d.turn_radius",equationIndexes)) * ((data->simulationInfo->realParameter[4] /* $cse41 PARAM */)), tmp10, tmp11, 14, Greater, GreaterZC);
   (data->localData[0]->booleanVars[data->simulationInfo->booleanVarsIndex[6]] /* $whenCondition6 DISCRETE */) = tmp9;
   TRACE_POP
 }
@@ -410,7 +410,7 @@ void RoverExample_Components_Rover_eqFunction_224(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,224};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[101]] /* $cse6 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[103]] /* $cse6 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */));
   TRACE_POP
 }
 /*
@@ -422,7 +422,7 @@ void RoverExample_Components_Rover_eqFunction_225(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,225};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[149]] /* rover_3d.r variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[101]] /* $cse6 variable */),(data->simulationInfo->realParameter[57] /* rover_3d.l_total PARAM */),"rover_3d.l_total",equationIndexes));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[149]] /* rover_3d.r variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[103]] /* $cse6 variable */),(data->simulationInfo->realParameter[55] /* rover_3d.l_total PARAM */),"rover_3d.l_total",equationIndexes));
   TRACE_POP
 }
 /*
@@ -446,7 +446,7 @@ void RoverExample_Components_Rover_eqFunction_227(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,227};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[100]] /* $cse5 variable */) = tan((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[102]] /* $cse5 variable */) = tan((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[132]] /* rover_3d.delta variable */)));
   TRACE_POP
 }
 /*
@@ -460,7 +460,7 @@ void RoverExample_Components_Rover_eqFunction_228(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,228};
   modelica_real tmp12;
   tmp12 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */);
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[130]] /* rover_3d.ay variable */) = ((tmp12 * tmp12)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[100]] /* $cse5 variable */),(data->simulationInfo->realParameter[57] /* rover_3d.l_total PARAM */),"rover_3d.l_total",equationIndexes));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[130]] /* rover_3d.ay variable */) = ((tmp12 * tmp12)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[102]] /* $cse5 variable */),(data->simulationInfo->realParameter[55] /* rover_3d.l_total PARAM */),"rover_3d.l_total",equationIndexes));
   TRACE_POP
 }
 /*
@@ -523,32 +523,32 @@ void RoverExample_Components_Rover_eqFunction_232(DATA *data, threadData_t *thre
 /*
 equation index: 233
 type: SIMPLE_ASSIGN
-rover_3d.specific_g[2] = 9.80665 * rover_3d.C_n2b[2,3]
+rover_3d.specific_g[3] = 9.80665 * rover_3d.C_n2b[3,3]
 */
 void RoverExample_Components_Rover_eqFunction_233(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,233};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[151]] /* rover_3d.specific_g[2] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[125]] /* rover_3d.C_n2b[2,3] variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[152]] /* rover_3d.specific_g[3] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[128]] /* rover_3d.C_n2b[3,3] variable */));
   TRACE_POP
 }
 /*
 equation index: 234
 type: SIMPLE_ASSIGN
-rover_3d.specific_g[3] = 9.80665 * rover_3d.C_n2b[3,3]
+rover_3d.specific_g[2] = 9.80665 * rover_3d.C_n2b[2,3]
 */
 void RoverExample_Components_Rover_eqFunction_234(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,234};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[152]] /* rover_3d.specific_g[3] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[128]] /* rover_3d.C_n2b[3,3] variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[151]] /* rover_3d.specific_g[2] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[125]] /* rover_3d.C_n2b[2,3] variable */));
   TRACE_POP
 }
 /*
 equation index: 235
 type: ARRAY_CALL_ASSIGN
 
-rover_8d.emi.b_wire = RoverExample.Utils.cross3(rover_8d.emi.wire_dir, rover_8d.emi.x_wire) * 1.9999999999999996e-7 * rover_8d.Iq / rover_8d.emi.dist_wire ^ 2.0
+rover_8d.mag.C_n2b = transpose(RoverExample.Utils.eul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}))
 */
 void RoverExample_Components_Rover_eqFunction_235(DATA *data, threadData_t *threadData)
 {
@@ -556,106 +556,106 @@ void RoverExample_Components_Rover_eqFunction_235(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,235};
   real_array tmp17;
   real_array tmp18;
-  modelica_real tmp19;
+  real_array tmp19;
   real_array tmp20;
-  real_array_create(&tmp17, ((modelica_real*)&((&data->simulationInfo->realParameter[95] /* rover_8d.emi.wire_dir[1] PARAM */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
-  real_array_create(&tmp18, ((modelica_real*)&((&data->simulationInfo->realParameter[101] /* rover_8d.emi.x_wire[1] PARAM */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
-  tmp19 = (data->simulationInfo->realParameter[91] /* rover_8d.emi.dist_wire PARAM */);
-  real_array_create(&tmp20, ((modelica_real*)&((&(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[200]] /* rover_8d.emi.b_wire[1] variable */))[((modelica_integer) 1) - 1])), 1, (_index_t)3);
-  real_array_copy_data(mul_alloc_real_array_scalar(omc_RoverExample_Utils_cross3(threadData, tmp17, tmp18), DIVISION_SIM((1.9999999999999996e-7) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */)),(tmp19 * tmp19),"rover_8d.emi.dist_wire ^ 2.0",equationIndexes)), tmp20);
+  array_alloc_scalar_real_array(&tmp17, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
+  tmp18 = omc_RoverExample_Utils_eul2rot(threadData, tmp17);
+  transpose_alloc_real_array(&tmp18, &tmp19);
+  real_array_create(&tmp20, ((modelica_real*)&((&(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[199]] /* rover_8d.mag.C_n2b[1,1] variable */))[(((modelica_integer) 1) - 1) * 3 + (((modelica_integer) 1)-1)])), 2, (_index_t)3, (_index_t)3);
+  real_array_copy_data(tmp19, tmp20);
   TRACE_POP
 }
 /*
 equation index: 236
-type: ARRAY_CALL_ASSIGN
-
-rover_8d.emi.C_n2b = transpose(RoverExample.Utils.eul2rot({rover_8d.phi, rover_8d.theta, rover_8d.psi}))
+type: SIMPLE_ASSIGN
+rover_8d.mag.b_earth[2] = rover_8d.mag.C_n2b[2,1] * rover_8d.mag.b_earth0 * $cse7 + (-2.0) * rover_8d.mag.C_n2b[2,3] * rover_8d.mag.b_earth0 * $cse8
 */
 void RoverExample_Components_Rover_eqFunction_236(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,236};
-  real_array tmp21;
-  real_array tmp22;
-  real_array tmp23;
-  real_array tmp24;
-  array_alloc_scalar_real_array(&tmp21, 3, (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[28]] /* rover_8d.theta STATE(1) */), (modelica_real)(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
-  tmp22 = omc_RoverExample_Utils_eul2rot(threadData, tmp21);
-  transpose_alloc_real_array(&tmp22, &tmp23);
-  real_array_create(&tmp24, ((modelica_real*)&((&(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[185]] /* rover_8d.emi.C_n2b[1,1] variable */))[(((modelica_integer) 1) - 1) * 3 + (((modelica_integer) 1)-1)])), 2, (_index_t)3, (_index_t)3);
-  real_array_copy_data(tmp23, tmp24);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.mag.b_earth[2] variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[202]] /* rover_8d.mag.C_n2b[2,1] variable */)) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[5] /* $cse7 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[204]] /* rover_8d.mag.C_n2b[2,3] variable */)) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[6] /* $cse8 PARAM */))));
   TRACE_POP
 }
 /*
 equation index: 237
 type: SIMPLE_ASSIGN
-rover_8d.emi.b_earth[1] = rover_8d.emi.C_n2b[1,1] * rover_8d.emi.b_earth0 * $cse10 + (-2.0) * rover_8d.emi.C_n2b[1,3] * rover_8d.emi.b_earth0 * $cse11
+rover_8d.mag.b_earth[1] = rover_8d.mag.C_n2b[1,1] * rover_8d.mag.b_earth0 * $cse7 + (-2.0) * rover_8d.mag.C_n2b[1,3] * rover_8d.mag.b_earth0 * $cse8
 */
 void RoverExample_Components_Rover_eqFunction_237(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,237};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[194]] /* rover_8d.emi.b_earth[1] variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[185]] /* rover_8d.emi.C_n2b[1,1] variable */)) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse10 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[187]] /* rover_8d.emi.C_n2b[1,3] variable */)) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[2] /* $cse11 PARAM */))));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.mag.b_earth[1] variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[199]] /* rover_8d.mag.C_n2b[1,1] variable */)) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[5] /* $cse7 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[201]] /* rover_8d.mag.C_n2b[1,3] variable */)) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[6] /* $cse8 PARAM */))));
   TRACE_POP
 }
 /*
 equation index: 238
 type: SIMPLE_ASSIGN
-mx_meas = rover_8d.emi.b_earth[1] + rover_8d.emi.b_wire[1]
+rover_8d.mag.b_earth[3] = rover_8d.mag.C_n2b[3,1] * rover_8d.mag.b_earth0 * $cse7 + (-2.0) * rover_8d.mag.C_n2b[3,3] * rover_8d.mag.b_earth0 * $cse8
 */
 void RoverExample_Components_Rover_eqFunction_238(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,238};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[109]] /* mx_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[194]] /* rover_8d.emi.b_earth[1] variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[200]] /* rover_8d.emi.b_wire[1] variable */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.mag.b_earth[3] variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[205]] /* rover_8d.mag.C_n2b[3,1] variable */)) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[5] /* $cse7 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.mag.C_n2b[3,3] variable */)) * (((data->simulationInfo->realParameter[115] /* rover_8d.mag.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[6] /* $cse8 PARAM */))));
   TRACE_POP
 }
 /*
 equation index: 239
-type: SIMPLE_ASSIGN
-rover_8d.emi.b_earth[2] = rover_8d.emi.C_n2b[2,1] * rover_8d.emi.b_earth0 * $cse10 + (-2.0) * rover_8d.emi.C_n2b[2,3] * rover_8d.emi.b_earth0 * $cse11
+type: ARRAY_CALL_ASSIGN
+
+rover_8d.emi.b_wire = RoverExample.Utils.cross3(rover_8d.emi.wire_dir, rover_8d.emi.x_wire) * 1.9999999999999996e-7 * rover_8d.Iq / rover_8d.emi.dist_wire ^ 2.0
 */
 void RoverExample_Components_Rover_eqFunction_239(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,239};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.emi.b_earth[2] variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[188]] /* rover_8d.emi.C_n2b[2,1] variable */)) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse10 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[190]] /* rover_8d.emi.C_n2b[2,3] variable */)) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[2] /* $cse11 PARAM */))));
+  real_array tmp21;
+  real_array tmp22;
+  modelica_real tmp23;
+  real_array tmp24;
+  real_array_create(&tmp21, ((modelica_real*)&((&data->simulationInfo->realParameter[93] /* rover_8d.emi.wire_dir[1] PARAM */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
+  real_array_create(&tmp22, ((modelica_real*)&((&data->simulationInfo->realParameter[99] /* rover_8d.emi.x_wire[1] PARAM */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
+  tmp23 = (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_wire PARAM */);
+  real_array_create(&tmp24, ((modelica_real*)&((&(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[188]] /* rover_8d.emi.b_wire[1] variable */))[((modelica_integer) 1) - 1])), 1, (_index_t)3);
+  real_array_copy_data(mul_alloc_real_array_scalar(omc_RoverExample_Utils_cross3(threadData, tmp21, tmp22), DIVISION_SIM((1.9999999999999996e-7) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */)),(tmp23 * tmp23),"rover_8d.emi.dist_wire ^ 2.0",equationIndexes)), tmp24);
   TRACE_POP
 }
 /*
 equation index: 240
 type: SIMPLE_ASSIGN
-my_meas = rover_8d.emi.b_earth[2] + rover_8d.emi.b_wire[2]
+my_meas = rover_8d.mag.b_earth[2] + rover_8d.emi.b_wire[2]
 */
 void RoverExample_Components_Rover_eqFunction_240(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,240};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[110]] /* my_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.emi.b_earth[2] variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[201]] /* rover_8d.emi.b_wire[2] variable */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[110]] /* my_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.mag.b_earth[2] variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[189]] /* rover_8d.emi.b_wire[2] variable */);
   TRACE_POP
 }
 /*
 equation index: 241
 type: SIMPLE_ASSIGN
-rover_8d.emi.b_earth[3] = rover_8d.emi.C_n2b[3,1] * rover_8d.emi.b_earth0 * $cse10 + (-2.0) * rover_8d.emi.C_n2b[3,3] * rover_8d.emi.b_earth0 * $cse11
+mz_meas = rover_8d.mag.b_earth[3] + rover_8d.emi.b_wire[3]
 */
 void RoverExample_Components_Rover_eqFunction_241(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,241};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.emi.b_earth[3] variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[191]] /* rover_8d.emi.C_n2b[3,1] variable */)) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[1] /* $cse10 PARAM */))) + (-2.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[193]] /* rover_8d.emi.C_n2b[3,3] variable */)) * (((data->simulationInfo->realParameter[89] /* rover_8d.emi.b_earth0 PARAM */)) * ((data->simulationInfo->realParameter[2] /* $cse11 PARAM */))));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[111]] /* mz_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.mag.b_earth[3] variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[190]] /* rover_8d.emi.b_wire[3] variable */);
   TRACE_POP
 }
 /*
 equation index: 242
 type: SIMPLE_ASSIGN
-mz_meas = rover_8d.emi.b_earth[3] + rover_8d.emi.b_wire[3]
+mx_meas = rover_8d.mag.b_earth[1] + rover_8d.emi.b_wire[1]
 */
 void RoverExample_Components_Rover_eqFunction_242(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,242};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[111]] /* mz_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.emi.b_earth[3] variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[202]] /* rover_8d.emi.b_wire[3] variable */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[109]] /* mx_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.mag.b_earth[1] variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[188]] /* rover_8d.emi.b_wire[1] variable */);
   TRACE_POP
 }
 /*
@@ -691,7 +691,7 @@ void RoverExample_Components_Rover_eqFunction_245(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,245};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
   TRACE_POP
 }
 /*
@@ -703,7 +703,7 @@ void RoverExample_Components_Rover_eqFunction_246(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,246};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse27 variable */), 0.001, 1.0);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse27 variable */), 0.001, 1.0);
   TRACE_POP
 }
 /*
@@ -715,7 +715,7 @@ void RoverExample_Components_Rover_eqFunction_247(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,247};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 /*
@@ -727,7 +727,7 @@ void RoverExample_Components_Rover_eqFunction_248(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,248};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse28 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse28 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */)));
   TRACE_POP
 }
 /*
@@ -751,7 +751,7 @@ void RoverExample_Components_Rover_eqFunction_250(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,250};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
   TRACE_POP
 }
 /*
@@ -763,7 +763,7 @@ void RoverExample_Components_Rover_eqFunction_251(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,251};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse31 variable */), 0.001, 1.0);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse31 variable */), 0.001, 1.0);
   TRACE_POP
 }
 /*
@@ -840,37 +840,37 @@ void RoverExample_Components_Rover_eqFunction_256(DATA *data, threadData_t *thre
 /*
 equation index: 257
 type: SIMPLE_ASSIGN
-az_meas = (-9.80665) * rover_8d.C_n2b[3,3]
+rover_8d.specific_g[1] = 9.80665 * rover_8d.C_n2b[1,3]
 */
 void RoverExample_Components_Rover_eqFunction_257(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,257};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[107]] /* az_meas variable */) = (-9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[162]] /* rover_8d.C_n2b[3,3] variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[216]] /* rover_8d.specific_g[1] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[156]] /* rover_8d.C_n2b[1,3] variable */));
   TRACE_POP
 }
 /*
 equation index: 258
 type: SIMPLE_ASSIGN
-rover_8d.specific_g[1] = 9.80665 * rover_8d.C_n2b[1,3]
+rover_8d.specific_g[2] = 9.80665 * rover_8d.C_n2b[2,3]
 */
 void RoverExample_Components_Rover_eqFunction_258(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,258};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[216]] /* rover_8d.specific_g[1] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[156]] /* rover_8d.C_n2b[1,3] variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[217]] /* rover_8d.specific_g[2] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[159]] /* rover_8d.C_n2b[2,3] variable */));
   TRACE_POP
 }
 /*
 equation index: 259
 type: SIMPLE_ASSIGN
-rover_8d.specific_g[2] = 9.80665 * rover_8d.C_n2b[2,3]
+az_meas = (-9.80665) * rover_8d.C_n2b[3,3]
 */
 void RoverExample_Components_Rover_eqFunction_259(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,259};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[217]] /* rover_8d.specific_g[2] variable */) = (9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[159]] /* rover_8d.C_n2b[2,3] variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[107]] /* az_meas variable */) = (-9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[162]] /* rover_8d.C_n2b[3,3] variable */));
   TRACE_POP
 }
 /*
@@ -1007,7 +1007,7 @@ void RoverExample_Components_Rover_eqFunction_270(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,270};
   if(((data->localData[0]->booleanVars[data->simulationInfo->booleanVarsIndex[5]] /* $whenCondition5 DISCRETE */) && !(data->simulationInfo->booleanVarsPre[5] /* $whenCondition5 DISCRETE */) /* edge */))
   {
-    (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[246]] /* rover_8d.turn_radius DISCRETE */) = omc_RoverExample_Utils_clip(threadData, fabs(((data->simulationInfo->realParameter[114] /* rover_8d.l_total PARAM */)) * (DIVISION_SIM(cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)),sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)),"sin(rover_8d.delta)",equationIndexes))), 0.0, 1000.0);
+    (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[246]] /* rover_8d.turn_radius DISCRETE */) = omc_RoverExample_Utils_clip(threadData, fabs(((data->simulationInfo->realParameter[112] /* rover_8d.l_total PARAM */)) * (DIVISION_SIM(cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)),sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)),"sin(rover_8d.delta)",equationIndexes))), 0.0, 1000.0);
   }
   else if(((data->localData[0]->booleanVars[data->simulationInfo->booleanVarsIndex[4]] /* $whenCondition4 DISCRETE */) && !(data->simulationInfo->booleanVarsPre[4] /* $whenCondition4 DISCRETE */) /* edge */))
   {
@@ -1042,7 +1042,7 @@ void RoverExample_Components_Rover_eqFunction_273(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,273};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[215]] /* rover_8d.omega DUMMY_STATE */) = (0.25) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[19]] /* rover_8d.omega_fl STATE(1) */) - ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[21]] /* rover_8d.omega_rl STATE(1) */)) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[22]] /* rover_8d.omega_rr STATE(1) */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[20]] /* rover_8d.omega_fr STATE(1) */))) * ((data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[215]] /* rover_8d.omega DUMMY_STATE */) = (0.25) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[19]] /* rover_8d.omega_fl STATE(1) */) - ((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[21]] /* rover_8d.omega_rl STATE(1) */)) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[22]] /* rover_8d.omega_rr STATE(1) */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[20]] /* rover_8d.omega_fr STATE(1) */))) * ((data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */)));
   TRACE_POP
 }
 /*
@@ -1078,7 +1078,7 @@ void RoverExample_Components_Rover_eqFunction_276(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,276};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[98]] /* $cse38 variable */) = cos(((data->simulationInfo->realParameter[47] /* gyroatk.w_ac PARAM */) - (data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (((data->simulationInfo->realParameter[42] /* gyroatk.sample_interval PARAM */)) * (((modelica_real)(data->simulationInfo->integerVarsPre[0] /* gyroatk.timer_count DISCRETE */)))) - (data->simulationInfo->realParameter[17] /* gyroatk.Phi_ac PARAM */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[100]] /* $cse38 variable */) = cos(((data->simulationInfo->realParameter[47] /* gyroatk.w_ac PARAM */) - (data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (((data->simulationInfo->realParameter[42] /* gyroatk.sample_interval PARAM */)) * (((modelica_real)(data->simulationInfo->integerVarsPre[0] /* gyroatk.timer_count DISCRETE */)))) - (data->simulationInfo->realParameter[17] /* gyroatk.Phi_ac PARAM */));
   TRACE_POP
 }
 /*
@@ -1090,7 +1090,7 @@ void RoverExample_Components_Rover_eqFunction_277(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,277};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[108]] /* gyroatk.omega_yaw_false variable */) = (0.5) * (((data->simulationInfo->realParameter[33] /* gyroatk.l_g PARAM */)) * (((data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (DIVISION_SIM(((data->simulationInfo->realParameter[21] /* gyroatk.X_ac PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[98]] /* $cse38 variable */)) + ((data->simulationInfo->realParameter[24] /* gyroatk.X_d PARAM */)) * ((data->simulationInfo->realParameter[4] /* $cse39 PARAM */)),(data->simulationInfo->realParameter[27] /* gyroatk.dis_d PARAM */),"gyroatk.dis_d",equationIndexes))));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[108]] /* gyroatk.omega_yaw_false variable */) = (0.5) * (((data->simulationInfo->realParameter[33] /* gyroatk.l_g PARAM */)) * (((data->simulationInfo->realParameter[48] /* gyroatk.w_d PARAM */)) * (DIVISION_SIM(((data->simulationInfo->realParameter[21] /* gyroatk.X_ac PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[100]] /* $cse38 variable */)) + ((data->simulationInfo->realParameter[24] /* gyroatk.X_d PARAM */)) * ((data->simulationInfo->realParameter[2] /* $cse39 PARAM */)),(data->simulationInfo->realParameter[27] /* gyroatk.dis_d PARAM */),"gyroatk.dis_d",equationIndexes))));
   TRACE_POP
 }
 /*
@@ -1114,7 +1114,7 @@ void RoverExample_Components_Rover_eqFunction_279(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,279};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse37 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse37 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */));
   TRACE_POP
 }
 /*
@@ -1126,7 +1126,7 @@ void RoverExample_Components_Rover_eqFunction_280(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,280};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse36 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[98]] /* $cse36 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */));
   TRACE_POP
 }
 /*
@@ -1138,7 +1138,7 @@ void RoverExample_Components_Rover_eqFunction_281(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,281};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */) = sin((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */) = sin((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)));
   TRACE_POP
 }
 /*
@@ -1150,7 +1150,7 @@ void RoverExample_Components_Rover_eqFunction_282(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,282};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */) = cos((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */) = cos((-(data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */)));
   TRACE_POP
 }
 /*
@@ -1162,7 +1162,7 @@ void RoverExample_Components_Rover_eqFunction_283(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,283};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse33 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse33 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
   TRACE_POP
 }
 /*
@@ -1174,7 +1174,7 @@ void RoverExample_Components_Rover_eqFunction_284(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,284};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse32 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse32 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[25]] /* rover_8d.psi STATE(1,rover_8d.r) */));
   TRACE_POP
 }
 /*
@@ -1186,7 +1186,7 @@ void RoverExample_Components_Rover_eqFunction_285(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,285};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[68]] /* der(rover_8d.y) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse33 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse32 variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[68]] /* der(rover_8d.y) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse33 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse32 variable */));
   TRACE_POP
 }
 /*
@@ -1198,7 +1198,7 @@ void RoverExample_Components_Rover_eqFunction_286(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,286};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[67]] /* der(rover_8d.x) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse32 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[93]] /* $cse33 variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[67]] /* der(rover_8d.x) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse32 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse33 variable */)));
   TRACE_POP
 }
 /*
@@ -1222,7 +1222,7 @@ void RoverExample_Components_Rover_eqFunction_288(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,288};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[181]] /* rover_8d.alpha_rr_bnd variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[181]] /* rover_8d.alpha_rr_bnd variable */));
   TRACE_POP
 }
 /*
@@ -1234,7 +1234,7 @@ void RoverExample_Components_Rover_eqFunction_289(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,289};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[47]] /* der(rover_8d.alpha_rr) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse30 variable */)),"rover_8d.Lrely * $cse30",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse28 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[47]] /* der(rover_8d.alpha_rr) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[92]] /* $cse30 variable */)),"rover_8d.Lrely * $cse30",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse28 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -1258,7 +1258,7 @@ void RoverExample_Components_Rover_eqFunction_291(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,291};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[180]] /* rover_8d.alpha_rl_bnd variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[180]] /* rover_8d.alpha_rl_bnd variable */));
   TRACE_POP
 }
 /*
@@ -1270,7 +1270,7 @@ void RoverExample_Components_Rover_eqFunction_292(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,292};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[46]] /* der(rover_8d.alpha_rl) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse26 * rover_8d.Lrely",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse28 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[46]] /* der(rover_8d.alpha_rl) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */),((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[87]] /* $cse26 variable */)) * ((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)),"$cse26 * rover_8d.Lrely",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse28 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[229]] /* rover_8d.vy_rr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -1294,7 +1294,7 @@ void RoverExample_Components_Rover_eqFunction_294(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,294};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[179]] /* rover_8d.alpha_fr_bnd variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[179]] /* rover_8d.alpha_fr_bnd variable */));
   TRACE_POP
 }
 /*
@@ -1318,7 +1318,7 @@ void RoverExample_Components_Rover_eqFunction_296(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,296};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[178]] /* rover_8d.alpha_fl_bnd variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */) = tan((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[178]] /* rover_8d.alpha_fl_bnd variable */));
   TRACE_POP
 }
 /*
@@ -1330,7 +1330,7 @@ void RoverExample_Components_Rover_eqFunction_297(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,297};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */));
   TRACE_POP
 }
 /*
@@ -1342,7 +1342,7 @@ void RoverExample_Components_Rover_eqFunction_298(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,298};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[13]] /* rover_8d.delta STATE(1) */));
   TRACE_POP
 }
 /*
@@ -1354,7 +1354,7 @@ void RoverExample_Components_Rover_eqFunction_299(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,299};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)));
   TRACE_POP
 }
 /*
@@ -1366,7 +1366,7 @@ void RoverExample_Components_Rover_eqFunction_300(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,300};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse24 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse24 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */)));
   TRACE_POP
 }
 /*
@@ -1378,7 +1378,7 @@ void RoverExample_Components_Rover_eqFunction_301(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,301};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[226]] /* rover_8d.vx_rr variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 /*
@@ -1390,7 +1390,7 @@ void RoverExample_Components_Rover_eqFunction_302(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,302};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */)));
   TRACE_POP
 }
 /*
@@ -1402,7 +1402,7 @@ void RoverExample_Components_Rover_eqFunction_303(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,303};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse23 variable */), 0.001, 1.0);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse23 variable */), 0.001, 1.0);
   TRACE_POP
 }
 /*
@@ -1414,7 +1414,7 @@ void RoverExample_Components_Rover_eqFunction_304(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,304};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[45]] /* der(rover_8d.alpha_fr) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse22 variable */)),"rover_8d.Lrely * $cse22",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse24 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[45]] /* der(rover_8d.alpha_fr) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[224]] /* rover_8d.vx_fr variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[83]] /* $cse22 variable */)),"rover_8d.Lrely * $cse22",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[85]] /* $cse24 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[228]] /* rover_8d.vy_fr variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -1426,7 +1426,7 @@ void RoverExample_Components_Rover_eqFunction_305(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,305};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)));
   TRACE_POP
 }
 /*
@@ -1438,7 +1438,7 @@ void RoverExample_Components_Rover_eqFunction_306(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,306};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse20 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse20 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */)));
   TRACE_POP
 }
 /*
@@ -1450,7 +1450,7 @@ void RoverExample_Components_Rover_eqFunction_307(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,307};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse15 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[225]] /* rover_8d.vx_rl variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse16 variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 /*
@@ -1462,7 +1462,7 @@ void RoverExample_Components_Rover_eqFunction_308(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,308};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */)));
   TRACE_POP
 }
 /*
@@ -1474,7 +1474,7 @@ void RoverExample_Components_Rover_eqFunction_309(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,309};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse19 variable */), 0.001, 1.0);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse19 variable */), 0.001, 1.0);
   TRACE_POP
 }
 /*
@@ -1486,7 +1486,7 @@ void RoverExample_Components_Rover_eqFunction_310(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,310};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[44]] /* der(rover_8d.alpha_fl) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[77]] /* $cse18 variable */)),"rover_8d.Lrely * $cse18",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse20 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[44]] /* der(rover_8d.alpha_fl) STATE_DER */) = ((-fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[223]] /* rover_8d.vx_fl variable */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */),((data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[79]] /* $cse18 variable */)),"rover_8d.Lrely * $cse18",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[81]] /* $cse20 variable */)) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[227]] /* rover_8d.vy_fl variable */),(data->simulationInfo->realParameter[74] /* rover_8d.Lrely PARAM */),"rover_8d.Lrely",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -1498,7 +1498,7 @@ void RoverExample_Components_Rover_eqFunction_311(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,311};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */), (data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */), (data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
   TRACE_POP
 }
 /*
@@ -1513,8 +1513,8 @@ void RoverExample_Components_Rover_eqFunction_312(DATA *data, threadData_t *thre
   modelica_real tmp33;
   modelica_real tmp34;
   modelica_real tmp35;
-  tmp33 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[210]] /* rover_8d.kappa_rr_bnd variable */);
-  tmp34 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[88]] /* $cse29 variable */);
+  tmp33 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.kappa_rr_bnd variable */);
+  tmp34 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[90]] /* $cse29 variable */);
   tmp35 = (tmp33 * tmp33) + (tmp34 * tmp34);
   if(!(tmp35 >= 0.0))
   {
@@ -1552,7 +1552,7 @@ void RoverExample_Components_Rover_eqFunction_314(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,314};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */), (data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */), (data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
   TRACE_POP
 }
 /*
@@ -1567,8 +1567,8 @@ void RoverExample_Components_Rover_eqFunction_315(DATA *data, threadData_t *thre
   modelica_real tmp36;
   modelica_real tmp37;
   modelica_real tmp38;
-  tmp36 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[209]] /* rover_8d.kappa_rl_bnd variable */);
-  tmp37 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[84]] /* $cse25 variable */);
+  tmp36 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.kappa_rl_bnd variable */);
+  tmp37 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[86]] /* $cse25 variable */);
   tmp38 = (tmp36 * tmp36) + (tmp37 * tmp37);
   if(!(tmp38 >= 0.0))
   {
@@ -1606,7 +1606,7 @@ void RoverExample_Components_Rover_eqFunction_317(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,317};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */), (data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */), (data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
   TRACE_POP
 }
 /*
@@ -1621,8 +1621,8 @@ void RoverExample_Components_Rover_eqFunction_318(DATA *data, threadData_t *thre
   modelica_real tmp39;
   modelica_real tmp40;
   modelica_real tmp41;
-  tmp39 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[208]] /* rover_8d.kappa_fr_bnd variable */);
-  tmp40 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[80]] /* $cse21 variable */);
+  tmp39 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[196]] /* rover_8d.kappa_fr_bnd variable */);
+  tmp40 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[82]] /* $cse21 variable */);
   tmp41 = (tmp39 * tmp39) + (tmp40 * tmp40);
   if(!(tmp41 >= 0.0))
   {
@@ -1660,7 +1660,7 @@ void RoverExample_Components_Rover_eqFunction_320(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,320};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */), (data->simulationInfo->realParameter[111] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[110] /* rover_8d.kappa_max PARAM */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */), (data->simulationInfo->realParameter[109] /* rover_8d.kappa_min PARAM */), (data->simulationInfo->realParameter[108] /* rover_8d.kappa_max PARAM */));
   TRACE_POP
 }
 /*
@@ -1675,8 +1675,8 @@ void RoverExample_Components_Rover_eqFunction_321(DATA *data, threadData_t *thre
   modelica_real tmp42;
   modelica_real tmp43;
   modelica_real tmp44;
-  tmp42 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[207]] /* rover_8d.kappa_fl_bnd variable */);
-  tmp43 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[76]] /* $cse17 variable */);
+  tmp42 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[195]] /* rover_8d.kappa_fl_bnd variable */);
+  tmp43 = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[78]] /* $cse17 variable */);
   tmp44 = (tmp42 * tmp42) + (tmp43 * tmp43);
   if(!(tmp44 >= 0.0))
   {
@@ -1746,10 +1746,10 @@ void RoverExample_Components_Rover_eqFunction_345(DATA *data, threadData_t *thre
     messageClose(OMC_LOG_DT);
   }
   /* get old value */
-  data->simulationInfo->nonlinearSystemData[1].nlsxOld[0] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[204]] /* rover_8d.fz_fr variable */);
-  data->simulationInfo->nonlinearSystemData[1].nlsxOld[1] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[206]] /* rover_8d.fz_rr variable */);
-  data->simulationInfo->nonlinearSystemData[1].nlsxOld[2] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[205]] /* rover_8d.fz_rl variable */);
-  data->simulationInfo->nonlinearSystemData[1].nlsxOld[3] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[203]] /* rover_8d.fz_fl variable */);
+  data->simulationInfo->nonlinearSystemData[1].nlsxOld[0] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[192]] /* rover_8d.fz_fr variable */);
+  data->simulationInfo->nonlinearSystemData[1].nlsxOld[1] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[194]] /* rover_8d.fz_rr variable */);
+  data->simulationInfo->nonlinearSystemData[1].nlsxOld[2] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[193]] /* rover_8d.fz_rl variable */);
+  data->simulationInfo->nonlinearSystemData[1].nlsxOld[3] = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[191]] /* rover_8d.fz_fl variable */);
   retValue = solve_nonlinear_system(data, threadData, 1);
   /* check if solution process was successful */
   if (retValue > 0){
@@ -1757,58 +1757,58 @@ void RoverExample_Components_Rover_eqFunction_345(DATA *data, threadData_t *thre
     throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving non-linear system 345 failed at time=%.15g.\nFor more information please use -lv LOG_NLS.", data->localData[0]->timeValue);
   }
   /* write solution */
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[204]] /* rover_8d.fz_fr variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[0];
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[206]] /* rover_8d.fz_rr variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[1];
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[205]] /* rover_8d.fz_rl variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[2];
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[203]] /* rover_8d.fz_fl variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[3];
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[192]] /* rover_8d.fz_fr variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[0];
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[194]] /* rover_8d.fz_rr variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[1];
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[193]] /* rover_8d.fz_rl variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[2];
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[191]] /* rover_8d.fz_fl variable */) = data->simulationInfo->nonlinearSystemData[1].nlsx[3];
   TRACE_POP
 }
 /*
 equation index: 346
 type: SIMPLE_ASSIGN
-$DER.rover_8d.p = (rover_8d.mass_sprung * (9.80665 * $cse36 - rover_8d.ay * $cse37) * rover_8d.hs + (-rover_8d.k_rllsp) * rover_8d.phi - rover_8d.c_rllsp * rover_8d.p) / rover_8d.I_xx
+$DER.rover_8d.vx = rover_8d.vy * rover_8d.r + rover_8d.ax
 */
 void RoverExample_Components_Rover_eqFunction_346(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,346};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[58]] /* der(rover_8d.p) STATE_DER */) = DIVISION_SIM((((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse36 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse37 variable */))))) * ((data->simulationInfo->realParameter[106] /* rover_8d.hs PARAM */)) + ((-(data->simulationInfo->realParameter[109] /* rover_8d.k_rllsp PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */)) - (((data->simulationInfo->realParameter[85] /* rover_8d.c_rllsp PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[23]] /* rover_8d.p STATE(1) */))),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx",equationIndexes);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[64]] /* der(rover_8d.vx) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[182]] /* rover_8d.ax variable */);
   TRACE_POP
 }
 /*
 equation index: 347
 type: SIMPLE_ASSIGN
-ay_meas = rover_8d.ay - rover_8d.specific_g[2]
+ax_meas = rover_8d.ax - rover_8d.specific_g[1]
 */
 void RoverExample_Components_Rover_eqFunction_347(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,347};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[106]] /* ay_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[217]] /* rover_8d.specific_g[2] variable */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[105]] /* ax_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[182]] /* rover_8d.ax variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[216]] /* rover_8d.specific_g[1] variable */);
   TRACE_POP
 }
 /*
 equation index: 348
 type: SIMPLE_ASSIGN
-$DER.rover_8d.vx = rover_8d.vy * rover_8d.r + rover_8d.ax
+$DER.rover_8d.p = (rover_8d.mass_sprung * (9.80665 * $cse36 - rover_8d.ay * $cse37) * rover_8d.hs + (-rover_8d.k_rllsp) * rover_8d.phi - rover_8d.c_rllsp * rover_8d.p) / rover_8d.I_xx
 */
 void RoverExample_Components_Rover_eqFunction_348(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,348};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[64]] /* der(rover_8d.vx) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[30]] /* rover_8d.vy STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[182]] /* rover_8d.ax variable */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[58]] /* der(rover_8d.p) STATE_DER */) = DIVISION_SIM((((data->simulationInfo->realParameter[117] /* rover_8d.mass_sprung PARAM */)) * ((9.80665) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[98]] /* $cse36 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse37 variable */))))) * ((data->simulationInfo->realParameter[104] /* rover_8d.hs PARAM */)) + ((-(data->simulationInfo->realParameter[107] /* rover_8d.k_rllsp PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[24]] /* rover_8d.phi STATE(1,rover_8d.p) */)) - (((data->simulationInfo->realParameter[85] /* rover_8d.c_rllsp PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[23]] /* rover_8d.p STATE(1) */))),(data->simulationInfo->realParameter[65] /* rover_8d.I_xx PARAM */),"rover_8d.I_xx",equationIndexes);
   TRACE_POP
 }
 /*
 equation index: 349
 type: SIMPLE_ASSIGN
-ax_meas = rover_8d.ax - rover_8d.specific_g[1]
+ay_meas = rover_8d.ay - rover_8d.specific_g[2]
 */
 void RoverExample_Components_Rover_eqFunction_349(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,349};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[105]] /* ax_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[182]] /* rover_8d.ax variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[216]] /* rover_8d.specific_g[1] variable */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[106]] /* ay_meas variable */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[217]] /* rover_8d.specific_g[2] variable */);
   TRACE_POP
 }
 /*
@@ -1878,7 +1878,31 @@ void RoverExample_Components_Rover_eqFunction_352(DATA *data, threadData_t *thre
   TRACE_POP
 }
 /*
-equation index: 365
+equation index: 353
+type: SIMPLE_ASSIGN
+$DER.rover_8d.r = (0.5 * (rover_8d.Fx_fl * $cse34 + rover_8d.Fy_fl * $cse35 + rover_8d.Fx_rl - rover_8d.Fx_rr - rover_8d.Fy_fr * $cse35 - rover_8d.Fx_fr * $cse34) * rover_8d.tw + rover_8d.l_front * (rover_8d.Fy_fl * $cse34 - rover_8d.Fx_fl * $cse35) + rover_8d.l_front * (rover_8d.Fy_fr * $cse34 - rover_8d.Fx_fr * $cse35) - rover_8d.l_rear * (rover_8d.Fy_rl + rover_8d.Fy_rr)) / rover_8d.I_zz
+*/
+void RoverExample_Components_Rover_eqFunction_353(DATA *data, threadData_t *threadData)
+{
+  TRACE_PUSH
+  const int equationIndexes[2] = {1,353};
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[62]] /* der(rover_8d.r) STATE_DER */) = DIVISION_SIM((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[165]] /* rover_8d.Fx_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[166]] /* rover_8d.Fx_rr variable */) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)))) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[96]] /* $cse34 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[97]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[169]] /* rover_8d.Fy_rl variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[170]] /* rover_8d.Fy_rr variable */))),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz",equationIndexes);
+  TRACE_POP
+}
+/*
+equation index: 354
+type: SIMPLE_ASSIGN
+$DER.rover_8d.vy = rover_8d.ay + (rover_8d.l_rear * rover_8d.mass_unsprung_rear - rover_8d.l_front * rover_8d.mass_unsprung_front) * der(rover_8d.r) / rover_8d.mass_total - rover_8d.vx * rover_8d.r
+*/
+void RoverExample_Components_Rover_eqFunction_354(DATA *data, threadData_t *threadData)
+{
+  TRACE_PUSH
+  const int equationIndexes[2] = {1,354};
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[65]] /* der(rover_8d.vy) STATE_DER */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */) + (((data->simulationInfo->realParameter[111] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[110] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[62]] /* der(rover_8d.r) STATE_DER */),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
+  TRACE_POP
+}
+/*
+equation index: 367
 type: LINEAR
 
 <var>rover_8d.thr</var>
@@ -1889,16 +1913,16 @@ type: LINEAR
 </matrix>
 */
 OMC_DISABLE_OPT
-void RoverExample_Components_Rover_eqFunction_365(DATA *data, threadData_t *threadData)
+void RoverExample_Components_Rover_eqFunction_367(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
-  const int equationIndexes[2] = {1,365};
+  const int equationIndexes[2] = {1,367};
   /* Linear equation system */
   int retValue;
   double aux_x[1] = { (data->localData[1]->realVars[data->simulationInfo->realVarsIndex[218]] /* rover_8d.thr variable */) };
   if(OMC_ACTIVE_STREAM(OMC_LOG_DT))
   {
-    infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 365 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
+    infoStreamPrint(OMC_LOG_DT, 1, "Solving linear system 367 (STRICT TEARING SET if tearing enabled) at time = %18.10e", data->localData[0]->timeValue);
     messageClose(OMC_LOG_DT);
   }
   
@@ -1906,36 +1930,12 @@ void RoverExample_Components_Rover_eqFunction_365(DATA *data, threadData_t *thre
   
   /* check if solution process was successful */
   if (retValue > 0){
-    const int indexes[2] = {1,365};
-    throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 365 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
+    const int indexes[2] = {1,367};
+    throwStreamPrintWithEquationIndexes(threadData, omc_dummyFileInfo, indexes, "Solving linear system 367 failed at time=%.15g.\nFor more information please use -lv LOG_LS.", data->localData[0]->timeValue);
   }
   /* write solution */
   (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[218]] /* rover_8d.thr variable */) = aux_x[0];
 
-  TRACE_POP
-}
-/*
-equation index: 366
-type: SIMPLE_ASSIGN
-$DER.rover_8d.r = (0.5 * (rover_8d.Fx_fl * $cse34 + rover_8d.Fy_fl * $cse35 + rover_8d.Fx_rl - rover_8d.Fx_rr - rover_8d.Fy_fr * $cse35 - rover_8d.Fx_fr * $cse34) * rover_8d.tw + rover_8d.l_front * (rover_8d.Fy_fl * $cse34 - rover_8d.Fx_fl * $cse35) + rover_8d.l_front * (rover_8d.Fy_fr * $cse34 - rover_8d.Fx_fr * $cse35) - rover_8d.l_rear * (rover_8d.Fy_rl + rover_8d.Fy_rr)) / rover_8d.I_zz
-*/
-void RoverExample_Components_Rover_eqFunction_366(DATA *data, threadData_t *threadData)
-{
-  TRACE_PUSH
-  const int equationIndexes[2] = {1,366};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[62]] /* der(rover_8d.r) STATE_DER */) = DIVISION_SIM((0.5) * ((((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) + ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[165]] /* rover_8d.Fx_rl variable */) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[166]] /* rover_8d.Fx_rr variable */) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */))) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)))) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[167]] /* rover_8d.Fy_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[163]] /* rover_8d.Fx_fl variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) + ((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[168]] /* rover_8d.Fy_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[94]] /* $cse34 variable */)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[164]] /* rover_8d.Fx_fr variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[95]] /* $cse35 variable */)))) - (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[169]] /* rover_8d.Fy_rl variable */) + (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[170]] /* rover_8d.Fy_rr variable */))),(data->simulationInfo->realParameter[66] /* rover_8d.I_zz PARAM */),"rover_8d.I_zz",equationIndexes);
-  TRACE_POP
-}
-/*
-equation index: 367
-type: SIMPLE_ASSIGN
-$DER.rover_8d.vy = rover_8d.ay + (rover_8d.l_rear * rover_8d.mass_unsprung_rear - rover_8d.l_front * rover_8d.mass_unsprung_front) * der(rover_8d.r) / rover_8d.mass_total - rover_8d.vx * rover_8d.r
-*/
-void RoverExample_Components_Rover_eqFunction_367(DATA *data, threadData_t *threadData)
-{
-  TRACE_PUSH
-  const int equationIndexes[2] = {1,367};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[65]] /* der(rover_8d.vy) STATE_DER */) = (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[183]] /* rover_8d.ay variable */) + (((data->simulationInfo->realParameter[113] /* rover_8d.l_rear PARAM */)) * ((data->simulationInfo->realParameter[120] /* rover_8d.mass_unsprung_rear PARAM */)) - (((data->simulationInfo->realParameter[112] /* rover_8d.l_front PARAM */)) * ((data->simulationInfo->realParameter[119] /* rover_8d.mass_unsprung_front PARAM */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[62]] /* der(rover_8d.r) STATE_DER */),(data->simulationInfo->realParameter[118] /* rover_8d.mass_total PARAM */),"rover_8d.mass_total",equationIndexes)) - (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)));
   TRACE_POP
 }
 /*
@@ -1947,7 +1947,7 @@ void RoverExample_Components_Rover_eqFunction_368(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,368};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */) = tanh(fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */)));
   TRACE_POP
 }
 /*
@@ -1959,7 +1959,7 @@ void RoverExample_Components_Rover_eqFunction_369(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,369};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse14 variable */), 0.001, 1.0);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */) = omc_RoverExample_Utils_clip(threadData, (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[75]] /* $cse14 variable */), 0.001, 1.0);
   TRACE_POP
 }
 /*
@@ -1971,7 +1971,7 @@ void RoverExample_Components_Rover_eqFunction_370(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,370};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[52]] /* der(rover_8d.kappa_rr) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[22]] /* rover_8d.omega_rr STATE(1) */)) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[52]] /* der(rover_8d.kappa_rr) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[22]] /* rover_8d.omega_rr STATE(1) */)) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[17]] /* rover_8d.kappa_rr STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -1983,7 +1983,7 @@ void RoverExample_Components_Rover_eqFunction_371(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,371};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[51]] /* der(rover_8d.kappa_rl) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[21]] /* rover_8d.omega_rl STATE(1) */)) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[51]] /* der(rover_8d.kappa_rl) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[21]] /* rover_8d.omega_rl STATE(1) */)) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[16]] /* rover_8d.kappa_rl STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -1995,7 +1995,7 @@ void RoverExample_Components_Rover_eqFunction_372(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,372};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[50]] /* der(rover_8d.kappa_fr) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[20]] /* rover_8d.omega_fr STATE(1) */)) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[50]] /* der(rover_8d.kappa_fr) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[20]] /* rover_8d.omega_fr STATE(1) */)) + (0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) - (((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[15]] /* rover_8d.kappa_fr STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -2007,7 +2007,7 @@ void RoverExample_Components_Rover_eqFunction_373(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,373};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[49]] /* der(rover_8d.kappa_fl) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[19]] /* rover_8d.omega_fl STATE(1) */)) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[49]] /* der(rover_8d.kappa_fl) STATE_DER */) = DIVISION_SIM(((data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[19]] /* rover_8d.omega_fl STATE(1) */)) + (-0.5) * (((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */))) - (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */),(data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */),"rover_8d.Lrelx",equationIndexes) - ((fabs((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[29]] /* rover_8d.vx STATE(1) */) + ((0.5) * ((data->simulationInfo->realParameter[126] /* rover_8d.tw PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[27]] /* rover_8d.r STATE(1) */)))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[14]] /* rover_8d.kappa_fl STATE(1) */),((data->simulationInfo->realParameter[73] /* rover_8d.Lrelx PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[74]] /* $cse13 variable */)),"rover_8d.Lrelx * $cse13",equationIndexes)));
   TRACE_POP
 }
 /*
@@ -2019,7 +2019,7 @@ void RoverExample_Components_Rover_eqFunction_374(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,374};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[71]] /* $cse12 variable */) = omc_RoverExample_Utils_clip(threadData, (data->simulationInfo->realVarsPre[244] /* rover_8d.D DISCRETE */), (DIVISION_SIM(DIVISION_SIM(((data->simulationInfo->realParameter[77] /* rover_8d.R_phi PARAM */)) * ((data->simulationInfo->realParameter[81] /* rover_8d.b PARAM */)),(data->simulationInfo->realParameter[71] /* rover_8d.Kt_q PARAM */),"rover_8d.Kt_q",equationIndexes) + (data->simulationInfo->realParameter[69] /* rover_8d.Kb_q PARAM */),(1.224744871391589) * ((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)),"1.224744871391589 * rover_8d.Vs",equationIndexes)) * ((DIVISION_SIM(0.001,(data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */),"rover_8d.r_tire",equationIndexes)) * ((data->simulationInfo->realParameter[105] /* rover_8d.gratio PARAM */))), 1.0);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse12 variable */) = omc_RoverExample_Utils_clip(threadData, (data->simulationInfo->realVarsPre[244] /* rover_8d.D DISCRETE */), (DIVISION_SIM(DIVISION_SIM(((data->simulationInfo->realParameter[77] /* rover_8d.R_phi PARAM */)) * ((data->simulationInfo->realParameter[81] /* rover_8d.b PARAM */)),(data->simulationInfo->realParameter[71] /* rover_8d.Kt_q PARAM */),"rover_8d.Kt_q",equationIndexes) + (data->simulationInfo->realParameter[69] /* rover_8d.Kb_q PARAM */),(1.224744871391589) * ((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)),"1.224744871391589 * rover_8d.Vs",equationIndexes)) * ((DIVISION_SIM(0.001,(data->simulationInfo->realParameter[124] /* rover_8d.r_tire PARAM */),"rover_8d.r_tire",equationIndexes)) * ((data->simulationInfo->realParameter[103] /* rover_8d.gratio PARAM */))), 1.0);
   TRACE_POP
 }
 /*
@@ -2031,7 +2031,7 @@ void RoverExample_Components_Rover_eqFunction_375(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,375};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[177]] /* rover_8d.Vq variable */) = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[71]] /* $cse12 variable */)));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[177]] /* rover_8d.Vq variable */) = (1.224744871391589) * (((data->simulationInfo->realParameter[78] /* rover_8d.Vs PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[73]] /* $cse12 variable */)));
   TRACE_POP
 }
 /*
@@ -2049,31 +2049,31 @@ void RoverExample_Components_Rover_eqFunction_376(DATA *data, threadData_t *thre
 /*
 equation index: 377
 type: SIMPLE_ASSIGN
-$cse9 = sin(rover_8d.lambda)
+$cse11 = sin(rover_8d.lambda)
 */
 void RoverExample_Components_Rover_eqFunction_377(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,377};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[104]] /* $cse9 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[18]] /* rover_8d.lambda STATE(1,rover_8d.omega) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse11 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[18]] /* rover_8d.lambda STATE(1,rover_8d.omega) */));
   TRACE_POP
 }
 /*
 equation index: 378
 type: SIMPLE_ASSIGN
-$cse8 = cos(rover_8d.lambda)
+$cse10 = cos(rover_8d.lambda)
 */
 void RoverExample_Components_Rover_eqFunction_378(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,378};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[103]] /* $cse8 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[18]] /* rover_8d.lambda STATE(1,rover_8d.omega) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[71]] /* $cse10 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[18]] /* rover_8d.lambda STATE(1,rover_8d.omega) */));
   TRACE_POP
 }
 /*
 equation index: 379
 type: SIMPLE_ASSIGN
-$cse7 = RoverExample.Utils.dot3({0.0, (rover_8d.emi.mag_motor + rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse8, (rover_8d.emi.mag_motor + rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse9}, rover_8d.emi.x_motor)
+$cse9 = RoverExample.Utils.dot3({0.0, (rover_8d.emi.mag_motor + rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse10, (rover_8d.emi.mag_motor + rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse11}, rover_8d.emi.x_motor)
 */
 void RoverExample_Components_Rover_eqFunction_379(DATA *data, threadData_t *threadData)
 {
@@ -2081,49 +2081,49 @@ void RoverExample_Components_Rover_eqFunction_379(DATA *data, threadData_t *thre
   const int equationIndexes[2] = {1,379};
   real_array tmp12;
   real_array tmp13;
-  array_alloc_scalar_real_array(&tmp12, 3, (modelica_real)0.0, (modelica_real)((data->simulationInfo->realParameter[94] /* rover_8d.emi.mag_motor PARAM */) + (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */))) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[103]] /* $cse8 variable */)), (modelica_real)((data->simulationInfo->realParameter[94] /* rover_8d.emi.mag_motor PARAM */) + (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */))) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[104]] /* $cse9 variable */)));
-  real_array_create(&tmp13, ((modelica_real*)&((&data->simulationInfo->realParameter[98] /* rover_8d.emi.x_motor[1] PARAM */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[102]] /* $cse7 variable */) = omc_RoverExample_Utils_dot3(threadData, tmp12, tmp13);
+  array_alloc_scalar_real_array(&tmp12, 3, (modelica_real)0.0, (modelica_real)((data->simulationInfo->realParameter[92] /* rover_8d.emi.mag_motor PARAM */) + (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */))) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[71]] /* $cse10 variable */)), (modelica_real)((data->simulationInfo->realParameter[92] /* rover_8d.emi.mag_motor PARAM */) + (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */))) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse11 variable */)));
+  real_array_create(&tmp13, ((modelica_real*)&((&data->simulationInfo->realParameter[96] /* rover_8d.emi.x_motor[1] PARAM */)[((modelica_integer) 1) - 1])), 1, (_index_t)3);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[104]] /* $cse9 variable */) = omc_RoverExample_Utils_dot3(threadData, tmp12, tmp13);
   TRACE_POP
 }
 /*
 equation index: 380
 type: SIMPLE_ASSIGN
-rover_8d.emi.b_motor[3] = 9.999999999999998e-8 * rover_8d.emi.eta_motor * (3.0 * $cse7 * rover_8d.emi.x_motor[3] / rover_8d.emi.dist_motor ^ 5.0 + ((-rover_8d.emi.mag_motor) - rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse9 / rover_8d.emi.dist_motor ^ 3.0)
+rover_8d.emi.b_motor[3] = 9.999999999999998e-8 * rover_8d.emi.eta_motor * (3.0 * $cse9 * rover_8d.emi.x_motor[3] / rover_8d.emi.dist_motor ^ 5.0 + ((-rover_8d.emi.mag_motor) - rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse11 / rover_8d.emi.dist_motor ^ 3.0)
 */
 void RoverExample_Components_Rover_eqFunction_380(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,380};
   modelica_real tmp14;
-  tmp14 = (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_motor PARAM */);
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[199]] /* rover_8d.emi.b_motor[3] variable */) = (9.999999999999998e-8) * (((data->simulationInfo->realParameter[92] /* rover_8d.emi.eta_motor PARAM */)) * ((3.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[102]] /* $cse7 variable */)) * (DIVISION_SIM((data->simulationInfo->realParameter[100] /* rover_8d.emi.x_motor[3] PARAM */),real_int_pow(threadData, (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_motor PARAM */), 5),"rover_8d.emi.dist_motor ^ 5.0",equationIndexes))) + ((-(data->simulationInfo->realParameter[94] /* rover_8d.emi.mag_motor PARAM */)) - (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */)) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[104]] /* $cse9 variable */),(tmp14 * tmp14 * tmp14),"rover_8d.emi.dist_motor ^ 3.0",equationIndexes))));
+  tmp14 = (data->simulationInfo->realParameter[89] /* rover_8d.emi.dist_motor PARAM */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[187]] /* rover_8d.emi.b_motor[3] variable */) = (9.999999999999998e-8) * (((data->simulationInfo->realParameter[91] /* rover_8d.emi.eta_motor PARAM */)) * ((3.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[104]] /* $cse9 variable */)) * (DIVISION_SIM((data->simulationInfo->realParameter[98] /* rover_8d.emi.x_motor[3] PARAM */),real_int_pow(threadData, (data->simulationInfo->realParameter[89] /* rover_8d.emi.dist_motor PARAM */), 5),"rover_8d.emi.dist_motor ^ 5.0",equationIndexes))) + ((-(data->simulationInfo->realParameter[92] /* rover_8d.emi.mag_motor PARAM */)) - (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */)) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[72]] /* $cse11 variable */),(tmp14 * tmp14 * tmp14),"rover_8d.emi.dist_motor ^ 3.0",equationIndexes))));
   TRACE_POP
 }
 /*
 equation index: 381
 type: SIMPLE_ASSIGN
-rover_8d.emi.b_motor[1] = 2.9999999999999993e-7 * rover_8d.emi.eta_motor * $cse7 * rover_8d.emi.x_motor[1] / rover_8d.emi.dist_motor ^ 5.0
+rover_8d.emi.b_motor[1] = 2.9999999999999993e-7 * rover_8d.emi.eta_motor * $cse9 * rover_8d.emi.x_motor[1] / rover_8d.emi.dist_motor ^ 5.0
 */
 void RoverExample_Components_Rover_eqFunction_381(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,381};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[197]] /* rover_8d.emi.b_motor[1] variable */) = (2.9999999999999993e-7) * (((data->simulationInfo->realParameter[92] /* rover_8d.emi.eta_motor PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[102]] /* $cse7 variable */)) * (DIVISION_SIM((data->simulationInfo->realParameter[98] /* rover_8d.emi.x_motor[1] PARAM */),real_int_pow(threadData, (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_motor PARAM */), 5),"rover_8d.emi.dist_motor ^ 5.0",equationIndexes))));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[185]] /* rover_8d.emi.b_motor[1] variable */) = (2.9999999999999993e-7) * (((data->simulationInfo->realParameter[91] /* rover_8d.emi.eta_motor PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[104]] /* $cse9 variable */)) * (DIVISION_SIM((data->simulationInfo->realParameter[96] /* rover_8d.emi.x_motor[1] PARAM */),real_int_pow(threadData, (data->simulationInfo->realParameter[89] /* rover_8d.emi.dist_motor PARAM */), 5),"rover_8d.emi.dist_motor ^ 5.0",equationIndexes))));
   TRACE_POP
 }
 /*
 equation index: 382
 type: SIMPLE_ASSIGN
-rover_8d.emi.b_motor[2] = 9.999999999999998e-8 * rover_8d.emi.eta_motor * (3.0 * $cse7 * rover_8d.emi.x_motor[2] / rover_8d.emi.dist_motor ^ 5.0 + ((-rover_8d.emi.mag_motor) - rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse8 / rover_8d.emi.dist_motor ^ 3.0)
+rover_8d.emi.b_motor[2] = 9.999999999999998e-8 * rover_8d.emi.eta_motor * (3.0 * $cse9 * rover_8d.emi.x_motor[2] / rover_8d.emi.dist_motor ^ 5.0 + ((-rover_8d.emi.mag_motor) - rover_8d.emi.Nw * rover_8d.Iq * rover_8d.emi.A) * $cse10 / rover_8d.emi.dist_motor ^ 3.0)
 */
 void RoverExample_Components_Rover_eqFunction_382(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,382};
   modelica_real tmp15;
-  tmp15 = (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_motor PARAM */);
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[198]] /* rover_8d.emi.b_motor[2] variable */) = (9.999999999999998e-8) * (((data->simulationInfo->realParameter[92] /* rover_8d.emi.eta_motor PARAM */)) * ((3.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[102]] /* $cse7 variable */)) * (DIVISION_SIM((data->simulationInfo->realParameter[99] /* rover_8d.emi.x_motor[2] PARAM */),real_int_pow(threadData, (data->simulationInfo->realParameter[90] /* rover_8d.emi.dist_motor PARAM */), 5),"rover_8d.emi.dist_motor ^ 5.0",equationIndexes))) + ((-(data->simulationInfo->realParameter[94] /* rover_8d.emi.mag_motor PARAM */)) - (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */)) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[103]] /* $cse8 variable */),(tmp15 * tmp15 * tmp15),"rover_8d.emi.dist_motor ^ 3.0",equationIndexes))));
+  tmp15 = (data->simulationInfo->realParameter[89] /* rover_8d.emi.dist_motor PARAM */);
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[186]] /* rover_8d.emi.b_motor[2] variable */) = (9.999999999999998e-8) * (((data->simulationInfo->realParameter[91] /* rover_8d.emi.eta_motor PARAM */)) * ((3.0) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[104]] /* $cse9 variable */)) * (DIVISION_SIM((data->simulationInfo->realParameter[97] /* rover_8d.emi.x_motor[2] PARAM */),real_int_pow(threadData, (data->simulationInfo->realParameter[89] /* rover_8d.emi.dist_motor PARAM */), 5),"rover_8d.emi.dist_motor ^ 5.0",equationIndexes))) + ((-(data->simulationInfo->realParameter[92] /* rover_8d.emi.mag_motor PARAM */)) - (((data->simulationInfo->realParameter[88] /* rover_8d.emi.Nw PARAM */)) * (((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[8]] /* rover_8d.Iq STATE(1) */)) * ((data->simulationInfo->realParameter[86] /* rover_8d.emi.A PARAM */))))) * (DIVISION_SIM((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[71]] /* $cse10 variable */),(tmp15 * tmp15 * tmp15),"rover_8d.emi.dist_motor ^ 3.0",equationIndexes))));
   TRACE_POP
 }
 /*
@@ -2135,7 +2135,7 @@ void RoverExample_Components_Rover_eqFunction_383(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,383};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse4 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[1]] /* rover_3d.psi STATE(1) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[101]] /* $cse4 variable */) = sin((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[1]] /* rover_3d.psi STATE(1) */));
   TRACE_POP
 }
 /*
@@ -2147,7 +2147,7 @@ void RoverExample_Components_Rover_eqFunction_384(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,384};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[41]] /* der(rover_3d.y) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[99]] /* $cse4 variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[41]] /* der(rover_3d.y) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[101]] /* $cse4 variable */));
   TRACE_POP
 }
 /*
@@ -2159,7 +2159,7 @@ void RoverExample_Components_Rover_eqFunction_385(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,385};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse3 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[1]] /* rover_3d.psi STATE(1) */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse3 variable */) = cos((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[1]] /* rover_3d.psi STATE(1) */));
   TRACE_POP
 }
 /*
@@ -2171,7 +2171,7 @@ void RoverExample_Components_Rover_eqFunction_386(DATA *data, threadData_t *thre
 {
   TRACE_PUSH
   const int equationIndexes[2] = {1,386};
-  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[40]] /* der(rover_3d.x) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[89]] /* $cse3 variable */));
+  (data->localData[0]->realVars[data->simulationInfo->realVarsIndex[40]] /* der(rover_3d.x) STATE_DER */) = ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[153]] /* rover_3d.vx variable */)) * ((data->localData[0]->realVars[data->simulationInfo->realVarsIndex[91]] /* $cse3 variable */));
   TRACE_POP
 }
 /*
@@ -2555,9 +2555,9 @@ int RoverExample_Components_Rover_functionDAE(DATA *data, threadData_t *threadDa
 
   RoverExample_Components_Rover_eqFunction_352(data, threadData);
 
-  RoverExample_Components_Rover_eqFunction_365(data, threadData);
+  RoverExample_Components_Rover_eqFunction_353(data, threadData);
 
-  RoverExample_Components_Rover_eqFunction_366(data, threadData);
+  RoverExample_Components_Rover_eqFunction_354(data, threadData);
 
   RoverExample_Components_Rover_eqFunction_367(data, threadData);
 
@@ -2712,8 +2712,8 @@ extern void RoverExample_Components_Rover_eqFunction_322(DATA* data, threadData_
 extern void RoverExample_Components_Rover_eqFunction_345(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_346(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_348(DATA* data, threadData_t *threadData);
-extern void RoverExample_Components_Rover_eqFunction_365(DATA* data, threadData_t *threadData);
-extern void RoverExample_Components_Rover_eqFunction_366(DATA* data, threadData_t *threadData);
+extern void RoverExample_Components_Rover_eqFunction_353(DATA* data, threadData_t *threadData);
+extern void RoverExample_Components_Rover_eqFunction_354(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_367(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_368(DATA* data, threadData_t *threadData);
 extern void RoverExample_Components_Rover_eqFunction_369(DATA* data, threadData_t *threadData);
@@ -2808,8 +2808,8 @@ static void functionODE_system0(DATA *data, threadData_t *threadData)
     RoverExample_Components_Rover_eqFunction_345,
     RoverExample_Components_Rover_eqFunction_346,
     RoverExample_Components_Rover_eqFunction_348,
-    RoverExample_Components_Rover_eqFunction_365,
-    RoverExample_Components_Rover_eqFunction_366,
+    RoverExample_Components_Rover_eqFunction_353,
+    RoverExample_Components_Rover_eqFunction_354,
     RoverExample_Components_Rover_eqFunction_367,
     RoverExample_Components_Rover_eqFunction_368,
     RoverExample_Components_Rover_eqFunction_369,
@@ -2901,8 +2901,8 @@ static void functionODE_system0(DATA *data, threadData_t *threadData)
     345,
     346,
     348,
-    365,
-    366,
+    353,
+    354,
     367,
     368,
     369,
@@ -3036,6 +3036,8 @@ void RoverExample_Components_Rover_computeVarIndices(size_t* realIndex, size_t* 
   
   /* algVars */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* der(rover_8d.omega) DUMMY_DER */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse10 variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse11 variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse12 variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse13 variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse14 variable */
@@ -3067,8 +3069,6 @@ void RoverExample_Components_Rover_computeVarIndices(size_t* realIndex, size_t* 
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse4 variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse5 variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse6 variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse7 variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse8 variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* $cse9 variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* ax_meas variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* ay_meas variable */
@@ -3098,16 +3098,16 @@ void RoverExample_Components_Rover_computeVarIndices(size_t* realIndex, size_t* 
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.ay variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.az variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.delta variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[1,1] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[1,2] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[1,3] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[2,1] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[2,2] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[2,3] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[3,1] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[3,2] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.emi.C_n2b[3,3] variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.length_to_tire variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[1,1] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[1,2] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[1,3] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[2,1] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[2,2] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[2,3] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[3,1] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[3,2] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mag.C_n2b[3,3] variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mx variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.my variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_3d.mz variable */
@@ -3150,18 +3150,6 @@ void RoverExample_Components_Rover_computeVarIndices(size_t* realIndex, size_t* 
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.ax variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.ay variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.az variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[1,1] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[1,2] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[1,3] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[2,1] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[2,2] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[2,3] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[3,1] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[3,2] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.C_n2b[3,3] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.b_earth[1] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.b_earth[2] variable */
-  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.b_earth[3] variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.b_motor[1] variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.b_motor[2] variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.emi.b_motor[3] variable */
@@ -3176,6 +3164,18 @@ void RoverExample_Components_Rover_computeVarIndices(size_t* realIndex, size_t* 
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.kappa_fr_bnd variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.kappa_rl_bnd variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.kappa_rr_bnd variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[1,1] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[1,2] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[1,3] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[2,1] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[2,2] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[2,3] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[3,1] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[3,2] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.C_n2b[3,3] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.b_earth[1] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.b_earth[2] variable */
+  realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mag.b_earth[3] variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mu_fl variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mu_fr variable */
   realIndex[i_real+1] = realIndex[i_real] + ((modelica_integer) 1); i_real++; /* rover_8d.mu_rl variable */
@@ -3349,9 +3349,9 @@ static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_2_name,16,_OMC_LIT_RESOURCE_2_na
 static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_2_dir,67,_OMC_LIT_RESOURCE_2_dir_data);
 
 #define _OMC_LIT_RESOURCE_3_name_data "RoverExample"
-#define _OMC_LIT_RESOURCE_3_dir_data "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model"
+#define _OMC_LIT_RESOURCE_3_dir_data "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model"
 static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_3_name,12,_OMC_LIT_RESOURCE_3_name_data);
-static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_3_dir,75,_OMC_LIT_RESOURCE_3_dir_data);
+static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_3_dir,82,_OMC_LIT_RESOURCE_3_dir_data);
 
 static const MMC_DEFSTRUCTLIT(_OMC_LIT_RESOURCES,8,MMC_ARRAY_TAG) {MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_0_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_0_dir), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_1_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_1_dir), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_2_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_2_dir), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_3_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_3_dir)}};
 void RoverExample_Components_Rover_setupDataStruc(DATA *data, threadData_t *threadData)
@@ -3363,8 +3363,8 @@ void RoverExample_Components_Rover_setupDataStruc(DATA *data, threadData_t *thre
   data->modelData->modelName = "RoverExample.Components.Rover";
   data->modelData->modelFilePrefix = "RoverExample.Components.Rover";
   data->modelData->resultFileName = NULL;
-  data->modelData->modelDir = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model";
-  data->modelData->modelGUID = "{2bad9ed6-cb10-46a0-86cc-15348bda9ef0}";
+  data->modelData->modelDir = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model";
+  data->modelData->modelGUID = "{a406cd9e-fb92-4fe0-a1a1-448e7c0f4094}";
   #if defined(OPENMODELICA_XML_FROM_FILE_AT_RUNTIME)
   data->modelData->initXMLData = NULL;
   data->modelData->modelDataXml.infoXMLData = NULL;

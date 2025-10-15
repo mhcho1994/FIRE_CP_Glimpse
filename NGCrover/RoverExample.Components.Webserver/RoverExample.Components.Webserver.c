@@ -108,7 +108,7 @@ int RoverExample_Components_Webserver_setb_function(DATA *data, threadData_t *th
 
 
 /*
-equation index: 4
+equation index: 3
 type: ALGORITHM
 
   turn := pre(turn);
@@ -127,17 +127,21 @@ type: ALGORITHM
   else
     turn := 0;
   end if;
+  if timer_count >= repeat_interval_count then
+    timer_count := 0;
+  end if;
 */
-void RoverExample_Components_Webserver_eqFunction_4(DATA *data, threadData_t *threadData)
+void RoverExample_Components_Webserver_eqFunction_3(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
-  const int equationIndexes[2] = {1,4};
+  const int equationIndexes[2] = {1,3};
   modelica_boolean tmp0;
   modelica_boolean tmp1;
   modelica_boolean tmp2;
   modelica_boolean tmp3;
   modelica_boolean tmp4;
   modelica_boolean tmp5;
+  modelica_boolean tmp6;
   (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[1]] /* turn DISCRETE */) = (data->simulationInfo->integerVarsPre[1] /* turn DISCRETE */);
 
   (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */) = (data->simulationInfo->integerVarsPre[0] /* timer_count DISCRETE */);
@@ -182,6 +186,12 @@ void RoverExample_Components_Webserver_eqFunction_4(DATA *data, threadData_t *th
       }
     }
   }
+
+  tmp6 = GreaterEq((data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */),(data->simulationInfo->integerParameter[0] /* repeat_interval_count PARAM */));
+  if(tmp6)
+  {
+    (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */) = ((modelica_integer) 0);
+  }
   TRACE_POP
 }
 
@@ -197,7 +207,7 @@ int RoverExample_Components_Webserver_functionDAE(DATA *data, threadData_t *thre
   data->simulationInfo->needToIterate = 0;
   data->simulationInfo->discreteCall = 1;
   RoverExample_Components_Webserver_functionLocalKnownVars(data, threadData);
-  RoverExample_Components_Webserver_eqFunction_4(data, threadData);
+  RoverExample_Components_Webserver_eqFunction_3(data, threadData);
   data->simulationInfo->discreteCall = 0;
   
 #if !defined(OMC_MINIMAL_RUNTIME)
@@ -370,9 +380,9 @@ struct OpenModelicaGeneratedFunctionCallbacks RoverExample_Components_Webserver_
 };
 
 #define _OMC_LIT_RESOURCE_0_name_data "RoverExample"
-#define _OMC_LIT_RESOURCE_0_dir_data "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model"
+#define _OMC_LIT_RESOURCE_0_dir_data "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model"
 static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_0_name,12,_OMC_LIT_RESOURCE_0_name_data);
-static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_0_dir,75,_OMC_LIT_RESOURCE_0_dir_data);
+static const MMC_DEFSTRINGLIT(_OMC_LIT_RESOURCE_0_dir,82,_OMC_LIT_RESOURCE_0_dir_data);
 
 static const MMC_DEFSTRUCTLIT(_OMC_LIT_RESOURCES,2,MMC_ARRAY_TAG) {MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_0_name), MMC_REFSTRINGLIT(_OMC_LIT_RESOURCE_0_dir)}};
 void RoverExample_Components_Webserver_setupDataStruc(DATA *data, threadData_t *threadData)
@@ -384,8 +394,8 @@ void RoverExample_Components_Webserver_setupDataStruc(DATA *data, threadData_t *
   data->modelData->modelName = "RoverExample.Components.Webserver";
   data->modelData->modelFilePrefix = "RoverExample.Components.Webserver";
   data->modelData->resultFileName = NULL;
-  data->modelData->modelDir = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/250601.FMUSimR2_v1p0/model";
-  data->modelData->modelGUID = "{937ba2c7-ebc1-48e6-bcf0-05ca75bbbfb0}";
+  data->modelData->modelDir = "/mnt/d/Dropbox/05.Workspace/C02.FIREFLY/06.Rover/251015.LoFi_update/NGCrover/model";
+  data->modelData->modelGUID = "{d337dc9f-5513-4365-a5af-065632d60877}";
   #if defined(OPENMODELICA_XML_FROM_FILE_AT_RUNTIME)
   data->modelData->initXMLData = NULL;
   data->modelData->modelDataXml.infoXMLData = NULL;
@@ -439,7 +449,7 @@ void RoverExample_Components_Webserver_setupDataStruc(DATA *data, threadData_t *
   data->modelData->modelDataXml.modelInfoXmlLength = 0;
   data->modelData->modelDataXml.nFunctions = 0;
   data->modelData->modelDataXml.nProfileBlocks = 0;
-  data->modelData->modelDataXml.nEquations = 7;
+  data->modelData->modelDataXml.nEquations = 6;
   data->modelData->nMixedSystems = 0;
   data->modelData->nLinearSystems = 0;
   data->modelData->nNonLinearSystems = 0;

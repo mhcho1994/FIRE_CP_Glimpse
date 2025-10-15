@@ -10,34 +10,9 @@ void RoverExample_Components_Webserver_functionInitialEquations_0(DATA *data, th
 
 /*
 equation index: 1
-type: SIMPLE_ASSIGN
-$PRE.timer_count = $START.timer_count
-*/
-void RoverExample_Components_Webserver_eqFunction_1(DATA *data, threadData_t *threadData)
-{
-  TRACE_PUSH
-  const int equationIndexes[2] = {1,1};
-  (data->simulationInfo->integerVarsPre[0] /* timer_count DISCRETE */) = (data->modelData->integerVarsData[0] /* timer_count DISCRETE */).attribute .start;
-  TRACE_POP
-}
-
-/*
-equation index: 2
-type: SIMPLE_ASSIGN
-timer_count = $PRE.timer_count
-*/
-void RoverExample_Components_Webserver_eqFunction_2(DATA *data, threadData_t *threadData)
-{
-  TRACE_PUSH
-  const int equationIndexes[2] = {1,2};
-  (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */) = (data->simulationInfo->integerVarsPre[0] /* timer_count DISCRETE */);
-  TRACE_POP
-}
-
-/*
-equation index: 3
 type: ALGORITHM
 
+  timer_count := $START.timer_count;
   turn := $START.turn;
   $whenCondition1 := $START.$whenCondition1;
   $whenCondition1 := false;
@@ -50,17 +25,23 @@ type: ALGORITHM
   else
     turn := 0;
   end if;
+  if timer_count >= repeat_interval_count then
+    timer_count := 0;
+  end if;
 */
-void RoverExample_Components_Webserver_eqFunction_3(DATA *data, threadData_t *threadData)
+void RoverExample_Components_Webserver_eqFunction_1(DATA *data, threadData_t *threadData)
 {
   TRACE_PUSH
-  const int equationIndexes[2] = {1,3};
+  const int equationIndexes[2] = {1,1};
   modelica_boolean tmp0;
   modelica_boolean tmp1;
   modelica_boolean tmp2;
   modelica_boolean tmp3;
   modelica_boolean tmp4;
   modelica_boolean tmp5;
+  modelica_boolean tmp6;
+  (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */) = (data->modelData->integerVarsData[0] /* timer_count DISCRETE */).attribute .start;
+
   (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[1]] /* turn DISCRETE */) = (data->modelData->integerVarsData[1] /* turn DISCRETE */).attribute .start;
 
   (data->localData[0]->booleanVars[data->simulationInfo->booleanVarsIndex[0]] /* $whenCondition1 DISCRETE */) = (data->modelData->booleanVarsData[0] /* $whenCondition1 DISCRETE */).attribute .start;
@@ -95,6 +76,25 @@ void RoverExample_Components_Webserver_eqFunction_3(DATA *data, threadData_t *th
       }
     }
   }
+
+  tmp6 = GreaterEq((data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */),(data->simulationInfo->integerParameter[0] /* repeat_interval_count PARAM */));
+  if(tmp6)
+  {
+    (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */) = ((modelica_integer) 0);
+  }
+  TRACE_POP
+}
+
+/*
+equation index: 2
+type: SIMPLE_ASSIGN
+$PRE.timer_count = timer_count
+*/
+void RoverExample_Components_Webserver_eqFunction_2(DATA *data, threadData_t *threadData)
+{
+  TRACE_PUSH
+  const int equationIndexes[2] = {1,2};
+  (data->simulationInfo->integerVarsPre[0] /* timer_count DISCRETE */) = (data->localData[0]->integerVars[data->simulationInfo->integerVarsIndex[0]] /* timer_count DISCRETE */);
   TRACE_POP
 }
 OMC_DISABLE_OPT
@@ -103,7 +103,6 @@ void RoverExample_Components_Webserver_functionInitialEquations_0(DATA *data, th
   TRACE_PUSH
   RoverExample_Components_Webserver_eqFunction_1(data, threadData);
   RoverExample_Components_Webserver_eqFunction_2(data, threadData);
-  RoverExample_Components_Webserver_eqFunction_3(data, threadData);
   TRACE_POP
 }
 
