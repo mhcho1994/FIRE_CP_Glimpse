@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "CP Glimpse: run scenario",
+      "type": "python",
+      "request": "launch",
+      "module": "cp_glimpse_py.cli",
+      "args": ["scenarios/rover_fmu.yaml", "--log-level", "INFO"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": { 
+        "PYTHONPATH": "${workspaceFolder}/src" 
+        },
+      "justMyCode": false
+    }
+  ]
+}
