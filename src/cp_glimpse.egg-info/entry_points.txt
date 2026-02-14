@@ -1,2 +1,0 @@
-[console_scripts]
-cp-glimpse = cp_glimpse_py.cli:main

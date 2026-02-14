@@ -17,7 +17,7 @@ sim:
   tol: 1.0e-6
 
 attack:
-  scenario: 4   # 0 none, 1 emi, 2 rollover, 3 gyro acoustic, 4 emi vulnerability
+  scenario: 0   # 0 none, 1 emi, 2 rollover, 3 gyro acoustic, 4 emi vulnerability
   seed: 1234    # monte-carlo seed value
 
 params:

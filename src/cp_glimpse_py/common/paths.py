@@ -1,4 +1,34 @@
-# src/cp_glimpse_py/common/paths.py
+"""
+cp_glimpse_py.common.paths
+==========================
+Centralized project path management for CP-Glimpse.
+
+This module provides:
+- Automatic project root discovery (via pyproject.toml)
+- Structured access to build/ and results/ directories
+- Deterministic directory layout for simulation artifacts
+
+Design Goals
+------------
+1. Avoid hardcoded paths throughout the codebase.
+2. Ensure reproducible artifact storage.
+3. Keep build outputs separate from results.
+4. Support execution from any subdirectory.
+
+Directory Layout
+----------------
+<project_root>/
+│
+├── build/
+│   ├── modelica_runs/
+│   └── translator_runs/
+│
+└── results/
+    └── runs/
+
+It does NOT create directories.
+"""
+
 from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
