@@ -1,4 +1,19 @@
 # FIRE_CP_Glimpse  
+
+## ⚠️ Important
+
+This repository is currently under active development to generalize the physical simulation backends toward a platform-agnostic architecture (e.g., drone, rover, and other CPS platforms).
+
+This transition aims to:
+
+- Reduce the number of redundant vehicle-specific models (as suggested by IV&V)
+- Support multiple simulation backends (e.g., direct Modelica execution, FMU-based simulation, CasADi-generated models)
+- Enable seamless integration with CP-Explore
+
+To reproduce example simulation results, run:
+`examples/<platform>/main.py`
+Replace `<platform>` with the desired vehicle type (e.g., `GSdrone`, `NGCrover`).
+
 ### Cyber-Physical Co-Simulation of Drone and Rover via FMUs
 This repository provides **Python-based orchestration and co-simulation scripts** for **cyber-physical models of drones and rovers**. Each model is exported from **Modelica** as an **FMU (Functional Mock-up Unit)** and executed within a **Python simulation loop** that integrates control, sensing, communication, and fault/attack dynamics. The repository is part of the **CyPhER** framework for cyber-physical vulnerability analysis and **CP-Glimpse**, the low-fidelity simulation tool for proactive risk assessment.
 
