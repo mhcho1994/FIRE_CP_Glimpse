@@ -4,7 +4,7 @@ import shutil
 import numpy as np
 import pandas as pd
 
-from fmpy import extract, read_model_description
+from fmpy import read_model_description, extract
 from fmpy.fmi2 import FMU2Slave
 
 
@@ -16,7 +16,7 @@ def _vrs(md):
 def _instantiate_fmu2_cs(fmu_path: str, instance_name: str) -> tuple[FMU2Slave, str, dict]:
     unzipdir = extract(fmu_path)
     md = read_model_description(unzipdir)
-    if md.coSimulation is None:
+    if md.coSimulation is None and md.modelExchange is not None and md.fmiVersion != "2.0":
         raise RuntimeError(f"{fmu_path} is not FMI2 Co-Simulation (no coSimulation section).")
     vrs = _vrs(md)
 

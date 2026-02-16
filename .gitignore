@@ -13,3 +13,6 @@ downloads/
 eggs/
 .eggs/
 *.egg-info/
+
+# Results
+results/
