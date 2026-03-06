@@ -7,6 +7,7 @@ import os
 import pandas as pd
 import json
 import utils
+from pathlib import Path
 
 """
 example of a closed/open loop simulation using FMUs generated from Modelica (component) models
@@ -30,7 +31,7 @@ class MFRoverClosedSIM:
     - be careful for
     - retrieve the final value of all state variables
     """
-    def __init__(self, fidelity = 1, t0 = 0, fmu_type = "me", attack_scenario = 0, parameter_file = "rover_parameters.json"):
+    def __init__(self, fidelity = 1, t0 = 0, fmu_type = "me", attack_scenario = 0, parameter_file = "rover_parameters.json", fmu_gen = False):
         """
         inputs:
             fidelity (int): fidelity level
@@ -45,7 +46,7 @@ class MFRoverClosedSIM:
         # manual switch for generating fmu, will be deprecated after patching the following issue
         # important note: currently, the fidelity parameter is automatically set as a "final" parameter, which cannot be modified using Python API
         #                 please change it manually in the RoverExample.Components.Rover script (be careful that the fidelity parameter is also in RoverExample.ExampleScenario)
-        fmu_gen = True
+        # fmu_gen = True
 
         # t0 should be 0
         self.t0 = t0
@@ -61,11 +62,13 @@ class MFRoverClosedSIM:
         # convert the modelica file into a fmu and set the ininital conditions and parameters 
         if fmu_gen:
             if fidelity == 1:
-                modelica.generate_fmu("RoverExample.Components.Rover", f"{os.getcwd()}/model/MFRover.mo", fmu_type, {'fidelity': 1}) 
+                modelica.generate_fmu("RoverExample.Components.Rover", Path("./model/MFRover.mo").absolute(), 
+                                      fmu_type, {'fidelity': 1}) 
             elif fidelity == 2:
-                modelica.generate_fmu("RoverExample.Components.Rover", f"{os.getcwd()}/model/MFRover.mo", fmu_type, {'fidelity': 2})
+                modelica.generate_fmu("RoverExample.Components.Rover", Path("./model/MFRover.mo").absolute(), 
+                                      fmu_type, {'fidelity': 2})
 
-        fmuDyn = "RoverExample.Components.Rover/RoverExample.Components.Rover.fmu"
+        fmuDyn = Path("./build").absolute()/"RoverExample.Components.Rover/RoverExample.Components.Rover.fmu"
         self.fmudyn = fmu.FMU(fmuDyn, fmu_type, self.t0, tol=1e-6)
         # get parameter information before reset
         if self.fidelity == 1:
@@ -90,8 +93,8 @@ class MFRoverClosedSIM:
                                    'rover_8d.omega': 0.0}) # shaft rotational speeds
 
         if fmu_gen:
-            modelica.generate_fmu("RoverExample.Components.Controller", f"{os.getcwd()}/model/MFRover.mo", fmu_type)
-        fmuController = "RoverExample.Components.Controller/RoverExample.Components.Controller.fmu" 
+            modelica.generate_fmu("RoverExample.Components.Controller", Path("./model/MFRover.mo").absolute(), fmu_type)
+        fmuController = Path("./build").absolute()/"RoverExample.Components.Controller/RoverExample.Components.Controller.fmu" 
         self.fctrl = fmu.FMU(fmuController, fmu_type, self.t0, tol=1e-6)
         self.fctrl.reset()
         # do not use setup_experiment and initialize for ME (CS only)
@@ -108,8 +111,8 @@ class MFRoverClosedSIM:
             self.fctrl.set_param({'delta_turn': np.atan(self.parameters_info['l_total']/self.parameters_info['turn_radius'])})
 
         if fmu_gen:
-            modelica.generate_fmu("RoverExample.Components.Webserver", f"{os.getcwd()}/model/MFRover.mo", fmu_type)
-        fmuWebserver = "RoverExample.Components.Webserver/RoverExample.Components.Webserver.fmu"
+            modelica.generate_fmu("RoverExample.Components.Webserver", Path("./model/MFRover.mo").absolute(), fmu_type)
+        fmuWebserver = Path("./build").absolute()/"RoverExample.Components.Webserver/RoverExample.Components.Webserver.fmu"
         self.fweb = fmu.FMU(fmuWebserver, fmu_type, self.t0, tol=1e-6)
         self.fweb.reset() 
         # do not use setup_experiment and initialize for ME (CS only)
@@ -327,12 +330,3 @@ class MFRoverClosedSIM:
             self.gyro_misalignment = self.parameters_info['gyro_misalignment']*np.random.rand(1)*(np.pi/180)
             self.gyro_atk_dir = np.random.rand(1)*(np.pi/2)
             self.gyro_atk_phase = np.random.rand(1)*2*np.pi-np.pi
-
-# class MFRoverOnlySIM:
-#     """
-#     simulation classes for a multi-fidelity rover model, supports:
-#     - rover-only simulation (input: throttle PWM duty cycle, )
-#     - set input variables to inputs at given time instances
-#     - be careful for
-#     - retrieve the final value of all state variables
-#     """

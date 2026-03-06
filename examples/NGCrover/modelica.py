@@ -52,7 +52,7 @@ def generate_fmu(name, filename, fmutype, parameter = {}):
 
     fmu_gen = model.convertMo2Fmu(fileNamePrefix = name, fmuType = fmutype)
     # log.info(f"FMU created at {fmu_gen}")
-    destination = os.path.join(os.getcwd(), f"{name}")
+    destination = os.path.join(str(filename.parent.parent),f"build/{name}")
 
     if not os.path.exists(destination):
         os.makedirs(destination)
