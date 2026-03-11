@@ -1,10 +1,8 @@
 # load packages
 import numpy as np
 import pyfmi
-import logging 
 import os
-
-# log = logging.getLogger(__name__)
+from pathlib import Path
 
 class FMU: 
     """
@@ -25,7 +23,7 @@ class FMU:
             str: path to the generated FMU.
         """
         os.environ["LD_LIBRARY_PATH"] = "/usr/lib/x86_64-linux-gnu:" + os.environ.get("LD_LIBRARY_PATH","")
-        self.model = pyfmi.load_fmu(file, kind = fmutype)
+        self.model = pyfmi.load_fmu(file, kind = fmutype, log_file_name = f"{file.parent.parent}/{file.stem}.log",log_level = 4)
         self.model.initialize(start_time = 0.0)
 
         self.t = t0
@@ -45,7 +43,7 @@ class FMU:
                      'state': {'names': [],'values': np.empty((0, self.state.size))}, 
                      'variable': {'names': [],'values': np.empty((0, self.variable.size))},
                      'output': {'names': [],'values': np.empty((0, self.output.size))}}
-        # self.data['time'] = np.hstack((self.data['time'],self.t0))
+        self.data['time'] = np.hstack((self.data['time'],t0))
         self.data['input']['names'] = self.inputNames
         self.data['state']['names'] = self.stateNames
         self.data['variable']['names'] = self.variableNames
@@ -212,7 +210,7 @@ class FMU:
                      'state': {'names': [],'values': np.empty((0, self.state.size))}, 
                      'variable': {'names': [],'values': np.empty((0, self.variable.size))},
                      'output': {'names': [],'values': np.empty((0, self.output.size))}}
-        # self.data['time'] = np.hstack((self.data['time'],self.t0))
+        self.data['time'] = np.hstack((self.data['time'],self.t0))
         self.data['input']['names'] = self.inputNames
         self.data['state']['names'] = self.stateNames
         self.data['variable']['names'] = self.variableNames

@@ -1,0 +1,3 @@
+rm -f 521.fmutmp/sources/RoverExample_Components_Rover_init.xml
+cp -a "/usr/bin/../share/omc/runtime/c/fmi/buildproject/"* 521.fmutmp/sources
+cp -a RoverExample_Components_Rover_FMU.libs 521.fmutmp/sources/

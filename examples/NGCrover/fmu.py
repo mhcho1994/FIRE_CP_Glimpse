@@ -1,9 +1,8 @@
 # load packages
 import numpy as np
 import pyfmi
-import logging 
-
-# log = logging.getLogger(__name__)
+import os
+from pathlib import Path
 
 class FMU: 
     """
@@ -23,7 +22,7 @@ class FMU:
         outputs:
             str: path to the generated FMU.
         """
-        self.model = pyfmi.load_fmu(file, kind = fmutype)
+        self.model = pyfmi.load_fmu(file, kind = fmutype, log_file_name = f"{file.parent.parent}/{file.stem}.log",log_level = 4)
         self.model.initialize(start_time = 0.0)
 
         self.t = t0

@@ -1,0 +1,168 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<!-- description of the model interface using an extention of the FMI standard -->
+<fmiModelDescription
+  fmiVersion                          = "1.0"
+
+  modelName                           = "RoverExample.Components.Webserver"
+  modelIdentifier                     = "RoverExample_Components_Webserver"
+
+  OPENMODELICAHOME                    = "/usr/bin/.."
+
+  guid                                = "{94efe7d2-25c2-4beb-9ed1-b97eca8f0388}"
+
+  description                         = ""
+  generationTool                      = "OpenModelica Compiler OpenModelica 1.26.2"
+  generationDateAndTime               = "2026-03-06T18:14:39Z"
+
+  variableNamingConvention            = "structured"
+
+  numberOfEventIndicators             = "0"  cmt_numberOfEventIndicators             = "NG:       number of zero crossings,                           FMI"
+  numberOfTimeEvents                  = "1"  cmt_numberOfTimeEvents                  = "NG_SAM:   number of zero crossings that are samples,          OMC"
+
+  numberOfInputVariables              = "0"  cmt_numberOfInputVariables              = "NI:       number of inputvar on topmodel,                     OMC"
+  numberOfOutputVariables             = "1"  cmt_numberOfOutputVariables             = "NO:       number of outputvar on topmodel,                    OMC"
+
+  numberOfExternalObjects             = "0"  cmt_numberOfExternalObjects             = "NEXT:     number of external objects,                         OMC"
+  numberOfFunctions                   = "0"  cmt_numberOfFunctions                   = "NFUNC:    number of functions used by the simulation,         OMC"
+
+  numberOfContinuousStates            = "0"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
+  numberOfRealAlgebraicVariables      = "0"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
+  numberOfRealAlgebraicAliasVariables = "0"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealParameters              = "3"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
+
+  numberOfIntegerAlgebraicVariables   = "2"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
+  numberOfIntegerAliasVariables       = "1"  cmt_numberOfIntegerAliasVariables       = "NAINT:    number of alias int variables,                      OMC"
+  numberOfIntegerParameters           = "2"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
+
+  numberOfStringAlgebraicVariables    = "0"  cmt_numberOfStringAlgebraicVariables    = "NYSTR:    number of alg. string variables,                    OMC"
+  numberOfStringAliasVariables        = "0"  cmt_numberOfStringAliasVariables        = "NASTR:    number of alias string variables,                   OMC"
+  numberOfStringParameters            = "0"  cmt_numberOfStringParameters            = "NPSTR:    number of string parameters,                        OMC"
+
+  numberOfBooleanAlgebraicVariables   = "1"  cmt_numberOfBooleanAlgebraicVariables   = "NYBOOL:   number of alg. bool variables,                      OMC"
+  numberOfBooleanAliasVariables       = "0"  cmt_numberOfBooleanAliasVariables       = "NABOOL:   number of alias bool variables,                     OMC"
+  numberOfBooleanParameters           = "0"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
+
+
+  <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
+  <DefaultExperiment
+    startTime      = "0"
+    stopTime       = "10"
+    stepSize       = "0.02"
+    tolerance      = "1e-06"
+    solver         = "dassl"
+    outputFormat   = "mat"
+    variableFilter = ".*" />
+
+  <!-- variables in the model -->
+  <ModelVariables>
+
+  <ScalarVariable
+    name = "repeat_interval"
+    valueReference = "1000"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "39" startColumn = "7" endLine = "39" endColumn = "44" fileWritable = "true">
+    <Real start="21.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "sample_interval"
+    valueReference = "1001"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "1" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "37" startColumn = "7" endLine = "37" endColumn = "43" fileWritable = "true">
+    <Real start="0.1" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "turn_interval"
+    valueReference = "1002"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "2" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "38" startColumn = "7" endLine = "38" endColumn = "41" fileWritable = "true">
+    <Real start="7.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "timer_count"
+    valueReference = "1003"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "iAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "47" startColumn = "7" endLine = "47" endColumn = "44" fileWritable = "true">
+    <Integer start="0" fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "turn"
+    valueReference = "1004"
+    variability = "discrete" isDiscrete = "true"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "iAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "43" startColumn = "7" endLine = "43" endColumn = "36" fileWritable = "true">
+    <Integer fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "repeat_interval_count"
+    valueReference = "1005"
+    variability = "parameter" isDiscrete = "true"
+    causality = "calculatedParameter" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "iPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "41" startColumn = "7" endLine = "41" endColumn = "89" fileWritable = "true">
+    <Integer fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "turn_interval_count"
+    valueReference = "1006"
+    variability = "parameter" isDiscrete = "true"
+    causality = "calculatedParameter" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "iPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "40" startColumn = "7" endLine = "40" endColumn = "85" fileWritable = "true">
+    <Integer fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "udp.turn"
+    valueReference = "1007"
+    description = "virtual variable in expandable connector"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="turn" aliasVariableId="1"
+    classIndex = "0" classType = "iAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "51" startColumn = "7" endLine = "51" endColumn = "30" fileWritable = "true">
+    <Integer fixed="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition1"
+    valueReference = "1008"
+    description = "sample(1, 0.0, sample_interval)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "bAlg"
+    isProtected = "true" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/NGCrover/model/MFRover.mo" startLine = "55" startColumn = "7" endLine = "57" endColumn = "15" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+
+
+
+  </ModelVariables>
+
+
+</fmiModelDescription>
+

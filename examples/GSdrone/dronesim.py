@@ -7,7 +7,7 @@ import os
 import pandas as pd
 import json
 import utils
-from math import gcd
+from pathlib import Path
 
 """
 example of a closed/open loop simulation using FMUs generated from Modelica (component) models
@@ -15,9 +15,8 @@ notes:
    this script is only valid for simulating autonomous systems (time invariant dynamics)
    do not use if the system model has time-dependent elements 
    if you have time-dependent elements in the model, please covert them into time-dependent variables
-   CoSIM (co-simulation): simulation considers controller, joystick, mission planner, quadrotor physics (multiple components)
-   CLoopSIM (closed-loop simulation): simulation considers controller, quadrotor physics
-   OLooopSIM (open-loop simulation): quadrotor physics-only
+   closed loop simulation: simulation considers controller, (webserver), rover chassis
+   open loop simulation: rover-only
 
 to do:
    1: change 'fidelity' parameter type (make it not to be 'final', modify modelica script)
@@ -26,14 +25,16 @@ to do:
 
 class MFQuadrotorCoSIM:
     """
-    simulation classes for a multi-fidelity quadrotor co-simulation, supports:
-    - orchestrate different CPS components in whole drone system
+    simulation classes for a multi-fidelity rover model, supports:
+    - rover-only simulation (input: throttle PWM duty cycle, )
+    - set input variables to inputs at given time instances
+    - be careful for
     - retrieve the final value of all state variables
     """
-    def __init__(self, physics_fidelity = 1, cyber_fidelity = 1, t0 = 0, fmu_type = "me", attack_scenario = 0, parameter_file = "dronesim.json", logging_file = None):
+    def __init__(self, fidelity = 1, t0 = 0, fmu_type = "me", attack_scenario = 0, parameter_file = "rover_parameters.json", fmu_gen = False):
         """
         inputs:
-            fidelity (int): physics/cyber fidelity level
+            fidelity (int): fidelity level
                 1: low-fidelity model
                 2: high-fidelity model
         outputs:
@@ -45,128 +46,154 @@ class MFQuadrotorCoSIM:
         # manual switch for generating fmu, will be deprecated after patching the following issue
         # important note: currently, the fidelity parameter is automatically set as a "final" parameter, which cannot be modified using Python API
         #                 please change it manually in the RoverExample.Components.Rover script (be careful that the fidelity parameter is also in RoverExample.ExampleScenario)
-        fmu_gen = False
+        # fmu_gen = True
 
         # t0 should be 0
         self.t0 = t0
         
         # save fidelity level
-        self.physics_fidelity = physics_fidelity
-        self.cyber_fidelity = cyber_fidelity
+        self.dyn_fidelity = 1
+        self.ctrl_fidelity = fidelity
 
         # read specification file (.json format)
-        self.parameters_info = {}
         with open(parameter_file, 'r') as file:
-            self.parameters_info['scneario'] = json.load(file)
-
-        # check logging option
-        if logging_file is None:
-            self.logging = False
-        else:
-            self.logging = True
-            self.logfile = logging_file
+            self.parameters_info = json.load(file)
 
         # enable when you want to generate or update the FMU (e.g. Lo-Fi -> Hi-Fi, Hi-Fi -> Lo-Fi)
         # convert the modelica file into a fmu and set the ininital conditions and parameters 
         if fmu_gen:
-            if self.physics_fidelity == 1:
-                modelica.generate_fmu("GSQuad.Components.Quadrotor", f"{os.getcwd()}/model/MFQuadrotor_FMUgen.mo", fmu_type, {'fidelity': 1}) 
-            elif self.physics_fidelity == 2:
-                modelica.generate_fmu("GSQuad.Components.Quadrotor", f"{os.getcwd()}/model/MFQuadrotor_FMUgen.mo", fmu_type, {'fidelity': 2})
-            if self.cyber_fidelity == 1:
-                modelica.generate_fmu("GSQuad.Components.Controller", f"{os.getcwd()}/model/MFQuadrotor_FMUgen.mo", fmu_type, {'fidelity': 1}) 
-            elif self.cyber_fidelity == 2:
-                modelica.generate_fmu("GSQuad.Components.Controller", f"{os.getcwd()}/model/MFQuadrotor_FMUgen.mo", fmu_type, {'fidelity': 2})
-            modelica.generate_fmu("GSQuad.Components.Joystick", f"{os.getcwd()}/model/MFQuadrotor_FMUgen.mo", fmu_type, {})
-            modelica.generate_fmu("GSQuad.Components.MissionPlanner", f"{os.getcwd()}/model/MFQuadrotor_FMUgen.mo", fmu_type, {})
-
-        # load fmu for chassis dynamics
-        fmuDyn = "GSQuad.Components.Quadrotor/GSQuad.Components.Quadrotor.fmu"
+            if self.dyn_fidelity == 1:
+                modelica.generate_fmu("GSQuad.Components.Quadrotor", Path("./model/MFQuadrotor.mo").absolute(), 
+                                      fmu_type, {'fidelity': 1}) 
+        fmuDyn = Path("./build").absolute()/"GSQuad.Components.Quadrotor/GSQuad.Components.Quadrotor.fmu"
         self.fmudyn = fmu.FMU(fmuDyn, fmu_type, self.t0, tol=1e-6)
-        # retrieve parameter information before reset if needed
-        self.parameters_info['chassis'] = {}
-        if self.physics_fidelity == 1:
-            self.parameters_info['chassis']['actuator_sample_period'] = self.fmudyn.get_param('actuator_sample_period')
-            self.parameters_info['chassis']['sensor_sample_period'] = self.fmudyn.get_param('sensor_sample_period')
-        elif self.physics_fidelity == 2:
+        # get parameter information before reset
+        if self.dyn_fidelity == 1:
             pass
         self.fmudyn.reset()
         # do not use setup_experiment and initialize for ME (CS only)
         # self.fmudyn.model.setup_experiment(start_time=0.0, stop_time=1.0)
         # self.fmudyn.model.initialize()
-        if self.physics_fidelity == 1:
-            self.fmudyn.set_param({'quad_low.position_w_p_w[1]': 0.0, 'quad_low.position_w_p_w[2]': 0.0, 'quad_low.position_w_p_w[3]': 0.0, # location
-                                   'quad_low.velocity_w_p_b[1]': 0.0, 'quad_low.velocity_w_p_b[2]': 0.0, "quad_low.velocity_w_p_b[3]": 0.0, # body fixed velocity
-                                   'quad_low.quaternion_wb[1]': 1.0, 'quad_low.quaternion_wb[2]':0.0, 'quad_low.quaternion_wb[3]': 0.0, 'quad_low.quaternion_wb[4]': 0.0, # quaternion from inertial to body
-                                   'quad_low.velocity_w_p_b[1]': 0.0, 'quad_low.velocity_w_p_b[2]': 0.0, 'quad_low.velocity_w_p_b[3]': 0.0}) # rotation rates in body
-        elif self.physics_fidelity == 2:
-            self.fmudyn.set_param({'quad_high.position_w_p_w[1]': 0.0, 'quad_high.position_w_p_w[2]': 0.0, 'quad_high.position_w_p_w[3]': 0.0, # location
-                                   'quad_high.velocity_w_p_b[1]': 0.0, 'quad_high.velocity_w_p_b[2]': 0.0, "quad_high.velocity_w_p_b[3]": 0.0, # body fixed velocity
-                                   'quad_high.quaternion_wb[1]': 1.0, 'quad_high.quaternion_wb[2]':0.0, 'quad_high.quaternion_wb[3]': 0.0, 'quad_low.quaternion_wb[4]': 0.0, # quaternion from inertial to body
-                                   'quad_high.velocity_w_p_b[1]': 0.0, 'quad_high.velocity_w_p_b[2]': 0.0, 'quad_high.velocity_w_p_b[3]': 0.0}) # rotation rates in body
+        if self.dyn_fidelity == 1:
+            self.fmudyn.set_param({'quad_low.position_w_p_w[1]': 0.0 , 'quad_low.position_w_p_w[2]': 0.0, 'quad_low.position_w_p_w[3]': 0.0,    # location
+                                   'quad_low.velocity_w_p_b[1]': 0.0, 'quad_low.velocity_w_p_b[2]': 0.0, 'quad_low.velocity_w_p_b[3]': 0.0,     # body fixed velocity
+                                   'quad_low.quaternion_wb[1]': 1.0, 'quad_low.quaternion_wb[2]': 0.0, 'quad_low.quaternion_wb[3]': 0.0, 'quad_low.quaternion_wb[4]': 0.0, # quaternion
+                                   'quad_low.rate_wb_b[1]': 0.0, 'quad_low.rate_wb_b[2]': 0.0, 'quad_low.rate_wb_b[3]': 0.0})                   # body rates
 
-        fmuController = "GSQuad.Components.Controller/GSQuad.Components.Controller.fmu" 
+        if fmu_gen:
+            if self.ctrl_fidelity == 1:
+                modelica.generate_fmu("GSQuad.Components.Controller", Path("./model/MFQuadrotor.mo").absolute(), 
+                                      fmu_type, {'fidelity': 1}) 
+            elif self.ctrl_fidelity == 2:
+                modelica.generate_fmu("GSQuad.Components.Controller", Path("./model/MFQuadrotor.mo").absolute(), 
+                                      fmu_type, {'fidelity': 2}) 
+        fmuController = Path("./build").absolute()/"GSQuad.Components.Controller/GSQuad.Components.Controller.fmu" 
         self.fmuctrl = fmu.FMU(fmuController, fmu_type, self.t0, tol=1e-6)
-        # retrieve parameter information before reset if needed
-        self.parameters_info['controller'] = {}
-        if self.cyber_fidelity == 1:
-            self.parameters_info['controller']['update_period'] = self.fmuctrl.get_param('update_period')
-        elif self.cyber_fidelity == 2:
-            pass
+        # get parameter information before reset
+        if self.ctrl_fidelity == 1:
+            self.parameters_info['mass'] = self.fmuctrl.get_param('euler_pid.mass')
+            self.parameters_info['g'] = 9.81
+            self.parameters_info['thrust_coefficient'] = self.fmuctrl.get_param('euler_pid.k_eta')
+            self.parameters_info['omega_rotor_max'] = self.fmuctrl.get_param('euler_pid.omega_rotor_max')
+            self.parameters_info['omega_rotor_min'] = self.fmuctrl.get_param('euler_pid.omega_rotor_min')
+        elif self.ctrl_fidelity == 2:
+            self.parameters_info['mass'] = self.fmuctrl.get_param('euler_pid.mass')
+            self.parameters_info['g'] = 9.81
+            self.parameters_info['thrust_coefficient'] = self.fmuctrl.get_param('euler_pid.k_eta')
+            self.parameters_info['omega_rotor_max'] = self.fmuctrl.get_param('euler_pid.omega_rotor_max')
+            self.parameters_info['omega_rotor_min'] = self.fmuctrl.get_param('euler_pid.omega_rotor_min')
         self.fmuctrl.reset()
         # do not use setup_experiment and initialize for ME (CS only)
         # self.fmuctrl.model.setup_experiment(start_time=0.0, stop_time=1.0)
         # self.fmuctrl.model.initialize()
-        if self.cyber_fidelity == 1:
-            self.fmuctrl.set_param({'euler_pid.vel_error_i[1]': 0.0, 'euler_pid.vel_error_i[2]': 0.0, 'euler_pid.vel_error_i[3]': 0.0, # velocity error integral
-                                    'euler_pid.vel_error_last[1]': 0.0, 'euler_pid.vel_error_last[2]': 0.0, 'euler_pid.vel_error_last[3]': 0.0, # last velocity error
-                                    'euler_pid.rate_error_i[1]': 0.0, 'euler_pid.rate_error_i[2]': 0.0, 'euler_pid.rate_error_i[3]': 0.0, # rate error integral
-                                    'euler_pid.rate_error_last[1]': 0.0, 'euler_pid.rate_error_last[2]': 0.0, 'euler_pid.rate_error_last[3]': 0.0})  # last rate error
-        elif self.cyber_fidelity == 2:
+        if self.ctrl_fidelity == 1:
+            self.fmuctrl.set_param({'euler_pid.pos_w_p_w_fdbk[1]': 0, 'euler_pid.pos_w_p_w_fdbk[2]': 0, 'euler_pid.pos_w_p_w_fdbk[3]': 0,     # initial position feedback
+                                    'euler_pid.vel_w_p_b_fdbk[1]': 0, 'euler_pid.vel_w_p_b_fdbk[2]': 0, 'euler_pid.vel_w_p_b_fdbk[3]': 0,     # initial velocity feedback
+                                    'euler_pid.euler_wb_fdbk[1]': 0, 'euler_pid.euler_wb_fdbk[2]': 0, 'euler_pid.euler_wb_fdbk[3]': 0,        # initial euler angle feedback
+                                    'euler_pid.rate_wb_b_fdbk[1]': 0, 'euler_pid.rate_wb_b_fdbk[2]': 0, 'euler_pid.rate_wb_b_fdbk[3]': 0,     # initial body rate feedback
+                                    'euler_pid.pos_error[1]': 0, 'euler_pid.pos_error[2]': 0, 'euler_pid.pos_error[3]': 0,                    # initial position error
+                                    'euler_pid.vel_target[1]': 0, 'euler_pid.vel_target[1]': 0, 'euler_pid.vel_target[1]': 0,                 # initial velocity target   
+                                    'euler_pid.vel_error_last[1]': 0, 'euler_pid.vel_error_last[2]': 0, 'euler_pid.vel_error_last[3]': 0,     # initial velocity error previous step
+                                    'euler_pid.vel_error_i[1]': 0, 'euler_pid.vel_error_i[2]': 0, 'euler_pid.vel_error_i[3]': 0,              # initial velocity error integral
+                                    'euler_pid.vel_error_d[1]': 0, 'euler_pid.vel_error_d[2]': 0, 'euler_pid.vel_error_d[3]': 0,              # initial velocity error derivative
+                                    'euler_pid.acc_target[1]': 0, 'euler_pid.acc_target[2]': 0, 'euler_pid.acc_target[3]': 0,                 # initial aceeleration target
+                                    'euler_pid.acc_z_target': self.parameters_info['g'], 'euler_pid.acc_fwd_target': 0, 'euler_pid.acc_rgt_target': 0,      # initial aceeleration target
+                                    'euler_pid.roll_target': 0, 'euler_pid.pitch_target': 0, 'euler_pid.yaw_target': 0,                       # initial attitude target
+                                    'euler_pid.att_error[1]': 0, 'euler_pid.att_error[2]': 0, 'euler_pid.att_error[3]': 0,                    # initial attitude error
+                                    'euler_pid.rate_target[1]': 0, 'euler_pid.rate_target[2]': 0, 'euler_pid.rate_target[3]': 0,              # initial rate target
+                                    'euler_pid.rate_error[1]': 0, 'euler_pid.rate_error[2]': 0, 'euler_pid.rate_error[3]': 0,                 # initial rate error
+                                    'euler_pid.rate_error_i[1]': 0, 'euler_pid.rate_error_i[2]': 0, 'euler_pid.rate_error_i[3]': 0,           # initial rate error integral
+                                    'euler_pid.rate_error_d[1]': 0, 'euler_pid.rate_error_d[2]': 0, 'euler_pid.rate_error_d[3]': 0,           # initial rate error derivative
+                                    'euler_pid.force_target': self.parameters_info['mass']*self.parameters_info['g'], 'euler_pid.moment_target[1]': 0, 'euler_pid.moment_target[2]': 0, 'euler_pid.moment_target[3]': 0,   # initial force and moment target
+                                    'euler_pid.fm_target[1]': self.parameters_info['mass']*self.parameters_info['g'], 'euler_pid.fm_target[2]': 0, 'euler_pid.fm_target[3]': 0, 'euler_pid.fm_target[4]': 0,               # initial force and moment target
+                                    'euler_pid.thrust_target[1]': (self.parameters_info['mass']*self.parameters_info['g'])/4, 
+                                    'euler_pid.thrust_target[2]': (self.parameters_info['mass']*self.parameters_info['g'])/4, 
+                                    'euler_pid.thrust_target[3]': (self.parameters_info['mass']*self.parameters_info['g'])/4,  
+                                    'euler_pid.thrust_target[4]': (self.parameters_info['mass']*self.parameters_info['g'])/4,   # initial thrust target
+                                    'euler_pid.omega_spd_sq_target[1]': np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient']), 
+                                    'euler_pid.omega_spd_sq_target[2]': np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient']), 
+                                    'euler_pid.omega_spd_sq_target[3]': np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient']),  
+                                    'euler_pid.omega_spd_sq_target[4]': np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient']),   # initial rotor speed squared target
+                                    'euler_pid.normalized_ctrl_input[1]': (np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient'])-self.parameters_info['omega_rotor_min'])/(self.parameters_info['omega_rotor_max']-self.parameters_info['omega_rotor_min']),
+                                    'euler_pid.normalized_ctrl_input[2]': (np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient'])-self.parameters_info['omega_rotor_min'])/(self.parameters_info['omega_rotor_max']-self.parameters_info['omega_rotor_min']),
+                                    'euler_pid.normalized_ctrl_input[3]': (np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient'])-self.parameters_info['omega_rotor_min'])/(self.parameters_info['omega_rotor_max']-self.parameters_info['omega_rotor_min']),
+                                    'euler_pid.normalized_ctrl_input[4]': (np.sqrt((self.parameters_info['mass']*self.parameters_info['g'])/4/self.parameters_info['thrust_coefficient'])-self.parameters_info['omega_rotor_min'])/(self.parameters_info['omega_rotor_max']-self.parameters_info['omega_rotor_min'])})    # initial normalized control input
+
+        elif self.ctrl_fidelity == 2:
             pass
 
-        fmuJoystick = "GSQuad.Components.Joystick/GSQuad.Components.Joystick.fmu"
-        self.fmustick = fmu.FMU(fmuJoystick, fmu_type, self.t0, tol=1e-6)
-        # retrieve parameter information before reset if needed
-        self.parameters_info['joystick'] = {}
-        self.parameters_info['joystick']['sample_period'] = self.fmustick.get_param('sample_period')
+        if fmu_gen:
+            modelica.generate_fmu("GSQuad.Components.MissionPlanner", Path("./model/MFQuadrotor.mo").absolute(), fmu_type)
+        fmuplanner = Path("./build").absolute()/"GSQuad.Components.MissionPlanner/GSQuad.Components.MissionPlanner.fmu"
+        self.fmuplanner = fmu.FMU(fmuplanner, fmu_type, self.t0, tol=1e-6)
+        self.fmuplanner.reset() 
+        # do not use setup_experiment and initialize for ME (CS only)
+        # self.fmuplanner.model.setup_experiment(start_time=0.0, stop_time=1.0)
+        # self.fmuplanner.model.initialize()
+
+        if fmu_gen:
+            modelica.generate_fmu("GSQuad.Components.Joystick", Path("./model/MFQuadrotor.mo").absolute(), fmu_type)
+        fmustick = Path("./build").absolute()/"GSQuad.Components.Joystick/GSQuad.Components.Joystick.fmu"
+        self.fmustick = fmu.FMU(fmustick, fmu_type, self.t0, tol=1e-6)
         self.fmustick.reset() 
         # do not use setup_experiment and initialize for ME (CS only)
         # self.fmustick.model.setup_experiment(start_time=0.0, stop_time=1.0)
         # self.fmustick.model.initialize()
-        self.fmustick.set_param({'stick_cmd[1]': 0.0, 'stick_cmd[2]': 0.0, 'stick_cmd[3]': 0.0, 'stick_cmd[4]': 0.0}) # zero throttle, zero roll/pitch/yaw commands
 
-        fmuMissionPlanner = "GSQuad.Components.MissionPlanner/GSQuad.Components.MissionPlanner.fmu"
-        self.fmuplanner = fmu.FMU(fmuMissionPlanner, fmu_type, self.t0, tol=1e-6)
-        # retrieve parameter information before reset if needed
-        self.parameters_info['planner'] = {}
-        self.parameters_info['planner']['sample_period'] = self.fmuplanner.get_param('sample_period')
-        self.fmuplanner.reset()
-        # do not use setup_experiment and initialize for ME (CS only)
-        # self.fmuplanner.model.setup_experiment(start_time=0.0, stop_time=1.0)
-        # self.fmuplanner.model.initialize()
-        self.fmuplanner.set_param({'position_setpoint_w[1]': 0.0, 'position_setpoint_w[2]': 0.0, 'position_setpoint_w[3]': -30.0, 'position_setpoint_w[1]': 0.0,
-                                   'yaw_setpoint_w': 0.0}) # position coordinates in NED, yaw setpoint with respect to north direction
-        
         # closed loop simulation by calling all components
-        self.data = {'time': np.zeros((0,)), 'missionplanner': {}, 'joystick': {}, 'controller': {}, 'quadrotor': {}}
+        self.data = {'t': np.zeros((0,)), 'webserver': {}, 'controller': {}, 'rover': {}}
 
         # set up the attack model
         self.attack_scenario = attack_scenario
-        if self.attack_scenario == 0:  # [-] attack_scneario 0: no attack
-            pass
-        elif self.attack_scenario == 1:  # [-] attack_scenario 1: additive bias on velocity measurement (optical flow sensor spoofing)
-            self.optical_flow_vel_bias = 0.0
-            self.optical_flow_vel_variance = 1.0
+        # if self.attack_scenario == 1:        # [-] attack_scneario: 0 = no attack, 1 = emi attack, 2 = rollover attack, 3 = gyro attack
+        #     self.emi_atk_level = self.parameters_info['emi_disturbance']/180*np.pi
+        #     self.bias = 2*(np.random.rand()-0.5)
+        # elif self.attack_scenario == 2:
+        #     self.rollover_thr_pwm = self.parameters_info['throttle_pwm_level']
+        # elif self.attack_scenario == 3:
+        #     self.gyro_atk_power = self.parameters_info['acoustic_power']
+        #     self.speaker_dist = self.parameters_info['speaker_dist']
+        #     self.gyro_atk_freq = (self.parameters_info['drive_freq']+self.parameters_info['acoustic_freq_range']*(2*np.random.rand()-1))*(2*np.pi)
+        #     self.gyro_misalignment = self.parameters_info['gyro_misalignment']*np.random.rand()*(np.pi/180)
+        #     self.gyro_atk_dir = np.random.rand()*(np.pi/2)
+        #     self.gyro_atk_phase = np.random.rand()*2*np.pi-np.pi
+        # elif self.attack_scenario == 4:
+        #     if self.parameters_info['wire_dir'] == 1:
+        #         self.wire_dir = np.array([1, 0, 0])
+        #     elif self.parameters_info['wire_dir'] == 2:
+        #         self.wire_dir = np.array([-1, 0, 0])
+        #     elif self.parameters_info['wire_dir'] == 3:
+        #         self.wire_dir = np.array([0, 1, 0])
+        #     elif self.parameters_info['wire_dir'] == 4:
+        #         self.wire_dir = np.array([0, -1, 0])
+        #     elif self.parameters_info['wire_dir'] == 5:
+        #         self.wire_dir = np.array([0, 0, 1])
+        #     else:
+        #         self.wire_dir = np.array([0, 0, -1])
+        #     self.wire_dist = np.array([0, 0, -self.parameters_info['wire_relative_dist']])
 
-            
-    def simulate(self, tf = 10.0, dt = 0.1):
+    def simulate(self, tf = 10, dt = 0.1):
         """
-        multi-rate, event-driven closed-loop simulation.
-        - planner, joystick, controller run at their own rates.
-        - chassis (plant) integrates at the base tick (gcd of all periods)
-        - zero-order hold between updates for slower publishers.
-        returns a pandas.DataFrame with stitched logs (time + selected signals).
         inputs:
             tf (np.float64): final time
             dt (np.float64): time step for simulation propagation
@@ -175,168 +202,98 @@ class MFQuadrotorCoSIM:
             pandas dataframe
                 - time history of outputs
         """
-        # compute gcd of update period to set it as step size
-        dt_dyn = np.min(np.array([self.parameters_info['chassis'].get('actuator_sample_period'),
-                                  self.parameters_info['chassis'].get('sensor_sample_period')],dtype=np.float64))
-        dt_ctrl = np.float64(self.parameters_info['controller'].get('update_period'))
-        dt_plan = np.float64(self.parameters_info['planner'].get('sample_period'))
-        dt_stick = np.float64(self.parameters_info['joystick'].get('sample_period'))
 
-        dt_base = _gcd_dt([dt_dyn, dt_ctrl, dt_plan, dt_stick], quantum=1e-6)
-        if dt_base - min(dt_dyn, dt_ctrl, dt_plan, dt_stick) > 1e-12:
-            dt_base = min(dt_dyn, dt_ctrl, dt_plan, dt_stick)
+        self.data['t'] = np.linspace(self.t0, tf, int((tf-self.t0)/dt)+1)
 
-        # number of ticks
-        n_ticks = int(round((tf-self.t0)/dt_base))+1 
+        for t_cur in self.data['t']:
 
-        # compute stride
-        k_dyn = np.max([1,np.int16(round(dt_dyn/dt_base))])
-        k_ctrl = np.max([1,np.int16(round(dt_ctrl/dt_base))])
-        k_plan = np.max([1,np.int16(round(dt_plan/dt_base))])
-        k_stick = np.max([1,np.int16(round(dt_stick/dt_base))])
+            # get planner command
+            self.fmuplanner.set_param({'sample_period': dt+1e-6})  # avoid unnecessary update at t = dt, make update happen only at t=0
+            self.fmuplanner.step_time(t_cur, t_cur+dt)
+            
+            # get joystick command
+            self.fmustick.set_param({'sample_period': dt+1e-6})  # avoid unnecessary update at t = dt, make update happen only at t=0
+            self.fmustick.step_time(t_cur, t_cur+dt)
 
-        if self.attack_scenario == 1:  # [-] attack_scenario 1
-            k_opticalflow = np.max([1,np.int16(round(0.25/dt_base))]) # 4Hz sampling rate for optical flow sensor
+            # set command for controller
+            self.fmuctrl.set_input(t_cur+dt, {"pos_w_p_w_fdbk[1]": self.fmudyn.get_output_value()['pos_w_p_w_meas[1]'],
+                                              "pos_w_p_w_fdbk[2]": self.fmudyn.get_output_value()['pos_w_p_w_meas[2]'],
+                                              "pos_w_p_w_fdbk[3]": self.fmudyn.get_output_value()['pos_w_p_w_meas[3]'],
+                                              "vel_w_p_b_fdbk[1]": self.fmudyn.get_output_value()['vel_w_p_b_meas[1]'],
+                                              "vel_w_p_b_fdbk[2]": self.fmudyn.get_output_value()['vel_w_p_b_meas[2]'],
+                                              "vel_w_p_b_fdbk[3]": self.fmudyn.get_output_value()['vel_w_p_b_meas[3]'],
+                                              "acc_w_p_b_fdbk[1]": self.fmudyn.get_output_value()['acc_w_p_b_meas[1]'],
+                                              "acc_w_p_b_fdbk[2]": self.fmudyn.get_output_value()['acc_w_p_b_meas[2]'],
+                                              "acc_w_p_b_fdbk[3]": self.fmudyn.get_output_value()['acc_w_p_b_meas[3]'],
+                                              "quat_wb_fdbk[1]": self.fmudyn.get_output_value()['quat_wb_meas[1]'],
+                                              "quat_wb_fdbk[2]": self.fmudyn.get_output_value()['quat_wb_meas[2]'],
+                                              "quat_wb_fdbk[3]": self.fmudyn.get_output_value()['quat_wb_meas[3]'],
+                                              "quat_wb_fdbk[4]": self.fmudyn.get_output_value()['quat_wb_meas[4]'],
+                                              "euler_wb_fdbk[1]": self.fmudyn.get_output_value()['euler_wb_meas[1]'],
+                                              "euler_wb_fdbk[2]": self.fmudyn.get_output_value()['euler_wb_meas[2]'],
+                                              "euler_wb_fdbk[3]": self.fmudyn.get_output_value()['euler_wb_meas[3]'],
+                                              "rate_wb_b_fdbk[1]": self.fmudyn.get_output_value()['rate_wb_b_meas[1]'],
+                                              "rate_wb_b_fdbk[2]": self.fmudyn.get_output_value()['rate_wb_b_meas[2]'],
+                                              "rate_wb_b_fdbk[3]": self.fmudyn.get_output_value()['rate_wb_b_meas[3]'],
+                                              "position_setpoint[1]": self.fmuplanner.get_output_value()['position_setpoint_w[1]'],
+                                              "position_setpoint[2]": self.fmuplanner.get_output_value()['position_setpoint_w[2]'],
+                                              "position_setpoint[3]": self.fmuplanner.get_output_value()['position_setpoint_w[3]'],
+                                              "yaw_setpoint": self.fmuplanner.get_output_value()['yaw_setpoint_w'],
+                                              "rc_input[1]": self.fmustick.get_output_value()['stick_cmd[1]'],
+                                              "rc_input[2]": self.fmustick.get_output_value()['stick_cmd[2]'],
+                                              "rc_input[3]": self.fmustick.get_output_value()['stick_cmd[3]'],
+                                              "rc_input[4]": self.fmustick.get_output_value()['stick_cmd[4]']})
 
-        # event-loop
-        t_last_dyn = self.t0
-        t_last_ctrl = self.t0
-        t_last_plan = self.t0
-        t_last_stick = self.t0
+            self.fmuctrl.set_param({'update_period': dt+1e-6})  # avoid unnecessary update at t = dt, make update happen only at t=0
+            self.fmuctrl.step_time(t_cur, t_cur+dt)
 
-        for itick in range(n_ticks):
-            t_cur = self.t0+itick*dt_base
+            # set pwm command for chassis dynamic model
+            self.fmudyn.set_input(t_cur+dt, {"pwm_rotor_cmd[1]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[1]'],
+                                             "pwm_rotor_cmd[2]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[2]'],
+                                             "pwm_rotor_cmd[3]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[3]'],
+                                             "pwm_rotor_cmd[4]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[4]']})
+            if self.attack_scenario == 3:
+                self.fmudyn.set_param({'W': self.gyro_atk_power, 
+                                       'dist': self.speaker_dist,
+                                       'w_ac': self.gyro_atk_freq, 
+                                       'phi_0': self.gyro_atk_phase, 
+                                       'psi_ac': self.gyro_atk_dir, 
+                                       'epsilon': self.gyro_misalignment})
+            else:
+                self.fmudyn.set_param({'W': 0.0, 
+                                       'dist': 0.01,
+                                       'w_ac': 15000.0, 
+                                       'phi_0': 0.0, 
+                                       'psi_ac': 0.0, 
+                                       'epsilon': 0.0})
+                
+            self.fmudyn.set_param({'sensor_sample_period': dt+1e-6})  # avoid unnecessary update at t = dt, make update happen only at t=0
+            self.fmudyn.step_time(t_cur, t_cur+dt)
 
-            # propagate mission planner
-            if itick%k_plan == 0:
-                self.fmuplanner.step_time(t_last_plan, t_cur)
-                t_last_plan = t_cur
+            # correct internal time clock
+            self.fmudyn.model.set(['gyroatk.timer_count'],[np.float64(t_cur/dt)])
 
-            # propagate joystick
-            if itick%k_stick == 0:
-                self.fmustick.step_time(t_last_stick, t_cur)
-                t_last_stick = t_cur
-
-            # propagate controller
-            if itick%k_ctrl == 0 and itick != 0:
-                self.fmuctrl.set_input(t_cur+dt_ctrl, {"pos_w_p_w_fdbk[1]": self.fmudyn.get_output_value()['pos_w_p_w_meas[1]'],
-                                                       "pos_w_p_w_fdbk[2]": self.fmudyn.get_output_value()['pos_w_p_w_meas[2]'],
-                                                       "pos_w_p_w_fdbk[3]": self.fmudyn.get_output_value()['pos_w_p_w_meas[3]'],
-                                                       "vel_w_p_b_fdbk[1]": self.fmudyn.get_output_value()['vel_w_p_b_meas[1]']+(self.optical_spoof_vector[0] if self.attack_scenario == 1 else 0.0),
-                                                       "vel_w_p_b_fdbk[2]": self.fmudyn.get_output_value()['vel_w_p_b_meas[2]']+(self.optical_spoof_vector[1] if self.attack_scenario == 1 else 0.0),
-                                                       "vel_w_p_b_fdbk[3]": self.fmudyn.get_output_value()['vel_w_p_b_meas[3]']+(self.optical_spoof_vector[2] if self.attack_scenario == 1 else 0.0),
-                                                       "acc_w_p_b_fdbk[1]": self.fmudyn.get_output_value()['acc_w_p_b_meas[1]'],
-                                                       "acc_w_p_b_fdbk[2]": self.fmudyn.get_output_value()['acc_w_p_b_meas[2]'],
-                                                       "acc_w_p_b_fdbk[3]": self.fmudyn.get_output_value()['acc_w_p_b_meas[3]'],
-                                                       "quat_wb_fdbk[1]": self.fmudyn.get_output_value()['quat_wb_meas[1]'],
-                                                       "quat_wb_fdbk[2]": self.fmudyn.get_output_value()['quat_wb_meas[2]'],
-                                                       "quat_wb_fdbk[3]": self.fmudyn.get_output_value()['quat_wb_meas[3]'],
-                                                       "quat_wb_fdbk[4]": self.fmudyn.get_output_value()['quat_wb_meas[4]'],
-                                                       "euler_wb_fdbk[1]": self.fmudyn.get_output_value()['euler_wb_meas[1]'],
-                                                       "euler_wb_fdbk[2]": self.fmudyn.get_output_value()['euler_wb_meas[2]'],
-                                                       "euler_wb_fdbk[3]": self.fmudyn.get_output_value()['euler_wb_meas[3]'],
-                                                       "rate_wb_b_fdbk[1]": self.fmudyn.get_output_value()['rate_wb_b_meas[1]'],
-                                                       "rate_wb_b_fdbk[2]": self.fmudyn.get_output_value()['rate_wb_b_meas[2]'],
-                                                       "rate_wb_b_fdbk[3]": self.fmudyn.get_output_value()['rate_wb_b_meas[3]'],
-                                                       "rc_input[1]": self.fmustick.get_output_value()['stick_cmd[1]'],
-                                                       "rc_input[2]": self.fmustick.get_output_value()['stick_cmd[2]'],
-                                                       "rc_input[3]": self.fmustick.get_output_value()['stick_cmd[3]'],
-                                                       "rc_input[4]": self.fmustick.get_output_value()['stick_cmd[4]'],
-                                                       "position_setpoint[1]": self.fmuplanner.get_output_value()['position_setpoint_w[1]'],
-                                                       "position_setpoint[2]": self.fmuplanner.get_output_value()['position_setpoint_w[2]'],
-                                                       "position_setpoint[3]": self.fmuplanner.get_output_value()['position_setpoint_w[3]'],
-                                                       "yaw_setpoint": self.fmuplanner.get_output_value()['yaw_setpoint_w']})
-                self.fmuctrl.step_time(t_last_ctrl, t_cur)
-                t_last_ctrl = t_cur
-            elif itick%k_ctrl == 0 and itick == 0:
-                self.fmuctrl.set_input(t_cur+dt_ctrl, {"pos_w_p_w_fdbk[1]": 0.0, "pos_w_p_w_fdbk[2]": 0.0, "pos_w_p_w_fdbk[3]": 0.0,
-                                                       "vel_w_p_b_fdbk[1]": 0.0, "vel_w_p_b_fdbk[2]": 0.0, "vel_w_p_b_fdbk[3]": 0.0,
-                                                       "acc_w_p_b_fdbk[1]": 0.0, "acc_w_p_b_fdbk[2]": 0.0, "acc_w_p_b_fdbk[3]": 0.0,
-                                                       "quat_wb_fdbk[1]": 0.0, "quat_wb_fdbk[2]": 0.0, "quat_wb_fdbk[3]": 0.0, "quat_wb_fdbk[4]": 0.0,
-                                                       "euler_wb_fdbk[1]": 0.0, "euler_wb_fdbk[2]": 0.0, "euler_wb_fdbk[3]": 0.0,
-                                                       "rate_wb_b_fdbk[1]": 0.0, "rate_wb_b_fdbk[2]": 0.0, "rate_wb_b_fdbk[3]": 0.0,
-                                                       "rc_input[1]": 0.0, "rc_input[2]": 0.0, "rc_input[3]": 0.0, "rc_input[4]": 0.0,
-                                                       "position_setpoint[1]": 0.0, "position_setpoint[2]": 0.0, "position_setpoint[3]": 0.0, "yaw_setpoint": 0.0})
-                self.fmuctrl.step_time(t_last_ctrl, t_cur)
-                t_last_ctrl = t_cur
-
-            # propagate dynamics
-            if itick%k_dyn == 0:
-                self.fmudyn.set_input(t_cur+dt_dyn, {"pwm_rotor_cmd[1]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[1]'], 
-                                                     "pwm_rotor_cmd[2]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[2]'], 
-                                                     "pwm_rotor_cmd[3]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[3]'], 
-                                                     "pwm_rotor_cmd[4]": self.fmuctrl.get_output_value()['pwm_rotor_cmd[4]']})
-                self.fmudyn.step_time(t_last_dyn, t_cur)
-                t_last_dyn = t_cur
-
-            # attack dynamics
-            if self.attack_scenario == 1:  # [-] attack_scenario 1
-                # add bias to velocity measurement
-                if itick%k_opticalflow == 0:
-                    self.optical_spoof_vector = np.array([np.random.normal(self.optical_flow_vel_bias, self.optical_flow_vel_variance),
-                                                          np.random.normal(self.optical_flow_vel_bias, self.optical_flow_vel_variance),
-                                                          0.0], dtype=np.float64)
-
-            # save time history
-            self.data['time'] = np.hstack([self.data['time'],t_cur])
-
-            # # correct internal time clock - needed for considering the time mismatch (propagation time is not exact)
-            # self.fweb.model.set(['timer_count'],[np.float64(t_cur/dt)])
-            # self.fmudyn.model.set(['gyroatk.timer_count'],[np.float64(t_cur/dt)])
-
-            # # check
+            # check
             # print(np.float64(t_cur/dt))
             # print(self.fmudyn.variable[self.fmudyn.variableNames.index('timer_count')])
             # print(' -- ')
 
         # log the data
-        self.data['missionplanner']['state'] = {'names': self.fmuplanner.stateNames,'values': np.empty((self.data['time'].shape[0],self.fmuplanner.data['state']['values'].shape[1]))}
-        if self.fmuplanner.data['state']['values'].shape[1] != 0:
-            for idx in range(self.fmuplanner.data['state']['values'].shape[1]):
-                self.data['missionplanner']['state']['values'][:,idx] = np.interp(self.data['time'],self.fmuplanner.data['time'],self.fmuplanner.data['state']['values'][:,idx])
-        self.data['missionplanner']['variable'] = {'names': self.fmuplanner.variableNames,'values': np.empty((self.data['time'].shape[0],self.fmuplanner.data['variable']['values'].shape[1]))}
-        if self.fmuplanner.data['variable']['values'].shape[1] != 0:
-            for idx in range(self.fmuplanner.data['variable']['values'].shape[1]):
-                self.data['missionplanner']['variable']['values'][:,idx] = np.interp(self.data['time'],self.fmuplanner.data['time'],self.fmuplanner.data['variable']['values'][:,idx])
-
-        self.data['joystick']['state'] = {'names': self.fmustick.stateNames,'values': np.empty((self.data['time'].shape[0],self.fmustick.data['state']['values'].shape[1]))}
-        if self.fmustick.data['state']['values'].shape[1] != 0:
-            for idx in range(self.fmustick.data['state']['values'].shape[1]):
-                self.data['joystick']['state']['values'][:,idx] = np.interp(self.data['time'],self.fmustick.data['time'],self.fmustick.data['state']['values'][:,idx])
-        self.data['joystick']['variable'] = {'names': self.fmustick.variableNames,'values': np.empty((self.data['time'].shape[0],self.fmustick.data['variable']['values'].shape[1]))}
-        if self.fmustick.data['variable']['values'].shape[1] != 0:
-            for idx in range(self.fmustick.data['variable']['values'].shape[1]):
-                self.data['joystick']['variable']['values'][:,idx] = np.interp(self.data['time'],self.fmustick.data['time'],self.fmustick.data['variable']['values'][:,idx])
-        
-        self.data['controller']['state'] = {'names': self.fmuctrl.stateNames,'values': np.empty((self.data['time'].shape[0],self.fmuctrl.data['state']['values'].shape[1]))}
-        if self.fmuctrl.data['state']['values'].shape[1] != 0:
-            for idx in range(self.fmuctrl.data['state']['values'].shape[1]):
-                self.data['controller']['state']['values'][:,idx] = np.interp(self.data['time'],self.fmuctrl.data['time'],self.fmuctrl.data['state']['values'][:,idx])
-        self.data['controller']['variable'] = {'names': self.fmuctrl.variableNames,'values': np.empty((self.data['time'].shape[0],self.fmuctrl.data['variable']['values'].shape[1]))}
-        if self.fmuctrl.data['variable']['values'].shape[1] != 0:
-            for idx in range(self.fmuctrl.data['variable']['values'].shape[1]):
-                self.data['controller']['variable']['values'][:,idx] = np.interp(self.data['time'],self.fmuctrl.data['time'],self.fmuctrl.data['variable']['values'][:,idx])
-
-        self.data['quadrotor']['state'] = {'names': self.fmudyn.stateNames,'values': np.empty((self.data['time'].shape[0],self.fmudyn.data['state']['values'].shape[1]))}
-        if self.fmudyn.data['state']['values'].shape[1] != 0:
-            for idx in range(self.fmudyn.data['state']['values'].shape[1]):
-                self.data['quadrotor']['state']['values'][:,idx] = np.interp(self.data['time'],self.fmudyn.data['time'],self.fmudyn.data['state']['values'][:,idx])
-        self.data['quadrotor']['variable'] = {'names': self.fmudyn.variableNames,'values': np.empty((self.data['time'].shape[0],self.fmudyn.data['variable']['values'].shape[1]))}
-        if self.fmudyn.data['variable']['values'].shape[1] != 0:
-            for idx in range(self.fmudyn.data['variable']['values'].shape[1]):
-                self.data['quadrotor']['variable']['values'][:,idx] = np.interp(self.data['time'],self.fmudyn.data['time'],self.fmudyn.data['variable']['values'][:,idx])
+        self.data['quadrotor'] = self.fmudyn.data
+        self.data['controller'] = self.fmuctrl.data
+        self.data['missionplanner'] = self.fmuplanner.data
+        self.data['joystick'] = self.fmustick.data
 
         # return the simulation output
-        save_data = pd.DataFrame(np.hstack((self.data['time'][:,np.newaxis], 
+        save_data = pd.DataFrame(np.hstack((self.data['t'][:,np.newaxis], 
+                                            self.data['quadrotor']['state']['values'], self.data['quadrotor']['variable']['values'], 
+                                            self.data['controller']['state']['values'], self.data['controller']['variable']['values'], 
                                             self.data['missionplanner']['state']['values'], self.data['missionplanner']['variable']['values'],
-                                            self.data['joystick']['state']['values'], self.data['joystick']['variable']['values'],
-                                            self.data['controller']['state']['values'], self.data['controller']['variable']['values'],
-                                            self.data['quadrotor']['state']['values'], self.data['quadrotor']['variable']['values'])), 
-                                columns=np.hstack((['time'], 
-                                                   self.data['missionplanner']['state']['names'], self.data['missionplanner']['variable']['names'],
-                                                   self.data['joystick']['state']['names'], self.data['joystick']['variable']['names'],
+                                            self.data['joystick']['state']['values'], self.data['joystick']['variable']['values'])), 
+                                 columns=np.hstack((['time'], self.data['quadrotor']['state']['names'], self.data['quadrotor']['variable']['names'],
                                                    self.data['controller']['state']['names'], self.data['controller']['variable']['names'], 
-                                                   self.data['quadrotor']['state']['names'], self.data['quadrotor']['variable']['names'])))
+                                                   self.data['missionplanner']['state']['names'], self.data['missionplanner']['variable']['names'],
+                                                   self.data['joystick']['state']['names'], self.data['joystick']['variable']['names'])))
 
         return save_data
 
@@ -346,42 +303,55 @@ class MFQuadrotorCoSIM:
         inputs :
         outputs :
         """
-        self.fmuplanner.empty_data()
-        self.fmuplanner.reset()
-
-        self.fmustick.empty_data()
-        self.fmustick.reset()
-
         self.fmudyn.empty_data()
         self.fmudyn.reset()
+        # do not use setup_experiment and initialize for ME (CS only)
+        # self.fmudyn.model.setup_experiment(start_time=0.0, stop_time=1.0)
+        # self.fmudyn.model.initialize()
+        if self.fidelity == 1:
+            self.fmudyn.set_param({'rover_3d.x': 0.0 , 'rover_3d.y': 0.0, 'rover_3d.z': 0.0, # location
+                                   'rover_3d.vx': 0.0, 'rover_3d.vy': 0.0, "rover_3d.vz": 0.0, # body fixed velocity
+                                   'rover_3d.psi': self.parameters_info['heading']/180*np.pi, 'rover_3d.theta':0.0 , 'rover_3d.phi': 0.0, # intrinsic rotation sequence in order
+                                   'rover_3d.p': 0.0, 'rover_3d.q': 0.0, 'rover_3d.r': 0.0}) # rotation rates about x,y,z
+        elif self.fidelity == 2:
+            self.fmudyn.set_param({'rover_8d.x': 0.0 , 'rover_8d.y': 0.0, 'rover_8d.z': 0.0, # location
+                                   'rover_8d.vx': 0.0, 'rover_8d.vy': 0.0, "rover_8d.vz": 0.0, # body fixed velocity
+                                   'rover_8d.psi': self.parameters_info['heading']/180*np.pi, 'rover_8d.theta':0.0 , 'rover_8d.phi': 0.0, # intrinsic rotation sequence in order
+                                   'rover_8d.p': 0.0, 'rover_8d.q': 0.0, 'rover_8d.r': 0.0, # rotation rates about x,y,z
+                                   'rover_8d.omega_fl': 0.0, 'rover_8d.omega_fr': 0.0, 'rover_8d.omega_rl': 0.0, 'rover_8d.omega_rr': 0.0, # wheel rotational speeds
+                                   'rover_8d.omega': 0.0}) # shaft rotational speeds
 
-        self.fmuctrl.empty_data()
-        self.fmuctrl.reset() 
+        self.fctrl.empty_data()
+        self.fctrl.reset() 
+        # do not use setup_experiment and initialize for ME (CS only)
+        # self.fctrl.model.setup_experiment(start_time=0.0, stop_time=1.0)
+        # self.fctrl.model.initialize()
+        ic_quat = utils.eul2quat(np.array([0.0,0.0,self.parameters_info['heading']/180*np.pi]))
+        self.fctrl.set_param({'s': 0 , # state of Lo-Fi FSM controller
+                              'x_ref': 0.0, 'y_ref': 0.0, 'psi_ref': 0.0, # reference for turn logic
+                              'v': 0.0, 'delta': 0.0, # commands
+                              'quaternion_filtered[1]': ic_quat[0], 'quaternion_filtered[2]': ic_quat[1], 'quaternion_filtered[3]': ic_quat[2], 'quaternion_filtered[4]': ic_quat[3]}) 
+        self.fctrl.set_param({'sample_interval': 0.1+0.00001})
+        if self.fidelity == 1:
+            self.fctrl.set_param({'delta_turn': np.atan(self.parameters_info['l_total']/self.parameters_info['turn_radius'])})
+        elif self.fidelity == 2:
+            self.fctrl.set_param({'delta_turn': np.atan(self.parameters_info['l_total']/self.parameters_info['turn_radius'])})
+
+        self.fweb.empty_data()
+        self.fweb.reset()
+        # do not use setup_experiment and initialize for ME (CS only)
+        # self.fweb.model.setup_experiment(start_time=0.0, stop_time=1.0)
+        # self.fweb.model.initialize()
 
         # initialize data log
-        self.data = {'time': np.zeros((0,)), 'missionplanner': {}, 'joystick': {}, 'controller': {}, 'quadrotor': {}}
+        self.data = {'t': np.zeros((0,)), 'webserver': {}, 'controller': {}, 'rover': {}}
 
         # randomly change attack parameters
         if self.attack_scenario == 1:
-            pass
+            self.bias = 2*(np.random.rand()-0.5)
 
-# class MFRoverOnlySIM:
-#     """
-#     simulation classes for a multi-fidelity rover model, supports:
-#     - rover-only simulation (input: throttle PWM duty cycle, )
-#     - set input variables to inputs at given time instances
-#     - be careful for
-#     - retrieve the final value of all state variables
-#     """
-
-
-def _gcd_dt(dts, quantum=1e-6):
-    """
-    compute a robust gcd time step for floating periods
-    - 'quantum' is the rounding quantum (e.g., 1e-6s = 1us)
-    """
-    us = [max(1, int(round(dt/quantum))) for dt in dts]  # [-] convert to integer ticks
-    g = us[0]
-    for u in us[1:]:
-        g = gcd(g, u)
-    return g*quantum
+        if self.attack_scenario == 3:
+            self.gyro_atk_freq = (self.parameters_info['drive_freq']+self.parameters_info['acoustic_freq_range']*(2*np.random.rand()-1))*(2*np.pi)
+            self.gyro_misalignment = self.parameters_info['gyro_misalignment']*np.random.rand()*(np.pi/180)
+            self.gyro_atk_dir = np.random.rand()*(np.pi/2)
+            self.gyro_atk_phase = np.random.rand()*2*np.pi-np.pi

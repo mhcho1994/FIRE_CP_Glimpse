@@ -7,7 +7,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
-!/NGCrover/build/
+!examples/NGCrover/build/
 develop-eggs/
 dist/
 downloads/
@@ -17,3 +17,4 @@ eggs/
 
 # Results
 results/
+!examples/NGCrover/results/

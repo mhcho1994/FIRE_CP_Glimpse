@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cp-glimpse"
 version = "0.1.0"
-description = "CP Glimpse: Multi-backend Modelica simulation framework (FMU, CasADi, Direct)"
+description = "CP Glimpse: Multi-backend Modelica simulation framework (FMU)"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 authors = [
     { name = "Minhyun Cho" }
 ]
@@ -17,6 +17,10 @@ dependencies = [
     "pandas",
     "pyyaml",
     "matplotlib",
+    "OMPython",
+    "pyfmi",
+    "FMPy",
+    "ipykernel",
 ]
 
 # CLI entry point

@@ -67,7 +67,6 @@ class MFRoverClosedSIM:
             elif fidelity == 2:
                 modelica.generate_fmu("RoverExample.Components.Rover", Path("./model/MFRover.mo").absolute(), 
                                       fmu_type, {'fidelity': 2})
-
         fmuDyn = Path("./build").absolute()/"RoverExample.Components.Rover/RoverExample.Components.Rover.fmu"
         self.fmudyn = fmu.FMU(fmuDyn, fmu_type, self.t0, tol=1e-6)
         # get parameter information before reset
@@ -126,16 +125,16 @@ class MFRoverClosedSIM:
         self.attack_scenario = attack_scenario
         if self.attack_scenario == 1:        # [-] attack_scneario: 0 = no attack, 1 = emi attack, 2 = rollover attack, 3 = gyro attack
             self.emi_atk_level = self.parameters_info['emi_disturbance']/180*np.pi
-            self.bias = 2*(np.random.rand(1)-0.5)
+            self.bias = 2*(np.random.rand()-0.5)
         elif self.attack_scenario == 2:
             self.rollover_thr_pwm = self.parameters_info['throttle_pwm_level']
         elif self.attack_scenario == 3:
             self.gyro_atk_power = self.parameters_info['acoustic_power']
             self.speaker_dist = self.parameters_info['speaker_dist']
-            self.gyro_atk_freq = (self.parameters_info['drive_freq']+self.parameters_info['acoustic_freq_range']*(2*np.random.rand(1)-1))*(2*np.pi)
-            self.gyro_misalignment = self.parameters_info['gyro_misalignment']*np.random.rand(1)*(np.pi/180)
-            self.gyro_atk_dir = np.random.rand(1)*(np.pi/2)
-            self.gyro_atk_phase = np.random.rand(1)*2*np.pi-np.pi
+            self.gyro_atk_freq = (self.parameters_info['drive_freq']+self.parameters_info['acoustic_freq_range']*(2*np.random.rand()-1))*(2*np.pi)
+            self.gyro_misalignment = self.parameters_info['gyro_misalignment']*np.random.rand()*(np.pi/180)
+            self.gyro_atk_dir = np.random.rand()*(np.pi/2)
+            self.gyro_atk_phase = np.random.rand()*2*np.pi-np.pi
         elif self.attack_scenario == 4:
             if self.parameters_info['wire_dir'] == 1:
                 self.wire_dir = np.array([1, 0, 0])
@@ -183,7 +182,7 @@ class MFRoverClosedSIM:
                                                 "mz_mag": self.fmudyn.get_output_value()['mz_meas'],
                                                 "phi_gyro": self.fmudyn.get_output_value()['phi_meas'],
                                                 "theta_gyro": self.fmudyn.get_output_value()['theta_meas'],
-                                                "psi_gyro": self.fmudyn.get_output_value()['psi_meas']+(self.emi_atk_level)*(self.bias), 
+                                                "psi_gyro": self.fmudyn.get_output_value()['psi_meas']+(self.emi_atk_level)*(self.bias),
                                                 "p_gyro": self.fmudyn.get_output_value()['p_meas'], 
                                                 "q_gyro": self.fmudyn.get_output_value()['q_meas'], 
                                                 "r_gyro": self.fmudyn.get_output_value()['r_meas'], 
@@ -323,10 +322,10 @@ class MFRoverClosedSIM:
 
         # randomly change attack parameters
         if self.attack_scenario == 1:
-            self.bias = 2*(np.random.rand(1)-0.5)
+            self.bias = 2*(np.random.rand()-0.5)
 
         if self.attack_scenario == 3:
-            self.gyro_atk_freq = (self.parameters_info['drive_freq']+self.parameters_info['acoustic_freq_range']*(2*np.random.rand(1)-1))*(2*np.pi)
-            self.gyro_misalignment = self.parameters_info['gyro_misalignment']*np.random.rand(1)*(np.pi/180)
-            self.gyro_atk_dir = np.random.rand(1)*(np.pi/2)
-            self.gyro_atk_phase = np.random.rand(1)*2*np.pi-np.pi
+            self.gyro_atk_freq = (self.parameters_info['drive_freq']+self.parameters_info['acoustic_freq_range']*(2*np.random.rand()-1))*(2*np.pi)
+            self.gyro_misalignment = self.parameters_info['gyro_misalignment']*np.random.rand()*(np.pi/180)
+            self.gyro_atk_dir = np.random.rand()*(np.pi/2)
+            self.gyro_atk_phase = np.random.rand()*2*np.pi-np.pi
