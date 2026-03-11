@@ -8,6 +8,7 @@ __pycache__/
 .Python
 build/
 !examples/NGCrover/build/
+!examples/GSdrone/build/
 develop-eggs/
 dist/
 downloads/
@@ -18,3 +19,4 @@ eggs/
 # Results
 results/
 !examples/NGCrover/results/
+!examples/GSdrone/results/

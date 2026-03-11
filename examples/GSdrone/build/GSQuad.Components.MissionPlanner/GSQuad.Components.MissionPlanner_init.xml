@@ -1,0 +1,226 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<!-- description of the model interface using an extention of the FMI standard -->
+<fmiModelDescription
+  fmiVersion                          = "1.0"
+
+  modelName                           = "GSQuad.Components.MissionPlanner"
+  modelIdentifier                     = "GSQuad_Components_MissionPlanner"
+
+  OPENMODELICAHOME                    = "/usr/bin/.."
+
+  guid                                = "{42292a78-d043-45a7-a880-7fac66bac836}"
+
+  description                         = ""
+  generationTool                      = "OpenModelica Compiler OpenModelica 1.26.2"
+  generationDateAndTime               = "2026-03-11T11:02:07Z"
+
+  variableNamingConvention            = "structured"
+
+  numberOfEventIndicators             = "0"  cmt_numberOfEventIndicators             = "NG:       number of zero crossings,                           FMI"
+  numberOfTimeEvents                  = "1"  cmt_numberOfTimeEvents                  = "NG_SAM:   number of zero crossings that are samples,          OMC"
+
+  numberOfInputVariables              = "0"  cmt_numberOfInputVariables              = "NI:       number of inputvar on topmodel,                     OMC"
+  numberOfOutputVariables             = "4"  cmt_numberOfOutputVariables             = "NO:       number of outputvar on topmodel,                    OMC"
+
+  numberOfExternalObjects             = "0"  cmt_numberOfExternalObjects             = "NEXT:     number of external objects,                         OMC"
+  numberOfFunctions                   = "0"  cmt_numberOfFunctions                   = "NFUNC:    number of functions used by the simulation,         OMC"
+
+  numberOfContinuousStates            = "0"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
+  numberOfRealAlgebraicVariables      = "8"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
+  numberOfRealAlgebraicAliasVariables = "4"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealParameters              = "1"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
+
+  numberOfIntegerAlgebraicVariables   = "0"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
+  numberOfIntegerAliasVariables       = "0"  cmt_numberOfIntegerAliasVariables       = "NAINT:    number of alias int variables,                      OMC"
+  numberOfIntegerParameters           = "0"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
+
+  numberOfStringAlgebraicVariables    = "0"  cmt_numberOfStringAlgebraicVariables    = "NYSTR:    number of alg. string variables,                    OMC"
+  numberOfStringAliasVariables        = "0"  cmt_numberOfStringAliasVariables        = "NASTR:    number of alias string variables,                   OMC"
+  numberOfStringParameters            = "0"  cmt_numberOfStringParameters            = "NPSTR:    number of string parameters,                        OMC"
+
+  numberOfBooleanAlgebraicVariables   = "1"  cmt_numberOfBooleanAlgebraicVariables   = "NYBOOL:   number of alg. bool variables,                      OMC"
+  numberOfBooleanAliasVariables       = "0"  cmt_numberOfBooleanAliasVariables       = "NABOOL:   number of alias bool variables,                     OMC"
+  numberOfBooleanParameters           = "0"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
+
+
+  <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
+  <DefaultExperiment
+    startTime      = "0"
+    stopTime       = "1"
+    stepSize       = "0.002"
+    tolerance      = "1e-06"
+    solver         = "dassl"
+    outputFormat   = "mat"
+    variableFilter = ".*" />
+
+  <!-- variables in the model -->
+  <ModelVariables>
+
+  <ScalarVariable
+    name = "position_setpoint_w[1]"
+    valueReference = "1000"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "339" startColumn = "7" endLine = "339" endColumn = "51" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "position_setpoint_w[2]"
+    valueReference = "1001"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "339" startColumn = "7" endLine = "339" endColumn = "51" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "position_setpoint_w[3]"
+    valueReference = "1002"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "2" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "339" startColumn = "7" endLine = "339" endColumn = "51" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "yaw_setpoint_w"
+    valueReference = "1003"
+    variability = "continuous" isDiscrete = "false"
+    causality = "output" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "3" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "341" startColumn = "7" endLine = "341" endColumn = "43" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "position_setpoint_w_buf[1]"
+    valueReference = "1004"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "4" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "345" startColumn = "7" endLine = "345" endColumn = "85" fileWritable = "true">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "position_setpoint_w_buf[2]"
+    valueReference = "1005"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "5" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "345" startColumn = "7" endLine = "345" endColumn = "85" fileWritable = "true">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "position_setpoint_w_buf[3]"
+    valueReference = "1006"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "6" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "345" startColumn = "7" endLine = "345" endColumn = "85" fileWritable = "true">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "yaw_setpoint_w_buf"
+    valueReference = "1007"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "7" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "346" startColumn = "7" endLine = "346" endColumn = "62" fileWritable = "true">
+    <Real start="0.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "sample_period"
+    valueReference = "1008"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "336" startColumn = "7" endLine = "336" endColumn = "42" fileWritable = "true">
+    <Real start="0.05" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mavlink.x_w"
+    valueReference = "1009"
+    description = "virtual variable in expandable connector"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="position_setpoint_w[1]" aliasVariableId="0"
+    classIndex = "0" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "348" startColumn = "7" endLine = "348" endColumn = "51" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mavlink.y_w"
+    valueReference = "1010"
+    description = "virtual variable in expandable connector"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="position_setpoint_w[2]" aliasVariableId="1"
+    classIndex = "1" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "349" startColumn = "7" endLine = "349" endColumn = "51" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mavlink.yaw_w"
+    valueReference = "1011"
+    description = "virtual variable in expandable connector"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="yaw_setpoint_w" aliasVariableId="3"
+    classIndex = "2" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "351" startColumn = "7" endLine = "351" endColumn = "45" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "mavlink.z_w"
+    valueReference = "1012"
+    description = "virtual variable in expandable connector"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="position_setpoint_w[3]" aliasVariableId="2"
+    classIndex = "3" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "350" startColumn = "7" endLine = "350" endColumn = "51" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "$whenCondition1"
+    valueReference = "1013"
+    description = "sample(1, 0.0, sample_period)"
+    variability = "discrete" isDiscrete = "true"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "bAlg"
+    isProtected = "true" hideResult = "true" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/mhcho/ws/FIRE_CP_Glimpse/examples/GSdrone/model/MFQuadrotor.mo" startLine = "355" startColumn = "7" endLine = "359" endColumn = "15" fileWritable = "true">
+    <Boolean fixed="true" />
+  </ScalarVariable>
+
+
+
+  </ModelVariables>
+
+
+</fmiModelDescription>
+

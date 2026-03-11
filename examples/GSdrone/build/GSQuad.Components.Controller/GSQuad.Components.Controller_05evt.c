@@ -1,0 +1,81 @@
+/* Events: Sample, Zero Crossings, Relations, Discrete Changes */
+#include "GSQuad.Components.Controller_model.h"
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
+/* Initializes the raw time events of the simulation using the now
+   calcualted parameters. */
+void GSQuad_Components_Controller_function_initSample(DATA *data, threadData_t *threadData)
+{
+  long i=0;
+  /* sample 1 */
+  data->modelData->samplesInfo[i].index = 1;
+  data->modelData->samplesInfo[i].start = 0.0;
+  data->modelData->samplesInfo[i].interval = (data->simulationInfo->realParameter[data->simulationInfo->realParamsIndex[59]] /* euler_pid.update_interval PARAM */) /* (max real for single time events) */;
+  i++;
+  /* sample 2 */
+  data->modelData->samplesInfo[i].index = 2;
+  data->modelData->samplesInfo[i].start = 0.0;
+  data->modelData->samplesInfo[i].interval = (data->simulationInfo->realParameter[data->simulationInfo->realParamsIndex[62]] /* update_period PARAM */) /* (max real for single time events) */;
+  i++;
+}
+
+const char *GSQuad_Components_Controller_zeroCrossingDescription(int i, int **out_EquationIndexes)
+{
+  *out_EquationIndexes = NULL;
+  return "empty";
+}
+
+/* forwarded equations */
+
+int GSQuad_Components_Controller_function_ZeroCrossingsEquations(DATA *data, threadData_t *threadData)
+{
+  data->simulationInfo->callStatistics.functionZeroCrossingsEquations++;
+
+  
+  return 0;
+}
+
+int GSQuad_Components_Controller_function_ZeroCrossings(DATA *data, threadData_t *threadData, double *gout)
+{
+  const int *equationIndexes = NULL;
+
+  modelica_integer current_index = 0;
+  modelica_integer start_index;
+  
+#if !defined(OMC_MINIMAL_RUNTIME)
+  if (measure_time_flag) rt_tick(SIM_TIMER_ZC);
+#endif
+  data->simulationInfo->callStatistics.functionZeroCrossings++;
+
+
+#if !defined(OMC_MINIMAL_RUNTIME)
+  if (measure_time_flag) rt_accumulate(SIM_TIMER_ZC);
+#endif
+
+  return 0;
+}
+
+const char *GSQuad_Components_Controller_relationDescription(int i)
+{
+  return "empty";
+}
+
+int GSQuad_Components_Controller_function_updateRelations(DATA *data, threadData_t *threadData, int evalforZeroCross)
+{
+  const int *equationIndexes = NULL;
+
+  modelica_integer current_index = 0;
+  modelica_integer start_index;
+  
+  if(evalforZeroCross) {
+  } else {
+  }
+  
+  return 0;
+}
+
+#if defined(__cplusplus)
+}
+#endif

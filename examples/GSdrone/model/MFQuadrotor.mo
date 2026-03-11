@@ -354,7 +354,7 @@ package GSQuad
     algorithm
       when sample(0, sample_period) then
 // default waypoint in NED coordinate
-        position_setpoint_w_buf := {3.0, 5.0, -7.0};
+        position_setpoint_w_buf := {0.0, 0.0, 0.0};
         yaw_setpoint_w_buf := 0.01;
       end when;
       annotation(
@@ -510,7 +510,7 @@ package GSQuad
         thrust_target := pinv_CA*fm_target;
         omega_spd_sq_target := thrust_target./k_eta;
         for i in 1:4 loop
-          normalized_ctrl_input[i] := (sqrt(omega_spd_sq_target[i])-omega_rotor_min)/(omega_rotor_max-omega_rotor_min)+omega_rotor_min;
+          normalized_ctrl_input[i] := (sqrt(clip(omega_spd_sq_target[i],0,omega_rotor_max^8))-omega_rotor_min)/(omega_rotor_max-omega_rotor_min)+omega_rotor_min;
         end for;
       end when;
       
