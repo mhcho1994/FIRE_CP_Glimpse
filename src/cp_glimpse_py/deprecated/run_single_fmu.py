@@ -60,7 +60,7 @@ from fmpy.fmi2 import fmi2Discard, fmi2Error
 
 from ..common.logging import get_logger
 from ..translator.mo_to_fmu import build_fmu
-from .fmu_runner import FMI2CSRunner
+from ..backend.fmu_runner import FMI2CSRunner
 
 log = get_logger(__name__)
 

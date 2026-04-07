@@ -1,6 +1,6 @@
 model:
   mo_path: models/Rover3D.mo
-  class_name: Rover3D     # TODO: auto-detect from modelDescription.xml if not provided
+  class_name: Rover3D                     # TODO: auto-detect from modelDescription.xml if not provided
 
 sim:
   backend: single_fmu_open_loop

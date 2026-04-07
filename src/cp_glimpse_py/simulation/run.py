@@ -8,7 +8,7 @@ import pandas as pd
 from ..common.paths import get_paths
 from ..common.logging import get_logger
 from ..scenario.load import load_scenario
-from ..backend.run_single_fmu import run_single_fmu_open_loop
+from ..deprecated.run_single_fmu import run_single_fmu_open_loop
 
 log = get_logger(__name__)
 
