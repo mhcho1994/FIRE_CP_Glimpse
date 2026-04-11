@@ -49,7 +49,7 @@ class BackendArtifact:
     Attributes
     ----------
     kind : str
-        Artifact kind, e.g. "fmu", "casadi", "modelica".
+        Artifact kind, e.g. "modelica", "fmu", "casadi".
     path : str
         Filesystem path to the primary artifact.
     metadata : dict[str, Any]

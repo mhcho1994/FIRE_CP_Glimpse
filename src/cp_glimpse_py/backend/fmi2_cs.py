@@ -32,7 +32,7 @@ from fmpy.fmi2 import fmi2Discard, fmi2Error, fmi2OK, fmi2Warning
 from .base import BackendArtifact, SimulationBackend, StepResult
 from .fmu_runner import FMI2CSRunner
 from ..common.logging import get_logger
-from ..translator.mo_to_fmu import build_fmu
+from ..translator.mo_to_fmu import build_fmu, resolve_model_class_name
 
 log = get_logger(__name__)
 
@@ -60,7 +60,7 @@ def _resolve_class_name(model_cfg: dict) -> str:
         k = sorted(comps.keys())[0]
         return str(comps[k])
 
-    raise KeyError("Scenario missing model.class_name (or model.components).")
+    return resolve_model_class_name(mo_path=model_cfg["mo_path"], class_name=None)
 
 
 @dataclass

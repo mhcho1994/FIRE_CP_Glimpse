@@ -1,0 +1,49 @@
+model:
+  mo_path: models/hybrid_benchmarks/BouncingBall.mo
+  class_name: BouncingBall
+
+connections:
+  - from: BouncingBall.x
+    to: BouncingBall.x_meas
+  - from: BouncingBall.y
+    to: BouncingBall.y_meas
+  - from: BouncingBall.psi
+    to: BouncingBall.psi_meas
+
+
+sim:
+  runtime: fmpy
+  fmu_type: cs
+  topology: auto
+  experiment: monte_carlo
+  t0: 0.0
+  tf: 1.0
+  dt: 0.1
+  tol: 1.0e-6
+
+inputs:
+  constant:
+    pwm_throttle: 1600
+    pwm_steering: 1500
+
+monte_carlo:
+  trials: 50
+  seed: 123
+  on_error: continue
+  summary_only: false
+
+sampling:
+  inputs.constant.pwm_throttle:
+    distribution: uniform
+    low: 1500
+    high: 1700
+
+  sim.dt:
+    distribution: choice
+    values: [0.05, 0.1, 0.2]
+
+output:
+  log: ["x_meas", "y_meas", "psi_meas"]
+  save_csv: true
+  out_dir: results/runs
+  run_name: rover_mc

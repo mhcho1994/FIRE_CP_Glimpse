@@ -35,9 +35,12 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 import os
+import re
 import shutil
 import traceback
+import zipfile
 from datetime import datetime, timezone
+from xml.etree import ElementTree as ET
 
 from OMPython import ModelicaSystem
 
@@ -46,6 +49,46 @@ from ..common.hashing import model_artifact_key
 from ..common.logging import get_logger
 
 log = get_logger(__name__)
+
+
+def _infer_class_name_from_fmu(fmu_path: Path) -> str | None:
+    try:
+        with zipfile.ZipFile(fmu_path) as zf:
+            with zf.open("modelDescription.xml") as fh:
+                root = ET.parse(fh).getroot()
+        model_name = root.attrib.get("modelName")
+        if model_name:
+            return str(model_name)
+    except Exception:
+        return None
+    return None
+
+
+def _infer_class_name_from_mo(mo_path: Path) -> str | None:
+    text = mo_path.read_text(encoding="utf-8", errors="ignore")
+    matches = re.findall(r"(?m)^\s*model\s+([A-Za-z_][A-Za-z0-9_]*)\b", text)
+    unique = list(dict.fromkeys(matches))
+    if len(unique) == 1:
+        return unique[0]
+    return None
+
+
+def resolve_model_class_name(*, mo_path: str | Path, class_name: str | None = None) -> str:
+    if class_name:
+        return str(class_name)
+
+    path = Path(mo_path)
+    if path.suffix.lower() == ".fmu":
+        inferred = _infer_class_name_from_fmu(path)
+        if inferred:
+            return inferred
+
+    if path.suffix.lower() == ".mo":
+        inferred = _infer_class_name_from_mo(path)
+        if inferred:
+            return inferred
+
+    raise KeyError("Unable to resolve model.class_name automatically.")
 
 
 @dataclass(frozen=True)
@@ -166,7 +209,7 @@ def _snapshot_dir(src_dir: Path, dst_dir: Path) -> None:
     shutil.copytree(src_dir, dst_dir, dirs_exist_ok=True)
 
 
-def build_fmu(*, mo_path: str | Path, class_name: str, fmu_type: str) -> FMUArtifact:
+def build_fmu(*, mo_path: str | Path, class_name: str | None, fmu_type: str) -> FMUArtifact:
     """
     Build (or retrieve from cache) an FMU from a Modelica model.
 
@@ -196,6 +239,7 @@ def build_fmu(*, mo_path: str | Path, class_name: str, fmu_type: str) -> FMUArti
         mo_path = (paths.root / mo_path).resolve()
     if not mo_path.exists():
         raise FileNotFoundError(mo_path)
+    class_name = resolve_model_class_name(mo_path=mo_path, class_name=class_name)
 
     # Compute deterministic artifact key
     key = model_artifact_key(mo_path=mo_path, class_name=class_name, fmu_type=fmu_type)

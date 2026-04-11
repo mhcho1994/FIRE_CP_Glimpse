@@ -6,7 +6,9 @@
       "type": "python",
       "request": "launch",
       "module": "cp_glimpse_py.main",
-      "args": ["scenarios/rover_fmu.yaml"],
+      "args": [
+        "--scenario", "scenarios/bouncingball_single_run.yaml",
+      ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "env": { 
