@@ -21,6 +21,15 @@ def main() -> None:
 
     # setup_logging(args.log_level)
     run_simulation(args.scenario)
+    # run_simulation(run_simulation({
+    #         "models": {
+    #             "bouncing_ball": {
+    #                 "class_name": "BouncingBall",
+    #                 "model_path": "models/BouncingBall.mo",
+    #             }
+    #         },
+    #         "sim": {"experiment": "single_run"}
+    #     }))
 
 if __name__ == "__main__":
     main()

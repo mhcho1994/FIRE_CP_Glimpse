@@ -1,5 +1,5 @@
 """
-base.py
+cp_glimpse_py.backend.base
 =======
 
 Abstract backend interface for CP-Glimpse simulation backends.

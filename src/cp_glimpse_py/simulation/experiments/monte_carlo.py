@@ -121,7 +121,7 @@ def _run_once_for_topology(scn: dict[str, Any], topology: str) -> dict[str, Any]
     raise ValueError(f"Unsupported topology for Monte Carlo: {topology}")
 
 
-def run_monte_carlo(scn: dict[str, Any], topology: str) -> MonteCarloResult:
+def run_monte_carlo_experiment(scn: dict[str, Any], topology: str) -> MonteCarloResult:
     """
     Execute a Monte Carlo experiment.
 

@@ -1,3 +1,59 @@
+"""
+Scenario loading utilities.
+
+This module defines the scenario container used across CP Glimpse and
+provides the YAML loading entry point.
+
+Purpose
+-------
+Scenario configuration files are the main user-facing way to describe
+a simulation run. They may include:
+- simulation settings under `sim`,
+- a single model under `model`,
+- multiple coupled models under `models`,
+- parameter overrides under `params`,
+- attack settings under `attack`,
+- output configuration under `output`,
+- Monte Carlo settings under `montecarlo`,
+- inter-model wiring under `connections`.
+
+This module provides two things:
+
+1. `Scenario`
+   A thin dict-like wrapper around the normalized scenario dictionary.
+   It supports both attribute-style access such as `scn.sim` and
+   dictionary-style access such as `scn.get("sim", {})`.
+
+2. `load_scenario(...)`
+   A helper that loads a YAML scenario file, resolves relative paths
+   against the project root, validates the top-level structure, and
+   inserts commonly expected default sections.
+
+Design notes
+------------
+The codebase currently mixes two access patterns:
+- structured object access through properties,
+- dictionary-like access through `.get(...)`, `[...]`, and iteration.
+
+The `Scenario` wrapper exists to support both styles so that higher-level
+simulation and orchestration code can remain simple and backward-compatible.
+
+Normalization behavior
+----------------------
+When a scenario is loaded, optional top-level sections are normalized so
+downstream code can safely assume they exist. For example:
+- `sim` defaults to `{}`,
+- `params` defaults to `{}`,
+- `attack` defaults to `{"scenario": 0}`,
+- `output` defaults to `{}`,
+- `montecarlo` defaults to `{}`,
+- `connections` defaults to `[]`,
+- `model` defaults to `{}`,
+- `models` defaults to `{}`.
+
+This normalization avoids repetitive missing-key checks in execution code.
+"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -41,18 +97,6 @@ class Scenario:
     # Common scenario sections
     # ------------------------------------------------------------------
     @property
-    def model(self) -> dict[str, Any]:
-        """
-        Return the single-model section.
-
-        Returns
-        -------
-        dict[str, Any]
-            Scenario `model` section, or an empty dict if absent.
-        """
-        return self.raw.get("model", {})
-
-    @property
     def models(self) -> dict[str, Any]:
         """
         Return the multi-model section.
@@ -77,7 +121,7 @@ class Scenario:
         return self.raw.get("sim", {})
 
     @property
-    def params(self) -> dict[str, Any]:
+    def parameters(self) -> dict[str, Any]:
         """
         Return the parameter section.
 

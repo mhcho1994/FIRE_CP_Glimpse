@@ -1,4 +1,6 @@
 """
+cp_glimpse_py.simulation.run
+=================================
 Top-level simulation dispatcher.
 
 Purpose
@@ -7,17 +9,17 @@ This module provides the main public entry points for the simulation package.
 
 It is responsible for:
 - loading a scenario from file or accepting a preloaded dictionary,
-- resolving simulation topology,
+- resolving simulation composition,
 - resolving experiment type,
 - dispatching execution,
 - saving results and summary artifacts.
 
-Topology resolution
--------------------
-Topology can be resolved in two ways.
+Composition resolution
+----------------------
+Composition can be resolved in two ways.
 
 1. Explicit:
-   `sim.topology` is set to something other than "auto".
+   `sim.composition` is set to something other than "auto".
 
 2. Inferred:
    The dispatcher inspects:
@@ -44,6 +46,23 @@ Experiment resolution
 - sim.experimenht == "sensitivity" -> TODO: implement this experiment type
 - sim.experiment == "sweep": TODO: implement this experiment type
 - sim.experiment not provided: default to "single_run"
+
+Public API
+----------
+- run_simulation
+- run_simulation_from_dict
+
+Private helpers
+----------------
+- _has_model_identity
+- _count_valid_models
+- _resolve_experiment
+- _resolve_composition
+- _resolve_backend
+- _json_ready
+- _default_output_dir
+- _save_json
+- _build_summary
 """
 
 from __future__ import annotations
@@ -56,19 +75,24 @@ import time
 
 from ..common.paths import get_paths
 from ..common.logging import get_logger
-from ..scenario.load import load_scenario
+from ..scenario.load import Scenario, load_scenario
 from .experiments.single_run import run_single_experiment
-from .experiments.monte_carlo import run_monte_carlo
+from .experiments.monte_carlo import run_monte_carlo_experiment
+
+__all__ = ["run_simulation"]
 
 log = get_logger(__name__)
 
 _MODEL_HINT_KEYS = (
-    "fmu_path",
-    "mo_path",
     "class_name",
     "model_path",
     "model_file",
     "uri",
+)
+
+_VALID_BACKENDS = (
+    "fmu-fmpy",
+    # "fmu-pyfmi",  # TODO: implement this backend
 )
 
 
@@ -104,85 +128,126 @@ def _count_valid_models(models_cfg: Any) -> int:
     int
         Number of valid model entries.
     """
-    if not isinstance(models_cfg, dict):
+    if not isinstance(models_cfg, list):
         return 0
     count = 0
-    for _, cfg in models_cfg.items():
-        if _has_model_identity(cfg):
+    for _, model_cfg in enumerate(models_cfg):
+        if _has_model_identity(model_cfg):
             count += 1
+    if count == 0:
+        log.error(
+            "[cp_glimpse_py.simulation.run] No valid model entries found in 'models'. "
+            "Expected at least one entry with a recognizable model identity field."
+        )
+        raise ValueError("No valid model entries found.")
     return count
 
 
-def resolve_topology(scn: dict[str, Any]) -> str:
-    """
-    Resolve simulation topology from scenario contents.
-
-    Resolution order
-    ----------------
-    1. If `sim.topology` is explicitly provided and not "auto", respect it.
-    2. If `models` contains one or more valid model definitions, use "multi_fmu".
-    3. If `model` contains a valid model definition, use "single_fmu".
-    4. Otherwise raise an error.
-
-    Parameters
-    ----------
-    scn : dict[str, Any]
-        Scenario dictionary.
-
-    Returns
-    -------
-    str
-        Resolved topology string.
-
-    Raises
-    ------
-    ValueError
-        If topology cannot be determined.
-    """
-    sim_cfg = scn.get("sim", {}) or {}
-    topology = str(sim_cfg.get("topology", "auto")).lower()
-
-    if topology != "auto":
-        return topology
-
-    valid_model_count = _count_valid_models(scn.get("models"))
-    has_single_model = _has_model_identity(scn.get("model"))
-
-    if valid_model_count > 0:
-        return "multi_fmu"
-    if has_single_model:
-        return "single_fmu"
-
-    raise ValueError(
-        "Could not resolve simulation topology. "
-        "Provide sim.topology explicitly or include valid model identity fields "
-        f"under 'model' or 'models'. Expected keys include: {', '.join(_MODEL_HINT_KEYS)}"
-    )
-
-
-def resolve_experiment(scn: dict[str, Any]) -> str:
+def _resolve_experiment(scn: Scenario | dict[str, Any]) -> str:
     """
     Resolve experiment type from scenario contents.
 
     Parameters
     ----------
-    scn : dict[str, Any]
-        Scenario dictionary.
+    scn : Scenario | dict[str, Any]
+        Scenario object or dictionary.
 
     Returns
     -------
     str
         Experiment type.
+
+    Raises
+    ------
+    ValueError
+        If experiment cannot be determined.
     """
     sim_cfg = scn.get("sim", {}) or {}
-    experiment = str(sim_cfg.get("experiment", "single_run")).lower()
+    experiment = str(sim_cfg.get("experiment", "single")).lower()
 
     if experiment in {"single", "single_run"}:
-        return "single_run"
-    if experiment in {"mc", "montecarlo", "monte_carlo"}:
+        return "single"
+    if experiment in {"montecarlo", "mc", "monte_carlo"}:
         return "montecarlo"
 
+    log.error("[cp_glimpse_py.simulation.run] Unsupported experiment type: %s", experiment)
     raise ValueError(f"Unsupported experiment type: {experiment}")
+
+
+def _resolve_composition(scn: Scenario | dict[str, Any]) -> str:
+    """
+    Resolve simulation composition from scenario contents.
+
+    Resolution order
+    ----------------
+    1. If `sim.composition` is explicitly provided and not "auto", respect it.
+    2. If `system.components` contains one or more valid model definitions, determine "single" or "multi".
+    3. Otherwise raise an error.
+
+    Parameters
+    ----------
+    scn : Scenario | dict[str, Any]
+        Scenario object or dictionary.
+
+    Returns
+    -------
+    str
+        Resolved composition string.
+
+    Raises
+    ------
+    ValueError
+        If composition cannot be determined.
+    """
+    sim_cfg = scn.get("sim", {}) or {}
+    explicit = str(sim_cfg.get("composition", "auto")).lower()
+
+    system_cfg = scn.get("system", {}) or {}
+    components = system_cfg.get("components")
+    inferred = "single" if _count_valid_models(components) == 1 else "multi"
+
+    if explicit not in {"single", "multi", "auto"}:
+        log.error("[cp_glimpse_py.simulation.run] Unsupported sim.composition: %s", explicit)
+        raise ValueError(f"Unsupported sim.composition: {explicit}")
+    
+    if explicit == "auto":
+        return inferred
+
+    if explicit != inferred:
+        log.warning(
+            "[cp_glimpse_py.simulation.run] sim.composition='%s' conflicts with "
+            "system.components count=%d (inferred: '%s').",
+            explicit,
+            _count_valid_models(components),
+            inferred
+        )
+    return explicit
+
+
+def _resolve_backend(scn: Scenario | dict[str, Any]) -> str:
+    """
+    Resolve simulation backend from scenario contents.
+
+    Parameters
+    ----------
+    scn : Scenario | dict[str, Any]
+        Scenario object or dictionary.
+
+    Returns
+    -------
+    str
+        Resolved backend string.
+    """
+    sim_cfg = scn.get("sim", {}) or {}
+    backend = str(sim_cfg.get("backend", "fmu-fmpy")).lower()
+
+    if backend in _VALID_BACKENDS:
+        return backend
+
+    log.error("[cp_glimpse_py.simulation.run] Could not resolve simulation backend. "
+              "Provide sim.backend explicitly or use a valid backend. "
+              f"Valid backends: {', '.join(_VALID_BACKENDS)}")
+    raise ValueError("Could not resolve simulation backend.")
 
 
 def _json_ready(obj: Any) -> Any:
@@ -321,7 +386,7 @@ def _build_summary(
 
 
 def run_simulation_from_dict(
-    scn: dict[str, Any],
+    scn: Scenario | dict[str, Any],
     *,
     scenario_path: Path | None = None,
     save_results: bool = True,
@@ -352,16 +417,18 @@ def run_simulation_from_dict(
     """
     t_wall_0 = time.time()
 
-    topology = resolve_topology(scn)
-    experiment = resolve_experiment(scn)
+    experiment = _resolve_experiment(scn)
+    composition = _resolve_composition(scn)
+    backend = _resolve_backend(scn)
 
-    log.info("Resolved simulation topology: %s", topology)
-    log.info("Resolved experiment type: %s", experiment)
+    log.info("[cp_glimpse_py.simulation.run] Resolved simulation composition: %s", composition)
+    log.info("[cp_glimpse_py.simulation.run] Resolved experiment type: %s", experiment)
+    log.info("[cp_glimpse_py.simulation.run] Resolved simulation backend: %s", backend)
 
-    if experiment == "single_run":
-        result_obj = run_single_experiment(scn, topology)
-    elif experiment == "montecarlo":
-        result_obj = run_monte_carlo(scn, topology)
+    if experiment == "single":
+        result_obj = run_single_experiment(scn, composition, backend)
+    elif experiment == "montecarlo":                        # TODO: implement this experiment type
+        result_obj = run_monte_carlo_experiment(scn, composition, backend)
     else:
         raise ValueError(f"Unhandled experiment type: {experiment}")
 
@@ -370,7 +437,7 @@ def run_simulation_from_dict(
 
     result.setdefault("metadata", {})
     result["metadata"]["dispatch_wall_time_sec"] = wall_time_sec
-    result["metadata"]["resolved_topology"] = topology
+    result["metadata"]["resolved_composition"] = composition
     result["metadata"]["resolved_experiment"] = experiment
 
     if save_results:
@@ -426,16 +493,18 @@ def run_simulation(
 
     Run from dict:
         result = run_simulation({
-            "model": {
-                "mo_path": "models/MySys.mo",
-                "class_name": "Pkg.MySys"
+            "models": {
+                "bouncing_ball": {
+                    "mo_path": "models/BouncingBall.mo",
+                    "class_name": "BouncingBall"
+                }
             },
             "sim": {"experiment": "single_run"}
         })
     """
     if isinstance(scenario, dict):
-        scn = scenario
         scenario_path = None
+        scn = scenario
     else:
         scenario_path = Path(scenario)
         scn = load_scenario(scenario_path)

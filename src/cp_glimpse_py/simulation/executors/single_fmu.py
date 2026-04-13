@@ -1,68 +1,88 @@
 """
-Single-model execution backend.
+Single-FMU execution backend.
 
 Purpose
 -------
-This module implements the low-level execution path for a scenario that
-contains exactly one model instance. The model may already be exported as
-an FMU, or it may be specified by Modelica source information such as
-`mo_path` and `class_name`.
+This module implements the low-level execution path for a scenario whose
+simulation composition is `single`. The scenario is expected to contain
+exactly one component under `system.components`.
 
-This layer is intentionally narrow in scope:
-- validate one-model simulation inputs,
-- execute one simulation backend,
+Design
+------
+This backend assumes the scenario has already been materialized into an
+FMU-ready form when necessary. In other words:
+
+- if the original component pointed to a `.mo` file, an earlier stage
+  (for example `materialize_single_component(...)`) should have converted
+  it into an FMU and updated the component config accordingly,
+- if the component already points to an `.fmu`, this backend executes it
+  directly.
+
+Responsibilities
+----------------
+This module is intentionally narrow in scope:
+- validate single-component execution inputs,
+- resolve the single component identity,
+- validate simulation time configuration,
+- execute one FMU backend,
 - return a stable result dictionary.
 
-It should not decide whether the run is part of a Monte Carlo experiment
-or a one-off experiment. That orchestration belongs to
-`simulation.experiments`.
+Non-responsibilities
+--------------------
+This module should not:
+- decide experiment type (`single`, Monte Carlo, etc.),
+- decide simulation composition (`single`, `network`, etc.),
+- build FMUs from source models on its own.
 
-Current behavior
-----------------
-The implementation below is written as a production-friendly skeleton:
-- it validates the scenario,
-- resolves model metadata,
-- constructs a deterministic time grid,
-- returns a structured result.
+That orchestration belongs to higher-level experiment / materialization
+layers.
 
-The marked execution section can later be replaced by:
-- FMU execution using FMPy / PyFMI,
-- direct OpenModelica invocation,
-- or another backend chosen by scenario configuration.
+Expected scenario pattern
+-------------------------
+A typical single-component scenario is expected to look like:
 
-Expected scenario patterns
---------------------------
-A single-model scenario may look like one of the following.
-
-1) FMU-based
 {
-    "model": {
-        "fmu_path": "build/models/plant.fmu",
-        "start_time": 0.0,
-        "stop_time": 10.0,
-        "step_size": 0.01
+    "sim": {
+        "composition": "single",
+        "backend": "fmu-fmpy",
+        "fmu_type": "cs",
+        "t0": 0.0,
+        "tf": 1.0,
+        "dt": 0.01,
+        "tol": 1e-6
+    },
+    "system": {
+        "components": [
+            {
+                "name": "bouncing_ball",
+                "class_name": "BouncingBall",
+                "model_path": "build/fmus/BouncingBall.fmu"
+            }
+        ]
     }
 }
 
-2) Modelica-source-based
-{
-    "model": {
-        "mo_path": "models/MySystem.mo",
-        "class_name": "MyPkg.MySystem",
-        "start_time": 0.0,
-        "stop_time": 10.0,
-        "step_size": 0.01
-    }
-}
+Supported component identity fields
+-----------------------------------
+This backend recognizes the following component fields for locating the FMU:
+
+- `model_path`
+- `fmu_path`
+- `artifact_path`
+
+At execution time, at least one of these must resolve to an existing `.fmu`
+file.
 
 Returned schema
 ---------------
 {
     "status": "success",
-    "topology": "single_fmu",
-    "model": {...},
+    "composition": "single",
+    "backend": "fmu-fmpy",
+    "fmu_type": "cs",
+    "component": {...},
     "time": [...],
-    "outputs": {},
+    "outputs": {...},
     "metadata": {...}
 }
 """
@@ -71,81 +91,375 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Any
+
 import time
 
+from fmpy import simulate_fmu, read_model_description
 
-_MODEL_HINT_KEYS = (
-    "fmu_path",
-    "mo_path",
-    "class_name",
+
+_COMPONENT_PATH_KEYS = (
     "model_path",
-    "model_file",
-    "uri",
+    "fmu_path",
+    "artifact_path",
 )
 
 
-def _extract_model_identity(model_cfg: dict[str, Any]) -> dict[str, Any]:
+def _get_sim_cfg(scn: dict[str, Any]) -> dict[str, Any]:
     """
-    Extract model identity fields from a single-model config.
+    Return normalized simulation config.
 
     Parameters
     ----------
-    model_cfg : dict[str, Any]
-        Configuration under `scenario["model"]`.
+    scn : dict[str, Any]
+        Loaded scenario.
 
     Returns
     -------
     dict[str, Any]
-        Normalized model identity dictionary.
+        Simulation configuration dictionary.
+    """
+    sim_cfg = scn.get("sim", {}) or {}
+    if not isinstance(sim_cfg, dict):
+        raise ValueError("'sim' must be a dictionary if provided.")
+    return sim_cfg
+
+
+def _get_single_component(scn: dict[str, Any]) -> dict[str, Any]:
+    """
+    Resolve exactly one component from `system.components`.
+
+    Parameters
+    ----------
+    scn : dict[str, Any]
+        Loaded scenario.
+
+    Returns
+    -------
+    dict[str, Any]
+        The single component configuration.
 
     Raises
     ------
     ValueError
-        If no recognizable model identity field is present.
+        If `system.components` is missing, malformed, or does not contain
+        exactly one component.
     """
-    identity = {k: model_cfg.get(k) for k in _MODEL_HINT_KEYS if model_cfg.get(k)}
+    system_cfg = scn.get("system", {}) or {}
+    if not isinstance(system_cfg, dict):
+        raise ValueError("'system' must be a dictionary if provided.")
 
-    if not identity:
+    components = system_cfg.get("components")
+    if not isinstance(components, list) or not components:
         raise ValueError(
-            "Single-model scenario must contain at least one model identity field. "
-            f"Expected one of: {', '.join(_MODEL_HINT_KEYS)}"
+            "Single-FMU execution requires 'system.components' to be a non-empty list."
         )
 
-    return identity
+    if len(components) != 1:
+        raise ValueError(
+            "Single-FMU execution requires exactly one component under "
+            f"'system.components', but got {len(components)}."
+        )
+
+    component = components[0]
+    if not isinstance(component, dict) or not component:
+        raise ValueError("The single component entry must be a non-empty dictionary.")
+
+    return component
 
 
-def _validate_optional_existing_paths(model_identity: dict[str, Any]) -> None:
+def _resolve_backend(sim_cfg: dict[str, Any]) -> str:
     """
-    Validate model path fields that are expected to exist on disk when present.
+    Resolve execution backend name.
 
     Parameters
     ----------
-    model_identity : dict[str, Any]
-        Normalized model identity.
+    sim_cfg : dict[str, Any]
+        Scenario simulation config.
+
+    Returns
+    -------
+    str
+        Normalized backend identifier.
+    """
+    return str(sim_cfg.get("backend", "fmu-fmpy")).strip().lower()
+
+
+def _resolve_fmu_type(sim_cfg: dict[str, Any]) -> str:
+    """
+    Resolve requested FMU type.
+
+    Parameters
+    ----------
+    sim_cfg : dict[str, Any]
+        Scenario simulation config.
+
+    Returns
+    -------
+    str
+        Normalized FMU type (`cs` or `me`).
 
     Raises
     ------
-    FileNotFoundError
-        If a provided local file path does not exist.
+    ValueError
+        If the type is unsupported.
     """
-    for key in ("fmu_path", "mo_path", "model_path", "model_file"):
-        value = model_identity.get(key)
+    fmu_type = str(sim_cfg.get("fmu_type", "cs")).strip().lower()
+    if fmu_type not in {"cs", "me"}:
+        raise ValueError(f"Unsupported fmu_type '{fmu_type}'. Expected 'cs' or 'me'.")
+    return fmu_type
+
+
+def _validate_time_config(sim_cfg: dict[str, Any]) -> tuple[float, float, float, float]:
+    """
+    Validate and normalize simulation time settings.
+
+    Parameters
+    ----------
+    sim_cfg : dict[str, Any]
+        Scenario simulation config.
+
+    Returns
+    -------
+    tuple[float, float, float, float]
+        `(t0, tf, dt, tol)`
+
+    Raises
+    ------
+    ValueError
+        If time settings are invalid.
+    """
+    t0 = float(sim_cfg.get("t0", 0.0))
+    tf = float(sim_cfg.get("tf", 1.0))
+    dt = float(sim_cfg.get("dt", 0.01))
+    tol = float(sim_cfg.get("tol", 1.0e-6))
+
+    if tf < t0:
+        raise ValueError(f"Invalid time range: tf ({tf}) < t0 ({t0}).")
+    if dt <= 0.0:
+        raise ValueError(f"dt must be positive, got {dt}.")
+    if tol <= 0.0:
+        raise ValueError(f"tol must be positive, got {tol}.")
+
+    return t0, tf, dt, tol
+
+
+def _resolve_fmu_path(component_cfg: dict[str, Any]) -> Path:
+    """
+    Resolve the FMU artifact path from a component config.
+
+    Parameters
+    ----------
+    component_cfg : dict[str, Any]
+        Single component configuration.
+
+    Returns
+    -------
+    Path
+        Resolved existing FMU path.
+
+    Raises
+    ------
+    ValueError
+        If no supported path field is present.
+    FileNotFoundError
+        If the resolved path does not exist.
+    ValueError
+        If the resolved file is not an FMU.
+    """
+    for key in _COMPONENT_PATH_KEYS:
+        value = component_cfg.get(key)
         if not value:
             continue
 
         path = Path(value)
         if not path.exists():
-            raise FileNotFoundError(f"Model file not found for '{key}': {path}")
+            raise FileNotFoundError(f"FMU artifact not found for '{key}': {path}")
+
+        if path.suffix.lower() != ".fmu":
+            raise ValueError(
+                f"Single-FMU executor expects an FMU artifact, but '{key}' "
+                f"resolved to a non-FMU path: {path}"
+            )
+
+        return path
+
+    raise ValueError(
+        "Single component must contain an FMU artifact path in one of: "
+        f"{', '.join(_COMPONENT_PATH_KEYS)}"
+    )
+
+
+def _resolve_output_names(
+    model_description: Any,
+    component_cfg: dict[str, Any],
+) -> list[str]:
+    """
+    Resolve which variables to record as outputs.
+
+    Resolution order
+    ----------------
+    1. `component_cfg["outputs"]` if explicitly provided,
+    2. model variables with causality == "output",
+    3. empty list if none found.
+
+    Parameters
+    ----------
+    model_description : Any
+        FMPy model description object.
+    component_cfg : dict[str, Any]
+        Single component configuration.
+
+    Returns
+    -------
+    list[str]
+        Output variable names.
+    """
+    explicit = component_cfg.get("outputs")
+    if isinstance(explicit, list) and explicit:
+        return [str(x) for x in explicit]
+
+    output_names: list[str] = []
+    for var in model_description.modelVariables:
+        if getattr(var, "causality", None) == "output":
+            output_names.append(var.name)
+
+    return output_names
+
+
+def _resolve_start_values(component_cfg: dict[str, Any]) -> dict[str, Any]:
+    """
+    Extract FMU start values from the component config.
+
+    Supported aliases
+    -----------------
+    - `start_values`
+    - `parameters`
+
+    Parameters
+    ----------
+    component_cfg : dict[str, Any]
+        Single component configuration.
+
+    Returns
+    -------
+    dict[str, Any]
+        Start-value dictionary.
+    """
+    start_values = component_cfg.get("start_values")
+    if isinstance(start_values, dict):
+        return dict(start_values)
+
+    parameters = component_cfg.get("parameters")
+    if isinstance(parameters, dict):
+        return dict(parameters)
+
+    return {}
+
+
+def _structured_to_dict_array(result: Any) -> dict[str, list[Any]]:
+    """
+    Convert FMPy structured simulation result into a JSON-friendly dict.
+
+    Parameters
+    ----------
+    result : Any
+        Return value from `simulate_fmu(...)`, typically a structured NumPy array.
+
+    Returns
+    -------
+    dict[str, list[Any]]
+        Mapping from field name to Python list.
+    """
+    if result is None:
+        return {}
+
+    dtype = getattr(result, "dtype", None)
+    names = getattr(dtype, "names", None)
+    if not names:
+        return {}
+
+    outputs: dict[str, list[Any]] = {}
+    for name in names:
+        outputs[name] = result[name].tolist()
+    return outputs
+
+
+def _simulate_with_fmpy(
+    fmu_path: Path,
+    *,
+    t0: float,
+    tf: float,
+    dt: float,
+    tol: float,
+    fmu_type: str,
+    component_cfg: dict[str, Any],
+) -> dict[str, Any]:
+    """
+    Execute an FMU using FMPy.
+
+    Parameters
+    ----------
+    fmu_path : Path
+        FMU artifact path.
+    t0 : float
+        Start time.
+    tf : float
+        Final time.
+    dt : float
+        Communication / output step size.
+    tol : float
+        Solver tolerance.
+    fmu_type : str
+        `cs` or `me`.
+    component_cfg : dict[str, Any]
+        Single component configuration.
+
+    Returns
+    -------
+    dict[str, Any]
+        Output dictionary with time and recorded variables.
+    """
+    model_description = read_model_description(str(fmu_path))
+    output_names = _resolve_output_names(model_description, component_cfg)
+    start_values = _resolve_start_values(component_cfg)
+
+    result = simulate_fmu(
+        filename=str(fmu_path),
+        start_time=t0,
+        stop_time=tf,
+        step_size=dt,
+        output_interval=dt,
+        record_events=True,
+        start_values=start_values if start_values else None,
+        output=output_names if output_names else None,
+        solver="CVode" if fmu_type == "me" else None,
+        relative_tolerance=tol,
+        fmi_type="ModelExchange" if fmu_type == "me" else "CoSimulation",
+    )
+
+    outputs = _structured_to_dict_array(result)
+
+    time_values = outputs.pop("time", None)
+    if time_values is None:
+        raise RuntimeError("FMPy result did not contain a 'time' field.")
+
+    return {
+        "time": time_values,
+        "outputs": outputs,
+        "output_names": output_names,
+        "start_values": start_values,
+        "model_description": model_description,
+    }
 
 
 def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
     """
-    Execute a single-model simulation scenario.
+    Execute a single-component FMU scenario.
 
     Parameters
     ----------
     scn : dict[str, Any]
-        Fully loaded scenario dictionary.
+        Fully loaded and already materialized scenario dictionary.
 
     Returns
     -------
@@ -157,55 +471,68 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
     ValueError
         If required configuration is missing or invalid.
     FileNotFoundError
-        If configured local model artifacts do not exist.
+        If the FMU artifact does not exist.
 
     Notes
     -----
-    Despite the function name, this executor now supports topology resolution
-    from either FMU identity fields or Modelica identity fields. The actual
-    backend implementation can later branch on these fields as needed.
+    This executor is intentionally open-loop and single-component only.
+
+    Assumptions
+    -----------
+    - `sim.composition` is conceptually `single`,
+    - `system.components` contains exactly one component,
+    - that component already resolves to an FMU artifact,
+    - backend is currently `fmu-fmpy`.
     """
-    model_cfg = scn.get("model")
-    if not isinstance(model_cfg, dict) or not model_cfg:
-        raise ValueError("Single-model scenario must contain a non-empty 'model' section.")
+    sim_cfg = _get_sim_cfg(scn)
+    component_cfg = _get_single_component(scn)
 
-    model_identity = _extract_model_identity(model_cfg)
-    _validate_optional_existing_paths(model_identity)
-
-    start_time = float(model_cfg.get("start_time", scn.get("sim", {}).get("start_time", 0.0)))
-    stop_time = float(model_cfg.get("stop_time", scn.get("sim", {}).get("stop_time", 1.0)))
-    step_size = float(model_cfg.get("step_size", scn.get("sim", {}).get("step_size", 0.1)))
-
-    if stop_time < start_time:
+    backend = _resolve_backend(sim_cfg)
+    if backend != "fmu-fmpy":
         raise ValueError(
-            f"Invalid time range: stop_time ({stop_time}) < start_time ({start_time})."
+            f"Unsupported backend '{backend}' for single FMU execution. "
+            "Currently supported backend: 'fmu-fmpy'."
         )
-    if step_size <= 0.0:
-        raise ValueError(f"step_size must be positive, got {step_size}.")
 
-    t_wall_0 = time.time()
+    fmu_type = _resolve_fmu_type(sim_cfg)
+    t0, tf, dt, tol = _validate_time_config(sim_cfg)
+    fmu_path = _resolve_fmu_path(component_cfg)
 
-    # ------------------------------------------------------------------
-    # Placeholder execution logic
-    # Replace this block with the actual runtime backend.
-    # ------------------------------------------------------------------
-    n_steps = int(round((stop_time - start_time) / step_size)) + 1
-    time_grid = [start_time + i * step_size for i in range(n_steps)]
+    wall_t0 = time.time()
+
+    sim_result = _simulate_with_fmpy(
+        fmu_path=fmu_path,
+        t0=t0,
+        tf=tf,
+        dt=dt,
+        tol=tol,
+        fmu_type=fmu_type,
+        component_cfg=component_cfg,
+    )
+
+    wall_time_sec = time.time() - wall_t0
 
     return {
         "status": "success",
-        "topology": "single_fmu",
-        "model": {
-            **model_cfg,
-            **model_identity,
+        "composition": "single",
+        "backend": backend,
+        "fmu_type": fmu_type,
+        "component": {
+            **component_cfg,
+            "resolved_fmu_path": str(fmu_path),
         },
-        "time": time_grid,
-        "outputs": {},
+        "time": sim_result["time"],
+        "outputs": sim_result["outputs"],
         "metadata": {
-            "start_time": start_time,
-            "stop_time": stop_time,
-            "step_size": step_size,
-            "wall_time_sec": time.time() - t_wall_0,
+            "t0": t0,
+            "tf": tf,
+            "dt": dt,
+            "tol": tol,
+            "wall_time_sec": wall_time_sec,
             "executor": "run_single_fmu_open_loop",
+            "recorded_outputs": sim_result["output_names"],
+            "applied_start_values": sim_result["start_values"],
+            "model_name": getattr(sim_result["model_description"], "modelName", None),
+            "fmi_version": getattr(sim_result["model_description"], "fmiVersion", None),
         },
     }

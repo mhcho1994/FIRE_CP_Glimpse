@@ -1,6 +1,7 @@
 """
-fmi2_cs.py
-==========
+cp_glimpse_py.backend.fmi2_cs
+=======
+
 
 FMI 2.0 Co-Simulation backend for CP-Glimpse.
 
