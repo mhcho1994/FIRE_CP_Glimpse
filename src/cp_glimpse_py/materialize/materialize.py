@@ -32,20 +32,22 @@ from __future__ import annotations
 import copy
 from typing import Any
 
-from ..common.logging import get_logger
-from ..translator.to_fmu import build_fmu
+from ..common import get_logger
+from ..translator import build_fmu
 
 log = get_logger(__name__)
 
 
-def materialize_single_component_scenario(scn: dict[str, Any]) -> dict[str, Any]:
+def materialize_single_component_scenario(scn: dict[str, Any], backend:str) -> dict[str, Any]:
     """
-    Materialize a single-component scenario into a runnable FMU-backed form.
+    Materialize a single-component scenario into a runnable artifact form.
 
     Parameters
     ----------
     scn : dict[str, Any]
-        Scenario dictionary.
+        Input scenario. This function does not mutate the original scenario.
+    backend : str
+        Resolved simulation backend string.
 
     Returns
     -------
@@ -60,29 +62,50 @@ def materialize_single_component_scenario(scn: dict[str, Any]) -> dict[str, Any]
     """
     scn_mutable = copy.deepcopy(scn)
 
-    system_cfg = scn_mutable.get("system", {}) or {}
-    components = system_cfg.get("components")
+    if not backend.startswith("fmu"):
+        log.warning(
+            "[cp_glimpse_py.materialize.materialize] Backend '%s' is not FMU-based, " \
+            "which is currently not supported by single-run experiment. " \
+            "Returning scenario without materialization.", backend
+            )
+        return scn_mutable      # TODO: currently only FMU backends are supported. In the future, we may want to condition this logic on the backend type.
 
-    if not isinstance(components, list) or len(components) != 1:
+    components = scn_mutable.get("system",{}).get("components",{})
+
+    if not isinstance(components, list) or not components:
+        log.error(
+            "[cp_glimpse_py.materialize.materialize] Single-component scenario must contain a non-empty 'system.components' section with a list of model entries."
+        )
         raise ValueError(
-            "materialize_single_component_scenario() requires exactly one "
-            "entry under 'system.components'."
+            "[cp_glimpse_py.materialize.materialize] Single-component scenario must contain a non-empty 'system.components' section."
         )
 
-    component = components[0]
-    if not isinstance(component, dict):
-        raise ValueError("The single component entry must be a dictionary.")
+    if len(components) != 1:
+        log.warning(
+            "[cp_glimpse_py.materialize.materialize] Single-component scenario must contain exactly one component entry under "
+            "'system.components'. Found %d entries and run only the first entry", len(components)
+        )
 
+    component_idx, component = next(iter(enumerate(components)))
+    if not isinstance(component, dict):
+        log.error(
+            "[cp_glimpse_py.materialize.materialize] Component entry %d is not a dictionary.", component_idx
+        )
+        raise ValueError(
+            f"[cp_glimpse_py.materialize.materialize] Component entry '{component_idx}' must be a dictionary."
+        )
+    
     model_path = component.get("model_path") or component.get("fmu_path")
     if not model_path:
-        raise KeyError("Single component must define 'model_path' or 'fmu_path'.")
+        log.error("[cp_glimpse_py.materialize.materialize] Component entry %d is missing required key 'model_path' or 'fmu_path'.", component_idx)
+        raise KeyError(f"[cp_glimpse_py.materialize.materialize] Component entry '{component_idx}' is missing required key 'model_path' or 'fmu_path'.")
 
     sim_cfg = scn_mutable.get("sim", {}) or {}
-    fmu_type = str(component.get("fmu_type", sim_cfg.get("fmu_type", "cs"))).lower()
+    fmu_type = str(component.get("fmu_type", sim_cfg.get("fmu_type", "me"))).lower()
 
     artifact = build_fmu(
         source_path=model_path,
-        class_name=component.get("class_name"),
+        class_name=component.get("class_name", None),
         fmu_type=fmu_type,
     )
 

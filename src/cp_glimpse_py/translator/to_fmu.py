@@ -49,14 +49,6 @@ artifact.fmu_path -> ready-to-use FMU file
 artifact.work_dir -> artifact directory containing logs/ and intermediates
 artifact.key      -> deterministic cache key
 artifact.source   -> translator backend identifier
-
-Public API
-----------
-- build_fmu
-
-Private helpers
-----------------
-- TBF
 """
 
 from __future__ import annotations
@@ -379,11 +371,9 @@ def _reuse_existing_fmu(
     ----------
     fmu_path : str | Path
         Path to an existing FMU file.
-
     class_name : str | None, optional
         Optional explicit model name. When omitted, the FMU model name is
         inferred from ``modelDescription.xml`` if possible.
-
     fmu_type : str | None, optional
         Reserved for interface symmetry with generated artifacts. Currently it
         is not used for pass-through reuse.
@@ -399,8 +389,10 @@ def _reuse_existing_fmu(
         If the provided path does not point to an ``.fmu`` file.
     """
     path = _normalize_source_path(fmu_path)
+
     if path.suffix.lower() != ".fmu":
-        raise ValueError(f"Expected an .fmu path, got: {path}")
+        log.error("[cp_glimpse_py.translator.to_fmu] Expected an .fmu path, got: %s", path)
+        raise ValueError(f"[cp_glimpse_py.translator.to_fmu] Expected an .fmu path, got: {path}")
 
     resolved_name = _resolve_source_class_name(source_path=path, class_name=class_name)
     key = model_artifact_key(mo_path=path, class_name=resolved_name, fmu_type=fmu_type or "reuse")
@@ -621,14 +613,12 @@ def build_fmu(
     ----------
     source_path : str | Path
         Path to a supported source artifact.
-
     class_name : str | None, optional
         Explicit class/model name. When omitted, the translator tries to infer
         it where feasible.
-
     fmu_type : str, optional
-        Requested FMU flavor. Typical values are ``"me"`` and ``"cs"``.
-        For pass-through ``.fmu`` inputs this value is currently accepted for
+        Requested FMU flavor. Typical values are "me" and "cs".
+        For pass-through .fmu inputs this value is currently accepted for
         API symmetry and future extensibility.
 
     Returns

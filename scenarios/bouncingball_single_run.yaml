@@ -15,7 +15,7 @@ system:
       # (required) model specification; at least one of model_path or artifact_path must be provided
       model_path: models/hybrid_benchmarks/BouncingBall.mo
       class_name: BouncingBall      # (optional) for .mo, can be auto-detected
-      artifact_path: null           # (optional) prebuilt FMU path; if set, may bypass translation
+      _artifact: null               # (optional) prebuilt FMU path; if set, may bypass translation
 
       # (optional) execution / translation hints
       translator:

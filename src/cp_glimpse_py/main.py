@@ -12,8 +12,8 @@ from __future__ import annotations
 
 import argparse
 
-from .common.logging import setup_logging
-from .simulation.run import run_simulation
+from .common import setup_logging
+from .simulation import run_simulation
 
 
 def main() -> None:
