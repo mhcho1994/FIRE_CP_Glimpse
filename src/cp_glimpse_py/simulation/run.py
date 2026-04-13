@@ -22,47 +22,21 @@ Composition can be resolved in two ways.
    `sim.composition` is set to something other than "auto".
 
 2. Inferred:
-   The dispatcher inspects:
-   - 'model'
-   - 'models'
-   and checks whether they contain actual model identity fields such as:
-   - fmu_path
-   - mo_path
-   - class_name
-   - model_path
-   - model_file
-   - uri
+   The dispatcher inspects `system.components`.
 
 Inference rules
 ---------------
-- 'models' & contains one or more valid model entries -> multi-fmu
-- 'model' & contains model identity information -> single_fmu
+- one valid component  -> single
+- two or more          -> multi
 - otherwise: resolution fails with an error
 
 Experiment resolution
 ---------------------
 - sim.experiment == "montecarlo" -> Monte-Carlo run
-- sim.experiment == "single_run" -> single run
+- sim.experiment == "single" -> single run
 - sim.experimenht == "sensitivity" -> TODO: implement this experiment type
 - sim.experiment == "sweep": TODO: implement this experiment type
-- sim.experiment not provided: default to "single_run"
-
-Public API
-----------
-- run_simulation
-- run_simulation_from_dict
-
-Private helpers
-----------------
-- _has_model_identity
-- _count_valid_models
-- _resolve_experiment
-- _resolve_composition
-- _resolve_backend
-- _json_ready
-- _default_output_dir
-- _save_json
-- _build_summary
+- sim.experiment not provided: default to "single"
 """
 
 from __future__ import annotations
@@ -86,6 +60,8 @@ log = get_logger(__name__)
 _MODEL_HINT_KEYS = (
     "class_name",
     "model_path",
+    "fmu_path",
+    "artifact_path",
     "model_file",
     "uri",
 )
@@ -130,16 +106,22 @@ def _count_valid_models(models_cfg: Any) -> int:
     """
     if not isinstance(models_cfg, list):
         return 0
+    
     count = 0
     for _, model_cfg in enumerate(models_cfg):
         if _has_model_identity(model_cfg):
             count += 1
+    
     if count == 0:
         log.error(
             "[cp_glimpse_py.simulation.run] No valid model entries found in 'models'. "
             "Expected at least one entry with a recognizable model identity field."
         )
-        raise ValueError("No valid model entries found.")
+        raise ValueError(
+            "No valid model entries found in 'system.components'. "
+            f"Expected at least one entry with one of: {', '.join(_MODEL_HINT_KEYS)}"
+        )
+
     return count
 
 
@@ -167,7 +149,7 @@ def _resolve_experiment(scn: Scenario | dict[str, Any]) -> str:
 
     if experiment in {"single", "single_run"}:
         return "single"
-    if experiment in {"montecarlo", "mc", "monte_carlo"}:
+    if experiment in {"montecarlo", "monte_carlo"}:
         return "montecarlo"
 
     log.error("[cp_glimpse_py.simulation.run] Unsupported experiment type: %s", experiment)
@@ -202,23 +184,24 @@ def _resolve_composition(scn: Scenario | dict[str, Any]) -> str:
     sim_cfg = scn.get("sim", {}) or {}
     explicit = str(sim_cfg.get("composition", "auto")).lower()
 
-    system_cfg = scn.get("system", {}) or {}
-    components = system_cfg.get("components")
-    inferred = "single" if _count_valid_models(components) == 1 else "multi"
-
     if explicit not in {"single", "multi", "auto"}:
         log.error("[cp_glimpse_py.simulation.run] Unsupported sim.composition: %s", explicit)
         raise ValueError(f"Unsupported sim.composition: {explicit}")
-    
+
+    system_cfg = scn.get("system", {}) or {}
+    components = system_cfg.get("components")
+    n_components = _count_valid_models(components)
+    inferred = "single" if n_components == 1 else "multi"
+
     if explicit == "auto":
         return inferred
 
     if explicit != inferred:
         log.warning(
             "[cp_glimpse_py.simulation.run] sim.composition='%s' conflicts with "
-            "system.components count=%d (inferred: '%s').",
+            "system.components count=%d (inferred: '%s'). Using explicit value.",
             explicit,
-            _count_valid_models(components),
+            n_components,
             inferred
         )
     return explicit
@@ -247,7 +230,10 @@ def _resolve_backend(scn: Scenario | dict[str, Any]) -> str:
     log.error("[cp_glimpse_py.simulation.run] Could not resolve simulation backend. "
               "Provide sim.backend explicitly or use a valid backend. "
               f"Valid backends: {', '.join(_VALID_BACKENDS)}")
-    raise ValueError("Could not resolve simulation backend.")
+    raise ValueError(
+        "Could not resolve simulation backend. "
+        f"Valid backends: {', '.join(_VALID_BACKENDS)}"
+    )
 
 
 def _json_ready(obj: Any) -> Any:
@@ -277,7 +263,7 @@ def _json_ready(obj: Any) -> Any:
 
 def _default_output_dir(scn: dict[str, Any], scenario_path: Path | None = None) -> Path:
     """
-    Compute a default output directory for one simulation execution.
+    Get a default output directory for one simulation execution.
 
     Parameters
     ----------
@@ -313,12 +299,27 @@ def _default_output_dir(scn: dict[str, Any], scenario_path: Path | None = None) 
     if scenario_path is not None:
         scenario_stem = scenario_path.stem
 
+    # 여기 고칠 것
+    # paths = get_paths()
+    # results_root = getattr(paths, "results_runs", None)
+    # if results_root is None:
+    #     results_root = getattr(paths, "results", None)
+    # if results_root is None:
+    #     results_root = Path("results")
+
+    # results_root = Path(results_root)
+
+    # scenario_stem = "inline_scenario"
+    # if scenario_path is not None:
+    #     scenario_stem = scenario_path.stem
+
+
     return results_root / "simulation_runs" / scenario_stem
 
 
 def _save_json(data: Any, path: Path) -> None:
     """
-    Save a JSON artifact to disk.
+    Save a JSON artifact.
 
     Parameters
     ----------
@@ -334,11 +335,12 @@ def _save_json(data: Any, path: Path) -> None:
 def _build_summary(
     scn: dict[str, Any],
     scenario_path: Path | None,
-    topology: str,
+    composition: str,
     experiment: str,
     result: dict[str, Any],
     wall_time_sec: float,
 ) -> dict[str, Any]:
+
     """
     Build a compact summary artifact for quick inspection.
 
@@ -348,8 +350,8 @@ def _build_summary(
         Scenario dictionary.
     scenario_path : Path | None
         Scenario path if loaded from file.
-    topology : str
-        Resolved topology.
+    composition : str
+        Resolved composition.
     experiment : str
         Resolved experiment type.
     result : dict[str, Any]
@@ -364,16 +366,20 @@ def _build_summary(
     """
     summary: dict[str, Any] = {
         "status": result.get("status", "unknown"),
-        "topology": topology,
+        "composition": composition,
         "experiment": experiment,
         "wall_time_sec": wall_time_sec,
         "scenario_path": str(scenario_path) if scenario_path else None,
     }
 
-    if experiment == "single_run":
+    if experiment == "single":
         inner = result.get("result", {})
+        records = inner.get("records", [])
+        if not records and isinstance(inner.get("result"), dict):
+            records = inner["result"].get("records", []) or []
         summary["result_status"] = inner.get("status")
-        summary["n_time_points"] = len(inner.get("time", []) or [])
+        summary["n_time_points"] = len(records)
+
     elif experiment == "montecarlo":
         summary["n_runs"] = result.get("n_runs")
         summary["n_success"] = result.get("n_success")
@@ -385,7 +391,7 @@ def _build_summary(
     return summary
 
 
-def run_simulation_from_dict(
+def _run_simulation_from_dict(
     scn: Scenario | dict[str, Any],
     *,
     scenario_path: Path | None = None,
@@ -434,18 +440,21 @@ def run_simulation_from_dict(
 
     result = _json_ready(result_obj)
     wall_time_sec = time.time() - t_wall_0
-
     result.setdefault("metadata", {})
     result["metadata"]["dispatch_wall_time_sec"] = wall_time_sec
     result["metadata"]["resolved_composition"] = composition
     result["metadata"]["resolved_experiment"] = experiment
+    result["metadata"]["resolved_backend"] = backend
 
     if save_results:
-        out_dir = Path(output_dir) if output_dir is not None else _default_output_dir(scn, scenario_path)
+        out_dir = Path(output_dir) if output_dir is not None else _default_output_dir(
+            scn, scenario_path
+        )
+
         summary = _build_summary(
             scn=scn,
             scenario_path=scenario_path,
-            topology=topology,
+            composition=composition,
             experiment=experiment,
             result=result,
             wall_time_sec=wall_time_sec,
@@ -453,14 +462,13 @@ def run_simulation_from_dict(
 
         _save_json(result, out_dir / "result.json")
         _save_json(summary, out_dir / "summary.json")
-
-        # Save the resolved scenario alongside artifacts for reproducibility.
         _save_json(scn, out_dir / "scenario_resolved.json")
 
         result["artifact_dir"] = str(out_dir)
         log.info("Saved simulation artifacts to: %s", out_dir)
 
     return result
+
 
 
 def run_simulation(
@@ -509,7 +517,7 @@ def run_simulation(
         scenario_path = Path(scenario)
         scn = load_scenario(scenario_path)
 
-    return run_simulation_from_dict(
+    return _run_simulation_from_dict(
         scn,
         scenario_path=scenario_path,
         save_results=save_results,

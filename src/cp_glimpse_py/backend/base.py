@@ -1,6 +1,6 @@
 """
 cp_glimpse_py.backend.base
-=======
+==========================
 
 Abstract backend interface for CP-Glimpse simulation backends.
 
@@ -11,7 +11,7 @@ common API.
 Typical backend responsibilities
 --------------------------------
 A backend should:
-- build or load a model artifact
+- load or attach to an already-prepared executable artifact
 - initialize the runtime
 - expose discovered interface metadata
 - apply inputs

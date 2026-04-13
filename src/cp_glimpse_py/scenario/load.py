@@ -1,4 +1,7 @@
 """
+cp_glimpse_py.scenario.load
+=======
+
 Scenario loading utilities.
 
 This module defines the scenario container used across CP Glimpse and
@@ -9,13 +12,15 @@ Purpose
 Scenario configuration files are the main user-facing way to describe
 a simulation run. They may include:
 - simulation settings under `sim`,
-- a single model under `model`,
-- multiple coupled models under `models`,
-- parameter overrides under `params`,
-- attack settings under `attack`,
-- output configuration under `output`,
-- Monte Carlo settings under `montecarlo`,
-- inter-model wiring under `connections`.
+- system/component structure under `system.components`,
+- inter-component wiring under `system.connections`,
+- initialization values under `initialization`,
+- input profiles under `inputs`,
+- parameter overrides under `parameters`,
+- disturbances under `disturbances`,
+- output selection under `outputs`,
+- validation checks under `validation`,
+- metadata such as scenario name under `metadata`.
 
 This module provides two things:
 
@@ -42,21 +47,19 @@ Normalization behavior
 ----------------------
 When a scenario is loaded, optional top-level sections are normalized so
 downstream code can safely assume they exist. For example:
-- `sim` defaults to `{}`,
-- `params` defaults to `{}`,
-- `attack` defaults to `{"scenario": 0}`,
-- `output` defaults to `{}`,
-- `montecarlo` defaults to `{}`,
-- `connections` defaults to `[]`,
-- `model` defaults to `{}`,
-- `models` defaults to `{}`.
-
-This normalization avoids repetitive missing-key checks in execution code.
+- `sim` defaults to `{experiment: "single", composition: "auto", backend: "auto", start_time: 0.0, stop_time: 1.0, step_size: 0.01, tolerance: 1e-6}`,
+- `system` defaults to `{components: [], connections: []}`,
+- `initialization` defaults to `[],
+- `inputs` defaults to `[]`,
+- `parameters` defaults to `[]`,
+- `disturbances` defaults to `[]`,
+- `outputs` defaults to `{log: [], save_dir: "results", save_name: "run", save_log: False, log_format: "csv", save_metadata: False}`,
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from logging import log
 from pathlib import Path
 from typing import Any, Iterator
 import yaml
@@ -69,26 +72,12 @@ class Scenario:
     """
     Thin dict-like wrapper around a loaded scenario configuration.
 
-    Purpose
-    -------
-    This class preserves convenient attribute-style access for common
-    scenario sections such as `sim`, `model`, and `params`, while also
-    supporting dictionary-style methods like `.get(...)`, `.keys()`,
-    and item access `scn["sim"]`.
-
     Why this exists
     ---------------
     Some parts of the codebase treat the loaded scenario as a structured
     object with properties, while others treat it as a plain dictionary.
     This wrapper supports both styles so that callers do not need to care
     whether the underlying representation is a dataclass or a dict.
-
-    Notes
-    -----
-    - `raw` stores the original normalized scenario dictionary.
-    - Missing optional sections are normalized during loading.
-    - Missing required sections such as `sim` are also defaulted to an empty
-      dictionary so downstream code can safely call `scn.get("sim", {})`.
     """
 
     raw: dict[str, Any] = field(default_factory=dict)
@@ -96,18 +85,6 @@ class Scenario:
     # ------------------------------------------------------------------
     # Common scenario sections
     # ------------------------------------------------------------------
-    @property
-    def models(self) -> dict[str, Any]:
-        """
-        Return the multi-model section.
-
-        Returns
-        -------
-        dict[str, Any]
-            Scenario `models` section, or an empty dict if absent.
-        """
-        return self.raw.get("models", {})
-
     @property
     def sim(self) -> dict[str, Any]:
         """
@@ -121,64 +98,88 @@ class Scenario:
         return self.raw.get("sim", {})
 
     @property
-    def parameters(self) -> dict[str, Any]:
+    def system(self) -> dict[str, Any]:
+        """
+        Return the system configuration section.
+
+        Returns
+        -------
+        dict[str, Any]
+            Scenario `system` section, or an empty dict if absent.
+        """
+        return self.raw.get("system", {})
+
+    @property
+    def initialization(self) -> list[dict[str, Any]]:
+        """
+        Return the initialization section.
+
+        Returns
+        -------
+        list[dict[str, Any]]
+            Scenario `initialization` section, or an empty list if absent.
+        """
+        return self.raw.get("initialization", [])
+
+    @property
+    def inputs(self) -> list[dict[str, Any]]:
+        """
+        Return the Monte Carlo configuration section.
+
+        Returns
+        -------
+        list[dict[str, Any]]
+            Scenario `inputs` section, or an empty list if absent.
+        """
+        return self.raw.get("inputs", [])
+
+    @property
+    def parameters(self) -> list[dict[str, Any]]:
         """
         Return the parameter section.
 
         Returns
         -------
-        dict[str, Any]
-            Scenario `params` section, or an empty dict if absent.
+        list[dict[str, Any]]
+            Scenario `parameters` section, or an empty list if absent.
         """
-        return self.raw.get("params", {})
+        return self.raw.get("parameters", [])
 
     @property
-    def attack(self) -> dict[str, Any]:
-        """
-        Return the attack configuration section.
-
-        Returns
-        -------
-        dict[str, Any]
-            Scenario `attack` section, defaulting to `{"scenario": 0}`.
-        """
-        return self.raw.get("attack", {"scenario": 0})
-
-    @property
-    def output(self) -> dict[str, Any]:
+    def outputs(self) -> dict[str, Any]:
         """
         Return the output configuration section.
 
         Returns
         -------
         dict[str, Any]
-            Scenario `output` section, or an empty dict if absent.
+            Scenario `outputs` section, or an empty dict if absent.
         """
-        return self.raw.get("output", {})
+        return self.raw.get("outputs", {})
 
     @property
-    def montecarlo(self) -> dict[str, Any]:
+    def validation(self) -> dict[str, Any]:
         """
-        Return the Monte Carlo configuration section.
+        Return the validation configuration section.
 
         Returns
         -------
         dict[str, Any]
-            Scenario `montecarlo` section, or an empty dict if absent.
+            Scenario `validation` section, or an empty dict if absent.
         """
-        return self.raw.get("montecarlo", {})
-
+        return self.raw.get("validation", {})
+    
     @property
-    def connections(self) -> list[dict[str, Any]]:
+    def metadata(self) -> dict[str, Any]:
         """
-        Return the model connection list for multi-model scenarios.
+        Return the metadata configuration section.
 
         Returns
         -------
-        list[dict[str, Any]]
-            Scenario `connections` section, or an empty list if absent.
+        dict[str, Any]
+            Scenario `metadata` section, or an empty dict if absent.
         """
-        return self.raw.get("connections", [])
+        return self.raw.get("metadata", {})
 
     # ------------------------------------------------------------------
     # Dict-like compatibility layer
@@ -351,16 +352,25 @@ def load_scenario(path: str | Path) -> Scenario:
     # ------------------------------------------------------------------
     # Normalize commonly expected top-level sections
     # ------------------------------------------------------------------
-    raw.setdefault("sim", {})
-    raw.setdefault("params", {})
-    raw.setdefault("attack", {"scenario": 0})
-    raw.setdefault("output", {})
-    raw.setdefault("montecarlo", {})
-    raw.setdefault("connections", [])
-
-    # Do not force both `model` and `models` to exist with non-empty values,
-    # but normalize their presence so callers can safely access them.
-    raw.setdefault("model", {})
-    raw.setdefault("models", {})
+    raw.setdefault("sim", 
+                   {"experiment": "single", 
+                    "composition": "auto", 
+                    "backend": "auto", 
+                    "start_time": 0.0, 
+                    "stop_time": 1.0, 
+                    "step_size": 0.01, 
+                    "tolerance": 1e-6})
+    raw.setdefault("system", {"components": [], "connections": []})
+    raw.setdefault("initialization", [])
+    raw.setdefault("inputs", [])
+    raw.setdefault("parameters", [])
+    raw.setdefault("disturbances", [])
+    raw.setdefault("output", 
+                   {"log": [], 
+                    "save_dir": "results", 
+                    "save_name": "run", 
+                    "save_log": False, 
+                    "log_format": "csv", 
+                    "save_metadata": False})
 
     return Scenario(raw=raw)

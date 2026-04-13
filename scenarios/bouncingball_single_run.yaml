@@ -1,31 +1,141 @@
 sim:
-  experiment: single                                    # TODO: support more experiment types (e.g., parameter sweep, optimization, sensitivity analysis, etc.)
-  composition: auto                                   
-  backend: fmu-fmpy
-  fmu_type: cs
-  t0: 0.0
-  tf: 1.0
-  dt: 0.01
-  tol: 1.0e-6
+  experiment: single                # single, sweep, montecarlo, optimization, ...
+  composition: auto                 # auto | single | multi
+  backend: fmu-fmpy                 # ex) fmu-fmpy, fmu-pyfmi, direct-modelica, ...
+  fmu_type: cs                      # cs | me, only for fmu backends
+  start_time: 0.0
+  stop_time: 1.0
+  step_size: 0.01
+  tolerance: 1.0e-6
+  seed: 12345                       # (optional) random seed for reproducibility
 
 system:
   components:
-    - name: bouncing_ball
+    - name: bouncingball
+      # (required) model specification; at least one of model_path or artifact_path must be provided
       model_path: models/hybrid_benchmarks/BouncingBall.mo
+      class_name: BouncingBall      # (optional) for .mo, can be auto-detected
+      artifact_path: null           # (optional) prebuilt FMU path; if set, may bypass translation
 
-connections:
+      # (optional) execution / translation hints
+      translator:
+        target: fmu                 # future-proof: fmu | other targets
+        rebuild: false              # if true, force rebuild even when cached artifact exists
+        keep_temp: false            # keep intermediate translation/build directory
+        extra_args: {}              # reserved for translator-specific arguments
 
+      # (optional) per-component defaults
+      runtime:
+        step_size: null             # (optional) override; otherwise sim.dt
+        start_time: null            # (optional) override; otherwise sim.t0
+        stop_time: null             # (optional) override; otherwise sim.tf
+
+      # (optional) metadata only; useful later for validation/UI
+      variable_roles:
+        states: ["h", "v"]
+        inputs: []
+        outputs: ["h", "v"]
+        parameters: []
+
+  connections: []
+  # Example for future multi-FMU use:
+  # connections:
+  #   - from: controller.u
+  #     to: plant.u
+  #   - from: plant.y
+  #     to: controller.y
 
 initialization:
+# Initial values / guesses applied before simulation starts.
+# For ME FMUs these often correspond to state initialization.
+# For CS FMUs they are typically set before exiting initialization mode.
+  - variable: bouncingball.h
+    value: 1.0
+  - variable: bouncingball.v
+    value: 0.0
 
-inputs:
+inputs: []
+# Time-varying exogenous signals or control commands.
+# Example signal forms can be standardized later.
+# Example:
+# - variable: plant.u
+#   signal:
+#     kind: constant
+#     value: 0.0
+#
+# - variable: plant.u
+#   signal:
+#     kind: piecewise_constant
+#     schedule:
+#       - t: 0.0
+#         value: 0.0
+#       - t: 0.5
+#         value: 1.0
+#
+# - variable: plant.u
+#   signal:
+#     kind: csv
+#     path: data/input.csv
+#     time_column: time
+#     value_column: u
 
-parameters:
+parameters: []
+# Example form:
+# parameters:
+#   - variable: bouncingball.e
+#     value: 0.8
 
-disturbances:
+disturbances: []
+# Disturbances are conceptually separate from nominal inputs,
+# even if they are implemented internally as additive input terms.
+# Example:
+# - variable: bouncingball.v
+#   injection:
+#     kind: offset
+#     value: 0.2
+#     t_start: 0.4
+#     t_end: 0.6
+#
+# - variable: plant.u
+#   injection:
+#     kind: gaussian_noise
+#     mean: 0.0
+#     std: 0.01
 
 outputs:
-  log: ["h", "v",]   # TODO: input/output variables name sanity check (vs. modelDescription.xml)
-  save_csv: false
-  out_dir: results/runs
-  run_name: bouncingball
+  # Variables to log during the run.
+  # Use fully qualified names to avoid ambiguity in multi-component cases.
+  log:
+    - bouncingball.h
+    - bouncingball.v
+
+  save_dir: results
+  save_name: bouncingball
+  save_log: true
+  log_format: csv
+  save_metadata: true
+
+  # (optional) file naming behavior
+  file_naming:
+    include_timestamp: false
+    include_backend: true
+    include_fmu_type: true
+
+  # (optional) derived / summary outputs
+  summary:
+    final_time: true
+    final_values: true
+    basic_stats: false              # min/max/mean if implemented later
+
+validation:
+  enabled: true
+  require_fully_qualified_names: true
+  check_variable_existence: true
+  check_connection_variables: true
+  check_duplicate_component_names: true
+  warn_unused_inputs: true
+  warn_unused_parameters: true
+
+metadata:
+  scenario_name: bouncing_ball_single_run
+  description: "Bouncing ball FMU scenario"

@@ -1,34 +1,52 @@
-# src/cp_glimpse_py/main.py
+"""
+cp_glimpse_py.main
+==================
+
+CLI entry point for CP-Glimpse.
+
+This module parses command-line arguments, configures project-wide logging,
+and dispatches scenario execution to the top-level simulation runner.
+"""
+
 from __future__ import annotations
+
 import argparse
 
-# from .common.logging import setup_logging
+from .common.logging import setup_logging
 from .simulation.run import run_simulation
 
+
 def main() -> None:
-    ap = argparse.ArgumentParser()
+    """
+    Run the CP-Glimpse CLI entry point.
+    """
+    ap = argparse.ArgumentParser(description="CP-Glimpse simulation runner")
     ap.add_argument(
         "--scenario",
         required=True,
-        help="Path to scenario yaml (e.g., scenarios/bouncingball_fmu.yaml)"
+        help="Path to scenario YAML (e.g., scenarios/bouncingball_fmu.yaml)",
     )
     ap.add_argument(
-        "--log-level", 
+        "--log-level",
         default="INFO",
-        help="Log level (e.g., scenarios/rover_fmu.yaml)"
+        help="Logging level (e.g., DEBUG, INFO, WARNING, ERROR).",
     )
     args = ap.parse_args()
 
-    # setup_logging(args.log_level)
+    setup_logging(args.log_level)
     run_simulation(args.scenario)
+    
+    # Test code for development:
     # run_simulation(run_simulation({
-    #         "models": {
-    #             "bouncing_ball": {
-    #                 "class_name": "BouncingBall",
-    #                 "model_path": "models/BouncingBall.mo",
-    #             }
+    #         "sim": {"experiment": "single_run"},
+    #         "system": {
+    #             "components": {
+    #                 "bouncing_ball": {
+    #                     "class_name": "BouncingBall",
+    #                     "model_path": "models/BouncingBall.mo",
+    #                 },
+    #             },
     #         },
-    #         "sim": {"experiment": "single_run"}
     #     }))
 
 if __name__ == "__main__":

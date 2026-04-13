@@ -3,6 +3,10 @@ cp_glimpse_py.simulation.experiments.single_run
 =================================
 Single-run experiment orchestration.
 
+This module sits above low-level executors. It materializes scenario model
+sources when needed, then dispatches execution to the appropriate executor.
+
+
 Purpose
 -------
 This module defines the experiment-level logic for executing exactly one

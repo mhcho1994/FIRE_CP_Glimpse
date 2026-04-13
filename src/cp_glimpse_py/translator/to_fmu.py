@@ -913,3 +913,19 @@ def build_fmu(
 #             pass
 
 #         raise
+
+
+def resolve_model_class_name(
+    *,
+    source_path: str | Path,
+    class_name: str | None = None,
+) -> str:
+    """
+    Public helper that resolves a model/class name from a supported source.
+
+    This is a thin public wrapper around the internal source-class-name resolver.
+    """
+    return _resolve_source_class_name(
+        source_path=source_path,
+        class_name=class_name,
+    )
