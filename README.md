@@ -14,6 +14,12 @@ To reproduce example simulation results, run:
 `examples/<platform>/main.py`
 Replace `<platform>` with the desired vehicle type (e.g., `GSdrone`, `NGCrover`).
 
+
+##### TODO:
+1. implement 'fmu-pyfmi' backend
+2. implement 'sweep', 'sensitivity' backend
+
+
 ### Cyber-Physical Co-Simulation of Drone and Rover via FMUs
 This repository provides **Python-based orchestration and co-simulation scripts** for **cyber-physical models of drones and rovers**. Each model is exported from **Modelica** as an **FMU (Functional Mock-up Unit)** and executed within a **Python simulation loop** that integrates control, sensing, communication, and fault/attack dynamics. The repository is part of the **CyPhER** framework for cyber-physical vulnerability analysis and **CP-Glimpse**, the low-fidelity simulation tool for proactive risk assessment.
 

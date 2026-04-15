@@ -34,20 +34,19 @@ def main() -> None:
     args = ap.parse_args()
 
     setup_logging(args.log_level)
-    run_simulation(args.scenario)
+    # run_simulation(args.scenario)
     
     # Test code for development:
-    # run_simulation(run_simulation({
-    #         "sim": {"experiment": "single_run"},
-    #         "system": {
-    #             "components": {
-    #                 "bouncing_ball": {
-    #                     "class_name": "BouncingBall",
-    #                     "model_path": "models/BouncingBall.mo",
-    #                 },
-    #             },
-    #         },
-    #     }))
+    run_simulation({
+            "sim": {"experiment": "single"},
+            "system": {
+                "components": [
+                    {"name": "bouncing_ball", 
+                     "class_name": "BouncingBall",
+                     "model_path": "models/BouncingBall.mo"}
+                ]
+            },
+        })
 
 if __name__ == "__main__":
     main()

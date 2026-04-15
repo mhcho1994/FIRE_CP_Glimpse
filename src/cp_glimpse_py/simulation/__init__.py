@@ -5,7 +5,7 @@ Simulation utilities exports
 """
 
 from .run import run_simulation
-from .experiments.single_run import run_single_experiment
+from .experiments.single_experiment import run_single_experiment
 from .executors.single_fmu import run_single_fmu_open_loop
 
 __all__ = [

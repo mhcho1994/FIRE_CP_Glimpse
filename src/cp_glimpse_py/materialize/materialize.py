@@ -64,8 +64,7 @@ def materialize_single_component_scenario(scn: dict[str, Any], backend:str) -> d
 
     if not backend.startswith("fmu"):
         log.warning(
-            "[cp_glimpse_py.materialize.materialize] Backend '%s' is not FMU-based, " \
-            "which is currently not supported by single-run experiment. " \
+            "Backend '%s' is not FMU-based, which is currently not supported by single-run experiment. " \
             "Returning scenario without materialization.", backend
             )
         return scn_mutable      # TODO: currently only FMU backends are supported. In the future, we may want to condition this logic on the backend type.
@@ -74,34 +73,39 @@ def materialize_single_component_scenario(scn: dict[str, Any], backend:str) -> d
 
     if not isinstance(components, list) or not components:
         log.error(
-            "[cp_glimpse_py.materialize.materialize] Single-component scenario must contain a non-empty 'system.components' section with a list of model entries."
+            "Single-component scenario must contain a non-empty 'system.components' section with a list of model entries."
         )
         raise ValueError(
-            "[cp_glimpse_py.materialize.materialize] Single-component scenario must contain a non-empty 'system.components' section."
+            "Single-component scenario must contain a non-empty 'system.components' section."
         )
 
     if len(components) != 1:
         log.warning(
-            "[cp_glimpse_py.materialize.materialize] Single-component scenario must contain exactly one component entry under "
+            "Single-component scenario must contain exactly one component entry under "
             "'system.components'. Found %d entries and run only the first entry", len(components)
         )
 
     component_idx, component = next(iter(enumerate(components)))
     if not isinstance(component, dict):
         log.error(
-            "[cp_glimpse_py.materialize.materialize] Component entry %d is not a dictionary.", component_idx
+            "Component entry %d is not a dictionary.", component_idx
         )
         raise ValueError(
-            f"[cp_glimpse_py.materialize.materialize] Component entry '{component_idx}' must be a dictionary."
+            f"Component entry '{component_idx}' must be a dictionary."
         )
     
     model_path = component.get("model_path") or component.get("fmu_path")
     if not model_path:
-        log.error("[cp_glimpse_py.materialize.materialize] Component entry %d is missing required key 'model_path' or 'fmu_path'.", component_idx)
-        raise KeyError(f"[cp_glimpse_py.materialize.materialize] Component entry '{component_idx}' is missing required key 'model_path' or 'fmu_path'.")
+        log.error("Component entry %d is missing required key 'model_path' or 'fmu_path'.", component_idx)
+        raise KeyError(f"Component entry '{component_idx}' is missing required key 'model_path' or 'fmu_path'.")
 
     sim_cfg = scn_mutable.get("sim", {}) or {}
     fmu_type = str(component.get("fmu_type", sim_cfg.get("fmu_type", "me"))).lower()
+
+            log.info("Materializing single-model artifact for backend '%s'", backend)
+
+
+
 
     artifact = build_fmu(
         source_path=model_path,

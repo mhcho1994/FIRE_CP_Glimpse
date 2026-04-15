@@ -50,12 +50,12 @@ def run_single_experiment(
     t_wall_0 = time.time()
 
     if composition == "single":
-        log.info("[cp_glimpse_py.simulation.experiments.single_run] Materializing single-model artifact for backend '%s'", backend)
-        runnable_scn = materialize_single_component_scenario(scn, backend)
-        exec_result = run_single_fmu_open_loop(runnable_scn)
+        if backend.startswith("fmu"):
+            runnable_scn = materialize_single_component_scenario(scn, backend)
+            exec_result = run_single_fmu_open_loop(runnable_scn)
 
     elif composition == "multi":
-        log.info("[cp_glimpse_py.simulation.experiments.single_run] Materializing multi-model artifacts for backend '%s'", backend)
+        log.info("Materializing multi-model artifacts for backend '%s'", backend)
         # TODO: implement multi-materialization
         runnable_scn = scn
         exec_result = run_multi_fmu_open_loop(runnable_scn)

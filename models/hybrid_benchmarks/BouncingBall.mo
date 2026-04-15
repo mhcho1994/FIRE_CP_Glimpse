@@ -29,8 +29,8 @@ model BouncingBall
   parameter Real h0 = 10.0 "Initial height [m]";
   parameter Real v0 = 0.0 "Initial velocity [m/s]";
 
-  Real h(start=h0) "Height above ground [m]";
-  Real v(start=v0) "Vertical velocity [m/s]";
+  output Real h(start=h0) "Height above ground [m]";
+  output Real v(start=v0) "Vertical velocity [m/s]";
 
 equation
   // Continuous flow map

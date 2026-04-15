@@ -15,7 +15,6 @@ system:
       # (required) model specification; at least one of model_path or artifact_path must be provided
       model_path: models/hybrid_benchmarks/BouncingBall.mo
       class_name: BouncingBall      # (optional) for .mo, can be auto-detected
-      _artifact: null               # (optional) prebuilt FMU path; if set, may bypass translation
 
       # (optional) execution / translation hints
       translator:
@@ -37,6 +36,10 @@ system:
         outputs: ["h", "v"]
         parameters: []
 
+    - name: bouncingball2
+      model_path: models/hybrid_benchmarks/BouncingBall.mo
+      class_name: BouncingBall
+
   connections: []
   # Example for future multi-FMU use:
   # connections:
@@ -45,14 +48,14 @@ system:
   #   - from: plant.y
   #     to: controller.y
 
-initialization:
+initialization: []
 # Initial values / guesses applied before simulation starts.
 # For ME FMUs these often correspond to state initialization.
 # For CS FMUs they are typically set before exiting initialization mode.
-  - variable: bouncingball.h
-    value: 1.0
-  - variable: bouncingball.v
-    value: 0.0
+# - variable: plant.x1
+#   value: 1.0
+# - variable: plant.x2
+#   value: 0.0
 
 inputs: []
 # Time-varying exogenous signals or control commands.
@@ -79,11 +82,15 @@ inputs: []
 #     time_column: time
 #     value_column: u
 
-parameters: []
-# Example form:
+parameters:
+# Parameters or model attributes that are set once before the simulation starts.
 # parameters:
-#   - variable: bouncingball.e
-#     value: 0.8
+- variable: c
+  value: 0.75
+- variable: h
+  value: 1.0
+- variable: v
+  value: 0.0
 
 disturbances: []
 # Disturbances are conceptually separate from nominal inputs,

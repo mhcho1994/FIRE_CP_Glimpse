@@ -33,6 +33,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any, Optional
+from pathlib import Path
 
 from fmpy.fmi2 import fmi2Discard, fmi2Error, fmi2OK, fmi2Warning
 
@@ -152,15 +153,17 @@ class FMI2CSBackend(SimulationBackend):
         """
         sim_cfg = sim_cfg or {}
 
-        model_path = component_cfg.get("model_path") or component_cfg.get("fmu_path")
-        if not model_path:
-            raise KeyError("Component must define 'model_path' or 'fmu_path'.")
+        model_path = component_cfg.get("model_path")
+        if not Path(model_path).exists():
+            msg = f"Component config is missing required 'model_path' field: {component_cfg.get('name') if 'name' in component_cfg else '<unnamed>'}"
+            log.error(msg)
+            raise KeyError(msg)
 
         artifact = BackendArtifact(
             kind="fmu",
             path=str(model_path),
             metadata={
-                "class_name": component_cfg.get("class_name"),
+                "class_name": component_cfg.get("class_name", None),
                 "fmu_type": str(sim_cfg.get("fmu_type", "cs")).lower(),
                 **(component_cfg.get("_artifact", {}) or {}),
             },

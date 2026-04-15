@@ -9,34 +9,9 @@ This module provides the main public entry points for the simulation package.
 
 It is responsible for:
 - loading a scenario from file or accepting a preloaded dictionary,
-- resolving simulation composition,
-- resolving experiment type,
+- resolving simulation composition, experiment type, backend,
 - dispatching execution,
 - saving results and summary artifacts.
-
-Composition resolution
-----------------------
-Composition can be resolved in two ways.
-
-1. Explicit:
-   `sim.composition` is set to something other than "auto".
-
-2. Inferred:
-   The dispatcher inspects `system.components`.
-
-Inference rules
----------------
-- one valid component  -> single
-- two or more          -> multi
-- otherwise: resolution fails with an error
-
-Experiment resolution
----------------------
-- sim.experiment == "montecarlo" -> Monte-Carlo run
-- sim.experiment == "single" -> single run
-- sim.experimenht == "sensitivity" -> TODO: implement this experiment type
-- sim.experiment == "sweep": TODO: implement this experiment type
-- sim.experiment not provided: default to "single"
 """
 
 from __future__ import annotations
@@ -49,188 +24,11 @@ import time
 
 from ..common import get_paths, get_logger
 from ..scenario import Scenario, load_scenario
+from ..scenario import resolve_composition, resolve_backend, resolve_experiment, count_valid_models
 from .experiments import run_single_experiment
 from .experiments import run_monte_carlo_experiment
 
 log = get_logger(__name__)
-
-_MODEL_HINT_KEYS = (
-    "class_name",
-    "model_path",
-    "fmu_path",
-    "artifact_path",
-    "model_file",
-    "uri",
-)
-
-_VALID_BACKENDS = (
-    "fmu-fmpy",
-    # "fmu-pyfmi",  # TODO: implement this backend
-)
-
-
-def _has_model_identity(model_cfg: Any) -> bool:
-    """
-    Return True if an object looks like a single model specification.
-
-    Parameters
-    ----------
-    model_cfg : Any
-        Candidate model configuration.
-
-    Returns
-    -------
-    bool
-        True if at least one recognizable model identity key is present
-        and non-empty.
-    """
-    return isinstance(model_cfg, dict) and any(model_cfg.get(k) for k in _MODEL_HINT_KEYS)
-
-
-def _count_valid_models(models_cfg: Any) -> int:
-    """
-    Count how many valid model entries exist in `models`.
-
-    Parameters
-    ----------
-    models_cfg : Any
-        Candidate multi-model configuration.
-
-    Returns
-    -------
-    int
-        Number of valid model entries.
-    """
-    if not isinstance(models_cfg, list):
-        return 0
-    
-    count = 0
-    for _, model_cfg in enumerate(models_cfg):
-        if _has_model_identity(model_cfg):
-            count += 1
-    
-    if count == 0:
-        log.error(
-            "[cp_glimpse_py.simulation.run] No valid model entries found in 'models'. "
-            "Expected at least one entry with a recognizable model identity field."
-        )
-        raise ValueError(
-            "No valid model entries found in 'system.components'. "
-            f"Expected at least one entry with one of: {', '.join(_MODEL_HINT_KEYS)}"
-        )
-
-    return count
-
-
-def _resolve_experiment(scn: Scenario | dict[str, Any]) -> str:
-    """
-    Resolve experiment type from scenario contents.
-
-    Parameters
-    ----------
-    scn : Scenario | dict[str, Any]
-        Scenario object or dictionary.
-
-    Returns
-    -------
-    str
-        Experiment type.
-
-    Raises
-    ------
-    ValueError
-        If experiment cannot be determined.
-    """
-    sim_cfg = scn.get("sim", {}) or {}
-    experiment = str(sim_cfg.get("experiment", "single")).lower()
-
-    if experiment in {"single", "single_run"}:
-        return "single"
-    if experiment in {"montecarlo", "monte_carlo"}:
-        return "montecarlo"
-
-    log.error("[cp_glimpse_py.simulation.run] Unsupported experiment type: %s", experiment)
-    raise ValueError(f"Unsupported experiment type: {experiment}")
-
-
-def _resolve_composition(scn: Scenario | dict[str, Any]) -> str:
-    """
-    Resolve simulation composition from scenario contents.
-
-    Resolution order
-    ----------------
-    1. If `sim.composition` is explicitly provided and not "auto", respect it.
-    2. If `system.components` contains one or more valid model definitions, determine "single" or "multi".
-    3. Otherwise raise an error.
-
-    Parameters
-    ----------
-    scn : Scenario | dict[str, Any]
-        Scenario object or dictionary.
-
-    Returns
-    -------
-    str
-        Resolved composition string.
-
-    Raises
-    ------
-    ValueError
-        If composition cannot be determined.
-    """
-    sim_cfg = scn.get("sim", {}) or {}
-    explicit = str(sim_cfg.get("composition", "auto")).lower()
-
-    if explicit not in {"single", "multi", "auto"}:
-        log.error("[cp_glimpse_py.simulation.run] Unsupported sim.composition: %s", explicit)
-        raise ValueError(f"Unsupported sim.composition: {explicit}")
-
-    system_cfg = scn.get("system", {}) or {}
-    components = system_cfg.get("components")
-    n_components = _count_valid_models(components)
-    inferred = "single" if n_components == 1 else "multi"
-
-    if explicit == "auto":
-        return inferred
-
-    if explicit != inferred:
-        log.warning(
-            "[cp_glimpse_py.simulation.run] sim.composition='%s' conflicts with "
-            "system.components count=%d (inferred: '%s'). Using explicit value.",
-            explicit,
-            n_components,
-            inferred
-        )
-    return explicit
-
-
-def _resolve_backend(scn: Scenario | dict[str, Any]) -> str:
-    """
-    Resolve simulation backend from scenario contents.
-
-    Parameters
-    ----------
-    scn : Scenario | dict[str, Any]
-        Scenario object or dictionary.
-
-    Returns
-    -------
-    str
-        Resolved backend string.
-    """
-    sim_cfg = scn.get("sim", {}) or {}
-    backend = str(sim_cfg.get("backend", "fmu-fmpy")).lower()
-
-    if backend in _VALID_BACKENDS:
-        return backend
-
-    log.error("[cp_glimpse_py.simulation.run] Could not resolve simulation backend. "
-              "Provide sim.backend explicitly or use a valid backend. "
-              f"Valid backends: {', '.join(_VALID_BACKENDS)}")
-    raise ValueError(
-        "Could not resolve simulation backend. "
-        f"Valid backends: {', '.join(_VALID_BACKENDS)}"
-    )
 
 
 def _json_ready(obj: Any) -> Any:
@@ -420,13 +218,13 @@ def _run_simulation_from_dict(
     """
     t_wall_0 = time.time()
 
-    experiment = _resolve_experiment(scn)
-    composition = _resolve_composition(scn)
-    backend = _resolve_backend(scn)
+    experiment = resolve_experiment(scn)
+    composition = resolve_composition(scn)
+    backend = resolve_backend(scn)
 
-    log.info("[cp_glimpse_py.simulation.run] Resolved simulation composition: %s", composition)
-    log.info("[cp_glimpse_py.simulation.run] Resolved experiment type: %s", experiment)
-    log.info("[cp_glimpse_py.simulation.run] Resolved simulation backend: %s", backend)
+    log.info("Resolved simulation composition: %s", composition)
+    log.info("Resolved experiment type: %s", experiment)
+    log.info("Resolved simulation backend: %s", backend)
 
     if experiment == "single":
         result_obj = run_single_experiment(scn, composition, backend)
@@ -498,13 +296,14 @@ def run_simulation(
 
     Run from dict:
         result = run_simulation({
-            "models": {
-                "bouncing_ball": {
-                    "mo_path": "models/BouncingBall.mo",
-                    "class_name": "BouncingBall"
-                }
+            "sim": {"experiment": "single"},
+            "system": {
+                "components": [
+                    {"name": "bouncing_ball", 
+                     "class_name": "BouncingBall",
+                     "model_path": "models/BouncingBall.mo"}
+                ]
             },
-            "sim": {"experiment": "single_run"}
         })
     """
     if isinstance(scenario, dict):
