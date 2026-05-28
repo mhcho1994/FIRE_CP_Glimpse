@@ -1,0 +1,253 @@
+# Nominal closed-loop GSQuad scenario translated from examples/GSdrone/dronesim.py.
+sim:
+  experiment: single
+  composition: auto
+  backend: fmu-pyfmi
+  fmu_type: me
+  t0: 0.0
+  tf: 10.0
+  dt: 0.1
+  tol: 1.0e-6
+  stepping:
+    order:
+      - mission_planner
+      - joystick
+      - controller
+      - quadrotor
+  show_solver_log: false
+  show_progress: true
+  progress_style: tqdm
+
+system:
+  components:
+    - name: quadrotor
+      class_name: GSQuad.Components.Quadrotor
+      model_path: models/MFQuadrotor.mo
+      fmu_type: me
+
+    - name: controller
+      class_name: GSQuad.Components.Controller
+      model_path: models/MFQuadrotor.mo
+      fmu_type: me
+
+    - name: mission_planner
+      class_name: GSQuad.Components.MissionPlanner
+      model_path: models/MFQuadrotor.mo
+      fmu_type: me
+
+    - name: joystick
+      class_name: GSQuad.Components.Joystick
+      model_path: models/MFQuadrotor.mo
+      fmu_type: me
+
+params:
+  target_x: 3.0
+  target_y: 5.0
+  target_z: 7.0
+  target_z_modelica: -7.0
+  max_lean_angle: 120.0
+  barometer_offset: 10.0
+  acoustic_power: 50.0
+  gyro_misalignment: 2.0
+  drive_freq: 15000.0
+  acoustic_freq_range: 5.0
+  speaker_dist: 0.01
+
+attack:
+  scenario: 0
+  seed: 1234
+
+initialization:
+  quadrotor:
+    start_values:
+      quad_low.position_w_p_w[1]: 0.0
+      quad_low.position_w_p_w[2]: 0.0
+      quad_low.position_w_p_w[3]: 0.0
+      quad_low.velocity_w_p_b[1]: 0.0
+      quad_low.velocity_w_p_b[2]: 0.0
+      quad_low.velocity_w_p_b[3]: 0.0
+      quad_low.quaternion_wb[1]: 1.0
+      quad_low.quaternion_wb[2]: 0.0
+      quad_low.quaternion_wb[3]: 0.0
+      quad_low.quaternion_wb[4]: 0.0
+      quad_low.rate_wb_b[1]: 0.0
+      quad_low.rate_wb_b[2]: 0.0
+      quad_low.rate_wb_b[3]: 0.0
+  controller:
+    start_values:
+      euler_pid.pos_w_p_w_fdbk[1]: 0.0
+      euler_pid.pos_w_p_w_fdbk[2]: 0.0
+      euler_pid.pos_w_p_w_fdbk[3]: 0.0
+      euler_pid.vel_w_p_b_fdbk[1]: 0.0
+      euler_pid.vel_w_p_b_fdbk[2]: 0.0
+      euler_pid.vel_w_p_b_fdbk[3]: 0.0
+      euler_pid.euler_wb_fdbk[1]: 0.0
+      euler_pid.euler_wb_fdbk[2]: 0.0
+      euler_pid.euler_wb_fdbk[3]: 0.0
+      euler_pid.rate_wb_b_fdbk[1]: 0.0
+      euler_pid.rate_wb_b_fdbk[2]: 0.0
+      euler_pid.rate_wb_b_fdbk[3]: 0.0
+      euler_pid.pos_error[1]: 0.0
+      euler_pid.pos_error[2]: 0.0
+      euler_pid.pos_error[3]: 0.0
+      euler_pid.vel_target[1]: 0.0
+      euler_pid.vel_target[2]: 0.0
+      euler_pid.vel_target[3]: 0.0
+      euler_pid.vel_error_last[1]: 0.0
+      euler_pid.vel_error_last[2]: 0.0
+      euler_pid.vel_error_last[3]: 0.0
+      euler_pid.vel_error_i[1]: 0.0
+      euler_pid.vel_error_i[2]: 0.0
+      euler_pid.vel_error_i[3]: 0.0
+      euler_pid.vel_error_d[1]: 0.0
+      euler_pid.vel_error_d[2]: 0.0
+      euler_pid.vel_error_d[3]: 0.0
+      euler_pid.acc_target[1]: 0.0
+      euler_pid.acc_target[2]: 0.0
+      euler_pid.acc_target[3]: 0.0
+      euler_pid.acc_z_target: 9.81
+      euler_pid.acc_fwd_target: 0.0
+      euler_pid.acc_rgt_target: 0.0
+      euler_pid.roll_target: 0.0
+      euler_pid.pitch_target: 0.0
+      euler_pid.yaw_target: 0.0
+      euler_pid.att_error[1]: 0.0
+      euler_pid.att_error[2]: 0.0
+      euler_pid.att_error[3]: 0.0
+      euler_pid.rate_target[1]: 0.0
+      euler_pid.rate_target[2]: 0.0
+      euler_pid.rate_target[3]: 0.0
+      euler_pid.rate_error[1]: 0.0
+      euler_pid.rate_error[2]: 0.0
+      euler_pid.rate_error[3]: 0.0
+      euler_pid.rate_error_i[1]: 0.0
+      euler_pid.rate_error_i[2]: 0.0
+      euler_pid.rate_error_i[3]: 0.0
+      euler_pid.rate_error_d[1]: 0.0
+      euler_pid.rate_error_d[2]: 0.0
+      euler_pid.rate_error_d[3]: 0.0
+      euler_pid.force_target: 27.09522
+      euler_pid.moment_target[1]: 0.0
+      euler_pid.moment_target[2]: 0.0
+      euler_pid.moment_target[3]: 0.0
+      euler_pid.fm_target[1]: 27.09522
+      euler_pid.fm_target[2]: 0.0
+      euler_pid.fm_target[3]: 0.0
+      euler_pid.fm_target[4]: 0.0
+      euler_pid.thrust_target[1]: 6.773805
+      euler_pid.thrust_target[2]: 6.773805
+      euler_pid.thrust_target[3]: 6.773805
+      euler_pid.thrust_target[4]: 6.773805
+      euler_pid.omega_spd_sq_target[1]: 845.7933902386446
+      euler_pid.omega_spd_sq_target[2]: 845.7933902386446
+      euler_pid.omega_spd_sq_target[3]: 845.7933902386446
+      euler_pid.omega_spd_sq_target[4]: 845.7933902386446
+      euler_pid.normalized_ctrl_input[1]: 0.5638622601590965
+      euler_pid.normalized_ctrl_input[2]: 0.5638622601590965
+      euler_pid.normalized_ctrl_input[3]: 0.5638622601590965
+      euler_pid.normalized_ctrl_input[4]: 0.5638622601590965
+
+parameters:
+  per_step:
+    mission_planner:
+      sample_period: sim.dt + 1.0e-6
+      position_setpoint_w_buf[1]: params.target_x
+      position_setpoint_w_buf[2]: params.target_y
+      position_setpoint_w_buf[3]: params.target_z_modelica
+    joystick:
+      sample_period: sim.dt + 1.0e-6
+    controller:
+      update_period: sim.dt + 1.0e-6
+    quadrotor:
+      sensor_sample_period: sim.dt + 1.0e-6
+      W: 0.0
+      dist: 0.01
+      w_ac: 15000.0
+      phi_0: 0.0
+      psi_ac: 0.0
+      epsilon: 0.0
+
+connections:
+  - from: quadrotor.pos_w_p_w_meas[1]
+    to: controller.pos_w_p_w_fdbk[1]
+  - from: quadrotor.pos_w_p_w_meas[2]
+    to: controller.pos_w_p_w_fdbk[2]
+  - from: quadrotor.pos_w_p_w_meas[3]
+    to: controller.pos_w_p_w_fdbk[3]
+  - from: quadrotor.vel_w_p_b_meas[1]
+    to: controller.vel_w_p_b_fdbk[1]
+  - from: quadrotor.vel_w_p_b_meas[2]
+    to: controller.vel_w_p_b_fdbk[2]
+  - from: quadrotor.vel_w_p_b_meas[3]
+    to: controller.vel_w_p_b_fdbk[3]
+  - from: quadrotor.acc_w_p_b_meas[1]
+    to: controller.acc_w_p_b_fdbk[1]
+  - from: quadrotor.acc_w_p_b_meas[2]
+    to: controller.acc_w_p_b_fdbk[2]
+  - from: quadrotor.acc_w_p_b_meas[3]
+    to: controller.acc_w_p_b_fdbk[3]
+  - from: quadrotor.quat_wb_meas[1]
+    to: controller.quat_wb_fdbk[1]
+  - from: quadrotor.quat_wb_meas[2]
+    to: controller.quat_wb_fdbk[2]
+  - from: quadrotor.quat_wb_meas[3]
+    to: controller.quat_wb_fdbk[3]
+  - from: quadrotor.quat_wb_meas[4]
+    to: controller.quat_wb_fdbk[4]
+  - from: quadrotor.euler_wb_meas[1]
+    to: controller.euler_wb_fdbk[1]
+  - from: quadrotor.euler_wb_meas[2]
+    to: controller.euler_wb_fdbk[2]
+  - from: quadrotor.euler_wb_meas[3]
+    to: controller.euler_wb_fdbk[3]
+  - from: quadrotor.rate_wb_b_meas[1]
+    to: controller.rate_wb_b_fdbk[1]
+  - from: quadrotor.rate_wb_b_meas[2]
+    to: controller.rate_wb_b_fdbk[2]
+  - from: quadrotor.rate_wb_b_meas[3]
+    to: controller.rate_wb_b_fdbk[3]
+  - from: mission_planner.position_setpoint_w[1]
+    to: controller.position_setpoint[1]
+    nominal_override: params.target_x
+  - from: mission_planner.position_setpoint_w[2]
+    to: controller.position_setpoint[2]
+    nominal_override: params.target_y
+  - from: mission_planner.position_setpoint_w[3]
+    to: controller.position_setpoint[3]
+    nominal_override: params.target_z_modelica
+  - from: mission_planner.yaw_setpoint_w
+    to: controller.yaw_setpoint
+  - from: joystick.stick_cmd[1]
+    to: controller.rc_input[1]
+  - from: joystick.stick_cmd[2]
+    to: controller.rc_input[2]
+  - from: joystick.stick_cmd[3]
+    to: controller.rc_input[3]
+  - from: joystick.stick_cmd[4]
+    to: controller.rc_input[4]
+  - from: controller.pwm_rotor_cmd[1]
+    to: quadrotor.pwm_rotor_cmd[1]
+  - from: controller.pwm_rotor_cmd[2]
+    to: quadrotor.pwm_rotor_cmd[2]
+  - from: controller.pwm_rotor_cmd[3]
+    to: quadrotor.pwm_rotor_cmd[3]
+  - from: controller.pwm_rotor_cmd[4]
+    to: quadrotor.pwm_rotor_cmd[4]
+
+disturbances: {}
+
+outputs:
+  log:
+    - quadrotor.pos_w_p_w_meas[1]
+    - quadrotor.pos_w_p_w_meas[2]
+    - quadrotor.pos_w_p_w_meas[3]
+    - quadrotor.vel_w_p_b_meas[1]
+    - quadrotor.vel_w_p_b_meas[2]
+    - quadrotor.vel_w_p_b_meas[3]
+    - controller.pwm_rotor_cmd[1]
+    - controller.pwm_rotor_cmd[2]
+    - controller.pwm_rotor_cmd[3]
+    - controller.pwm_rotor_cmd[4]
+  save_csv: true
+  out_dir: results/runs
+  run_name: quadrotor_nominal

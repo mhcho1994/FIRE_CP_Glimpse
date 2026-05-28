@@ -1,8 +1,8 @@
 """
-FMI 2.0 Co-Simulation backend.
+FMI 2.0 Model Exchange backend.
 
-This backend owns only FMI runtime concerns. It expects the scenario/model to
-already be materialized to an FMU by `translator.materialize`.
+This backend expects an existing ME FMU. Source-to-FMU materialization belongs
+to `translator.materialize`, not backend runtime code.
 """
 
 from __future__ import annotations
@@ -15,11 +15,6 @@ from .base import BackendArtifact, SimulationBackend, StepResult
 from ..common.logging import get_logger
 
 log = get_logger(__name__)
-
-FMI2_OK = 0
-FMI2_WARNING = 1
-FMI2_DISCARD = 2
-FMI2_ERROR = 3
 
 
 def _component_from_scenario(scn: dict[str, Any]) -> dict[str, Any]:
@@ -34,7 +29,7 @@ def _component_from_scenario(scn: dict[str, Any]) -> dict[str, Any]:
     if isinstance(model_cfg, dict) and model_cfg:
         return model_cfg
 
-    raise ValueError("FMI2CSBackend.from_scenario requires a materialized FMU component.")
+    raise ValueError("FMI2MEBackend.from_scenario requires a materialized FMU component.")
 
 
 def _resolve_fmu_path(component_cfg: dict[str, Any]) -> str:
@@ -46,64 +41,69 @@ def _resolve_fmu_path(component_cfg: dict[str, Any]) -> str:
         if not path.exists():
             raise FileNotFoundError(f"FMU artifact not found for '{key}': {path}")
         if path.suffix.lower() != ".fmu":
-            raise ValueError(f"FMI2CSBackend requires an .fmu artifact, got: {path}")
+            raise ValueError(f"FMI2MEBackend requires an .fmu artifact, got: {path}")
         return str(path)
     raise ValueError("Materialized component must define model_path/fmu_path/artifact_path.")
 
 
 @dataclass
-class FMI2CSBackendConfig:
+class FMI2MEBackendConfig:
     fmu_path: str
-    instance_name: str = "fmi2_cs"
+    instance_name: str = "fmi2_me"
     start_time: float = 0.0
     stop_time: Optional[float] = None
+    tolerance: float = 1.0e-6
     visible: bool = False
     debug_logging: bool = False
-    treat_discard_as_error: bool = True
+    show_solver_log: bool = False
 
 
-class FMI2CSBackend(SimulationBackend):
+class FMI2MEBackend(SimulationBackend):
     """
-    Generic FMI 2.0 Co-Simulation backend for an existing FMU artifact.
+    Generic FMI 2.0 Model Exchange backend for an existing FMU artifact.
     """
 
-    def __init__(self, *, config: FMI2CSBackendConfig):
+    def __init__(self, *, config: FMI2MEBackendConfig):
         self.config = config
 
-        from .runtimes.fmpy_runner import FMPYRunner
+        from .runtimes.pyfmi_runner import PyFMIRunner
 
         self._artifact = BackendArtifact(
             kind="fmu",
             path=config.fmu_path,
-            metadata={"fmu_type": "cs", "instance_name": config.instance_name},
+            metadata={"fmu_type": "me", "instance_name": config.instance_name},
         )
-        self._runner = FMPYRunner(
+        self._runner = PyFMIRunner(
             fmu_path=config.fmu_path,
             instance_name=config.instance_name,
+            fmu_type="me",
             start_time=config.start_time,
             stop_time=config.stop_time,
+            tolerance=config.tolerance,
             visible=config.visible,
             debug_logging=config.debug_logging,
+            show_solver_log=config.show_solver_log,
         )
 
     @classmethod
-    def from_scenario(cls, scn: dict[str, Any]) -> "FMI2CSBackend":
+    def from_scenario(cls, scn: dict[str, Any]) -> "FMI2MEBackend":
         sim_cfg = scn.get("sim", {}) or {}
-        fmu_type = str(sim_cfg.get("fmu_type", "cs")).lower()
-        if fmu_type != "cs":
-            raise ValueError(f"FMI2CSBackend requires fmu_type='cs', got {fmu_type!r}")
+        fmu_type = str(sim_cfg.get("fmu_type", "me")).lower()
+        if fmu_type != "me":
+            raise ValueError(f"FMI2MEBackend requires fmu_type='me', got {fmu_type!r}")
 
         component = _component_from_scenario(scn)
-        instance_name = str(component.get("name", component.get("class_name", "fmi2_cs")))
+        instance_name = str(component.get("name", component.get("class_name", "fmi2_me")))
         return cls(
-            config=FMI2CSBackendConfig(
+            config=FMI2MEBackendConfig(
                 fmu_path=_resolve_fmu_path(component),
                 instance_name=instance_name,
                 start_time=float(sim_cfg.get("t0", 0.0)),
                 stop_time=float(sim_cfg["tf"]) if "tf" in sim_cfg else None,
+                tolerance=float(sim_cfg.get("tol", 1.0e-6)),
                 visible=bool(sim_cfg.get("visible", False)),
                 debug_logging=bool(sim_cfg.get("debug_logging", False)),
-                treat_discard_as_error=bool(sim_cfg.get("treat_discard_as_error", True)),
+                show_solver_log=bool(sim_cfg.get("show_solver_log", False)),
             )
         )
 
@@ -116,7 +116,7 @@ class FMI2CSBackend(SimulationBackend):
         return self._runner.io
 
     def initialize(self) -> None:
-        log.info("Initializing FMI2 CS backend for %s", self.config.instance_name)
+        log.info("Initializing FMI2 ME backend for %s", self.config.instance_name)
         self._runner.instantiate_and_initialize()
 
     def terminate(self) -> None:
@@ -129,26 +129,8 @@ class FMI2CSBackend(SimulationBackend):
         return self._runner.get_value(name, default)
 
     def step(self, t: float, dt: float) -> StepResult:
-        status = self._runner.step(t, dt)
-
-        if status == FMI2_OK:
-            return StepResult(t=t + dt, raw_status=status, accepted=True)
-        if status == FMI2_WARNING:
-            return StepResult(
-                t=t + dt,
-                raw_status=status,
-                accepted=True,
-                message="FMU step completed with warning.",
-            )
-        if status == FMI2_DISCARD:
-            msg = f"FMU discarded step at t={t:.6g} (dt={dt:.6g})."
-            if self.config.treat_discard_as_error:
-                raise RuntimeError(msg)
-            return StepResult(t=t, raw_status=status, accepted=False, message=msg)
-        if status == FMI2_ERROR:
-            raise RuntimeError(f"FMU doStep returned error at t={t:.6g} (dt={dt:.6g}).")
-
-        raise RuntimeError(f"Unexpected FMI status code: {status}")
+        self._runner.step_or_raise(t, dt)
+        return StepResult(t=t + dt, raw_status=0, accepted=True)
 
     def discovered_inputs(self) -> list[str]:
         return [v.name for v in self.io["inputs"]]

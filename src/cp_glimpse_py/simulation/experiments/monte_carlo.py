@@ -35,8 +35,10 @@ from typing import Any
 import copy
 import time
 
-from ..executors.single_fmu import run_single_fmu_open_loop
-from ..executors.multi_fmu import run_multi_fmu_open_loop
+from ...translator.materialize import (
+    apply_scenario_initialization,
+    materialize_scenario,
+)
 
 
 @dataclass
@@ -46,7 +48,7 @@ class MonteCarloResult:
     """
 
     status: str
-    topology: str
+    composition: str
     n_runs: int
     n_success: int
     n_failed: int
@@ -110,18 +112,26 @@ def _apply_monte_carlo_overrides(base_scn: dict[str, Any], run_idx: int) -> dict
     return scn
 
 
-def _run_once_for_topology(scn: dict[str, Any], topology: str) -> dict[str, Any]:
+def _run_once_for_composition(scn: dict[str, Any], composition: str) -> dict[str, Any]:
     """
-    Execute one run using the appropriate executor for a resolved topology.
+    Execute one run using the appropriate executor for a resolved composition.
     """
-    if topology == "single_fmu":
+    if composition == "single":
+        from ..executors.single_fmu import run_single_fmu_open_loop
+
         return run_single_fmu_open_loop(scn)
-    if topology == "multi_fmu":
+    if composition == "multi":
+        from ..executors.multi_fmu import run_multi_fmu_open_loop
+
         return run_multi_fmu_open_loop(scn)
-    raise ValueError(f"Unsupported topology for Monte Carlo: {topology}")
+    raise ValueError(f"Unsupported composition for Monte Carlo: {composition}")
 
 
-def run_monte_carlo_experiment(scn: dict[str, Any], topology: str) -> MonteCarloResult:
+def run_monte_carlo_experiment(
+    scn: dict[str, Any],
+    composition: str,
+    backend: str,
+) -> MonteCarloResult:
     """
     Execute a Monte Carlo experiment.
 
@@ -129,8 +139,10 @@ def run_monte_carlo_experiment(scn: dict[str, Any], topology: str) -> MonteCarlo
     ----------
     scn : dict[str, Any]
         Loaded scenario dictionary.
-    topology : str
-        Resolved topology.
+    composition : str
+        Resolved simulation composition.
+    backend : str
+        Resolved simulation backend.
 
     Returns
     -------
@@ -143,14 +155,16 @@ def run_monte_carlo_experiment(scn: dict[str, Any], topology: str) -> MonteCarlo
         raise ValueError(f"sim.n_runs must be positive, got {n_runs}")
 
     t_wall_0 = time.time()
+    runnable_scn = materialize_scenario(scn, composition=composition, backend=backend)
     per_run_results: list[dict[str, Any]] = []
     n_success = 0
     n_failed = 0
 
     for run_idx in range(n_runs):
-        run_scn = _apply_monte_carlo_overrides(scn, run_idx)
+        run_scn = _apply_monte_carlo_overrides(runnable_scn, run_idx)
+        run_scn = apply_scenario_initialization(run_scn)
         try:
-            run_result = _run_once_for_topology(run_scn, topology)
+            run_result = _run_once_for_composition(run_scn, composition)
             per_run_results.append(
                 {
                     "run_idx": run_idx,
@@ -171,7 +185,7 @@ def run_monte_carlo_experiment(scn: dict[str, Any], topology: str) -> MonteCarlo
 
     return MonteCarloResult(
         status="success" if n_failed == 0 else "partial_success",
-        topology=topology,
+        composition=composition,
         n_runs=n_runs,
         n_success=n_success,
         n_failed=n_failed,

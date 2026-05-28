@@ -2,7 +2,7 @@
 Scenario loading utilities.
 
 This module defines the scenario container used across CP Glimpse and
-provides the YAML loading entry point.
+provides YAML and TOML loading entry points.
 
 Purpose
 -------
@@ -25,7 +25,7 @@ This module provides two things:
    dictionary-style access such as `scn.get("sim", {})`.
 
 2. `load_scenario(...)`
-   A helper that loads a YAML scenario file, resolves relative paths
+   A helper that loads a YAML or TOML scenario file, resolves relative paths
    against the project root, validates the top-level structure, and
    inserts commonly expected default sections.
 
@@ -60,6 +60,11 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterator
 import yaml
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python 3.10 compatibility
+    import tomli as tomllib
 
 from ..common.paths import get_paths
 
@@ -310,9 +315,32 @@ class Scenario:
         return dict(self.raw)
 
 
+def _load_raw_scenario(path: Path) -> dict[str, Any]:
+    """Load a scenario file based on its extension."""
+    suffix = path.suffix.lower()
+
+    if suffix in {".yaml", ".yml"}:
+        with path.open("r", encoding="utf-8") as f:
+            raw = yaml.safe_load(f)
+    elif suffix == ".toml":
+        with path.open("rb") as f:
+            raw = tomllib.load(f)
+    else:
+        raise ValueError(
+            f"Unsupported scenario file extension: {path.suffix}. "
+            "Use .yaml, .yml, or .toml."
+        )
+
+    if raw is None:
+        raise ValueError(f"Scenario file is empty: {path}")
+    if not isinstance(raw, dict):
+        raise ValueError(f"Scenario file must load to a dictionary: {path}")
+    return raw
+
+
 def load_scenario(path: str | Path) -> Scenario:
     """
-    Load a scenario YAML file and normalize optional sections.
+    Load a scenario YAML or TOML file and normalize optional sections.
 
     Parameters
     ----------
@@ -330,7 +358,8 @@ def load_scenario(path: str | Path) -> Scenario:
     FileNotFoundError
         If the scenario file does not exist.
     ValueError
-        If the YAML content is empty or not a dictionary.
+        If the scenario content is empty, has an unsupported extension,
+        or is not a dictionary.
     """
     paths = get_paths()
     p = Path(path)
@@ -340,13 +369,7 @@ def load_scenario(path: str | Path) -> Scenario:
     if not p.exists():
         raise FileNotFoundError(f"Scenario file not found: {p}")
 
-    with p.open("r", encoding="utf-8") as f:
-        raw = yaml.safe_load(f)
-
-    if raw is None:
-        raise ValueError(f"Scenario file is empty: {p}")
-    if not isinstance(raw, dict):
-        raise ValueError(f"Scenario YAML must load to a dictionary: {p}")
+    raw = _load_raw_scenario(p)
 
     # ------------------------------------------------------------------
     # Normalize commonly expected top-level sections

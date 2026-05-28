@@ -92,7 +92,7 @@ _MODEL_HINT_KEYS = (
 
 _VALID_BACKENDS = (
     "fmu-fmpy",
-    # "fmu-pyfmi",  # TODO: implement this backend
+    "fmu-pyfmi",
 )
 
 
@@ -334,7 +334,7 @@ def _save_json(data: Any, path: Path) -> None:
 def _build_summary(
     scn: dict[str, Any],
     scenario_path: Path | None,
-    topology: str,
+    composition: str,
     experiment: str,
     result: dict[str, Any],
     wall_time_sec: float,
@@ -348,8 +348,8 @@ def _build_summary(
         Scenario dictionary.
     scenario_path : Path | None
         Scenario path if loaded from file.
-    topology : str
-        Resolved topology.
+    composition : str
+        Resolved simulation composition.
     experiment : str
         Resolved experiment type.
     result : dict[str, Any]
@@ -364,13 +364,13 @@ def _build_summary(
     """
     summary: dict[str, Any] = {
         "status": result.get("status", "unknown"),
-        "topology": topology,
+        "composition": composition,
         "experiment": experiment,
         "wall_time_sec": wall_time_sec,
         "scenario_path": str(scenario_path) if scenario_path else None,
     }
 
-    if experiment == "single_run":
+    if experiment == "single":
         inner = result.get("result", {})
         summary["result_status"] = inner.get("status")
         summary["n_time_points"] = len(inner.get("time", []) or [])
@@ -427,7 +427,8 @@ def run_simulation_from_dict(
 
     if experiment == "single":
         result_obj = run_single_experiment(scn, composition, backend)
-    elif experiment == "montecarlo":                        # TODO: implement this experiment type
+    # TODO: implement this experiment type
+    elif experiment == "montecarlo":                        
         result_obj = run_monte_carlo_experiment(scn, composition, backend)
     else:
         raise ValueError(f"Unhandled experiment type: {experiment}")
@@ -445,7 +446,7 @@ def run_simulation_from_dict(
         summary = _build_summary(
             scn=scn,
             scenario_path=scenario_path,
-            topology=topology,
+            composition=composition,
             experiment=experiment,
             result=result,
             wall_time_sec=wall_time_sec,

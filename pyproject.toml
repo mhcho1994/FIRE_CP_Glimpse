@@ -7,7 +7,7 @@ name = "cp-glimpse"
 version = "0.1.0"
 description = "CP Glimpse: Multi-backend Modelica simulation framework (FMU)"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 authors = [
     { name = "Minhyun Cho" }
 ]
@@ -18,14 +18,22 @@ dependencies = [
     "pyyaml",
     "matplotlib",
     "OMPython",
-    "pyfmi",
     "FMPy",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = [
     "ipykernel",
+    "jupyterlab",
+    "notebook",
+    "scipy",
+    "casadi",
 ]
 
 # CLI entry point
 [project.scripts]
-cp-glimpse = "cp_glimpse_py.cli:main"
+cp-glimpse = "cp_glimpse_py.main:main"
 
 # --- setuptools config for src/ layout ---
 [tool.setuptools]

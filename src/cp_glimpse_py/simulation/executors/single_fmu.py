@@ -94,8 +94,6 @@ from typing import Any
 
 import time
 
-from fmpy import simulate_fmu, read_model_description
-
 
 _COMPONENT_PATH_KEYS = (
     "model_path",
@@ -419,6 +417,8 @@ def _simulate_with_fmpy(
     dict[str, Any]
         Output dictionary with time and recorded variables.
     """
+    from fmpy import simulate_fmu, read_model_description
+
     model_description = read_model_description(str(fmu_path))
     output_names = _resolve_output_names(model_description, component_cfg)
     start_values = _resolve_start_values(component_cfg)
@@ -450,6 +450,139 @@ def _simulate_with_fmpy(
         "start_values": start_values,
         "model_description": model_description,
     }
+
+
+def _make_step_runner(
+    *,
+    backend: str,
+    fmu_path: Path,
+    component_name: str,
+    t0: float,
+    tf: float,
+    tol: float,
+    fmu_type: str,
+    show_solver_log: bool = False,
+):
+    """
+    Create a backend-specific fixed-step runner.
+
+    The returned object provides a small common surface:
+    `set_value(name, value)`, `get_value(name)`, `step_or_raise(t, dt)`,
+    `instantiate_and_initialize()`, and `terminate_and_free()`.
+    """
+    from ...backend.fmu_runner import create_fmu_runner
+
+    return create_fmu_runner(
+        backend=backend,
+        fmu_path=fmu_path,
+        instance_name=component_name,
+        fmu_type=fmu_type,
+        start_time=t0,
+        stop_time=tf,
+        tolerance=tol,
+        show_solver_log=show_solver_log,
+        debug_logging=False,
+    )
+
+
+def _apply_start_values_to_runner(runner: Any, start_values: dict[str, Any]) -> None:
+    for name, value in start_values.items():
+        runner.set_value(str(name), value)
+
+
+def _runner_output_names(runner: Any, component_cfg: dict[str, Any]) -> list[str]:
+    explicit = component_cfg.get("outputs")
+    if isinstance(explicit, list) and explicit:
+        return [str(x) for x in explicit]
+
+    io = getattr(runner, "io", {}) or {}
+    outputs = io.get("outputs", []) or []
+    return [str(getattr(v, "name", v)) for v in outputs]
+
+
+def _make_progress_bar(*, enabled: bool, style: str, total: int, desc: str):
+    if not enabled or style != "tqdm":
+        return None
+
+    try:
+        from tqdm.auto import tqdm
+    except ImportError:
+        return None
+
+    return tqdm(total=total, desc=desc, unit="step", leave=True)
+
+
+def _simulate_with_step_runner(
+    fmu_path: Path,
+    *,
+    backend: str,
+    t0: float,
+    tf: float,
+    dt: float,
+    tol: float,
+    fmu_type: str,
+    component_cfg: dict[str, Any],
+    show_solver_log: bool = False,
+    show_progress: bool = False,
+    progress_style: str = "tqdm",
+) -> dict[str, Any]:
+    component_name = str(component_cfg.get("name", fmu_path.stem))
+    start_values = _resolve_start_values(component_cfg)
+    runner = _make_step_runner(
+        backend=backend,
+        fmu_path=fmu_path,
+        component_name=component_name,
+        t0=t0,
+        tf=tf,
+        tol=tol,
+        fmu_type=fmu_type,
+        show_solver_log=show_solver_log,
+    )
+
+    progress_bar = None
+    try:
+        _apply_start_values_to_runner(runner, start_values)
+        runner.instantiate_and_initialize()
+
+        output_names = _runner_output_names(runner, component_cfg)
+        outputs = {name: [] for name in output_names}
+        time_values: list[float] = []
+
+        n_steps = int(round((tf - t0) / dt))
+        progress_bar = _make_progress_bar(
+            enabled=show_progress,
+            style=progress_style,
+            total=n_steps,
+            desc=f"single_fmu:{component_name}",
+        )
+        t = t0
+        time_values.append(t)
+        for name in output_names:
+            outputs[name].append(runner.get_value(name, None))
+
+        for _ in range(n_steps):
+            runner.step_or_raise(t, dt)
+            t = t + dt
+            if progress_bar is not None:
+                progress_bar.set_postfix_str(f"t={t:.6g}/{tf:.6g}s")
+                progress_bar.update(1)
+            elif show_progress:
+                print(f"[single_fmu] {component_name}: t={t:.6g}/{tf:.6g}s")
+            time_values.append(t)
+            for name in output_names:
+                outputs[name].append(runner.get_value(name, None))
+
+        return {
+            "time": time_values,
+            "outputs": outputs,
+            "output_names": output_names,
+            "start_values": start_values,
+            "model_description": None,
+        }
+    finally:
+        if progress_bar is not None:
+            progress_bar.close()
+        runner.terminate_and_free()
 
 
 def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
@@ -488,27 +621,47 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
     component_cfg = _get_single_component(scn)
 
     backend = _resolve_backend(sim_cfg)
-    if backend != "fmu-fmpy":
+    if backend not in {"fmu-fmpy", "fmu-pyfmi"}:
         raise ValueError(
             f"Unsupported backend '{backend}' for single FMU execution. "
-            "Currently supported backend: 'fmu-fmpy'."
+            "Currently supported backends: 'fmu-fmpy', 'fmu-pyfmi'."
         )
 
     fmu_type = _resolve_fmu_type(sim_cfg)
     t0, tf, dt, tol = _validate_time_config(sim_cfg)
     fmu_path = _resolve_fmu_path(component_cfg)
+    show_solver_log = bool(
+        sim_cfg.get("show_solver_log", component_cfg.get("show_solver_log", False))
+    )
+    show_progress = bool(sim_cfg.get("show_progress", not show_solver_log))
+    progress_style = str(sim_cfg.get("progress_style", "tqdm")).strip().lower()
 
     wall_t0 = time.time()
 
-    sim_result = _simulate_with_fmpy(
-        fmu_path=fmu_path,
-        t0=t0,
-        tf=tf,
-        dt=dt,
-        tol=tol,
-        fmu_type=fmu_type,
-        component_cfg=component_cfg,
-    )
+    if backend == "fmu-fmpy":
+        sim_result = _simulate_with_fmpy(
+            fmu_path=fmu_path,
+            t0=t0,
+            tf=tf,
+            dt=dt,
+            tol=tol,
+            fmu_type=fmu_type,
+            component_cfg=component_cfg,
+        )
+    else:
+        sim_result = _simulate_with_step_runner(
+            fmu_path=fmu_path,
+            backend=backend,
+            t0=t0,
+            tf=tf,
+            dt=dt,
+            tol=tol,
+            fmu_type=fmu_type,
+            component_cfg=component_cfg,
+            show_solver_log=show_solver_log,
+            show_progress=show_progress,
+            progress_style=progress_style,
+        )
 
     wall_time_sec = time.time() - wall_t0
 

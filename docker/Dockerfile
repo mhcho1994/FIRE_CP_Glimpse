@@ -1,25 +1,54 @@
-FROM continuumio/miniconda3:latest
+FROM condaforge/miniforge3:latest
 
+ARG INSTALL_OPENMODELICA=false
+ARG VSCODE_SERVER_COMMIT=4949701c880d4bdb949e3c0e6b400288da7f474b
+ARG TARGETARCH
 
-RUN apt update && \
-    apt install -y ca-certificates curl gnupg git
-RUN curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc |  gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg && \ 
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/openmodelica-keyring.gpg] https://build.openmodelica.org/apt $(cat /etc/os-release | grep "\(UBUNTU\\|DEBIAN\\|VERSION\)_CODENAME" | sort | cut -d= -f 2 | head -1) stable" |  tee /etc/apt/sources.list.d/openmodelica.list && \ 
-    apt update && \ 
-    apt install -y openmodelica
-
-RUN conda install -c conda-forge pyfmi 
-RUN pip3 install pandas OMPython 
-
-
-RUN useradd -m -s /bin/bash model
-RUN chmod 777 /tmp && \ 
-    chown -R model:model /tmp 
-USER model 
+ENV PYTHONUNBUFFERED=1
+ENV CONDA_ENV=cp-glimpse-py312
+ENV CONDA_DIR=/opt/conda
+ENV PATH="/opt/conda/envs/cp-glimpse-py312/bin:/opt/conda/bin:${PATH}"
 
 WORKDIR /app
-COPY ./*.py ./
-COPY ./*.mo ./ 
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl \
+        git \
+        gnupg \
+        tar \
+    && rm -rf /var/lib/apt/lists/*
 
-CMD python3 example.py 
+RUN case "${TARGETARCH:-amd64}" in \
+        amd64) VSCODE_SERVER_PLATFORM="server-linux-x64" ;; \
+        arm64) VSCODE_SERVER_PLATFORM="server-linux-arm64" ;; \
+        *) echo "Unsupported TARGETARCH for VS Code Server: ${TARGETARCH}" >&2; exit 1 ;; \
+    esac \
+    && mkdir -p "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}" \
+    && curl -fsSL "https://update.code.visualstudio.com/commit:${VSCODE_SERVER_COMMIT}/${VSCODE_SERVER_PLATFORM}/stable" \
+        | tar -xz --strip-components=1 -C "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"
+
+RUN if [ "$INSTALL_OPENMODELICA" = "true" ]; then \
+        apt-get update \
+        && curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc \
+            | gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg \
+        && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/openmodelica-keyring.gpg] https://build.openmodelica.org/apt $(grep VERSION_CODENAME /etc/os-release | cut -d= -f 2) stable" \
+            > /etc/apt/sources.list.d/openmodelica.list \
+        && apt-get update \
+        && apt-get install -y --no-install-recommends openmodelica \
+        && rm -rf /var/lib/apt/lists/*; \
+    fi
+
+COPY pyproject.toml README.md setup.sh ./
+COPY src ./src
+COPY scenarios ./scenarios
+COPY models ./models
+
+RUN chmod +x setup.sh \
+    && bash setup.sh --recreate \
+    && conda clean -afy
+
+EXPOSE 8888
+
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

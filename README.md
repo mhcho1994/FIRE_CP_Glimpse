@@ -70,24 +70,68 @@ omc --version
 > You only need OpenModelica if you plan to **export/re-export FMUs** from your Modelica models. If you already have the `.fmu` files, you can skip this.
 
 ### 2. Install Python packages
-Use whichever you prefer—**venv** or **conda**. Example with `venv`:
+Create a local Miniforge/conda environment with Python 3.12, PyFMI, Jupyter,
+and the notebook dependencies:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate     # (Windows: .venv\Scripts\activate)
-pip install -r requirements.txt
+source setup.sh
+```
+
+If conda is not already installed, the setup script installs Miniforge under
+`$HOME/.local/share/miniforge3` and then creates a `cp-glimpse-py312`
+environment. All third-party dependencies, including PyFMI, are installed from
+conda-forge; this repository is installed editable with pip.
+
+If an existing environment was left in a broken state, recreate it:
+
+```bash
+source setup.sh --recreate
 ```
 
 Sanity check (optional):
 ```bash
-python -c "import numpy, pandas; print('NumPy/Pandas OK')"
+cp-glimpse --help
 ```
 
 ### 3. Run the simulation
-Navigate to the repository root and run the **NGCRover** entry point:
+Navigate to the repository root and run a scenario:
 
 ```bash
-# Basic run (from repo root)
-python NGCRover/main.py
+cp-glimpse --scenario scenarios/bouncingball_single_run.yaml
 ```
 Recommend to use a code editor like VS Code.
+
+## Scenario Format
+
+Scenario files can be YAML (`.yaml`, `.yml`) or TOML (`.toml`). YAML remains
+the most convenient format while scenarios are still list-heavy and nested.
+TOML is useful for stricter, less ambiguous configuration and works well for
+stable scalar settings such as `[sim]`, `[outputs]`, and `[parameters]`.
+
+Recommendation: support both formats for now. Keep existing YAML scenarios
+working, add TOML examples for new or stable scenarios, and avoid a full
+migration until the scenario schema settles.
+
+## Docker
+
+The Docker image uses the official conda-forge Miniforge base image and creates
+the same `cp-glimpse-py312` conda environment used by local setup:
+
+```bash
+docker build -f docker/Dockerfile -t cp-glimpse .
+docker run --rm -p 8888:8888 -v "$PWD:/app" cp-glimpse
+```
+
+Optional build arguments:
+
+```bash
+docker build -f docker/Dockerfile -t cp-glimpse \
+  --build-arg INSTALL_OPENMODELICA=true \
+  .
+```
+
+The `examples/GSdrone/main.ipynb` and `examples/NGCrover/main.ipynb` notebooks
+use the legacy `examples/*/fmu.py` modules, which import PyFMI. The setup and
+Docker paths install PyFMI by default. The Docker command above bind-mounts the
+current repository into `/app`, so changes to notebooks and example files are
+visible inside the container immediately.

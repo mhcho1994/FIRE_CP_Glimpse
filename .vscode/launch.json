@@ -7,7 +7,8 @@
       "request": "launch",
       "module": "cp_glimpse_py.main",
       "args": [
-        "--scenario", "scenarios/bouncingball_single_run.yaml",
+        "--scenario", "scenarios/quadrotor_nominal.yaml",
+        "--save-dir", "results/quadrotor_nominal"
       ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",

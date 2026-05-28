@@ -3,12 +3,18 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.venv/
 
 # Distribution / packaging
 .Python
 build/
-!examples/NGCrover/build/
-!examples/GSdrone/build/
+!examples/NGCrover/build/RoverExample.Components.Controller
+!examples/NGCrover/build/RoverExample.Components.Rover
+!examples/NGCrover/build/RoverExample.Components.Webserver
+!examples/GSdrone/build/GSQuad.Components.Controller
+!examples/GSdrone/build/GSQuad.Components.Joystick
+!examples/GSdrone/build/GSQuad.Components.MissionPlanner
+!examples/GSdrone/build/GSQuad.Components.Quadrotor
 develop-eggs/
 dist/
 downloads/
@@ -20,3 +26,5 @@ eggs/
 results/
 !examples/NGCrover/results/
 !examples/GSdrone/results/
+examples/**/build/
+*_log.txt

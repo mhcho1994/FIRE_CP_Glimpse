@@ -1,0 +1,30 @@
+[sim]
+experiment = "single"
+composition = "auto"
+backend = "fmu-fmpy"
+fmu_type = "cs"
+t0 = 0.0
+tf = 1.0
+dt = 0.01
+tol = 1.0e-6
+
+[system]
+components = [
+  { name = "bouncing_ball", model_path = "models/hybrid_benchmarks/BouncingBall.mo" },
+]
+
+connections = []
+
+[initialization]
+
+[inputs]
+
+[parameters]
+
+[disturbances]
+
+[outputs]
+log = ["h", "v"]
+save_csv = false
+out_dir = "results/runs"
+run_name = "bouncingball"
