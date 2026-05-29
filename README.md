@@ -127,7 +127,8 @@ docker run --rm -p 8888:8888 cp-glimpse
 
 The container starts JupyterLab on port `8888`. The release image copies the
 repository into `/cp-glimpse`, so it can be saved and distributed as a standalone
-Docker image.
+Docker image. The container runs as a non-root `cpglimpse` user so the
+OpenModelica server can start safely inside Docker.
 
 For development, bind-mount your local repository into `/cp-glimpse` so local
 edits are visible immediately:

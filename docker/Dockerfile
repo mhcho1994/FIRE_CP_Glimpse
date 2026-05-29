@@ -6,6 +6,7 @@ ARG TARGETARCH
 ENV PYTHONUNBUFFERED=1
 ENV CONDA_ENV=cp-glimpse-py312
 ENV CONDA_DIR=/opt/conda
+ENV HOME=/home/cpglimpse
 ENV PATH="/opt/conda/envs/cp-glimpse-py312/bin:/opt/conda/bin:${PATH}"
 
 WORKDIR /cp-glimpse
@@ -18,6 +19,9 @@ RUN apt-get update \
         gnupg \
         tar \
     && rm -rf /var/lib/apt/lists/*
+
+RUN groupadd --gid 1000 cpglimpse \
+    && useradd --uid 1000 --gid 1000 --create-home --shell /bin/bash cpglimpse
 
 RUN case "${TARGETARCH:-amd64}" in \
         amd64) VSCODE_SERVER_PLATFORM="server-linux-x64" ;; \
@@ -44,16 +48,24 @@ RUN chmod +x setup.sh \
     && rm -rf /var/lib/apt/lists/* \
     && conda clean -afy
 
+RUN chown -R cpglimpse:cpglimpse /cp-glimpse /home/cpglimpse
+
 FROM runtime AS dev
+
+USER cpglimpse
 
 EXPOSE 8888
 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
 
 FROM runtime AS release
 
 COPY . .
 
+RUN chown -R cpglimpse:cpglimpse /cp-glimpse /home/cpglimpse
+
+USER cpglimpse
+
 EXPOSE 8888
 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
