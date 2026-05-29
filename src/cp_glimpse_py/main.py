@@ -94,7 +94,8 @@ def main() -> None:
     csv_path = _resolve_path(args.save_dir)
 
     # setup_logging(args.log_level)
-    result = run_simulation(args.scenario)
+    artifact_dir = csv_path.parent if csv_path is not None else None
+    result = run_simulation(args.scenario, output_dir=artifact_dir)
 
     if csv_path is not None:
         _save_result_csv(result, csv_path)

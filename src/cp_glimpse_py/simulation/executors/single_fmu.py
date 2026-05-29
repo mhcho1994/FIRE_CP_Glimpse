@@ -343,15 +343,16 @@ def _resolve_start_values(component_cfg: dict[str, Any]) -> dict[str, Any]:
     dict[str, Any]
         Start-value dictionary.
     """
-    start_values = component_cfg.get("start_values")
-    if isinstance(start_values, dict):
-        return dict(start_values)
-
+    resolved: dict[str, Any] = {}
     parameters = component_cfg.get("parameters")
     if isinstance(parameters, dict):
-        return dict(parameters)
+        resolved.update(parameters)
 
-    return {}
+    start_values = component_cfg.get("start_values")
+    if isinstance(start_values, dict):
+        resolved.update(start_values)
+
+    return resolved
 
 
 def _structured_to_dict_array(result: Any) -> dict[str, list[Any]]:

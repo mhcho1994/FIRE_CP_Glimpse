@@ -111,8 +111,8 @@ def _parse_endpoint(endpoint: str, model_names: set[str]) -> tuple[str, str]:
 def _normalize_connections(
     connections: list[dict[str, Any]],
     model_names: set[str],
-) -> list[dict[str, str]]:
-    normalized: list[dict[str, str]] = []
+) -> list[dict[str, Any]]:
+    normalized: list[dict[str, Any]] = []
     for item in connections:
         src = item.get("from", item.get("src"))
         dst = item.get("to", item.get("dst"))
@@ -121,16 +121,17 @@ def _normalize_connections(
 
         src_model, src_var = _parse_endpoint(str(src), model_names)
         dst_model, dst_var = _parse_endpoint(str(dst), model_names)
-        normalized.append(
-            {
-                "src": str(src),
-                "dst": str(dst),
-                "src_model": src_model,
-                "src_var": src_var,
-                "dst_model": dst_model,
-                "dst_var": dst_var,
-            }
-        )
+        conn = {
+            "src": str(src),
+            "dst": str(dst),
+            "src_model": src_model,
+            "src_var": src_var,
+            "dst_model": dst_model,
+            "dst_var": dst_var,
+        }
+        if "nominal_override" in item:
+            conn["nominal_override"] = item["nominal_override"]
+        normalized.append(conn)
     return normalized
 
 
@@ -197,17 +198,31 @@ def _apply_incoming_connections(
     *,
     model_name: str,
     runners: dict[str, Any],
-    incoming: dict[str, list[dict[str, str]]],
+    incoming: dict[str, list[dict[str, Any]]],
+    scn: dict[str, Any],
 ) -> None:
     for conn in incoming.get(model_name, []):
-        value = runners[conn["src_model"]].get_value(conn["src_var"])
-        runners[conn["dst_model"]].set_value(conn["dst_var"], value)
+        if "nominal_override" in conn:
+            value = _resolve_scenario_value(conn["nominal_override"], scn)
+        else:
+            value = runners[conn["src_model"]].get_value(conn["src_var"])
+        try:
+            dst_runner = runners[conn["dst_model"]]
+            if hasattr(dst_runner, "set_input_value") and dst_runner.is_input(conn["dst_var"]):
+                dst_runner.set_input_value(conn["dst_var"], value)
+            else:
+                dst_runner.set_value(conn["dst_var"], value)
+        except Exception as exc:
+            raise RuntimeError(
+                "Failed to apply connection "
+                f"{conn['src']} -> {conn['dst']} with value {value!r}."
+            ) from exc
 
 
 def _resolve_output_endpoints(
     scn: dict[str, Any],
     models_cfg: dict[str, dict[str, Any]],
-    connections: list[dict[str, str]],
+    connections: list[dict[str, Any]],
 ) -> list[tuple[str, str, str]]:
     output_cfg = scn.get("outputs", scn.get("output", {})) or {}
     explicit = output_cfg.get("log")
@@ -274,7 +289,7 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
         resolved_models[model_name] = {**cfg, **model_identity}
 
     connections = _normalize_connections(scn.get("connections", []) or [], set(resolved_models))
-    incoming: dict[str, list[dict[str, str]]] = {}
+    incoming: dict[str, list[dict[str, Any]]] = {}
     for conn in connections:
         incoming.setdefault(conn["dst_model"], []).append(conn)
 
@@ -308,8 +323,8 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
         progress_bar = _make_progress_bar(
             enabled=show_progress,
             style=progress_style,
-            total=n_steps * len(step_order),
-            desc="multi_fmu",
+            total=n_steps,
+            desc="simulation progress",
         )
         t = t0
         time_grid.append(t)
@@ -318,20 +333,25 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
         for _ in range(n_steps):
             for model_name in step_order:
                 runner = runners[model_name]
+                if progress_bar is not None:
+                    progress_bar.set_postfix_str(f"{model_name} t={t + dt:.6g}/{tf:.6g}s")
+
                 _apply_incoming_connections(
                     model_name=model_name,
                     runners=runners,
                     incoming=incoming,
+                    scn=scn,
                 )
+
                 _apply_per_step_parameters(runner=runner, model_name=model_name, scn=scn)
                 runner.step_or_raise(t, dt)
-                if progress_bar is not None:
-                    progress_bar.set_postfix_str(f"{model_name} t={t + dt:.6g}/{tf:.6g}s")
-                    progress_bar.update(1)
-                elif show_progress:
-                    print(f"[multi_fmu] {model_name}: t={t + dt:.6g}/{tf:.6g}s")
 
             t = t + dt
+            if progress_bar is not None:
+                progress_bar.set_postfix_str(f"completed t={t:.6g}/{tf:.6g}s")
+                progress_bar.update(1)
+            elif show_progress:
+                print(f"[simulation progress] t={t:.6g}/{tf:.6g}s")
             time_grid.append(t)
             _record_outputs(runners=runners, output_endpoints=output_endpoints, outputs=outputs)
 

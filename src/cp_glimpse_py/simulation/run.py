@@ -313,7 +313,7 @@ def _default_output_dir(scn: dict[str, Any], scenario_path: Path | None = None) 
     if scenario_path is not None:
         scenario_stem = scenario_path.stem
 
-    return results_root / "simulation_runs" / scenario_stem
+    return results_root / scenario_stem
 
 
 def _save_json(data: Any, path: Path) -> None:

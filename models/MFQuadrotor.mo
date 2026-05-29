@@ -15,11 +15,11 @@ package GSQuad
       // [sec] sensing frequency
       parameter Real sensor_sample_period = 0.005;
         // targeted acoustic attack model and parameters
-      parameter Real W = 0;                                     // [W] power of speaker
+      parameter Real W = 100;                                     // [W] power of speaker
       parameter Real dist = 0.01;                               // [m] distance to speaker
       parameter Real psi_ac = 80.0*Constants.d2r;               // [rad] speaker direction
       parameter Real w_ac = 15.0002e+3*2*Constants.pi;          // [rad/s] acoustic attack frequency
-      parameter Real epsilon = 0.0*Constants.d2r;               // [rad] misalignment of gyroscope, reference - 1deg
+      parameter Real epsilon = 1.0*Constants.d2r;               // [rad] misalignment of gyroscope, reference - 1deg
       parameter Real phi_0 = 30*Constants.d2r;                      // [rad] phase shift for acoustic noise compared to driving signal
       GyroAcousticAtk gyroatk(W=W, dist=dist, psi_ac=psi_ac, w_ac=w_ac, epsilon=epsilon, phi_0=phi_0);
       // [-] minimum/maximum PWM
@@ -139,7 +139,7 @@ package GSQuad
       
      // setup controller type by changing fidelity and load different controller
       // 1 = EulerPID, 2 = QuaternionPID
-      parameter Integer fidelity = 1;
+      parameter Integer fidelity = 2;
       
       // At the moment, implement both controllers for switching
       EulerPID euler_pid(update_interval = update_period);
@@ -375,7 +375,7 @@ package GSQuad
     algorithm
       when sample(0, sample_period) then
 // default waypoint in NED coordinate
-        position_setpoint_w_buf := {3.0, 5.0, -7.0};
+        position_setpoint_w_buf := {3.0, 0.0, 0.0};
         yaw_setpoint_w_buf := 0.01;
       end when;
       annotation(
@@ -1167,6 +1167,6 @@ package GSQuad
       Line(points = {{-116, 0}, {-94, 0}, {-94, 33.5}, {-80, 33.5}, {-80, 34}}, thickness = 0.5));
     annotation(
       Diagram(coordinateSystem(extent = {{-200, 100}, {160, -40}})),
-      experiment(StartTime = 0.0, StopTime = 30, Tolerance = 1e-06, Interval = 0.005));
+      experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-06, Interval = 0.005));
   end ExampleHovering;
 end GSQuad;

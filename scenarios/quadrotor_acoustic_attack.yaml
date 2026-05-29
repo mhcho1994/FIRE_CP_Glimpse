@@ -1,4 +1,4 @@
-# Nominal closed-loop GSQuad scenario translated from examples/GSdrone/dronesim.py.
+# Acoustic injection attack GSQuad scenario translated from examples/GSdrone/dronesim.py.
 sim:
   experiment: single
   composition: auto
@@ -44,16 +44,22 @@ parameters:
   target_x: 3.0
   target_y: 5.0
   target_z: -7.0
+  W: 100.0
+  dist: 0.01
+  w_ac: 15000.2
+  phi_0: 0.52
+  psi_ac: 1.40
+  epsilon: 0.0174
 
 attack:
-  scenario: 0
+  scenario: 3
   seed: 1234
 
 initialization:
   quadrotor:
     parameters:
       sensor_sample_period: 0.005001
-      W: 0.0
+      W: 100.0
       dist: 0.01
       w_ac: 15000.0
       phi_0: 0.0

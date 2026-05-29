@@ -42,7 +42,7 @@ Typical usage
 artifact = build_fmu(
     source_path="models/rover/Rover.mo",
     class_name="RoverExample.Components.Webserver",
-    fmu_type="me",
+    fmu_type="cs",
 )
 
 artifact.fmu_path -> ready-to-use FMU file
@@ -604,7 +604,7 @@ def build_fmu(
     *,
     source_path: str | Path,
     class_name: str | None = None,
-    fmu_type: str = "me",
+    fmu_type: str = "cs",
 ) -> FMUArtifact:
     """
     Materialize a supported source as an FMU artifact.

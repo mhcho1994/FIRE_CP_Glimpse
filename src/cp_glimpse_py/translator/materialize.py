@@ -45,7 +45,7 @@ def _component_fmu_type(
     component: dict[str, Any],
     scenario: dict[str, Any],
 ) -> str:
-    return str(component.get("fmu_type", scenario.get("sim", {}).get("fmu_type", "me"))).lower()
+    return str(component.get("fmu_type", scenario.get("sim", {}).get("fmu_type", "cs"))).lower()
 
 
 def _merge_component_initialization(

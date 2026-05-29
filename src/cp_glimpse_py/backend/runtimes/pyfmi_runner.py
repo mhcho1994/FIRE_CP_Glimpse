@@ -19,7 +19,7 @@ Notes
 -----
 - PyFMI is usually more mature for FMI 2.0 workflows, but availability depends
   on platform and installation.
-- Co-Simulation uses `do_step()`.
+- Co-Simulation uses short local `simulate()` segments with PyFMI input tuples.
 - Model Exchange currently uses short local `simulate()` segments and restores
   the terminal state, mirroring the legacy examples.
 - This adapter intentionally avoids scenario-specific logic.
@@ -76,9 +76,19 @@ def _normalize_type_name(var) -> str:
         getattr(var, "type_name", None),
     ]
 
+    numeric_type_map = {
+        0: "real",
+        1: "integer",
+        2: "boolean",
+        3: "string",
+        4: "enumeration",
+    }
+
     for item in type_candidates:
         if item is None:
             continue
+        if isinstance(item, int):
+            return numeric_type_map.get(item, "unknown")
 
         s = str(item).lower()
         if "real" in s:
@@ -93,6 +103,42 @@ def _normalize_type_name(var) -> str:
             return "enumeration"
 
     return "unknown"
+
+
+def _normalize_causality(value) -> str | None:
+    if isinstance(value, str) or value is None:
+        return value
+    return {
+        0: "parameter",
+        1: "calculatedParameter",
+        2: "input",
+        3: "output",
+        4: "local",
+        5: "independent",
+    }.get(int(value), str(value))
+
+
+def _normalize_variability(value) -> str | None:
+    if isinstance(value, str) or value is None:
+        return value
+    return {
+        0: "constant",
+        1: "fixed",
+        2: "tunable",
+        3: "discrete",
+        4: "continuous",
+    }.get(int(value), str(value))
+
+
+def _normalize_initial(value) -> str | None:
+    if isinstance(value, str) or value is None:
+        return value
+    return {
+        0: "exact",
+        1: "approx",
+        2: "calculated",
+        3: "exact",
+    }.get(int(value), str(value))
 
 
 def _normalize_pyfmi_value(value):
@@ -146,9 +192,9 @@ def extract_io_from_model_variables(model_variables: dict) -> dict[str, list[Var
         info = VarInfo(
             name=str(name),
             vr=int(getattr(v, "value_reference", -1)),
-            causality=getattr(v, "causality", None),
-            variability=getattr(v, "variability", None),
-            initial=getattr(v, "initial", None),
+            causality=_normalize_causality(getattr(v, "causality", None)),
+            variability=_normalize_variability(getattr(v, "variability", None)),
+            initial=_normalize_initial(getattr(v, "initial", None)),
             type_name=_normalize_type_name(v),
         )
 
@@ -231,8 +277,13 @@ class PyFMIRunner:
         model_variables = self.fmu.get_model_variables()
         self.vrs = build_vr_map(model_variables)
         self.io = extract_io_from_model_variables(model_variables)
-        self.state_names = list(getattr(self.fmu, "get_states_list", lambda: {})().keys())
+        if self.fmu_type == "me":
+            self.state_names = list(getattr(self.fmu, "get_states_list", lambda: {})().keys())
+        else:
+            self.state_names = []
         self.variable_names = list(model_variables.keys())
+        self.input_names = [var.name for var in self.io.get("inputs", [])]
+        self._input_name_set = set(self.input_names)
 
         self._type_map: dict[str, str] = {}
         for group in self.io.values():
@@ -261,6 +312,9 @@ class PyFMIRunner:
         self._terminated = False
         self._me_io_ready = False
         self._pending_values: dict[str, Any] = {}
+        self._pending_input_values: dict[str, Any] = {}
+        self._start_values: dict[str, Any] = {}
+        self._input_values: dict[str, Any] = {name: 0.0 for name in self.input_names}
         self._last_values: dict[str, Any] = {}
 
     def instantiate_and_initialize(self) -> None:
@@ -286,19 +340,8 @@ class PyFMIRunner:
             self._me_io_ready = True
             return
 
-        if not self._instantiated:
-            self.fmu.instantiate()
-            self._instantiated = True
-
-        if self.stop_time is None:
-            self.fmu.setup_experiment(start_time=self.start_time)
-        else:
-            self.fmu.setup_experiment(
-                start_time=self.start_time,
-                stop_time=self.stop_time,
-            )
-
-        self.fmu.initialize()
+        self.fmu.initialize(start_time=self.start_time)
+        self._instantiated = True
         self._initialized = True
 
     def terminate_and_free(self) -> None:
@@ -311,7 +354,7 @@ class PyFMIRunner:
             return
 
         try:
-            if self._instantiated and (self.fmu_type != "me" or self._me_io_ready):
+            if self._instantiated and self.fmu_type == "me" and self._me_io_ready:
                 try:
                     self.fmu.terminate()
                 except Exception:
@@ -350,6 +393,21 @@ class PyFMIRunner:
     def set_boolean(self, name: str, value: bool) -> None:
         self.fmu.set(name, bool(value))
 
+    def is_input(self, name: str) -> bool:
+        return str(name) in self._input_name_set
+
+    def set_input_value(self, name: str, value) -> None:
+        name = str(name)
+        if not self.is_input(name):
+            self.set_value(name, value)
+            return
+        if self.fmu_type == "cs" and self._initialized:
+            self._pending_input_values[name] = value
+            self._input_values[name] = value
+            self._last_values[name] = value
+            return
+        self.set_value(name, value)
+
     def get_real(self, name: str, default: Any = _MISSING):
         try:
             value = _normalize_pyfmi_value(self.fmu.get(name))
@@ -387,25 +445,55 @@ class PyFMIRunner:
         """
         Set a variable using automatic type routing.
         """
+        name = str(name)
+        if self.fmu_type == "cs" and not self._initialized:
+            self._start_values[name] = value
+            if self.is_input(name):
+                self._input_values[name] = value
+                self._last_values[name] = value
+
         if self.fmu_type == "me":
-            self._pending_values[str(name)] = value
-            self._last_values[str(name)] = value
+            self._pending_values[name] = value
+            self._last_values[name] = value
             if not self._me_io_ready:
                 return
 
-        t = self._type_map.get(name)
-        if t is None:
-            self.fmu.set(name, value)
+        if self.fmu_type == "cs" and self._initialized and self.is_input(name):
+            self.set_input_value(name, value)
             return
 
-        if t == "real":
-            self.set_real(name, float(value))
-        elif t in ("integer", "enumeration"):
-            self.set_integer(name, int(value))
-        elif t == "boolean":
-            self.set_boolean(name, bool(value))
-        else:
-            self.fmu.set(name, value)
+        try:
+            t = self._type_map.get(name)
+            if t is None:
+                self.fmu.set(name, value)
+                return
+
+            if t == "real":
+                self.set_real(name, float(value))
+            elif t in ("integer", "enumeration"):
+                self.set_integer(name, int(value))
+            elif t == "boolean":
+                self.set_boolean(name, bool(value))
+            else:
+                self.fmu.set(name, value)
+        except Exception as exc:
+            info = self._var_info(name)
+            raise RuntimeError(
+                f"Failed to set FMU variable {name!r} to {value!r} "
+                f"on instance {self.instance_name!r}"
+                f"{info}."
+            ) from exc
+
+    def _var_info(self, name: str) -> str:
+        for group_name, variables in (self.io or {}).items():
+            for var in variables:
+                if getattr(var, "name", None) == name:
+                    return (
+                        f" (type={var.type_name}, causality={var.causality}, "
+                        f"variability={var.variability}, initial={var.initial}, "
+                        f"group={group_name})"
+                    )
+        return ""
 
     def get_value(self, name: str, default: Any = _MISSING):
         """
@@ -417,6 +505,9 @@ class PyFMIRunner:
             if default is not _MISSING:
                 return default
             raise RuntimeError(f"ME FMU value '{name}' is not available before initialization.")
+
+        if self.fmu_type == "cs" and name in self._last_values:
+            return self._last_values[name]
 
         t = self._type_map.get(name)
         if t is None:
@@ -463,7 +554,7 @@ class PyFMIRunner:
             self._simulate_me_segment(float(dt))
             return 0
 
-        self.fmu.do_step(current_t=float(t), step_size=float(dt), new_step=True)
+        self._simulate_cs_segment(float(dt))
         return 0
 
     def step_or_raise(self, t: float, dt: float) -> None:
@@ -503,6 +594,82 @@ class PyFMIRunner:
 
         self._apply_raw_values(terminal_values)
         self._pending_values.clear()
+
+    def _simulate_cs_segment(self, dt: float) -> None:
+        start_values = dict(self._start_values)
+        if self._last_values:
+            start_values.update(self._last_values)
+        else:
+            start_values.update(self._snapshot_cs_values())
+        self.fmu.reset()
+        self._apply_raw_values(start_values)
+
+        input_tuple = self._cs_input_tuple(dt)
+        if self.show_solver_log:
+            self._simulate_cs_segment_once(dt, input_tuple)
+        else:
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                self._simulate_cs_segment_once(dt, input_tuple)
+
+        terminal_values = self._snapshot_cs_values()
+        terminal_values.update(self._input_values)
+        self._last_values.update(terminal_values)
+
+        self.fmu.reset()
+        self._apply_raw_values(terminal_values)
+        self._pending_input_values.clear()
+
+    def _cs_input_tuple(self, dt: float):
+        if not self.input_names:
+            return None
+
+        try:
+            import numpy as np
+        except ImportError as exc:
+            raise ImportError("PyFMI CS input replay requires numpy.") from exc
+
+        for name, value in self._pending_input_values.items():
+            self._input_values[name] = value
+            self._last_values[name] = value
+
+        values = [self._input_values.get(name, 0.0) for name in self.input_names]
+        data = np.array(
+            [
+                [0.0, *values],
+                [float(dt), *values],
+            ],
+            dtype=float,
+        )
+        return (self.input_names, data)
+
+    def _simulate_cs_segment_once(self, dt: float, input_tuple) -> None:
+        kwargs = {
+            "start_time": 0.0,
+            "final_time": float(dt),
+        }
+        if self.opts is not None:
+            kwargs["options"] = self.opts
+        if input_tuple is not None:
+            kwargs["input"] = input_tuple
+        self.fmu.simulate(**kwargs)
+
+    def _snapshot_cs_values(self) -> dict[str, Any]:
+        names = list(dict.fromkeys(self.variable_names))
+        if not names:
+            return {}
+
+        try:
+            values = self.fmu.get(names)
+        except Exception:
+            return dict(self._input_values)
+
+        normalized = _normalize_pyfmi_value(values)
+        if not isinstance(normalized, list):
+            normalized = [normalized]
+        return {
+            name: value
+            for name, value in zip(names, normalized)
+        }
 
     def _snapshot_me_values(self) -> dict[str, Any]:
         names = list(dict.fromkeys([*self.state_names, *self.variable_names]))
