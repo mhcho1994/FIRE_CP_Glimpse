@@ -15,13 +15,17 @@ package GSQuad
       // [sec] sensing frequency
       parameter Real sensor_sample_period = 0.005;
         // targeted acoustic attack model and parameters
-      parameter Real W = 100;                                     // [W] power of speaker
+      parameter Real W = 0;                                     // [W] power of speaker
       parameter Real dist = 0.01;                               // [m] distance to speaker
       parameter Real psi_ac = 80.0*Constants.d2r;               // [rad] speaker direction
       parameter Real w_ac = 15.0002e+3*2*Constants.pi;          // [rad/s] acoustic attack frequency
-      parameter Real epsilon = 1.0*Constants.d2r;               // [rad] misalignment of gyroscope, reference - 1deg
+      parameter Real epsilon = 0.0*Constants.d2r;               // [rad] misalignment of gyroscope, reference - 1deg
       parameter Real phi_0 = 30*Constants.d2r;                      // [rad] phase shift for acoustic noise compared to driving signal
       GyroAcousticAtk gyroatk(W=W, dist=dist, psi_ac=psi_ac, w_ac=w_ac, epsilon=epsilon, phi_0=phi_0);
+      // sensor offset attack knobs, matching the CasADi sensor-disruption path
+      parameter Real pos_sensor_offset[3] = {0.0,0.0,0.0} annotation(Evaluate=false);
+      parameter Real vel_sensor_offset[3] = {0.0,0.0,0.0} annotation(Evaluate=false);
+      parameter Real gyro_sensor_offset[3] = {0.0,0.0,0.0} annotation(Evaluate=false);
       // [-] minimum/maximum PWM
       parameter Real pwm_min = 1000;
       parameter Real pwm_max = 2000;
@@ -71,12 +75,12 @@ package GSQuad
       
       when sample(0, sensor_sample_period) then
         if fidelity == 1 or fidelity == 2 then
-          pos_w_p_w_buf := quad_low.position_w_p_w;
-          vel_w_p_b_buf := quad_low.velocity_w_p_b;
+          pos_w_p_w_buf := quad_low.position_w_p_w + pos_sensor_offset;
+          vel_w_p_b_buf := quad_low.velocity_w_p_b + vel_sensor_offset;
           acc_w_p_b_buf := {0.0,0.0,0.0};
           quat_wb_buf := quad_low.quaternion_wb;
           euler_wb_buf := quat2eul(quad_low.quaternion_wb);
-          rate_wb_b_buf := quad_low.rate_wb_b+gyroatk.omega_false;
+          rate_wb_b_buf := quad_low.rate_wb_b + gyro_sensor_offset + gyroatk.omega_false;
         else
           pos_w_p_w_buf := {0.0,0.0,0.0};
           vel_w_p_b_buf := {0.0,0.0,0.0};
@@ -136,6 +140,10 @@ package GSQuad
       // [-] minimum/maximum PWM
       parameter Real pwm_min = 1000;
       parameter Real pwm_max = 2000;
+      // CPV 1-2: additive change to ANGLE_MAX.
+      parameter Real maximum_lean_angle_delta = 0.0 annotation(Evaluate=false);
+      // CPV 1-1: controller-side INS_GYROFFS bias.
+      parameter Real gyro_rate_offset[3] = {0.0,0.0,0.0} annotation(Evaluate=false);
       
      // setup controller type by changing fidelity and load different controller
       // 1 = EulerPID, 2 = QuaternionPID
@@ -225,6 +233,8 @@ package GSQuad
         euler_pid.vel_w_p_b_fdbk := vel_w_p_b_fdbk;
         euler_pid.euler_wb_fdbk := euler_wb_fdbk;
         euler_pid.rate_wb_b_fdbk := rate_wb_b_fdbk;
+        euler_pid.maximum_lean_angle_delta := maximum_lean_angle_delta;
+        euler_pid.gyro_rate_offset := gyro_rate_offset;
         
     //  fidelity ==2 case
         quat_pid.position_setpoint := position_setpoint;
@@ -233,6 +243,8 @@ package GSQuad
         quat_pid.vel_w_p_b_fdbk := vel_w_p_b_fdbk;
         quat_pid.quat_wb_fdbk := quat_wb_fdbk;
         quat_pid.rate_wb_b_fdbk := rate_wb_b_fdbk;
+        quat_pid.maximum_lean_angle_delta := maximum_lean_angle_delta;
+        quat_pid.gyro_rate_offset := gyro_rate_offset;
         
       end when;
       
@@ -375,8 +387,8 @@ package GSQuad
     algorithm
       when sample(0, sample_period) then
 // default waypoint in NED coordinate
-        position_setpoint_w_buf := {3.0, 0.0, 0.0};
-        yaw_setpoint_w_buf := 0.01;
+        position_setpoint_w_buf := {0.0, 0.0, 0.0};
+        yaw_setpoint_w_buf := 0.0;
       end when;
       annotation(
         Icon(graphics = {Rectangle(origin = {0, 35}, extent = {{-60, 35}, {60, -35}}), Polygon(origin = {0, -26}, points = {{-60, 26}, {-80, -26}, {80, -26}, {60, 26}, {-60, 26}}), Rectangle(origin = {0, 35}, extent = {{-56, 31}, {56, -31}}), Text(origin = {0, 36}, extent = {{-56, 18}, {56, -18}}, textString = "Mission Planner"), Polygon(origin = {0, -25}, points = {{-58, 23}, {-76, -23}, {76, -23}, {58, 23}, {-58, 23}, {-58, 23}}), Polygon(origin = {4, -13}, points = {{-60, 9}, {-68, -11}, {60, -11}, {52, 9}, {52, 9}, {-60, 9}}), Polygon(origin = {-32, -37}, points = {{12, 9}, {10, -7}, {54, -7}, {52, 9}, {52, 9}, {12, 9}})}));
@@ -427,9 +439,12 @@ package GSQuad
       parameter Real Kp_r = 2.00;
       parameter Real Ki_r = 0.00;
       parameter Real Kd_r = 0.80;
+      parameter Real maximum_lean_angle = 30*Constants.d2r;
       // input
       discrete Real pos_w_p_w_fdbk[3], vel_w_p_b_fdbk[3], euler_wb_fdbk[3], rate_wb_b_fdbk[3];
       discrete Real position_setpoint[3], yaw_setpoint;
+      discrete Real maximum_lean_angle_delta(start=0.0, fixed=true);
+      discrete Real gyro_rate_offset[3](start={0.0,0.0,0.0}, each fixed=true);
       // output
       // [-] rotational speed command from ESC
       discrete Real normalized_ctrl_input[4](start={0,0,0,0}, each fixed=false);
@@ -471,7 +486,7 @@ package GSQuad
       // [-] current body thrust vector direction (-Z direction of inertial coordinates represented in body coordinates)
       discrete Real att_body_thrust_vec[3];
       // [-] lean angle between inertial/body negative z-axis
-      discrete Real lean_angle;
+      discrete Real lean_angle, effective_maximum_lean_angle;
       // [-] required thrust of each rotor
       discrete Real thrust_target[4];
       discrete Real omega_spd_sq_target[4];
@@ -513,16 +528,17 @@ package GSQuad
         acc_z_target := -acc_target[3];
         acc_fwd_target := acc_target[1]*cos(euler_wb_fdbk[3]) + acc_target[2]*sin(euler_wb_fdbk[3]);
         acc_rgt_target := -acc_target[1]*sin(euler_wb_fdbk[3]) + acc_target[2]*cos(euler_wb_fdbk[3]);
-        pitch_target := atan(-acc_fwd_target/Constants.g);
-        roll_target := atan(acc_rgt_target*cos(pitch_target)/Constants.g);
+        effective_maximum_lean_angle := max(maximum_lean_angle + maximum_lean_angle_delta, 0.0);
+        pitch_target := clip(atan(-acc_fwd_target/Constants.g), -effective_maximum_lean_angle, effective_maximum_lean_angle);
+        roll_target := clip(atan(acc_rgt_target*cos(pitch_target)/Constants.g), -effective_maximum_lean_angle, effective_maximum_lean_angle);
         yaw_target := yaw_setpoint;
         att_error := {roll_target, pitch_target, yaw_target} - euler_wb_fdbk;
         rate_target := {Kp_phi, Kp_the, Kp_psi}.*att_error;
-        rate_error := rate_target - rate_wb_b_fdbk;
+        rate_error := rate_target - (rate_wb_b_fdbk - gyro_rate_offset);
         rate_error_i := rate_error_i + rate_error*update_interval;
         rate_error_d := (rate_error - rate_error_last)/update_interval;
         rate_error_last := rate_error;
-        moment_target := J*({Kp_p, Kp_q, Kp_r}.*rate_error + {Ki_p, Ki_q, Ki_r}.*rate_error_i + {Kd_p, Kd_q, Kd_r}.*rate_error_d) + hatmap(rate_wb_b_fdbk)*(J*rate_wb_b_fdbk);
+        moment_target := J*({Kp_p, Kp_q, Kp_r}.*rate_error + {Ki_p, Ki_q, Ki_r}.*rate_error_i + {Kd_p, Kd_q, Kd_r}.*rate_error_d) + hatmap(rate_wb_b_fdbk - gyro_rate_offset)*(J*(rate_wb_b_fdbk - gyro_rate_offset));
         att_body_thrust_vec := C_wb*{0.0, 0.0, -1.0};
         lean_angle := acos(clip({0.0, 0.0, -1.0}*att_body_thrust_vec, -1, 1));
         force_target := mass*acc_z_target/cos(lean_angle);
@@ -572,11 +588,11 @@ package GSQuad
       // outer loop control gains (PSC)
       parameter Real PSC_POSXY_P = 0.20; 
       parameter Real PSC_POSZ_P = 0.40; 
-      parameter Real PSC_VELXY_P = 0.45; 
-      parameter Real PSC_VELXY_I = 0.10; 
+      parameter Real PSC_VELXY_P = 0.45*1; 
+      parameter Real PSC_VELXY_I = 0.10*1; 
       parameter Real PSC_VELXY_D = 0.00; 
-      parameter Real PSC_VELZ_P = 0.60; 
-      parameter Real PSC_VELZ_I = 0.10; 
+      parameter Real PSC_VELZ_P = 0.60*1; 
+      parameter Real PSC_VELZ_I = 0.10*1; 
       parameter Real PSC_VELZ_D = 0.00;
       
       // inner loop control gains (ATC)
@@ -585,21 +601,22 @@ package GSQuad
       parameter Real ATC_ANG_YAW_P = 0.80; 
       parameter Real ATC_RAT_RLL_P = 1.60; 
       parameter Real ATC_RAT_RLL_I = 0.00; 
-      parameter Real ATC_RAT_RLL_D = 0.60; 
+      parameter Real ATC_RAT_RLL_D = 0.60*1.5; 
       parameter Real ATC_RAT_PIT_P = 1.60; 
       parameter Real ATC_RAT_PIT_I = 0.00; 
-      parameter Real ATC_RAT_PIT_D = 0.60; 
+      parameter Real ATC_RAT_PIT_D = 0.60*1.5; 
       parameter Real ATC_RAT_YAW_P = 2.00; 
       parameter Real ATC_RAT_YAW_I = 0.00; 
-      parameter Real ATC_RAT_YAW_D = 0.80;
+      parameter Real ATC_RAT_YAW_D = 0.80*1;
       
       
       // thrust/accel gains
       parameter Real PSC_ACCZ_P = 0.5/10; 
       parameter Real PSC_ACCZ_I = 1.0/10; 
-      parameter Real PSC_ACCZ_D = 0.0/10; 
-      parameter Real POSCONTROL_ACCEL_U_MSS = 2.5; 
-      parameter Real POSCONTROL_JERK_U_MSSS = 5.0; 
+      parameter Real PSC_ACCZ_D = 0.0/10;
+      parameter Real POSCONTROL_ACCEL_U_MSS = 2.5;
+      parameter Real POSCONTROL_JERK_U_MSSS = 5.0;
+      parameter Real maximum_lean_angle = 30*Constants.d2r;
     
       // physical parameters
       parameter Real mass = 0.942 + 4*0.15 + 1.072 + 4*0.037;
@@ -616,6 +633,8 @@ package GSQuad
       // input
       discrete Real pos_w_p_w_fdbk[3], vel_w_p_b_fdbk[3], quat_wb_fdbk[4], rate_wb_b_fdbk[3];
       discrete Real position_setpoint[3], yaw_setpoint;
+      discrete Real maximum_lean_angle_delta(start=0.0, fixed=true);
+      discrete Real gyro_rate_offset[3](start={0.0,0.0,0.0}, each fixed=true);
     
       // output
       discrete Real normalized_ctrl_input[4](start={0,0,0,0}, each fixed=false);
@@ -647,7 +666,7 @@ package GSQuad
       discrete Real rate_error_d[3];
       discrete Real force_target, moment_target[3];
       discrete Real fm_target[4];
-      discrete Real lean_angle;
+      discrete Real lean_angle, effective_maximum_lean_angle;
       discrete Real thrust_target[4], omega_spd_sq_target[4];
     
     equation
@@ -677,8 +696,9 @@ package GSQuad
         acc_fwd_target := acc_target[1]*cos(euler_wb_fdbk[3]) + acc_target[2]*sin(euler_wb_fdbk[3]);
         acc_rgt_target := -acc_target[1]*sin(euler_wb_fdbk[3]) + acc_target[2]*cos(euler_wb_fdbk[3]);
         
-        pitch_target := atan(-acc_fwd_target/Constants.g);
-        roll_target := atan(acc_rgt_target*cos(pitch_target)/Constants.g);
+        effective_maximum_lean_angle := max(maximum_lean_angle + maximum_lean_angle_delta, 0.0);
+        pitch_target := clip(atan(-acc_fwd_target/Constants.g), -effective_maximum_lean_angle, effective_maximum_lean_angle);
+        roll_target := clip(atan(acc_rgt_target*cos(pitch_target)/Constants.g), -effective_maximum_lean_angle, effective_maximum_lean_angle);
         yaw_target := yaw_setpoint;
     
         // 4. Attitude Error Extraction
@@ -719,7 +739,7 @@ package GSQuad
         rate_target := {ATC_ANG_RLL_P, ATC_ANG_PIT_P, ATC_ANG_YAW_P} .* att_error;
     
         // 5. Rate Control (ATC)
-        rate_error := rate_target - rate_wb_b_fdbk;
+        rate_error := rate_target - (rate_wb_b_fdbk - gyro_rate_offset);
         rate_error_i := rate_error_i + rate_error*update_interval;
         rate_error_d := (rate_error - rate_error_last)/update_interval;
         rate_error_last := rate_error;
@@ -727,7 +747,7 @@ package GSQuad
         moment_target := J*({ATC_RAT_RLL_P, ATC_RAT_PIT_P, ATC_RAT_YAW_P} .* rate_error 
                           + {ATC_RAT_RLL_I, ATC_RAT_PIT_I, ATC_RAT_YAW_I} .* rate_error_i 
                           + {ATC_RAT_RLL_D, ATC_RAT_PIT_D, ATC_RAT_YAW_D} .* rate_error_d) 
-                       + hatmap(rate_wb_b_fdbk)*(J*rate_wb_b_fdbk);
+                       + hatmap(rate_wb_b_fdbk - gyro_rate_offset)*(J*(rate_wb_b_fdbk - gyro_rate_offset));
     
         // 6. Thrust & Control Allocation
         lean_angle := acos(clip({0.0, 0.0, -1.0} * (C_wb*{0.0, 0.0, -1.0}), -1.0, 1.0));
@@ -1167,6 +1187,6 @@ package GSQuad
       Line(points = {{-116, 0}, {-94, 0}, {-94, 33.5}, {-80, 33.5}, {-80, 34}}, thickness = 0.5));
     annotation(
       Diagram(coordinateSystem(extent = {{-200, 100}, {160, -40}})),
-      experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-06, Interval = 0.005));
+      experiment(StartTime = 0.0, StopTime = 30.0, Tolerance = 1e-06, Interval = 0.005));
   end ExampleHovering;
 end GSQuad;
