@@ -9,7 +9,7 @@ ENV CONDA_DIR=/opt/conda
 ENV HOME=/home/cpglimpse
 ENV PATH="/opt/conda/envs/cp-glimpse-py312/bin:/opt/conda/bin:${PATH}"
 
-WORKDIR /cp-glimpse
+WORKDIR /home/cpglimpse/cp-glimpse
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -47,7 +47,7 @@ RUN chmod +x setup.sh \
     && rm -rf /var/lib/apt/lists/* \
     && conda clean -afy
 
-RUN chown -R cpglimpse:cpglimpse /cp-glimpse /home/cpglimpse
+RUN chown -R cpglimpse:cpglimpse /home/cpglimpse
 
 FROM runtime AS dev
 
@@ -55,16 +55,16 @@ USER cpglimpse
 
 EXPOSE 8888
 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
+CMD ["bash"]
 
 FROM runtime AS release
 
 COPY . .
 
-RUN chown -R cpglimpse:cpglimpse /cp-glimpse /home/cpglimpse
+RUN chown -R cpglimpse:cpglimpse /home/cpglimpse
 
 USER cpglimpse
 
 EXPOSE 8888
 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
+CMD ["bash"]

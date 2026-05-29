@@ -1,0 +1,28 @@
+{
+  "name": "CP Glimpse",
+  "build": {
+    "dockerfile": "../docker/Dockerfile",
+    "context": "..",
+    "target": "dev",
+    "args": {
+      "INSTALL_OPENMODELICA": "false"
+    }
+  },
+  "workspaceFolder": "/home/cpglimpse/cp-glimpse",
+  "remoteUser": "cpglimpse",
+  "overrideCommand": true,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/envs/cp-glimpse-py312/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "jupyter.notebookFileRoot": "${workspaceFolder}"
+      }
+    }
+  }
+}

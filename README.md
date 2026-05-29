@@ -122,24 +122,51 @@ time:
 docker build -f docker/Dockerfile --target dev -t cp-glimpse-dev .
 ```
 
-Run the container:
+Run the container with an interactive shell:
 
 ```bash
-docker run --rm -p 8888:8888 cp-glimpse
+docker run --rm -it -p 8888:8888 cp-glimpse
 ```
 
-The container starts JupyterLab on port `8888`. The release image copies the
-repository into `/cp-glimpse`, so it can be saved and distributed as a standalone
-Docker image. The container runs as a non-root `cpglimpse` user so the
-OpenModelica server can start safely inside Docker.
+The release image copies the repository into `/home/cpglimpse/cp-glimpse`, so it
+can be saved and distributed as a standalone Docker image. The container runs as
+a non-root `cpglimpse` user so the OpenModelica server can start safely inside
+Docker.
 
-For development, bind-mount your local repository into `/cp-glimpse` so local
-edits are visible immediately:
+For development, bind-mount your local repository into
+`/home/cpglimpse/cp-glimpse` so local edits are visible immediately:
 
 ```bash
-docker run --rm -p 8888:8888 \
-  --mount type=bind,src="$PWD",dst=/cp-glimpse \
-  cp-glimpse
+docker run --rm -it \
+  --mount type=bind,src="$PWD",dst=/home/cpglimpse/cp-glimpse \
+  cp-glimpse-dev
+```
+
+### VS Code Dev Containers
+
+The repository includes a `.devcontainer/devcontainer.json` configuration for
+VS Code. Open the repository in VS Code and run:
+
+```text
+Dev Containers: Rebuild and Reopen in Container
+```
+
+VS Code will build the `dev` target from `docker/Dockerfile`, attach to the
+container, and open the workspace at `/home/cpglimpse/cp-glimpse`.
+
+### JupyterLab in Docker
+
+The Docker image does not start JupyterLab automatically. If you want to use
+JupyterLab, start it manually from the container shell:
+
+```bash
+jupyter lab --ip=0.0.0.0 --port=8888 --no-browser
+```
+
+When running the container directly, publish port `8888`:
+
+```bash
+docker run --rm -it -p 8888:8888 cp-glimpse
 ```
 
 To distribute the built image as a tar archive:
@@ -216,9 +243,9 @@ workflow.
 examples/quadrotor_attack_analysis.ipynb
 ```
 
-Open the notebook in JupyterLab to run scenarios, load generated results, and
-plot outputs. When using Docker, open the JupyterLab URL printed by the
-container and run the notebooks under `examples/`.
+Open the notebook in VS Code or JupyterLab to run scenarios, load generated
+results, and plot outputs. When using Docker with JupyterLab, start JupyterLab
+manually from the container shell and open the printed URL.
 
 ### Legacy Reproduction
 
