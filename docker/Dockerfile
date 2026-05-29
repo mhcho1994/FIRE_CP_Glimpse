@@ -29,24 +29,16 @@ RUN case "${TARGETARCH:-amd64}" in \
     && curl -fsSL "https://update.code.visualstudio.com/commit:${VSCODE_SERVER_COMMIT}/${VSCODE_SERVER_PLATFORM}/stable" \
         | tar -xz --strip-components=1 -C "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"
 
-RUN if [ "$INSTALL_OPENMODELICA" = "true" ]; then \
-        apt-get update \
-        && curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc \
-            | gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg \
-        && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/openmodelica-keyring.gpg] https://build.openmodelica.org/apt $(grep VERSION_CODENAME /etc/os-release | cut -d= -f 2) stable" \
-            > /etc/apt/sources.list.d/openmodelica.list \
-        && apt-get update \
-        && apt-get install -y --no-install-recommends openmodelica \
-        && rm -rf /var/lib/apt/lists/*; \
-    fi
-
 COPY pyproject.toml README.md setup.sh ./
 COPY src ./src
-COPY scenarios ./scenarios
-COPY models ./models
 
 RUN chmod +x setup.sh \
-    && bash setup.sh --recreate \
+    && if [ "$INSTALL_OPENMODELICA" = "true" ]; then \
+        bash setup.sh --recreate --install-openmodelica; \
+    else \
+        bash setup.sh --recreate; \
+    fi \
+    && rm -rf /var/lib/apt/lists/* \
     && conda clean -afy
 
 EXPOSE 8888

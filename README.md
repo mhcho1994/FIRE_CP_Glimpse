@@ -1,128 +1,105 @@
-# FIRE_CP_Glimpse  
+# FIRE_CP_Glimpse
+
+FIRE_CP_Glimpse is a Python-based co-simulation framework for multi-fidelity
+cyber-physical system (CPS) simulations, including drones, rovers, and other
+platforms. The current implementation focuses on an FMU-based workflow:
+Modelica models are exported as Functional Mock-up Units (FMUs) and executed
+from a Python simulation loop.
 
 ## ⚠️ Important
 
-This repository is currently under active development to generalize the physical simulation backends toward a platform-agnostic architecture (e.g., drone, rover, and other CPS platforms).
-
-This transition aims to:
-
-- Reduce the number of redundant vehicle-specific models (as suggested by IV&V)
-- Support multiple simulation backends (e.g., direct Modelica execution, FMU-based simulation, CasADi-generated models)
-- Enable seamless integration with CP-Explore
-
-To reproduce example simulation results, run:
-`examples/<platform>/main.py`
-Replace `<platform>` with the desired vehicle type (e.g., `GSdrone`, `NGCrover`).
-
-### Cyber-Physical Co-Simulation of Drone and Rover via FMUs
-This repository provides **Python-based orchestration and co-simulation scripts** for **cyber-physical models of drones and rovers**. Each model is exported from **Modelica** as an **FMU (Functional Mock-up Unit)** and executed within a **Python simulation loop** that integrates control, sensing, communication, and fault/attack dynamics. The repository is part of the **CyPhER** framework for cyber-physical vulnerability analysis and **CP-Glimpse**, the low-fidelity simulation tool for proactive risk assessment.
-
----
-
-## Overview
-- The **Modelica models** of drone and rover (see [FIRE_CP_Modelica](https://github.com/mhcho1994/FIRE_CP_Modelica)) define the coupled **cyber–physical system models**:  
-  - Physical: chassis, tire, rotor, aerodynamic, actuator, and sensor models  
-  - Cyber: control laws, state estimation, and network/communication layers  
-- These are exported as **FMUs** and loaded into Python through **PyFMI** or **FMPy**.  
-- The Python scripts implement a **synchronous step-based co-simulation**, allowing:
-  - Integration of multiple FMUs (e.g., dynamics + controller)  
-  - Attack and fault injections  
-  - Data logging and visualization  
-  - Multi-fidelity model comparison (Lo-Fi vs Hi-Fi)  
-
----
+This repository is under active development. Future work is expected to extend
+the backend architecture toward direct Modelica execution, Rumoca backends, model reformatting, and tighter integration with Rumoca.
 
 ## Repository Structure
-TBF
 
----
-
-## Setup & Dependencies
-
-### 1. Install OpenModelica
-OpenModelica can be installed from the **Download** tab on the official site:  
-[https://openmodelica.org/](https://openmodelica.org/)
-
-- **Windows / macOS:** Use the installer from the website (recommended).
-- **Linux (Ubuntu/Debian):** Use the official repo:
-
-```bash
-sudo apt-get update
-sudo apt-get install ca-certificates curl gnupg
-
-# Add OpenModelica key & repo
-sudo curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc | \
-  sudo gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg
-
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/openmodelica-keyring.gpg] \
-  https://build.openmodelica.org/apt \
-  $(cat /etc/os-release | grep "\(UBUNTU\|DEBIAN\|VERSION\)_CODENAME" | sort | cut -d= -f 2 | head -1) \
-  stable" | sudo tee /etc/apt/sources.list.d/openmodelica.list
-
-sudo apt update
-sudo apt install openmodelica
+```text
+.
+├── docker/              # Docker image definition
+├── examples/            # Latest notebook-based simulation and analysis examples
+├── legacy/              # Legacy code for reproducing previous GSdrone and NGCrover results
+├── models/              # Modelica source files (.mo)
+├── scenarios/           # Scenario configuration files (.yaml)
+├── src/cp_glimpse_py/   # CP Glimpse Python package
+└── setup.sh             # Local conda environment setup script
 ```
 
-Quick check:
-```bash
-omc --version
-```
-> You only need OpenModelica if you plan to **export/re-export FMUs** from your Modelica models. If you already have the `.fmu` files, you can skip this.
+## Environment Setup
 
-### 2. Install Python packages
-Create a local Miniforge/conda environment with Python 3.12, PyFMI, Jupyter,
-and the notebook dependencies:
+### Local Install
+
+From the repository root, create the conda environment and install this package
+in editable mode:
 
 ```bash
 source setup.sh
 ```
 
-If conda is not already installed, the setup script installs Miniforge under
-`$HOME/.local/share/miniforge3` and then creates a `cp-glimpse-py312`
-environment. All third-party dependencies, including PyFMI, are installed from
-conda-forge; this repository is installed editable with pip.
-
-If an existing environment was left in a broken state, recreate it:
+Use `--recreate` for a clean environment rebuild:
 
 ```bash
 source setup.sh --recreate
 ```
 
-Sanity check (optional):
+The generated conda environment is named `cp-glimpse-py312`.
+
+```bash
+conda activate cp-glimpse-py312
+conda deactivate
+```
+
+Optional sanity check:
+
 ```bash
 cp-glimpse --help
 ```
 
-### 3. Run the simulation
-Navigate to the repository root and run a scenario:
+### OpenModelica
+
+OpenModelica is required when you need to export or re-export FMUs from
+Modelica source files. If you already have the required `.fmu` files, you can
+skip the OpenModelica installation.
+
+On Ubuntu/Debian systems, `setup.sh` can install OpenModelica for you:
 
 ```bash
-cp-glimpse --scenario scenarios/bouncingball_single_run.yaml
+source setup.sh --openmodelica-only
 ```
-Recommend to use a code editor like VS Code.
 
-## Scenario Format
+To install OpenModelica and set up the Python environment in one step:
 
-Scenario files can be YAML (`.yaml`, `.yml`) or TOML (`.toml`). YAML remains
-the most convenient format while scenarios are still list-heavy and nested.
-TOML is useful for stricter, less ambiguous configuration and works well for
-stable scalar settings such as `[sim]`, `[outputs]`, and `[parameters]`.
+```bash
+source setup.sh --install-openmodelica
+```
 
-Recommendation: support both formats for now. Keep existing YAML scenarios
-working, add TOML examples for new or stable scenarios, and avoid a full
-migration until the scenario schema settles.
+To install OpenModelica and recreate the Python environment in one step:
+
+```bash
+source setup.sh --recreate --install-openmodelica
+```
+
+Verify OpenModelica:
+
+```bash
+omc --version
+```
+
+For non-Debian platforms, install OpenModelica manually from the official site:
+
+https://openmodelica.org/
 
 ## Docker
 
-The Docker image uses the official conda-forge Miniforge base image and creates
-the same `cp-glimpse-py312` conda environment used by local setup:
+The Docker image uses the conda-forge Miniforge base image and creates the same
+`cp-glimpse-py312` environment used by the local setup script.
+
+Build the default image:
 
 ```bash
 docker build -f docker/Dockerfile -t cp-glimpse .
-docker run --rm -p 8888:8888 -v "$PWD:/app" cp-glimpse
 ```
 
-Optional build arguments:
+Build the image with OpenModelica included:
 
 ```bash
 docker build -f docker/Dockerfile -t cp-glimpse \
@@ -130,8 +107,111 @@ docker build -f docker/Dockerfile -t cp-glimpse \
   .
 ```
 
-The `examples/GSdrone/main.ipynb` and `examples/NGCrover/main.ipynb` notebooks
-use the legacy `examples/*/fmu.py` modules, which import PyFMI. The setup and
-Docker paths install PyFMI by default. The Docker command above bind-mounts the
-current repository into `/app`, so changes to notebooks and example files are
-visible inside the container immediately.
+The Docker build uses the same `setup.sh --install-openmodelica` path when
+`INSTALL_OPENMODELICA=true`.
+
+Run the container:
+
+```bash
+docker run --rm -p 8888:8888 \
+  --mount type=bind,src="$PWD",dst=/app \
+  cp-glimpse
+```
+
+The container starts JupyterLab on port `8888`. The command above bind-mounts
+the current repository into `/app`, so local changes to notebooks, scenarios,
+and models are immediately visible inside the container.
+
+## Simulation Inputs
+
+### Models
+
+Modelica models are stored as `.mo` files under `models/`.
+
+Examples:
+
+```text
+models/MFQuadrotor.mo
+models/MFRover.mo
+models/hybrid_benchmarks/BouncingBall.mo
+```
+
+The primary supported workflow is to generate an FMU from a Modelica model and
+execute that FMU through the Python simulation backend.
+
+### Scenarios
+
+Scenarios are configured as YAML files under `scenarios/`.
+
+Examples:
+
+```text
+scenarios/bouncingball_single_run.yaml
+scenarios/quadrotor_nominal.yaml
+scenarios/quadrotor_acoustic_attack.yaml
+scenarios/rover_nominal.yaml
+```
+
+TOML scenario support is planned for a future release. The currently documented
+scenario format is YAML.
+
+### Backend
+
+The currently supported backend path is FMU-based. A scenario points to a
+Modelica model, CP Glimpse generates or reuses an FMU, and the resulting FMU is
+simulated through a PyFMI or FMPy runner.
+
+OpenModelica is required when generating `.fmu` artifacts from `.mo` files. If
+the FMU artifact already exists, only the FMU execution step is required.
+
+## Run Simulations
+
+### CLI
+
+Run a scenario from the repository root:
+
+```bash
+cp-glimpse --scenario scenarios/bouncingball_single_run.yaml
+```
+
+Use `--save-dir` to choose where `outputs.csv` is written:
+
+```bash
+cp-glimpse --scenario scenarios/quadrotor_nominal.yaml --save-dir results/nominal
+```
+
+### Latest Notebook Examples
+
+Use the notebooks under `examples/` for the latest simulation and analysis
+workflow.
+
+```text
+examples/quadrotor_attack_analysis.ipynb
+```
+
+Open the notebook in JupyterLab to run scenarios, load generated results, and
+plot outputs. When using Docker, open the JupyterLab URL printed by the
+container and run the notebooks under `examples/`.
+
+### Legacy Reproduction
+
+Use the `legacy/` folder when you need to reproduce previous GSdrone or
+NGCrover results.
+
+```text
+legacy/GSdrone/main.ipynb
+legacy/NGCrover/main.ipynb
+```
+
+Legacy code may differ from the current generalized execution path under
+`src/cp_glimpse_py`. For new work, prefer the latest notebooks under
+`examples/` and the scenario-driven CLI workflow under `scenarios/`.
+
+## Typical Workflow
+
+1. Prepare Modelica `.mo` files under `models/`.
+2. Create YAML scenarios under `scenarios/`.
+3. Set up the runtime with `source setup.sh` or Docker.
+4. Run simulations with `cp-glimpse --scenario <scenario.yaml>` or the
+   notebooks under `examples/`.
+5. Inspect generated CSV outputs and notebook plots.
