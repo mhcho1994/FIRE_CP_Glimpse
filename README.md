@@ -93,16 +93,17 @@ https://openmodelica.org/
 The Docker image uses the conda-forge Miniforge base image and creates the same
 `cp-glimpse-py312` environment used by the local setup script.
 
-Build the default image:
+Build the default release image. This target copies the repository into the
+image, so it can run without a bind mount:
 
 ```bash
 docker build -f docker/Dockerfile -t cp-glimpse .
 ```
 
-Build the image with OpenModelica included:
+Build the release image with OpenModelica included:
 
 ```bash
-docker build -f docker/Dockerfile -t cp-glimpse \
+docker build -f docker/Dockerfile --target release -t cp-glimpse \
   --build-arg INSTALL_OPENMODELICA=true \
   .
 ```
@@ -110,17 +111,39 @@ docker build -f docker/Dockerfile -t cp-glimpse \
 The Docker build uses the same `setup.sh --install-openmodelica` path when
 `INSTALL_OPENMODELICA=true`.
 
+Build a smaller development image. This target only copies the files needed to
+create the environment, and expects the repository to be bind-mounted at run
+time:
+
+```bash
+docker build -f docker/Dockerfile --target dev -t cp-glimpse-dev .
+```
+
 Run the container:
 
 ```bash
+docker run --rm -p 8888:8888 cp-glimpse
+```
+
+The container starts JupyterLab on port `8888`. The release image copies the
+repository into `/cp-glimpse`, so it can be saved and distributed as a standalone
+Docker image.
+
+For development, bind-mount your local repository into `/cp-glimpse` so local
+edits are visible immediately:
+
+```bash
 docker run --rm -p 8888:8888 \
-  --mount type=bind,src="$PWD",dst=/app \
+  --mount type=bind,src="$PWD",dst=/cp-glimpse \
   cp-glimpse
 ```
 
-The container starts JupyterLab on port `8888`. The command above bind-mounts
-the current repository into `/app`, so local changes to notebooks, scenarios,
-and models are immediately visible inside the container.
+To distribute the built image as a tar archive:
+
+```bash
+docker save cp-glimpse -o cp-glimpse.tar
+docker load -i cp-glimpse.tar
+```
 
 ## Simulation Inputs
 

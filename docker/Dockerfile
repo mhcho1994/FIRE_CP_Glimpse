@@ -1,6 +1,5 @@
-FROM condaforge/miniforge3:latest
+FROM condaforge/miniforge3:latest AS base
 
-ARG INSTALL_OPENMODELICA=false
 ARG VSCODE_SERVER_COMMIT=4949701c880d4bdb949e3c0e6b400288da7f474b
 ARG TARGETARCH
 
@@ -9,7 +8,7 @@ ENV CONDA_ENV=cp-glimpse-py312
 ENV CONDA_DIR=/opt/conda
 ENV PATH="/opt/conda/envs/cp-glimpse-py312/bin:/opt/conda/bin:${PATH}"
 
-WORKDIR /app
+WORKDIR /cp-glimpse
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -29,6 +28,10 @@ RUN case "${TARGETARCH:-amd64}" in \
     && curl -fsSL "https://update.code.visualstudio.com/commit:${VSCODE_SERVER_COMMIT}/${VSCODE_SERVER_PLATFORM}/stable" \
         | tar -xz --strip-components=1 -C "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"
 
+FROM base AS runtime
+
+ARG INSTALL_OPENMODELICA=false
+
 COPY pyproject.toml README.md setup.sh ./
 COPY src ./src
 
@@ -40,6 +43,16 @@ RUN chmod +x setup.sh \
     fi \
     && rm -rf /var/lib/apt/lists/* \
     && conda clean -afy
+
+FROM runtime AS dev
+
+EXPOSE 8888
+
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+
+FROM runtime AS release
+
+COPY . .
 
 EXPOSE 8888
 

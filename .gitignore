@@ -21,3 +21,6 @@ eggs/
 results/
 examples/**/build/
 *.txt
+
+.agents 
+.codex
