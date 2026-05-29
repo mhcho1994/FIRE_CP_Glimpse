@@ -78,6 +78,7 @@ cp_glimpse_print_usage() {
 cp_glimpse_install_openmodelica() {
   if command -v omc >/dev/null 2>&1; then
     echo "OpenModelica is already installed: $(omc --version)"
+    cp_glimpse_ensure_modelica_standard_library || return 1
     return 0
   fi
 
@@ -169,7 +170,47 @@ cp_glimpse_install_openmodelica() {
 
   "${apt_cmd[@]}" update || return 1
   "${apt_cmd[@]}" install -y --no-install-recommends openmodelica || return 1
+  cp_glimpse_ensure_modelica_standard_library || return 1
   echo "OpenModelica installation complete: $(omc --version)"
+}
+
+cp_glimpse_ensure_modelica_standard_library() {
+  if ! command -v omc >/dev/null 2>&1; then
+    echo "omc is required to install the Modelica Standard Library." >&2
+    return 1
+  fi
+
+  if cp_glimpse_omc_eval "loadModel(Modelica);" 2>/dev/null | grep -qx "true"; then
+    echo "Modelica Standard Library is available."
+    return 0
+  fi
+
+  echo "Installing Modelica Standard Library with the OpenModelica package manager..."
+  cp_glimpse_omc_eval "installPackage(Modelica);" || return 1
+
+  if ! cp_glimpse_omc_eval "loadModel(Modelica);" 2>/dev/null | grep -qx "true"; then
+    echo "Failed to load the Modelica Standard Library after installation." >&2
+    cp_glimpse_omc_eval "getErrorString();" >&2 || true
+    return 1
+  fi
+
+  echo "Modelica Standard Library is available."
+}
+
+cp_glimpse_omc_eval() {
+  local expr="$1"
+  local script_dir
+  local script_path
+  script_dir="$(mktemp -d)" || return 1
+  script_path="$script_dir/eval.mos"
+  printf '%s\n' "$expr" > "$script_path" || {
+    rm -rf "$script_dir"
+    return 1
+  }
+  omc "$script_path"
+  local status=$?
+  rm -rf "$script_dir"
+  return "$status"
 }
 
 cp_glimpse_ensure_conda() {

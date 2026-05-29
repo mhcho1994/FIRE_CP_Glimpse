@@ -20,8 +20,7 @@ RUN apt-get update \
         tar \
     && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd --gid 1000 cpglimpse \
-    && useradd --uid 1000 --gid 1000 --create-home --shell /bin/bash cpglimpse
+RUN id -u cpglimpse >/dev/null 2>&1 || useradd --create-home --shell /bin/bash cpglimpse
 
 RUN case "${TARGETARCH:-amd64}" in \
         amd64) VSCODE_SERVER_PLATFORM="server-linux-x64" ;; \

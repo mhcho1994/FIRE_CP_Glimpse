@@ -66,6 +66,9 @@ On Ubuntu/Debian systems, `setup.sh` can install OpenModelica for you:
 source setup.sh --openmodelica-only
 ```
 
+This also verifies or installs the Modelica Standard Library used by FMU
+translation.
+
 To install OpenModelica and set up the Python environment in one step:
 
 ```bash

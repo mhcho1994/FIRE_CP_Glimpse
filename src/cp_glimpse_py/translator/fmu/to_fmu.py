@@ -522,7 +522,7 @@ def _build_fmu_from_modelica(
         with _Pushd(omc_work):
             from OMPython import ModelicaSystem
 
-            model = ModelicaSystem(str(mo_path), class_name)
+            model = ModelicaSystem(str(mo_path), class_name, ["Modelica"])
 
             try:
                 omc_ver = None
