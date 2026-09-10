@@ -257,6 +257,29 @@ Use `--save-dir` to choose where `outputs.csv` is written:
 cp-glimpse --scenario scenarios/quadrotor_nominal.yaml --save-dir results/nominal
 ```
 
+### Result Web Viewer
+
+Open the saved result artifacts in the local read-only web viewer:
+
+```bash
+cp-glimpse-viewer --results-dir results --open
+```
+
+The viewer is available at `http://127.0.0.1:8000/`. It discovers result
+directories containing `result.json`, plots selected input and output variables,
+provides a time slider and replay control, and shows current/minimum/maximum/final
+values. It does not execute scenarios or modify result artifacts.
+
+Inside Docker, bind the viewer to all container interfaces and publish port
+8000:
+
+```bash
+docker run --rm -it -p 8000:8000 cp-glimpse:release
+cp-glimpse-viewer --results-dir results --host 0.0.0.0 --port 8000
+```
+
+Then open `http://127.0.0.1:8000/` on the host.
+
 ### STR Smoke Test
 
 Run the canonical Modelica integrator end-to-end smoke test:

@@ -47,6 +47,7 @@ RUN chmod +x setup.sh \
         bash setup.sh --recreate; \
     fi \
     && cp-glimpse --help >/dev/null \
+    && cp-glimpse-viewer --help >/dev/null \
     && rm -rf /var/lib/apt/lists/* \
     && conda clean -afy
 
@@ -56,7 +57,7 @@ FROM runtime AS dev
 
 USER cpglimpse
 
-EXPOSE 8888
+EXPOSE 8000 8888
 
 CMD ["bash"]
 
@@ -75,9 +76,10 @@ RUN if [ "$INSTALL_OPENMODELICA" = "true" ]; then \
         && omc --version \
         && python -c "from OMPython import OMCSessionZMQ; omc = OMCSessionZMQ(); assert omc.sendExpression('loadModel(Modelica)'); print('Modelica Standard Library', omc.sendExpression('getVersion(Modelica)'))" \
         && cp-glimpse --help >/dev/null \
+        && cp-glimpse-viewer --help >/dev/null \
         && pytest -q tests/test_integrator_smoke.py; \
     fi
 
-EXPOSE 8888
+EXPOSE 8000 8888
 
 CMD ["bash"]

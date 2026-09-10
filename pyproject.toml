@@ -54,6 +54,7 @@ dev = [
 # CLI entry point
 [project.scripts]
 cp-glimpse = "cp_glimpse_py.main:main"
+cp-glimpse-viewer = "cp_glimpse_py.viewer.server:main"
 
 # --- setuptools config for src/ layout ---
 [tool.setuptools]
@@ -61,3 +62,6 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"cp_glimpse_py.viewer" = ["static/*.html", "static/*.css", "static/*.js"]

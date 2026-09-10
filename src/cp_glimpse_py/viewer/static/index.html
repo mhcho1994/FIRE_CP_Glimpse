@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CP-Glimpse Result Viewer</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">CP</span>
+      <div>
+        <h1>CP-Glimpse</h1>
+        <p>Simulation result viewer</p>
+      </div>
+    </div>
+    <div class="run-picker">
+      <label for="run-select">Result</label>
+      <select id="run-select" aria-label="Select a simulation result"></select>
+      <button id="refresh-runs" type="button">Refresh</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="message" class="message" role="status">Loading results…</div>
+
+    <section id="viewer" class="viewer" hidden>
+      <div class="summary-row" id="summary-row"></div>
+
+      <div class="workspace">
+        <aside class="signal-panel panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Signals</span>
+              <h2>Variables</h2>
+            </div>
+            <span id="signal-count" class="count"></span>
+          </div>
+          <input id="signal-search" class="search" type="search" placeholder="Filter variables…" autocomplete="off">
+          <div class="signal-actions">
+            <button id="select-outputs" type="button">Outputs</button>
+            <button id="clear-signals" type="button">Clear</button>
+          </div>
+          <div id="signal-list" class="signal-list"></div>
+        </aside>
+
+        <section class="plot-panel panel">
+          <div class="panel-heading plot-heading">
+            <div>
+              <span class="eyebrow">Time history</span>
+              <h2>Selected variables</h2>
+            </div>
+            <output id="cursor-readout">—</output>
+          </div>
+          <div id="legend" class="legend" aria-label="Plot legend"></div>
+          <form id="axis-controls" class="axis-controls">
+            <span class="axis-title">Axis range</span>
+            <label>X min <input id="x-min" type="number" step="any" placeholder="Auto"></label>
+            <label>X max <input id="x-max" type="number" step="any" placeholder="Auto"></label>
+            <label>Y min <input id="y-min" type="number" step="any" placeholder="Auto"></label>
+            <label>Y max <input id="y-max" type="number" step="any" placeholder="Auto"></label>
+            <button type="submit">Apply</button>
+            <button id="reset-axes" type="button">Auto reset</button>
+          </form>
+          <div class="chart-wrap">
+            <canvas id="chart" role="img" aria-label="Selected simulation signals over time"></canvas>
+            <div id="chart-empty" class="chart-empty">Select a numeric variable to plot.</div>
+          </div>
+          <div class="playback">
+            <button id="play" type="button" aria-label="Replay result">▶ Replay</button>
+            <input id="time-slider" type="range" min="0" max="0" value="0" aria-label="Simulation time">
+          </div>
+        </section>
+      </div>
+
+      <section class="panel values-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">Snapshot</span>
+            <h2>Values at selected time</h2>
+          </div>
+          <div id="artifact-links" class="artifact-links"></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Variable</th><th>Kind</th><th>Current</th><th>Minimum</th><th>Maximum</th><th>Final</th></tr>
+            </thead>
+            <tbody id="values-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>
