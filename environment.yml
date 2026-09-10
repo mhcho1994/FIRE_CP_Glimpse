@@ -1,0 +1,30 @@
+name: cp-glimpse-py312
+
+channels:
+  - conda-forge
+
+dependencies:
+  # Packaging/runtime versions validated by the STR smoke test on linux-64.
+  - python=3.12.13
+  - pip=26.1.1
+  - setuptools=82.0.1
+  - wheel=0.47.0
+  - numpy=2.4.6
+  - pyyaml=6.0.3
+  - fmpy=0.3.20
+  - tqdm=4.70.0
+
+  # Modelica-to-FMU materialization client. The omc executable is a separate
+  # system dependency installed from the official OpenModelica apt repository.
+  - ompython=4.0.1
+
+  # Optional runtime backend. Conda-forge is used because pip installation of
+  # PyFMI and its native solver stack is not a reliable portable contract.
+  - pyfmi=2.21.0
+
+  # Explicit test dependency; it must not be supplied only transitively.
+  - pytest=9.1.1
+
+variables:
+  # Prevent packages in ~/.local from contaminating the conda environment.
+  PYTHONNOUSERSITE: "1"

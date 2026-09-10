@@ -14,23 +14,42 @@ authors = [
 
 dependencies = [
     "numpy",
-    "pandas",
     "pyyaml",
-    "matplotlib",
-    "OMPython",
     "FMPy",
     "tqdm",
 ]
 
 [project.optional-dependencies]
-dev = [
+modelica = [
+    "OMPython",
+]
+test = [
     "pytest",
+    "OMPython",
+]
+notebook = [
+    "pandas",
+    "matplotlib",
     "ipykernel",
     "jupyterlab",
     "notebook",
     "scipy",
     "casadi",
 ]
+dev = [
+    "pytest",
+    "OMPython",
+    "pandas",
+    "matplotlib",
+    "ipykernel",
+    "jupyterlab",
+    "notebook",
+    "scipy",
+    "casadi",
+]
+
+# PyFMI is intentionally not a pip extra. The supported installation path for
+# the optional fmu-pyfmi backend is the conda-forge package in environment.yml.
 
 # CLI entry point
 [project.scripts]

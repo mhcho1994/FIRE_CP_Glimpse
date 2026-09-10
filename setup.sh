@@ -4,6 +4,12 @@ cp_glimpse_setup() {
   local root_dir
   root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || return 1
   cd "$root_dir" || return 1
+  local environment_file="$root_dir/environment.yml"
+
+  if [[ ! -f "$environment_file" ]]; then
+    echo "Missing conda environment definition: $environment_file" >&2
+    return 1
+  fi
 
   # CP Glimpse examples currently use PyFMI, so the standard setup path is a
   # conda-forge environment managed by Miniforge/conda.
@@ -61,9 +67,9 @@ cp_glimpse_setup() {
 
   conda activate "$conda_env" || return 1
 
-  # The third-party dependencies are installed by conda-forge above. Install
-  # only this repository in editable mode so local source changes are visible.
-  python -m pip install --no-deps -e . || return 1
+  # environment.yml is the third-party dependency source of truth. Install only
+  # this repository in editable mode so local source changes are visible.
+  python -m pip install --no-deps --no-build-isolation -e . || return 1
 
   cp_glimpse_import_check || return 1
 
@@ -147,11 +153,21 @@ cp_glimpse_install_openmodelica() {
   "${apt_cmd[@]}" update || return 1
   "${apt_cmd[@]}" install -y --no-install-recommends ca-certificates curl gnupg || return 1
 
+  # The STR Docker image uses the immutable OpenModelica 1.25.0 release
+  # repository. Unlike the rolling stable repository, it still contains the
+  # exact compiler package validated for delivery on Ubuntu Noble.
+  local openmodelica_release="1.25.0"
+  local openmodelica_apt_version="1.25.0-1"
+  local openmodelica_repo="https://build.openmodelica.org/omc/builds/linux/releases/${openmodelica_release}/"
+
   local keyring_tmp_dir
   local keyring_tmp
   keyring_tmp_dir="$(mktemp -d)" || return 1
   keyring_tmp="$keyring_tmp_dir/openmodelica-keyring.gpg"
-  curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc \
+  # Release 1.25.0 predates the 2026 signing-key rotation and is signed by the
+  # archived 2010 key. The key is still obtained over HTTPS from the official
+  # OpenModelica repository.
+  curl -fsSL https://build.openmodelica.org/apt/openmodelica-2010.asc \
     | gpg --dearmor -o "$keyring_tmp" \
     || {
       rm -rf "$keyring_tmp_dir"
@@ -164,12 +180,15 @@ cp_glimpse_install_openmodelica() {
     }
   rm -rf "$keyring_tmp_dir"
 
-  printf 'deb [arch=%s signed-by=/usr/share/keyrings/openmodelica-keyring.gpg] https://build.openmodelica.org/apt %s stable\n' "$arch" "$codename" \
+  printf 'deb [arch=%s signed-by=/usr/share/keyrings/openmodelica-keyring.gpg] %s %s release\n' "$arch" "$openmodelica_repo" "$codename" \
     | "${tee_cmd[@]}" /etc/apt/sources.list.d/openmodelica.list >/dev/null \
     || return 1
 
   "${apt_cmd[@]}" update || return 1
-  "${apt_cmd[@]}" install -y --no-install-recommends openmodelica || return 1
+  "${apt_cmd[@]}" install -y --no-install-recommends \
+    "omc=${openmodelica_apt_version}" \
+    "omlibrary=${openmodelica_apt_version}" \
+    || return 1
   cp_glimpse_ensure_modelica_standard_library || return 1
   echo "OpenModelica installation complete: $(omc --version)"
 }
@@ -232,7 +251,26 @@ cp_glimpse_ensure_conda() {
 cp_glimpse_install_miniforge() {
   local conda_dir="$1"
   local installer="/tmp/miniforge.sh"
-  local url="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+  local miniforge_version="24.11.3-0"
+  local installer_arch
+  local installer_sha256
+
+  case "$(uname -m)" in
+    x86_64|amd64)
+      installer_arch="x86_64"
+      installer_sha256="2e1ad2188fe69fcdd522c2b20c08c800a5c7411b775eca768318b1540ed32e53"
+      ;;
+    aarch64|arm64)
+      installer_arch="aarch64"
+      installer_sha256="d3f2b771857009ec804faeeef191352186194cb5737a831e55c6347a5f47cb8f"
+      ;;
+    *)
+      echo "Unsupported Miniforge architecture: $(uname -m)" >&2
+      return 1
+      ;;
+  esac
+
+  local url="https://github.com/conda-forge/miniforge/releases/download/${miniforge_version}/Miniforge3-${miniforge_version}-Linux-${installer_arch}.sh"
 
   if ! command -v curl >/dev/null 2>&1; then
     echo "curl is required to install Miniforge automatically." >&2
@@ -241,6 +279,7 @@ cp_glimpse_install_miniforge() {
 
   mkdir -p "$(dirname "$conda_dir")" || return 1
   curl -fsSL -o "$installer" "$url" || return 1
+  printf '%s  %s\n' "$installer_sha256" "$installer" | sha256sum -c - || return 1
   bash "$installer" -b -p "$conda_dir" || return 1
   rm -f "$installer"
 }
@@ -248,54 +287,28 @@ cp_glimpse_install_miniforge() {
 cp_glimpse_create_conda_env() {
   local conda_env="$1"
 
-  conda create -y -n "$conda_env" -c conda-forge \
-    python=3.12 \
-    pip \
-    setuptools \
-    wheel \
-    numpy \
-    pandas \
-    pyyaml \
-    matplotlib \
-    ompython \
-    fmpy \
-    pyfmi \
-    pytest \
-    ipykernel \
-    jupyterlab \
-    notebook \
-    scipy \
-    casadi
+  conda env create -y -n "$conda_env" -f environment.yml
 }
 
 cp_glimpse_update_conda_env() {
   local conda_env="$1"
 
-  conda install -y -n "$conda_env" -c conda-forge \
-    python=3.12 \
-    pip \
-    setuptools \
-    wheel \
-    numpy \
-    pandas \
-    pyyaml \
-    matplotlib \
-    ompython \
-    fmpy \
-    pyfmi \
-    pytest \
-    ipykernel \
-    jupyterlab \
-    notebook \
-    scipy \
-    casadi
+  conda env update -n "$conda_env" -f environment.yml --prune
 }
 
 cp_glimpse_import_check() {
   python - <<'PY'
 import cp_glimpse_py
+import fmpy
+import numpy
+import OMPython
 import pyfmi
+import pytest
+import tqdm
+import yaml
 PY
+  python -m pip check || return 1
+  cp-glimpse --help >/dev/null || return 1
 }
 
 cp_glimpse_setup "$@"

@@ -5,8 +5,8 @@ from __future__ import annotations
 import csv
 import json
 from pathlib import Path
+import shutil
 import subprocess
-import sys
 import tomllib
 
 import pytest
@@ -22,11 +22,11 @@ ABS_TOL = 1.0e-5
 
 def test_integrator_constant_input_cli(tmp_path: Path) -> None:
     save_dir = tmp_path / "integrator_run"
+    cli = shutil.which("cp-glimpse")
+    assert cli is not None, "The installed cp-glimpse console entry point was not found."
     completed = subprocess.run(
         [
-            sys.executable,
-            "-m",
-            "cp_glimpse_py.main",
+            cli,
             "--scenario",
             str(SCENARIO),
             "--save-dir",

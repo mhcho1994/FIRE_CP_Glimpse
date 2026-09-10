@@ -1,9 +1,10 @@
-FROM condaforge/miniforge3:latest AS base
+FROM ubuntu:24.04@sha256:224a1869083a311ef3f13648a154ba79832fbef6364d31493642ca03082da254 AS base
 
 ARG VSCODE_SERVER_COMMIT=4949701c880d4bdb949e3c0e6b400288da7f474b
 ARG TARGETARCH
 
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONNOUSERSITE=1
 ENV CONDA_ENV=cp-glimpse-py312
 ENV CONDA_DIR=/opt/conda
 ENV HOME=/home/cpglimpse
@@ -14,6 +15,7 @@ WORKDIR /home/cpglimpse/cp-glimpse
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
+        bzip2 \
         curl \
         git \
         gnupg \
@@ -33,9 +35,9 @@ RUN case "${TARGETARCH:-amd64}" in \
 
 FROM base AS runtime
 
-ARG INSTALL_OPENMODELICA=false
+ARG INSTALL_OPENMODELICA=true
 
-COPY pyproject.toml README.md setup.sh ./
+COPY pyproject.toml README.md setup.sh environment.yml ./
 COPY src ./src
 
 RUN chmod +x setup.sh \
@@ -44,6 +46,7 @@ RUN chmod +x setup.sh \
     else \
         bash setup.sh --recreate; \
     fi \
+    && cp-glimpse --help >/dev/null \
     && rm -rf /var/lib/apt/lists/* \
     && conda clean -afy
 
@@ -59,11 +62,21 @@ CMD ["bash"]
 
 FROM runtime AS release
 
+ARG INSTALL_OPENMODELICA=true
+
 COPY . .
 
 RUN chown -R cpglimpse:cpglimpse /home/cpglimpse
 
 USER cpglimpse
+
+RUN if [ "$INSTALL_OPENMODELICA" = "true" ]; then \
+        command -v omc \
+        && omc --version \
+        && python -c "from OMPython import OMCSessionZMQ; omc = OMCSessionZMQ(); assert omc.sendExpression('loadModel(Modelica)'); print('Modelica Standard Library', omc.sendExpression('getVersion(Modelica)'))" \
+        && cp-glimpse --help >/dev/null \
+        && pytest -q tests/test_integrator_smoke.py; \
+    fi
 
 EXPOSE 8888
 

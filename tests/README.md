@@ -27,11 +27,27 @@ input names use the `component.variable` form.
 From the repository root, run:
 
 ```bash
-pytest -q tests/test_integrator_smoke.py
+python -m pytest -q tests/test_integrator_smoke.py
 ```
 
 A successful run ends with `3 passed`: the canonical constant-input CLI test,
 a single-FMU time-history input test, and a stop-time grid regression test.
+The canonical subprocess resolves and launches the installed `cp-glimpse`
+console entry point, so an editable/source import alone is not sufficient.
+
+For the clean Docker acceptance path, run:
+
+```bash
+docker build \
+  --target release \
+  -t cp-glimpse:release \
+  -f docker/Dockerfile \
+  .
+```
+
+OpenModelica installation is enabled by default. The release stage verifies
+`omc`, loads the Modelica Standard Library, and runs this test from Modelica
+source with no pre-existing `build/` or `results/` cache in the Docker context.
 
 ## Input providers
 
@@ -72,5 +88,5 @@ sample and after the last sample are held at the respective endpoint values.
 Run the provider tests with:
 
 ```bash
-pytest -q tests/test_input_provider.py
+python -m pytest -q tests/test_input_provider.py
 ```
