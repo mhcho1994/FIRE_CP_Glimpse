@@ -268,7 +268,11 @@ cp-glimpse-viewer --results-dir results --open
 The viewer is available at `http://127.0.0.1:8000/`. It discovers result
 directories containing `result.json`, plots selected input and output variables,
 provides a time slider and replay control, and shows current/minimum/maximum/final
-values. It does not execute scenarios or modify result artifacts.
+values. For multi-FMU results it renders components, aggregated directed signal
+connections, and stepping order from `scenario_resolved.json`. A second run can
+be selected to overlay any common numeric signal and calculate final difference,
+RMSE, and maximum absolute difference over the shared time interval. The viewer
+does not execute scenarios or modify result artifacts.
 
 Inside Docker, bind the viewer to all container interfaces and publish port
 8000:

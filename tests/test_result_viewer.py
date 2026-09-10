@@ -47,7 +47,25 @@ def _write_run(root: Path, name: str = "integrator") -> Path:
         ),
         encoding="utf-8",
     )
-    (run / "scenario_resolved.json").write_text("{}", encoding="utf-8")
+    (run / "scenario_resolved.json").write_text(
+        json.dumps(
+            {
+                "raw": {
+                    "system": {
+                        "components": [
+                            {"name": "source", "class_name": "Example.Source"},
+                            {"name": "plant", "class_name": "Example.Plant"},
+                        ]
+                    },
+                    "connections": [
+                        {"from": "source.y", "to": "plant.u"},
+                    ],
+                    "sim": {"stepping": {"order": ["source", "plant"]}},
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
     (run / "outputs.csv").write_text("time,y,u\n0,0,1\n1,1,1\n", encoding="utf-8")
     return run
 
@@ -55,6 +73,7 @@ def _write_run(root: Path, name: str = "integrator") -> Path:
 @pytest.fixture
 def viewer_url(tmp_path: Path):
     _write_run(tmp_path)
+    _write_run(tmp_path, "comparison")
     server = create_server(tmp_path, port=0)
     thread = Thread(target=server.serve_forever, daemon=True)
     thread.start()
@@ -91,14 +110,24 @@ def test_viewer_serves_page_and_result_api(viewer_url: str) -> None:
     assert "CP-Glimpse" in page
     assert "/assets/app.js" in page
     assert "Axis range" in page
+    assert "Multi-FMU topology" in page
+    assert "Compare runs" in page
+
+    with urlopen(f"{viewer_url}/assets/app.js", timeout=2) as response:
+        script = response.read().decode("utf-8")
+    assert "renderTopology" in script
+    assert "comparisonStatistics" in script
 
     index = _get_json(f"{viewer_url}/api/runs")
-    assert index["runs"][0]["id"] == "integrator"
+    assert {run["id"] for run in index["runs"]} == {"integrator", "comparison"}
 
     detail = _get_json(f"{viewer_url}/api/runs/integrator")
     simulation = detail["result"]["result"]
     assert simulation["inputs"] == {"u": [1.0, 1.0]}
     assert simulation["outputs"] == {"y": [0.0, 1.0]}
+    assert detail["scenario"]["raw"]["connections"] == [
+        {"from": "source.y", "to": "plant.u"}
+    ]
     assert set(detail["artifacts"]) == {
         "result.json",
         "summary.json",

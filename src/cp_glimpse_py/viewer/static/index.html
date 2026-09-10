@@ -91,6 +91,48 @@
           </table>
         </div>
       </section>
+
+      <div class="analysis-grid">
+        <section class="panel topology-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Composition</span>
+              <h2>Multi-FMU topology</h2>
+            </div>
+            <span id="topology-summary" class="count"></span>
+          </div>
+          <div id="topology" class="topology" aria-label="FMU component and connection topology"></div>
+          <div id="step-order" class="step-order"></div>
+        </section>
+
+        <section class="panel compare-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Run Comparison</span>
+              <h2>Compare runs</h2>
+            </div>
+            <span id="compare-status" class="count">Select another run</span>
+          </div>
+          <div class="compare-controls">
+            <label>Compare numeric signals across two runs
+              <select id="compare-run" aria-label="Select a comparison run">
+                <option value="">Select a run…</option>
+              </select>
+            </label>
+            <label>Common variable
+              <select id="compare-signal" aria-label="Select a common variable" disabled>
+                <option value="">Select a variable…</option>
+              </select>
+            </label>
+          </div>
+          <div id="compare-legend" class="legend compare-legend"></div>
+          <div class="compare-chart-wrap">
+            <canvas id="compare-chart" role="img" aria-label="Selected signal overlaid across two simulation runs"></canvas>
+            <div id="compare-empty" class="chart-empty">Choose a comparison run and common numeric variable.</div>
+          </div>
+          <div id="compare-metrics" class="compare-metrics"></div>
+        </section>
+      </div>
     </section>
   </main>
 

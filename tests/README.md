@@ -95,7 +95,8 @@ python -m pytest -q tests/test_input_provider.py
 
 The read-only web viewer tests start a server on a temporary local port and
 verify result discovery, page/API responses, artifact metadata, and rejection
-of paths outside the configured results directory:
+of paths outside the configured results directory. The page fixture also checks
+that the packaged topology and run-comparison UI is present:
 
 ```bash
 python -m pytest -q tests/test_result_viewer.py
