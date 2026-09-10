@@ -36,27 +36,39 @@ def _timeseries_from_result(result: dict[str, Any]) -> tuple[list[dict[str, Any]
     inner = result.get("result", result)
 
     time_values = inner.get("time")
+    inputs = inner.get("inputs", {})
     outputs = inner.get("outputs", {})
 
     if time_values is None and isinstance(inner.get("result"), dict):
         inner = inner["result"]
         time_values = inner.get("time")
+        inputs = inner.get("inputs", {})
         outputs = inner.get("outputs", {})
 
     if not isinstance(time_values, list):
         raise ValueError("Simulation result does not contain a time series to save as CSV.")
     if not isinstance(outputs, dict):
         outputs = {}
+    if not isinstance(inputs, dict):
+        inputs = {}
 
-    fieldnames = ["time", *[str(name) for name in outputs.keys()]]
+    series = [(str(name), values) for name, values in outputs.items()]
+    used_names = {name for name, _ in series}
+    for raw_name, values in inputs.items():
+        name = str(raw_name)
+        if name in used_names:
+            name = f"input.{name}"
+        used_names.add(name)
+        series.append((name, values))
+    fieldnames = ["time", *[name for name, _ in series]]
     rows: list[dict[str, Any]] = []
     for idx, t in enumerate(time_values):
         row: dict[str, Any] = {"time": t}
-        for name, values in outputs.items():
+        for name, values in series:
             if isinstance(values, list) and idx < len(values):
-                row[str(name)] = values[idx]
+                row[name] = values[idx]
             else:
-                row[str(name)] = None
+                row[name] = None
         rows.append(row)
 
     return rows, fieldnames

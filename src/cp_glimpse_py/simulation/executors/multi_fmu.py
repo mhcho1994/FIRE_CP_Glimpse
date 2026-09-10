@@ -13,6 +13,7 @@ splitting. The structure is meant to leave room for that policy later.
 
 from __future__ import annotations
 
+import math
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
@@ -251,6 +252,30 @@ def _record_outputs(
         outputs.setdefault(endpoint, []).append(runners[model_name].get_value(var_name, None))
 
 
+def _resolve_input_endpoints(
+    runners: dict[str, Any],
+) -> list[tuple[str, str, str]]:
+    """Return every FMU input using component-qualified result names."""
+    resolved: list[tuple[str, str, str]] = []
+    for model_name, runner in runners.items():
+        io = getattr(runner, "io", {}) or {}
+        for variable in io.get("inputs", []) or []:
+            var_name = str(getattr(variable, "name", variable))
+            resolved.append((f"{model_name}.{var_name}", model_name, var_name))
+    return resolved
+
+
+def _record_inputs(
+    *,
+    runners: dict[str, Any],
+    input_endpoints: list[tuple[str, str, str]],
+    inputs: dict[str, list[Any]],
+) -> None:
+    """Record the current FMU input values on the shared result time grid."""
+    for endpoint, model_name, var_name in input_endpoints:
+        inputs.setdefault(endpoint, []).append(runners[model_name].get_value(var_name, None))
+
+
 def _make_progress_bar(*, enabled: bool, style: str, total: int, desc: str):
     if not enabled or style != "tqdm":
         return None
@@ -295,6 +320,8 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
 
     output_endpoints = _resolve_output_endpoints(scn, resolved_models, connections)
     outputs = {endpoint: [] for endpoint, _, _ in output_endpoints}
+    input_endpoints: list[tuple[str, str, str]] = []
+    inputs: dict[str, list[Any]] = {}
     time_grid: list[float] = []
 
     runners: dict[str, Any] = {}
@@ -319,22 +346,33 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
             runner.instantiate_and_initialize()
             runners[model_name] = runner
 
-        n_steps = int(round((tf - t0) / dt))
+        input_endpoints = _resolve_input_endpoints(runners)
+        inputs = {endpoint: [] for endpoint, _, _ in input_endpoints}
+
+        step_ratio = (tf - t0) / dt
+        # Avoid an extra step when an integral ratio rounds one ULP above an integer.
+        n_steps = int(math.ceil(math.nextafter(step_ratio, -math.inf)))
         progress_bar = _make_progress_bar(
             enabled=show_progress,
             style=progress_style,
             total=n_steps,
             desc="simulation progress",
         )
-        t = t0
-        time_grid.append(t)
+        time_grid.append(t0)
+        _record_inputs(runners=runners, input_endpoints=input_endpoints, inputs=inputs)
         _record_outputs(runners=runners, output_endpoints=output_endpoints, outputs=outputs)
 
-        for _ in range(n_steps):
+        for step_index in range(n_steps):
+            current_t = t0 + step_index * dt
+            next_t = min(t0 + (step_index + 1) * dt, tf)
+            step_dt = next_t - current_t
+
             for model_name in step_order:
                 runner = runners[model_name]
                 if progress_bar is not None:
-                    progress_bar.set_postfix_str(f"{model_name} t={t + dt:.6g}/{tf:.6g}s")
+                    progress_bar.set_postfix_str(
+                        f"{model_name} t={next_t:.6g}/{tf:.6g}s"
+                    )
 
                 _apply_incoming_connections(
                     model_name=model_name,
@@ -344,15 +382,15 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
                 )
 
                 _apply_per_step_parameters(runner=runner, model_name=model_name, scn=scn)
-                runner.step_or_raise(t, dt)
+                runner.step_or_raise(current_t, step_dt)
 
-            t = t + dt
             if progress_bar is not None:
-                progress_bar.set_postfix_str(f"completed t={t:.6g}/{tf:.6g}s")
+                progress_bar.set_postfix_str(f"completed t={next_t:.6g}/{tf:.6g}s")
                 progress_bar.update(1)
             elif show_progress:
-                print(f"[simulation progress] t={t:.6g}/{tf:.6g}s")
-            time_grid.append(t)
+                print(f"[simulation progress] t={next_t:.6g}/{tf:.6g}s")
+            time_grid.append(next_t)
+            _record_inputs(runners=runners, input_endpoints=input_endpoints, inputs=inputs)
             _record_outputs(runners=runners, output_endpoints=output_endpoints, outputs=outputs)
 
     finally:
@@ -367,6 +405,7 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
         "models": resolved_models,
         "connections": connections,
         "time": time_grid,
+        "inputs": inputs,
         "outputs": outputs,
         "metadata": {
             "t0": t0,
@@ -377,6 +416,7 @@ def run_multi_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
             "step_order": step_order,
             "wall_time_sec": time.time() - t_wall_0,
             "executor": "run_multi_fmu_open_loop",
+            "recorded_inputs": [endpoint for endpoint, _, _ in input_endpoints],
             "n_models": len(resolved_models),
             "n_connections": len(connections),
         },

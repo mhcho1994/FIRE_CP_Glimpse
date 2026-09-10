@@ -195,7 +195,7 @@ execute that FMU through the Python simulation backend.
 
 ### Scenarios
 
-Scenarios are configured as YAML files under `scenarios/`.
+Scenarios are configured as YAML or TOML files under `scenarios/`.
 
 Examples:
 
@@ -206,8 +206,7 @@ scenarios/quadrotor_acoustic_attack.yaml
 scenarios/rover_nominal.yaml
 ```
 
-TOML scenario support is planned for a future release. The currently documented
-scenario format is YAML.
+Both formats use the same normalized scenario structure.
 
 ### Backend
 
@@ -233,6 +232,17 @@ Use `--save-dir` to choose where `outputs.csv` is written:
 ```bash
 cp-glimpse --scenario scenarios/quadrotor_nominal.yaml --save-dir results/nominal
 ```
+
+### STR Smoke Test
+
+Run the canonical Modelica integrator end-to-end smoke test:
+
+```bash
+pytest -q tests/test_integrator_smoke.py
+```
+
+The analytical expected result is `u = 1` for 5 seconds, producing an
+integrator output of `y(5) = 5`.
 
 ### Latest Notebook Examples
 

@@ -82,6 +82,7 @@ Returned schema
     "fmu_type": "cs",
     "component": {...},
     "time": [...],
+    "inputs": {...},
     "outputs": {...},
     "metadata": {...}
 }
@@ -89,10 +90,13 @@ Returned schema
 
 from __future__ import annotations
 
+import math
 from pathlib import Path
 from typing import Any
 
 import time
+
+from ..inputs import InputProvider, create_input_provider
 
 
 _COMPONENT_PATH_KEYS = (
@@ -355,6 +359,46 @@ def _resolve_start_values(component_cfg: dict[str, Any]) -> dict[str, Any]:
     return resolved
 
 
+def _fmpy_input_signal(
+    model_description: Any,
+    input_provider: InputProvider,
+) -> Any:
+    """Convert an input provider to the structured signal array FMPy expects."""
+    if not input_provider.input_names:
+        return None
+
+    import numpy as np
+
+    variables = {var.name: var for var in model_description.modelVariables}
+    dtype_by_fmi_type = {
+        "Real": np.float64,
+        "Float32": np.float32,
+        "Float64": np.float64,
+        "Integer": np.int32,
+        "Enumeration": np.int32,
+        "Boolean": np.bool_,
+    }
+    dtype = [("time", np.float64)]
+    for name in input_provider.input_names:
+        variable = variables.get(name)
+        if variable is None:
+            raise ValueError(f"Unknown FMU input in scenario inputs: {name!r}.")
+        if getattr(variable, "causality", None) != "input":
+            raise ValueError(f"Scenario input {name!r} is not an FMU input.")
+        fmi_type = getattr(variable, "type", None)
+        if fmi_type not in dtype_by_fmi_type:
+            raise ValueError(f"Unsupported FMI input type for {name!r}: {fmi_type!r}.")
+        dtype.append((name, dtype_by_fmi_type[fmi_type]))
+
+    times, values = input_provider.signal_points()
+    signal = np.empty(len(times), dtype=dtype)
+    signal["time"] = times
+    for name in input_provider.input_names:
+        signal[name] = values[name]
+
+    return signal
+
+
 def _structured_to_dict_array(result: Any) -> dict[str, list[Any]]:
     """
     Convert FMPy structured simulation result into a JSON-friendly dict.
@@ -383,6 +427,19 @@ def _structured_to_dict_array(result: Any) -> dict[str, list[Any]]:
     return outputs
 
 
+def _sample_input_provider(
+    input_provider: InputProvider,
+    time_values: list[float],
+) -> dict[str, list[Any]]:
+    """Sample scenario inputs on the result time grid for artifact logging."""
+    recorded = {name: [] for name in input_provider.input_names}
+    for t in time_values:
+        values = input_provider.value_at(float(t))
+        for name in input_provider.input_names:
+            recorded[name].append(values[name])
+    return recorded
+
+
 def _simulate_with_fmpy(
     fmu_path: Path,
     *,
@@ -392,6 +449,7 @@ def _simulate_with_fmpy(
     tol: float,
     fmu_type: str,
     component_cfg: dict[str, Any],
+    input_provider: InputProvider,
 ) -> dict[str, Any]:
     """
     Execute an FMU using FMPy.
@@ -423,6 +481,10 @@ def _simulate_with_fmpy(
     model_description = read_model_description(str(fmu_path))
     output_names = _resolve_output_names(model_description, component_cfg)
     start_values = _resolve_start_values(component_cfg)
+    input_signal = _fmpy_input_signal(
+        model_description,
+        input_provider,
+    )
 
     result = simulate_fmu(
         filename=str(fmu_path),
@@ -431,7 +493,8 @@ def _simulate_with_fmpy(
         step_size=dt,
         output_interval=dt,
         record_events=True,
-        start_values=start_values if start_values else None,
+        start_values=start_values or {},
+        input=input_signal,
         output=output_names if output_names else None,
         solver="CVode" if fmu_type == "me" else None,
         relative_tolerance=tol,
@@ -446,9 +509,11 @@ def _simulate_with_fmpy(
 
     return {
         "time": time_values,
+        "inputs": _sample_input_provider(input_provider, time_values),
         "outputs": outputs,
         "output_names": output_names,
         "start_values": start_values,
+        "input_description": input_provider.describe(),
         "model_description": model_description,
     }
 
@@ -491,6 +556,15 @@ def _apply_start_values_to_runner(runner: Any, start_values: dict[str, Any]) -> 
         runner.set_value(str(name), value)
 
 
+def _apply_inputs_to_runner(runner: Any, values: dict[str, Any]) -> None:
+    """Apply external inputs using the same runner API as multi-FMU execution."""
+    for name, value in values.items():
+        if hasattr(runner, "set_input_value") and runner.is_input(name):
+            runner.set_input_value(name, value)
+        else:
+            runner.set_value(name, value)
+
+
 def _runner_output_names(runner: Any, component_cfg: dict[str, Any]) -> list[str]:
     explicit = component_cfg.get("outputs")
     if isinstance(explicit, list) and explicit:
@@ -523,6 +597,7 @@ def _simulate_with_step_runner(
     tol: float,
     fmu_type: str,
     component_cfg: dict[str, Any],
+    input_provider: InputProvider,
     show_solver_log: bool = False,
     show_progress: bool = False,
     progress_style: str = "tqdm",
@@ -543,41 +618,49 @@ def _simulate_with_step_runner(
     progress_bar = None
     try:
         _apply_start_values_to_runner(runner, start_values)
+        _apply_inputs_to_runner(runner, input_provider.value_at(t0))
         runner.instantiate_and_initialize()
 
         output_names = _runner_output_names(runner, component_cfg)
         outputs = {name: [] for name in output_names}
         time_values: list[float] = []
 
-        n_steps = int(round((tf - t0) / dt))
+        step_ratio = (tf - t0) / dt
+        # Avoid an extra step when an integral ratio rounds one ULP above an integer.
+        n_steps = int(math.ceil(math.nextafter(step_ratio, -math.inf)))
         progress_bar = _make_progress_bar(
             enabled=show_progress,
             style=progress_style,
             total=n_steps,
             desc=f"single_fmu:{component_name}",
         )
-        t = t0
-        time_values.append(t)
+        time_values.append(t0)
         for name in output_names:
             outputs[name].append(runner.get_value(name, None))
 
-        for _ in range(n_steps):
-            runner.step_or_raise(t, dt)
-            t = t + dt
+        for step_index in range(n_steps):
+            current_t = t0 + step_index * dt
+            next_t = min(t0 + (step_index + 1) * dt, tf)
+            step_dt = next_t - current_t
+
+            _apply_inputs_to_runner(runner, input_provider.value_at(current_t))
+            runner.step_or_raise(current_t, step_dt)
             if progress_bar is not None:
-                progress_bar.set_postfix_str(f"t={t:.6g}/{tf:.6g}s")
+                progress_bar.set_postfix_str(f"t={next_t:.6g}/{tf:.6g}s")
                 progress_bar.update(1)
             elif show_progress:
-                print(f"[single_fmu] {component_name}: t={t:.6g}/{tf:.6g}s")
-            time_values.append(t)
+                print(f"[single_fmu] {component_name}: t={next_t:.6g}/{tf:.6g}s")
+            time_values.append(next_t)
             for name in output_names:
                 outputs[name].append(runner.get_value(name, None))
 
         return {
             "time": time_values,
+            "inputs": _sample_input_provider(input_provider, time_values),
             "outputs": outputs,
             "output_names": output_names,
             "start_values": start_values,
+            "input_description": input_provider.describe(),
             "model_description": None,
         }
     finally:
@@ -631,6 +714,11 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
     fmu_type = _resolve_fmu_type(sim_cfg)
     t0, tf, dt, tol = _validate_time_config(sim_cfg)
     fmu_path = _resolve_fmu_path(component_cfg)
+    input_provider = create_input_provider(
+        scn.get("inputs", {}),
+        t0=t0,
+        tf=tf,
+    )
     show_solver_log = bool(
         sim_cfg.get("show_solver_log", component_cfg.get("show_solver_log", False))
     )
@@ -639,7 +727,7 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
 
     wall_t0 = time.time()
 
-    if backend == "fmu-fmpy":
+    if backend == "fmu-fmpy" and fmu_type == "me":
         sim_result = _simulate_with_fmpy(
             fmu_path=fmu_path,
             t0=t0,
@@ -648,6 +736,7 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
             tol=tol,
             fmu_type=fmu_type,
             component_cfg=component_cfg,
+            input_provider=input_provider,
         )
     else:
         sim_result = _simulate_with_step_runner(
@@ -659,6 +748,7 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
             tol=tol,
             fmu_type=fmu_type,
             component_cfg=component_cfg,
+            input_provider=input_provider,
             show_solver_log=show_solver_log,
             show_progress=show_progress,
             progress_style=progress_style,
@@ -676,6 +766,7 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
             "resolved_fmu_path": str(fmu_path),
         },
         "time": sim_result["time"],
+        "inputs": sim_result["inputs"],
         "outputs": sim_result["outputs"],
         "metadata": {
             "t0": t0,
@@ -684,8 +775,10 @@ def run_single_fmu_open_loop(scn: dict[str, Any]) -> dict[str, Any]:
             "tol": tol,
             "wall_time_sec": wall_time_sec,
             "executor": "run_single_fmu_open_loop",
+            "recorded_inputs": list(sim_result["inputs"]),
             "recorded_outputs": sim_result["output_names"],
             "applied_start_values": sim_result["start_values"],
+            "applied_inputs": sim_result["input_description"],
             "model_name": getattr(sim_result["model_description"], "modelName", None),
             "fmi_version": getattr(sim_result["model_description"], "fmiVersion", None),
         },

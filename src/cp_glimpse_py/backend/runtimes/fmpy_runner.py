@@ -71,6 +71,11 @@ def _var_type_name(v) -> str:
     """
     Infer the FMI base type from an FMPy variable object.
     """
+    declared_type = str(getattr(v, "type", "")).strip().lower()
+    if declared_type in {"real", "integer", "boolean", "string", "enumeration"}:
+        return declared_type
+
+    # Compatibility with older FMPy model-variable representations.
     for t in ("real", "integer", "boolean", "string", "enumeration"):
         if getattr(v, t, None) is not None:
             return t
@@ -186,6 +191,8 @@ class FMPYRunner:
 
         self.vrs = build_vr_map(self.md)
         self.io = extract_io_from_model_description(self.md)
+        self.input_names = [var.name for var in self.io.get("inputs", [])]
+        self._input_name_set = set(self.input_names)
 
         self.fmu = FMU2Slave(
             guid=self.md.guid,
@@ -197,6 +204,7 @@ class FMPYRunner:
         self._instantiated = False
         self._initialized = False
         self._terminated = False
+        self._pending_values: dict[str, object] = {}
 
         self._type_map: dict[str, str] = {}
         for group in self.io.values():
@@ -232,6 +240,9 @@ class FMPYRunner:
             )
 
         self.fmu.enterInitializationMode()
+        for name, value in self._pending_values.items():
+            self.set_value(name, value)
+        self._pending_values.clear()
         self.fmu.exitInitializationMode()
 
         self._initialized = True
@@ -246,7 +257,7 @@ class FMPYRunner:
             return
 
         try:
-            if self._instantiated:
+            if self._initialized:
                 self.fmu.terminate()
         finally:
             if self._instantiated:
@@ -312,6 +323,12 @@ class FMPYRunner:
         """
         Set a variable using automatic type routing.
         """
+        name = str(name)
+        if not self._instantiated:
+            self.variable_type(name)
+            self._pending_values[name] = value
+            return
+
         t = self.variable_type(name)
 
         if t == "real":
@@ -322,6 +339,17 @@ class FMPYRunner:
             self.set_boolean(name, bool(value))
         else:
             raise TypeError(f"Unsupported set type for {name!r}: {t!r}")
+
+    def is_input(self, name: str) -> bool:
+        """Return whether ``name`` is an FMU input variable."""
+        return str(name) in self._input_name_set
+
+    def set_input_value(self, name: str, value) -> None:
+        """Set an FMU input through the runner's automatic type routing."""
+        name = str(name)
+        if not self.is_input(name):
+            raise ValueError(f"Variable {name!r} is not an FMU input.")
+        self.set_value(name, value)
 
     def get_value(self, name: str, default=None):
         """

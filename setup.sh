@@ -260,6 +260,7 @@ cp_glimpse_create_conda_env() {
     ompython \
     fmpy \
     pyfmi \
+    pytest \
     ipykernel \
     jupyterlab \
     notebook \
@@ -282,6 +283,7 @@ cp_glimpse_update_conda_env() {
     ompython \
     fmpy \
     pyfmi \
+    pytest \
     ipykernel \
     jupyterlab \
     notebook \
