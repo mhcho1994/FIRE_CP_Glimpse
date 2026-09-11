@@ -22,7 +22,7 @@ jobs:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
           git remote add gitlab \
-            "https://oauth2:${GITLAB_TOKEN}@gitlab.com/minhyun1/individual.git"
+            "https://oauth2:${GITLAB_TOKEN}@gitlab.com/minhyun1/fire_cp_glimpse.git"
 
           git push --prune gitlab \
             '+refs/heads/*:refs/heads/*'
