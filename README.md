@@ -200,6 +200,45 @@ docker save cp-glimpse:release -o cp-glimpse.tar
 docker load -i cp-glimpse.tar
 ```
 
+### GitLab CI
+
+The root `.gitlab-ci.yml` runs for merge requests, pushes to the default
+branch, and Git tags. It does not push an image to a registry. The job uses the
+version- and digest-pinned `docker:29.8.0-cli` and `docker:29.8.0-dind` images
+to:
+
+1. build the `release` target without a Docker build cache and with
+   OpenModelica enabled;
+2. verify `omc` and load the Modelica Standard Library in the built image;
+3. verify the installed `cp-glimpse` CLI; and
+4. run `tests/test_integrator_smoke.py` in that same image and publish its
+   JUnit report.
+
+The canonical STR test materializes `models/benchmarks/SimpleIntegrator.mo` as
+an FMU, applies `u = 1` for 5 seconds through the scenario and CLI path, checks
+the saved result artifacts, and asserts `y(5) ~= 5`.
+
+Docker-in-Docker requires a GitLab Runner using the Docker or Kubernetes
+executor with privileged Docker support. No site-specific runner tag is
+assumed. If the STR GitLab installation requires one, add its `tags:` entry to
+the `docker-str-smoke` job in `.gitlab-ci.yml`.
+
+To reproduce the pipeline validation locally from the repository root:
+
+```bash
+docker build --pull --no-cache \
+  -f docker/Dockerfile \
+  --target release \
+  --build-arg INSTALL_OPENMODELICA=true \
+  -t cp-glimpse-ci:local \
+  .
+docker run --rm cp-glimpse-ci:local omc --version
+docker run --rm cp-glimpse-ci:local bash setup.sh --openmodelica-only
+docker run --rm cp-glimpse-ci:local cp-glimpse --help
+docker run --rm cp-glimpse-ci:local \
+  pytest -q tests/test_integrator_smoke.py
+```
+
 ## Simulation Inputs
 
 ### Models

@@ -1,0 +1,58 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_COMMIT_TAG'
+    - when: never
+
+stages:
+  - test
+
+variables:
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: "overlay2"
+  IMAGE_NAME: "cp-glimpse-ci"
+
+docker-str-smoke:
+  stage: test
+  image: "docker:29.8.0-cli@sha256:eccaacfeed644c7de222ff047483568cb988dde95476fbaaf10ea2d04921bb66"
+  services:
+    - name: "docker:29.8.0-dind@sha256:5efed980cba3fc126cf54e21a5a6ff8849d05b6e0623d6e7612f48e9cd6cd17e"
+      alias: docker
+      command: ["--tls=false"]
+
+  before_script:
+    - docker info
+
+  script:
+    - docker version
+    - >
+      docker build
+      --pull
+      --no-cache
+      -f docker/Dockerfile
+      --target release
+      --build-arg INSTALL_OPENMODELICA=true
+      -t "${IMAGE_NAME}:${CI_COMMIT_SHA}"
+      .
+    - docker run --rm "${IMAGE_NAME}:${CI_COMMIT_SHA}" omc --version
+    - docker run --rm "${IMAGE_NAME}:${CI_COMMIT_SHA}" bash setup.sh --openmodelica-only
+    - docker run --rm "${IMAGE_NAME}:${CI_COMMIT_SHA}" cp-glimpse --help
+    - mkdir -p test-reports
+    - chmod 0777 test-reports
+    - >
+      docker run --rm
+      --mount "type=bind,source=${CI_PROJECT_DIR}/test-reports,target=/test-reports"
+      "${IMAGE_NAME}:${CI_COMMIT_SHA}"
+      pytest -q
+      --junitxml=/test-reports/integrator-smoke.xml
+      tests/test_integrator_smoke.py
+
+  artifacts:
+    when: always
+    reports:
+      junit: test-reports/integrator-smoke.xml
+    paths:
+      - test-reports/integrator-smoke.xml
+    expire_in: 1 week
