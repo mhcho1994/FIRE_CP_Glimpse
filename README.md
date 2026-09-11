@@ -207,8 +207,8 @@ branch, and Git tags. It does not push an image to a registry. The job uses the
 version- and digest-pinned `docker:29.8.0-cli` and `docker:29.8.0-dind` images
 to:
 
-1. build the `release` target without a Docker build cache and with
-   OpenModelica enabled;
+1. build the `release` target without a Docker build cache, with OpenModelica
+   enabled, and with the optional VS Code Server download disabled for CI;
 2. verify `omc` and load the Modelica Standard Library in the built image;
 3. verify the installed `cp-glimpse` CLI; and
 4. run `tests/test_integrator_smoke.py` in that same image and publish its
@@ -230,6 +230,7 @@ docker build --pull --no-cache \
   -f docker/Dockerfile \
   --target release \
   --build-arg INSTALL_OPENMODELICA=true \
+  --build-arg INSTALL_VSCODE_SERVER=false \
   -t cp-glimpse-ci:local \
   .
 docker run --rm cp-glimpse-ci:local omc --version

@@ -1,5 +1,6 @@
 FROM ubuntu:24.04@sha256:224a1869083a311ef3f13648a154ba79832fbef6364d31493642ca03082da254 AS base
 
+ARG INSTALL_VSCODE_SERVER=true
 ARG VSCODE_SERVER_COMMIT=4949701c880d4bdb949e3c0e6b400288da7f474b
 ARG TARGETARCH
 
@@ -24,48 +25,37 @@ RUN apt-get update \
 
 RUN id -u cpglimpse >/dev/null 2>&1 || useradd --create-home --shell /bin/bash cpglimpse
 
-# RUN case "${TARGETARCH:-amd64}" in \
-#         amd64) VSCODE_SERVER_PLATFORM="server-linux-x64" ;; \
-#         arm64) VSCODE_SERVER_PLATFORM="server-linux-arm64" ;; \
-#         *) echo "Unsupported TARGETARCH for VS Code Server: ${TARGETARCH}" >&2; exit 1 ;; \
-#     esac \
-#     && mkdir -p "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}" \
-#     && curl -fsSL "https://update.code.visualstudio.com/commit:${VSCODE_SERVER_COMMIT}/${VSCODE_SERVER_PLATFORM}/stable" \
-#         | tar -xz --strip-components=1 -C "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"
-
 RUN set -eux; \
-    case "${TARGETARCH:-amd64}" in \
-        amd64) \
-            VSCODE_SERVER_PLATFORM="server-linux-x64"; \
-            VSCODE_SERVER_SHA256="5c6baa68446b5bb0fb318070b9b6e4fc9b6b675071549691cd7a3006ec91a565" \
-            ;; \
-        arm64) \
-            VSCODE_SERVER_PLATFORM="server-linux-arm64"; \
-            VSCODE_SERVER_SHA256="46288628077cf8ef7518d33cbf92901361b1558ebdf1eb87ace02c0bd91bbc30" \
-            ;; \
-        *) exit 1 ;; \
-    esac; \
-    VSCODE_SERVER_ARCHIVE="/tmp/vscode-server.tar.gz"; \
-    VSCODE_SERVER_URL="https://update.code.visualstudio.com/commit:${VSCODE_SERVER_COMMIT}/${VSCODE_SERVER_PLATFORM}/stable"; \
-    for attempt in 1 2 3 4 5; do \
-        rm -f "${VSCODE_SERVER_ARCHIVE}"; \
-        if curl -fL \
+    if [ "${INSTALL_VSCODE_SERVER}" = "true" ]; then \
+        case "${TARGETARCH:-amd64}" in \
+            amd64) VSCODE_SERVER_PLATFORM="server-linux-x64" ;; \
+            arm64) VSCODE_SERVER_PLATFORM="server-linux-arm64" ;; \
+            *) \
+                echo "Unsupported TARGETARCH: ${TARGETARCH}" >&2; \
+                exit 1 ;; \
+        esac; \
+        \
+        VSCODE_SERVER_ARCHIVE="/tmp/vscode-server.tar.gz"; \
+        VSCODE_SERVER_URL="https://update.code.visualstudio.com/commit:${VSCODE_SERVER_COMMIT}/${VSCODE_SERVER_PLATFORM}/stable"; \
+        \
+        curl -fL \
+            --retry 5 \
+            --retry-delay 5 \
+            --retry-all-errors \
             --connect-timeout 30 \
             --max-time 600 \
             -o "${VSCODE_SERVER_ARCHIVE}" \
-            "${VSCODE_SERVER_URL}"; then \
-            break; \
-        fi; \
-        [ "${attempt}" -lt 5 ] || exit 1; \
-        sleep "$((attempt * 5))"; \
-    done; \
-    echo "${VSCODE_SERVER_SHA256}  ${VSCODE_SERVER_ARCHIVE}" \
-        | sha256sum -c -; \
-    mkdir -p "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"; \
-    tar -xzf "${VSCODE_SERVER_ARCHIVE}" \
-        --strip-components=1 \
-        -C "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"; \
-    rm -f "${VSCODE_SERVER_ARCHIVE}"
+            "${VSCODE_SERVER_URL}"; \
+        \
+        mkdir -p "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"; \
+        tar -xzf "${VSCODE_SERVER_ARCHIVE}" \
+            --strip-components=1 \
+            -C "/root/.vscode-server/bin/${VSCODE_SERVER_COMMIT}"; \
+        \
+        rm -f "${VSCODE_SERVER_ARCHIVE}"; \
+    else \
+        echo "Skipping VS Code Server installation"; \
+    fi
 
 FROM base AS runtime
 

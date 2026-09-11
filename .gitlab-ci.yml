@@ -34,6 +34,7 @@ docker-str-smoke:
       -f docker/Dockerfile
       --target release
       --build-arg INSTALL_OPENMODELICA=true
+      --build-arg INSTALL_VSCODE_SERVER=false
       -t "${IMAGE_NAME}:${CI_COMMIT_SHA}"
       .
     - docker run --rm "${IMAGE_NAME}:${CI_COMMIT_SHA}" omc --version
